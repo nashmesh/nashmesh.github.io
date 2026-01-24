@@ -1,0 +1,49 @@
+site_name: NashMesh
+
+# Navigation
+nav:
+  - Home: index.md
+  - MQTT: mqtt.md
+  - Discord: https://discord.gg/sSS8gEpuh8
+
+# Theming
+theme:
+  name: material
+
+  palette:
+    scheme: slate
+
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+# Plugins
+plugins:
+  - search
+  - macros
+
+
+# Extensions
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - def_list
+  - admonition
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+
+# CSS
+extra_css:
+  - static/styles/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/sSS8gEpuh8
+      name: Join our Discord
