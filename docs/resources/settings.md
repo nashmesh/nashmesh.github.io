@@ -37,10 +37,6 @@ The primary channel is commonly used across the Mesh network. Below are configur
 | Short Name                        | Max of 4 characters, something unique for you and that particular radio. This will be what’s displayed in chat. You can even use emojis to spice things up | [user/#short-name](https://meshtastic.org/docs/configuration/radio/user/#short-name)
 | Is Licensed (not recommended)     | Do not enable unless you are a licensed Amateur Radio operators. (You will not be able to communicate with people on any of the default channels if you enable this) | [user/#is-licensed-ham](https://meshtastic.org/docs/configuration/radio/user/#is-licensed-ham)
 
-!!! info "Shoutout your local Mesh community"
-
-    Feel free to add the website to your local mesh community in your *Long Name* to make others aware.
-
 ### Device Roles
 
 Devices can be set to different roles depending on the purpose of the node. Below are recommended device roles to use. To view a list of all available roles, check out the [Meshtastic website](https://meshtastic.org/docs/configuration/radio/device/#roles).
