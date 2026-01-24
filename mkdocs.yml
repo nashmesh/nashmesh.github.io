@@ -4,6 +4,10 @@ site_name: NashMesh
 nav:
   - Home: index.md
   - MQTT: mqtt.md
+  - Resources:
+    - High SNR Connections: resources/connections.md
+    - Infrastructure Nodes: resources/infrastructure-nodes.md
+    - Recommended Settings: resources/settings.md
   - Discord: https://discord.gg/sSS8gEpuh8
 
 # Theming
@@ -37,10 +41,11 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 
-
-# CSS
 extra_css:
   - static/styles/extra.css
+
+extra_javascript:
+  - static/js/malla.js
 
 extra:
   social:
