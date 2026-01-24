@@ -4,8 +4,6 @@
 
 MQTT is a message-broker application that Meshtastic nodes can connect to. By connecting to an MQTT server, all LoRa traffic your node sees is sent over to our MQTT server where applications can pull and use.
 
-We use MQTT for collecting data from nodes across the state. From this data, we are able to populate applications such as [Malla](https://malla.tnmesh.org) to provide access to packets, metrics, maps and more.
-
 !!! note "How to help without connecting to MQTT"
     If you would like to still help with contributing your nodes data but do not want to connect to MQTT, please set `OK to MQTT` to `true`.
 
@@ -13,8 +11,6 @@ We use MQTT for collecting data from nodes across the state. From this data, we 
 
 
 ## MQTT Settings
-To make it easier to connect to our MQTT server, you only need to change the `Host` in your MQTT module as we use the default username and password.
-
 | Key              |  Value       | Documentation |
 | ------------ | ---------------- | ---------------- |
 | Host       | `mqtt.tnmesh.org`  | [mqtt/#server-address](https://meshtastic.org/docs/configuration/module/mqtt/#server-address)
@@ -27,7 +23,7 @@ To make it easier to connect to our MQTT server, you only need to change the `Ho
 
 !!! note "Reminder"
 
-    We use MQTT strictly for collecting and displaying data from nodes across the state. To keep the system running smoothly for everyone, we kindly ask that you leave MQTT downlink turned off on all public channels. This helps reduce unnecessary traffic on the server.
+    It's preferred that MQTT is used only for collecting and displaying data from nodes. To keep the system running smoothly for everyone, we kindly ask that you leave MQTT downlink turned off on all public channels. This helps reduce unnecessary traffic on the server.
 
 ## Setup Images
 
