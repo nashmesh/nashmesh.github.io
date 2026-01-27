@@ -1,7 +1,7 @@
 const url = "https://malla.tnmesh.org";
 
 async function fetchLocations() {
-    const response = await fetch(`${url}/api/locations`);
+    const response = await fetch(`${url}/api/locations?region=Middle`);
     if (!response.ok) throw new Error(`Failed to load locations`);
 
     const data = await response.json();
@@ -11,7 +11,7 @@ async function fetchLocations() {
 
 document$.subscribe(() => {
     let baseLayer = L.tileLayer(
-        'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '...',
         maxZoom: 13
     }
@@ -30,17 +30,15 @@ document$.subscribe(() => {
 
         locations.forEach((location) => {
             let config = {
-                color: 'blue',
-                fillColor: '#4adec5b9',
+                color: '#67EA94',
+                fillColor: '#67EA9488',
                 fillOpacity: 1
             }
 
             if (location.is_infrastructure_node !== null) {
-                config = {
-                    color: 'red',
-                    fillColor: '#ff1515b9',
-                    fillOpacity: 1
-                }
+                config['red'] = 'red';
+                config['fillColor'] = '#ff1515b9';
+                config['fillOpacity'] = 1;
             }
 
             nodeLayerMap.addLayer(
@@ -48,27 +46,23 @@ document$.subscribe(() => {
             )
         })
 
-        // nodeLayerMap.addTo(map);
-
-        // nodes.forEach((location) => {
-        //     L.circle([location['latitude'], location['longitude']], circleSize).bindPopup(location['display_name']).addTo(map)
-        // })
-
-        L.heatLayer(
+        const heatLayer = L.heatLayer(
             locations.map(function (location) {
-                return [location['latitude'], location['longitude'], location['age_hours'] / 10];
+                return [location['latitude'], location['longitude'], location['age_hours'] / 2];
             }),
             {
-                radius: 10,
+                radius: 15,
 
             }
         ).addTo(map)
 
         map.on('zoomend', function (event) {
             if (map.getZoom() < 10) {
+                map.addLayer(heatLayer);
                 map.removeLayer(nodeLayerMap);
             } else {
                 map.addLayer(nodeLayerMap);
+                map.removeLayer(heatLayer);
             }
         })
     });

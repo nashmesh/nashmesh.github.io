@@ -49,7 +49,7 @@ extra_javascript:
   - static/js/leaflet.js
   - static/js/heatmap.js
   - static/js/leaflet-heatmap.js
-  - static/js/main.js
+  - static/js/map.js
   - static/js/malla.js
 
 extra:
