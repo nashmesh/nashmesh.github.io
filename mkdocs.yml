@@ -42,9 +42,14 @@ markdown_extensions:
       custom_checkbox: true
 
 extra_css:
+  - static/styles/leaflet.css
   - static/styles/extra.css
 
 extra_javascript:
+  - static/js/leaflet.js
+  - static/js/heatmap.js
+  - static/js/leaflet-heatmap.js
+  - static/js/main.js
   - static/js/malla.js
 
 extra:
