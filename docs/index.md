@@ -12,6 +12,9 @@ Want to learn more about connecting to our mesh? Check out our [recommended sett
 Meshtastic is an community-based, open-source project that provides for a decentralized, off-grid mesh network built on low-powered devices.
 To learn about Meshtastic, check out their [offical homepage](https://meshtastic.org).
 
+### Who's around me?
+<div id="map-canvas" style="width: 100%; height: 50vh"></div>
+
 ## Resources
 <div class="grid cards" markdown>
 - [Discord](https://discord.gg/sSS8gEpuh8){ .md-button .md-button--primary .md-button__fill}
