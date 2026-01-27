@@ -46,11 +46,10 @@ extra_css:
   - static/styles/extra.css
 
 extra_javascript:
+  - static/js/malla.js
   - static/js/leaflet.js
   - static/js/heatmap.js
   - static/js/leaflet-heatmap.js
-  - static/js/map.js
-  - static/js/malla.js
 
 extra:
   social:
