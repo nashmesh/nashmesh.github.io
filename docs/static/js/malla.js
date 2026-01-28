@@ -181,7 +181,7 @@ function buildMap() {
     );
 
     let map = new L.Map('map-canvas', {
-        center: new L.LatLng(35.90370, -86.59960),
+        center: new L.LatLng(36.167567024460766, -86.78540125568028),
         zoom: 9,
         maxZoom: 14,
         layers: [baseLayer]
