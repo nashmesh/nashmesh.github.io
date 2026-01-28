@@ -9,7 +9,7 @@ async function fetchInfrastructureNodesByRegion() {
 }
 
 async function fetchLocations() {
-    return await fetchNetworkGraph(-100);
+    return await fetchNetworkGraph(72, -100);
 }
 
 async function fetchDataForId(id) {
@@ -31,8 +31,8 @@ async function fetchDataForId(id) {
     return { ...node, timeAgo: timeAgo, timeSinceLastUpdate: new Date().getTime() - lastUpdate.getTime() };
 }
 
-async function fetchNetworkGraph(min_snr = '-20') {
-    const response = await fetch(`${url}/api/traceroute/graph?hours=24&min_snr=${min_snr}`);
+async function fetchNetworkGraph(hours = '24', min_snr = '-20') {
+    const response = await fetch(`${url}/api/traceroute/graph?hours=${hours}&min_snr=${min_snr}`);
     if (!response.ok) throw new Error(`Failed to load network graph`);
     const data = await response.json();
     const nodes = data['nodes']
