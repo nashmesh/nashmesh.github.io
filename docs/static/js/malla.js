@@ -233,7 +233,8 @@ let baseLayer = L.tileLayer(
             }),
             {
                 radius: 15,
-
+                minOpacity: 0.4,
+                maxOpacity: 0.8
             }
         ).addTo(map)
 
