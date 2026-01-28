@@ -1,4 +1,4 @@
-const url = "https://malla.staging.tnmesh.org";
+const url = "https://malla.tnmesh.org";
 
 async function fetchInfrastructureNodesByRegion() {
     const response = await fetch(`${url}/api/infrastructure-nodes/by-region`);
