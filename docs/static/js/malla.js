@@ -1,4 +1,4 @@
-const url = "https://malla.tnmesh.org";
+const url = "https://malla.staging.tnmesh.org";
 
 async function fetchInfrastructureNodesByRegion() {
     const response = await fetch(`${url}/api/infrastructure-nodes/by-region`);
@@ -9,12 +9,7 @@ async function fetchInfrastructureNodesByRegion() {
 }
 
 async function fetchLocations() {
-    const response = await fetch(`${url}/api/locations?region=Middle`);
-    if (!response.ok) throw new Error(`Failed to load locations`);
-
-    const data = await response.json();
-
-    return data['locations'];
+    return await fetchNetworkGraph(-100);
 }
 
 async function fetchDataForId(id) {
@@ -36,8 +31,8 @@ async function fetchDataForId(id) {
     return { ...node, timeAgo: timeAgo, timeSinceLastUpdate: new Date().getTime() - lastUpdate.getTime() };
 }
 
-async function fetchNetworkGraph() {
-    const response = await fetch(`${url}/api/traceroute/graph?hours=24&min_snr=-20`);
+async function fetchNetworkGraph(min_snr = '-20') {
+    const response = await fetch(`${url}/api/traceroute/graph?hours=24&min_snr=${min_snr}`);
     if (!response.ok) throw new Error(`Failed to load network graph`);
     const data = await response.json();
     const nodes = data['nodes']
@@ -150,8 +145,8 @@ async function buildInfrastructureNodesTable(index, nodes) {
             // 12 hours without being seen
             if (item.last_packet_time_diff > 60 * 60 * 12) {
                 status = '❌';
-            // 6 hours without being seen
-            } else if(item.last_packet_time_diff > 60 * 60 * 6) {
+                // 6 hours without being seen
+            } else if (item.last_packet_time_diff > 60 * 60 * 6) {
                 status = '⚠️';
             }
 
@@ -177,6 +172,79 @@ async function buildInfrastructureNodesTable(index, nodes) {
     }
 }
 
+function buildMap() {
+    let baseLayer = L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '...',
+        maxZoom: 13
+    }
+    );
+
+    let map = new L.Map('map-canvas', {
+        center: new L.LatLng(35.90370, -86.59960),
+        zoom: 9,
+        maxZoom: 14,
+        layers: [baseLayer]
+    });
+
+    fetchLocations().then((nodes) => {
+        const nodeLayerMap = L.layerGroup();
+        const circleSize = 400;
+
+        nodes.forEach((node) => {
+            const location = node['location'];
+
+            if (location !== undefined) {
+                console.log(location)
+                let config = {
+                    color: '#67EA94',
+                    fillColor: '#67EA9488',
+                    fillOpacity: 100
+                }
+
+                nodeLayerMap.addLayer(
+                    L.circle([location['latitude'], location['longitude']], circleSize, config).bindPopup(node['name'])
+                )
+            }
+        })
+
+        const heatLayer = new HeatmapOverlay({
+            radius: 45,
+            useLocalExtrema: true,
+            maxOpacity: 0.7,
+            latField: 'latitude',
+            lngField: 'longitude',
+            valueField: 'connections'
+        })
+
+        const scaler = 100;
+        heatLayer.setData({
+            data: nodes.map((node) => {
+                const location = node['location'];
+
+                if (location === undefined) {
+                    return null;
+                }
+
+                return {
+                    latitude: location['latitude'],
+                    longitude: location['longitude'],
+                    connections: node['connections'] * scaler
+                }
+            }).filter((result) => result !== null)
+        })
+
+        map.addLayer(heatLayer);
+
+        map.on('zoomend', function (event) {
+            if (map.getZoom() < 11) {
+                map.removeLayer(nodeLayerMap);
+            } else {
+                map.addLayer(nodeLayerMap);
+            }
+        })
+    });
+}
 
 document$.subscribe(() => {
     buildHighSNRNodeConnectionsTable();
@@ -191,61 +259,5 @@ document$.subscribe(() => {
         });
     });
 
-let baseLayer = L.tileLayer(
-        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '...',
-        maxZoom: 13
-    }
-    );
-
-    let map = new L.Map('map-canvas', {
-        center: new L.LatLng(35.90370, -86.59960),
-        zoom: 9,
-        maxZoom: 11,
-        layers: [baseLayer]
-    });
-
-    fetchLocations().then((locations) => {
-        const nodeLayerMap = L.layerGroup();
-        const circleSize = 400;
-
-        locations.forEach((location) => {
-            let config = {
-                color: '#67EA94',
-                fillColor: '#67EA9488',
-                fillOpacity: 1
-            }
-
-            if (location.is_infrastructure_node !== null) {
-                config['red'] = 'red';
-                config['fillColor'] = '#ff1515b9';
-                config['fillOpacity'] = 1;
-            }
-
-            nodeLayerMap.addLayer(
-                L.circle([location['latitude'], location['longitude']], circleSize, config).bindPopup(location['display_name'])
-            )
-        })
-
-        const heatLayer = L.heatLayer(
-            locations.map(function (location) {
-                return [location['latitude'], location['longitude'], location['age_hours'] / 10];
-            }),
-            {
-                radius: 15,
-                minOpacity: 0.4,
-                maxOpacity: 0.8
-            }
-        ).addTo(map)
-
-        map.on('zoomend', function (event) {
-            if (map.getZoom() < 10) {
-                map.addLayer(heatLayer);
-                map.removeLayer(nodeLayerMap);
-            } else {
-                map.addLayer(nodeLayerMap);
-                map.removeLayer(heatLayer);
-            }
-        })
-    });
+    buildMap();
 });
