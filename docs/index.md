@@ -1,6 +1,4 @@
 # Welcome
-Welcome to the official website for NashMesh!
-
 ![Image title](./static/images/main.jpg)
 
 ## Mission
@@ -13,7 +11,7 @@ Meshtastic is an community-based, open-source project that provides for a decent
 To learn about Meshtastic, check out their [offical homepage](https://meshtastic.org).
 
 ### Who's around me?
-<div id="map-canvas" style="width: 100%; height: 50vh; z-index: 1"></div>
+<div id="map-canvas" style="width: 100%; height: 50vh; z-index: 1; border-radius: 6px"></div>
 
 ## Resources
 <div class="grid cards" markdown>
