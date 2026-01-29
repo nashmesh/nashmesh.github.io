@@ -3,12 +3,11 @@ site_name: NashMesh
 # Navigation
 nav:
   - Home: index.md
+  - Getting Started: resources/getting-started.md
   - MQTT: mqtt.md
-  - Resources:
-    - High SNR Connections: resources/connections.md
-    - Infrastructure Nodes: resources/infrastructure-nodes.md
-    - Recommended Settings: resources/settings.md
-    - Affiliate Links: resources/affiliate.md
+  - Infrastructure Nodes: resources/infrastructure-nodes.md
+  - High SNR Connections: resources/connections.md
+  - Affiliate Links: resources/affiliate.md
   - Discord: https://discord.gg/sSS8gEpuh8
 
 # Theming

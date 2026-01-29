@@ -1,4 +1,4 @@
-# Recommended Settings
+# Getting Started
 
 We have some sane default settings that we strongly recommend you follow.
 
