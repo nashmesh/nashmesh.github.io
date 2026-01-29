@@ -19,4 +19,5 @@ To learn about Meshtastic, check out their [offical homepage](https://meshtastic
 - [Malla](https://malla.tnmesh.org){ .md-button .md-button--primary .md-button__fill}
 - [Potato Map](https://potato.tnmesh.org){ .md-button .md-button--primary .md-button__fill}
 - [Fundraising](https://www.paypal.com/pool/9lX5JfAFdw?sr=wccr){ .md-button .md-button--primary .md-button__fill}
+- [Affiliate Links](https://nashme.sh/resources/affiliate/){ .md-button .md-button--primary .md-button__fill}
 </div>
