@@ -4,7 +4,7 @@
 ## Mission
 Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.
 
-Want to learn more about connecting to our mesh? Check out our [recommended settings](/resources/settings) guide!
+Want to learn more about connecting to our mesh? Check out our [getting started](/getting-started) page!
 
 ## What is Meshtastic?
 Meshtastic is an community-based, open-source project that provides for a decentralized, off-grid mesh network built on low-powered devices.

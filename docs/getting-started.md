@@ -8,6 +8,7 @@ Most importantly make sure to keep all automatic beacons like telemetry and posi
 If you are joining our network you may visit discord and ‘/linknode !nodeid’ in the logger channels.
 
 In the Middle TN Area, we have a few recommendations for configuration:
+
 (Make sure to read all the recommended settings)
 
 ### LoRa
