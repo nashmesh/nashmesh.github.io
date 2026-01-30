@@ -17,19 +17,18 @@ theme:
   sidebar: true
   navigation_depth: 2
   theme_style: dark
+  highlightjs: true
   components:
     site_name: true
     title: false
     menu: true
     preview: true
     footer: true
-  # colors:
-  #   text: white
-  #   title: white
-  #   primary: white
-  #   background: black
-  # palette:
-  #   scheme: slate
+  colors:
+    text: black
+    title: black
+    primary: black
+    background: white
 
   features:
     - navigation.tabs
