@@ -93,7 +93,7 @@ async function buildHighSNRNodeConnectionsTable() {
         results.forEach((item, index) => {
             html += `
             <tr>
-                <td><a href="https://malla.tnmesh.org/node/${item.id}" target="_blank">${item.name}</a></td>
+                <td><a href="https://malla.nashme.sh/node/${item.id}" target="_blank">${item.name}</a></td>
                 <td>${item.connections}</td>
                 <td>${item.packet_count}</td>
                 <td>${item.avg_snr ? `${item.avg_snr}dB` : 'Unknown'}</td>
@@ -152,7 +152,7 @@ async function buildInfrastructureNodesTable(index, nodes) {
 
             html += `
             <tr>
-                <td><a href="https://malla.tnmesh.org/node/${item.node_id}" target="_blank">${item.long_name} (${item.short_name})</a></td>
+                <td><a href="https://malla.nashme.sh/node/${item.node_id}" target="_blank">${item.long_name} (${item.short_name})</a></td>
                 <td>${item.role}</td>
                 <td>${status} ${convertTimestampToText(item.last_packet_time * 1000)}</td>
                 <td>${item.packet_count_24h}</td>
