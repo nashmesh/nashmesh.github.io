@@ -1,5 +1,5 @@
 # Connections
-Below are nodes that have an average SNR of ≥ -20dB or more, or at least for what is stored in Malla. Data for this table is pulled from [here](https://malla.tnmesh.org/traceroute-graph).
+Below are nodes that have an average SNR of ≥ -20dB or more, or at least for what is stored in Malla. Data for this table is pulled from [here](https://malla.nashme.sh/traceroute-graph).
 
 Note: Times are in CST.
 
