@@ -14,6 +14,7 @@ nav:
 # Theming
 theme:
   name: simple-blog
+  logo: static/images/logo.png
   sidebar: true
   navigation_depth: 2
   theme_style: dark
