@@ -15,6 +15,7 @@ nav:
 theme:
   name: simple-blog
   logo: static/images/logo.png
+  favicon: static/images/favicon.ico
   sidebar: true
   navigation_depth: 2
   theme_style: dark

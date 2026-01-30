@@ -11,7 +11,7 @@ MQTT is a message-broker application that Meshtastic nodes can connect to. By co
 ## MQTT Settings
 | Key              |  Value       |
 | ------------ | ---------------- |
-| Host       | `mqtt.tnmesh.org`  |
+| Host       | `mqtt.nashme.sh`  |
 | Username   | `meshdev`          |
 | Password   | `large4cats`       |
 | Topic      | `msh/US/TN/Middle` |
