@@ -1,5 +1,3 @@
-# MQTT
-
 ## What is MQTT?
 
 MQTT is a message-broker application that Meshtastic nodes can connect to. By connecting to an MQTT server, all LoRa traffic your node sees is sent over to our MQTT server where applications can pull and use.
@@ -11,15 +9,15 @@ MQTT is a message-broker application that Meshtastic nodes can connect to. By co
 
 
 ## MQTT Settings
-| Key              |  Value       | Documentation |
-| ------------ | ---------------- | ---------------- |
-| Host       | `mqtt.tnmesh.org`  | [mqtt/#server-address](https://meshtastic.org/docs/configuration/module/mqtt/#server-address)
-| Username   | `meshdev`          | [mqtt/#username](https://meshtastic.org/docs/configuration/module/mqtt/#username)
-| Password   | `large4cats`       | [mqtt/#password](https://meshtastic.org/docs/configuration/module/mqtt/#password)
+| Key              |  Value       |
+| ------------ | ---------------- |
+| Host       | `mqtt.tnmesh.org`  |
+| Username   | `meshdev`          |
+| Password   | `large4cats`       |
 | Topic      | `msh/US/TN/Middle` |
-| Primary Channel Uplink   | `true`       | [channels/#uplink-enabled](https://meshtastic.org/docs/configuration/radio/channels/#uplink-enabled)
-| Primary Channel Downlink   | `false`       | [channels/#downlink-enabled](https://meshtastic.org/docs/configuration/radio/channels/#downlink-enabled)
-| Ok to MQTT  | `true`       | [lora/#ok-to-mqtt](https://meshtastic.org/docs/configuration/radio/lora/#ok-to-mqtt)
+| Primary Channel Uplink   | `true`       |
+| Primary Channel Downlink   | `false`       |
+| Ok to MQTT  | `true`       |
 
 !!! note "Reminder"
 

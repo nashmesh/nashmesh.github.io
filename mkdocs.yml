@@ -1,4 +1,4 @@
-site_name: NashMesh
+site_name: nashme.sh
 
 # Navigation
 nav:
@@ -7,15 +7,29 @@ nav:
   - MQTT: mqtt.md
   - Infrastructure Nodes: resources/infrastructure-nodes.md
   - High SNR Connections: resources/connections.md
+  - Fundraising: https://www.paypal.com/pool/9lX5JfAFdw?sr=wccr
   - Affiliate Links: resources/affiliate.md
   - Discord: https://discord.gg/sSS8gEpuh8
 
 # Theming
 theme:
-  name: material
-
-  palette:
-    scheme: slate
+  name: simple-blog
+  sidebar: true
+  navigation_depth: 2
+  theme_style: dark
+  components:
+    site_name: true
+    title: false
+    menu: true
+    preview: true
+    footer: true
+  # colors:
+  #   text: white
+  #   title: white
+  #   primary: white
+  #   background: black
+  # palette:
+  #   scheme: slate
 
   features:
     - navigation.tabs
@@ -46,6 +60,7 @@ extra_css:
   - static/styles/extra.css
 
 extra_javascript:
+  - static/js/custom.js
   - static/js/malla.js
   - static/js/leaflet.js
   - static/js/heatmap.js

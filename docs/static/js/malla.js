@@ -195,7 +195,6 @@ function buildMap() {
             const location = node['location'];
 
             if (location !== undefined) {
-                console.log(location)
                 let config = {
                     color: '#67EA94',
                     fillColor: '#67EA9488',
@@ -246,7 +245,7 @@ function buildMap() {
     });
 }
 
-document$.subscribe(() => {
+document.addEventListener("DOMContentLoaded", function () {
     buildHighSNRNodeConnectionsTable();
 
     fetchInfrastructureNodesByRegion().then((data) => {
