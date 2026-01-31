@@ -5,10 +5,10 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - MQTT: mqtt.md
-  - Infrastructure Nodes: resources/infrastructure-nodes.md
-  - High SNR Connections: resources/connections.md
+  - Infrastructure Nodes: infrastructure-nodes.md
+  - High SNR Connections: connections.md
   - Fundraising: https://www.paypal.com/pool/9lX5JfAFdw?sr=wccr
-  - Affiliate Links: resources/affiliate.md
+  - Affiliate Links: affiliate.md
   - Discord: https://discord.gg/sSS8gEpuh8
 
 # Theming
