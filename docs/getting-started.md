@@ -43,8 +43,8 @@ Below are configuration settings for the `0 Primary Channel`.
 
 | Role                  | Description   |
 | --------------------- | ------------- |
-| `CLIENT_MUTE`         | The safe, defacto role that is default. Perfect for your single primary node. It will relay messages it receives.
-| `CLIENT`              | Best for vehicles and any time you have more than 2 nodes in the same place. It will not relay messages. (It will still transmit its own packets)
+| `CLIENT`         | The safe, defacto role that is default. Perfect for your single primary node. It will relay messages it receives.
+| `CLIENT_MUTE`              | Best for vehicles and any time you have more than 2 nodes in the same place. It will not relay messages. (It will still transmit its own packets)
 | `CLIENT_BASE`         | Designed for stationary, high-elevation nodes (e.g., rooftops, attics) to act as a personal, privileged relay. It prioritizes rebroadcasting packets to/from specific "favorited" personal nodes, boosting signal reliability for weaker, indoor, or handheld devices while still acting as a regular client for general mesh traffic. Important note - You MUST favorite your personal indoor nodes to the Client Base node and vice-versa.
 | `ROUTER` / `REPEATER` | DO NOT use this role. There are a lot of considerations, and caveats, to using the official Router & Repeater roles. Remember: The Client or Client_Base role relays messages just fine.
 
