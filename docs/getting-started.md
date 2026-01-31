@@ -16,7 +16,7 @@ In the Middle TN Area, we have a few recommendations for configuration:
 | Setting                           | Value         |
 | --------------------------------- | ------------- |
 | Region                            | `US`          |
-| Preset                            | Medium Range Fast |
+| Preset                            | `Medium Range Fast` |
 | Max Hops (infrastructure nodes)   | `4 (up to 5)` |
 | Max Hops (personal nodes)         | `6 (up to 7)` |
 | Ignore MQTT (optional)            | Optional: Enable this to ignore traffic that may have been downlinked from MQTT (the internet) |
