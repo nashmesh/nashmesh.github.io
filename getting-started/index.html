@@ -1,0 +1,392 @@
+<!doctype html>
+<html data-bs-theme="dark">
+    <head>
+                <title>Getting Started - nashme.sh</title>
+
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            
+            
+            
+
+            
+                <link  rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+                <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/base16/grayscale-dark.min.css">
+                <script>hljs.highlightAll();</script>
+
+        <script>var base_url = '..';</script>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="../assets/css/root.min.css">
+            <link rel="stylesheet" href="../assets/css/main.min.css">
+            <link rel="stylesheet" href="../assets/css/media.min.css">
+            <link rel="stylesheet" href="../assets/css/mkdocstrings.min.css">
+                <link href="../static/styles/leaflet.css" rel="stylesheet">
+                <link href="../static/styles/extra.css" rel="stylesheet">
+                <script src="../static/js/custom.js"></script>
+                <script src="../static/js/malla.js"></script>
+                <script src="../static/js/leaflet.js"></script>
+                <script src="../static/js/heatmap.js"></script>
+                <script src="../static/js/leaflet-heatmap.js"></script>
+                <script src="../search/main.js"></script>
+
+            
+                
+                    <style>
+                        :root {
+                            --text: white;
+                            --title: white;
+                            --primary: white;
+                            --background: black;
+                        }
+                    </style>
+                
+            
+          
+    </head>
+
+    <body>
+        <div class="container py-3">
+            <header>
+                    <!-- block header -->
+<nav class="navbar navbar-expand-xl border-bottom">
+    <div class="container-fluid">
+        
+            <img class="logo" src="../static/images/logo.png">
+        
+
+        
+            <span class=" fs-4 title-color site-name" id="component-site-name" style="text-transform: uppercase;">nashme.sh</span>
+        
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu"
+            aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+            <ul class="navbar-nav">
+
+                <!-- block menu -->
+                <li class="nav-item">
+                    <!-- block menu -->
+    
+        <li class="nav-item" id="component-menu">
+            <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="..">[Home]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=" active 
+                            nav-link text-gray text-decoration-none" href="./">[Getting Started]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="../mqtt/">[MQTT]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="../infrastructure-nodes/">[Infrastructure Nodes]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="../connections/">[High SNR Connections]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="https://www.paypal.com/pool/9lX5JfAFdw?sr=wccr">[Fundraising]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="../affiliate/">[Affiliate Links]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="https://discord.gg/sSS8gEpuh8">[Discord]</a>
+                        </li>
+            </ul>
+        </li>
+<!-- endblock -->
+                </li>
+                <!-- endblock -->
+
+                <!-- block search -->
+                <li class="nav-item">
+                    <a class="collapsed" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div class="md-search-icon">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </li>
+                <!--  endblock -->
+
+                <!-- block source -->
+                <li class="nav-item">
+                    
+                </li>
+                <!--  endblock -->
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--  endblock -->
+            </header>
+
+            <main><!-- block search -->
+<div class="collapse" id="collapseExample">
+    <div role="search" class="search-box">
+        <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+            <input type="text" name="q" class="search-query"
+            placeholder="Search docs" title="Type search term here" />
+        </form>
+    </div>
+</div>
+<!-- endblock -->
+
+                
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 d-none d-md-block" id="component-sidebar">
+                                    <!-- block sidebar -->
+<div class="navbar-expand-md" role="complementary">
+    
+    <div class="sidebar navbar-collapse collapse card">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#getting-started" class="nav-link">Getting Started</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- endblock -->
+                            </div>
+                            <div class="col-md-9 col-12" id="component-content">
+                                    <!-- block content -->
+<section class="container post" id="component-content">
+    <article>
+        <header>
+            
+            
+        </header>
+        <p><h1 id="getting-started">Getting Started</h1>
+<p>We have some sane default settings that we strongly recommend you follow.</p>
+<p>Please make sure to update the firmware on your device as you get started. The easiest way to do that is to use the Web Flasher. The latest stable release, even if labeled Beta, is generally a very safe option.
+Most importantly make sure to keep all automatic beacons like telemetry and position (if used on a stationary node) to 6 hours +. If you want to send position while moving, use Smart Position, with minimum 10 minutes and distance trigger 100 to 130. This helps keep our mesh clean of background traffic that's of little use.</p>
+<p>If you are joining our network you may visit discord and ‘/linknode !nodeid’ in the logger channels.</p>
+<p>In the Middle TN Area, we have a few recommendations for configuration:</p>
+<p>(Make sure to read all the recommended settings)</p>
+<h3 id="lora">LoRa</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Region</td>
+<td><code>US</code></td>
+</tr>
+<tr>
+<td>Preset</td>
+<td><code>Medium Range Fast</code></td>
+</tr>
+<tr>
+<td>Max Hops (infrastructure nodes)</td>
+<td><code>4 (up to 5)</code></td>
+</tr>
+<tr>
+<td>Max Hops (personal nodes)</td>
+<td><code>6 (up to 7)</code></td>
+</tr>
+<tr>
+<td>Ignore MQTT (optional)</td>
+<td>Optional: Enable this to ignore traffic that may have been downlinked from MQTT (the internet)</td>
+</tr>
+<tr>
+<td>OK to MQTT (recommended)</td>
+<td>Recommended but optional: Enable this for your messages to be uploaded to MQTT (the internet). This is required for your messages to show up on the Discord logger, Malla, MeshInfo, or location on any maps. This helps us see where traffic flows, and troubleshoot issues.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="channels">Channels</h3>
+<p>Below are configuration settings for the <code>0 Primary Channel</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td><em>Left intentionally blank</em></td>
+</tr>
+<tr>
+<td>PSK</td>
+<td><code>AQ==</code></td>
+</tr>
+<tr>
+<td>Position Precision</td>
+<td>You may wish to turn off <em>Positions &amp; Location</em> if you’re not interested in broadcasting your location. If you wish to enable a precise location you can do so via any client other than iOS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="user">User</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Long Name</td>
+<td>Something descriptive. Ex: Your name, Discord Handle, or Ham Callsign. You can even include an email or website (ProTip: put nashme.sh in your name so more people can find us)</td>
+</tr>
+<tr>
+<td>Short Name</td>
+<td>Max of 4 characters, something unique for you and that particular radio. This will be what’s displayed in chat. You can even use emojis to spice things up.</td>
+</tr>
+<tr>
+<td>Is Licensed (not recommended)</td>
+<td>Not recommended. Do not enable unless you are a licensed Amateur Radio operators. (You will not be able to communicate with people on any of the default channels if you enable this)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="device-roles">Device Roles</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLIENT</code></td>
+<td>The safe, defacto role that is default. Perfect for your single primary node. It will relay messages it receives.</td>
+</tr>
+<tr>
+<td><code>CLIENT_MUTE</code></td>
+<td>Best for vehicles and any time you have more than 2 nodes in the same place. It will not relay messages. (It will still transmit its own packets)</td>
+</tr>
+<tr>
+<td><code>CLIENT_BASE</code></td>
+<td>Designed for stationary, high-elevation nodes (e.g., rooftops, attics) to act as a personal, privileged relay. It prioritizes rebroadcasting packets to/from specific "favorited" personal nodes, boosting signal reliability for weaker, indoor, or handheld devices while still acting as a regular client for general mesh traffic. Important note - You MUST favorite your personal indoor nodes to the Client Base node and vice-versa.</td>
+</tr>
+<tr>
+<td><code>ROUTER</code> / <code>REPEATER</code></td>
+<td>DO NOT use this role. There are a lot of considerations, and caveats, to using the official Router &amp; Repeater roles. Remember: The Client or Client_Base role relays messages just fine.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="module-configuration">Module Configuration</h3>
+<h4 id="mqtt">MQTT</h4>
+<p>If you want to upload to the internet to help us with data logging, see MQTT - This can be on nodes with their own WiFi chips or on the go with MQTT client proxy from the phone app.</p>
+<h4 id="telemetry">Telemetry</h4>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Environment Telemetry Enabled</td>
+<td>Enables the environment telemetry sensors</td>
+</tr>
+<tr>
+<td>Device Metrics Update Interval</td>
+<td>How often to send Device Metrics over the mesh</td>
+</tr>
+<tr>
+<td>Environment Metrics Update Intervall</td>
+<td>How often to send Device Metrics over the mesh</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tips">Tips</h4>
+<ul>
+<li>Make sure to keep all automatic beacons like telemetry and position (if used on a stationary node) to <code>6 hours+</code>. If you want to send position while moving, use <em>Smart Position</em>, with minimum <code>10 minutes</code> and distance trigger <code>100</code> to <code>130</code>. This helps keep the mesh network clean of background traffic that's of little use.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Configuration guide was happily donated by <a href="https://bayme.sh">bayme.sh</a>.</p>
+</div></p>
+    </article>
+</section>
+<!-- endblock -->
+                            </div>
+                        </div>
+                    </div>
+                
+                
+            </main>
+
+            
+                    <!-- block preview -->
+    <div class="preview row row-cols-md-3 text-center pt-md-3" id="component-preview">
+        <div class="col themed-grid-col">
+            <a rel="prev" href=".." class="nav-link">
+                <i class="fa fa-arrow-left"></i> Previous
+            </a>
+        </div>
+        <div class="col themed-grid-col"></div>
+        <div class="col themed-grid-col">
+            <a rel="next" href="../mqtt/" class="nav-link">
+                Next <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+<!-- endblock -->
+            
+
+            
+                    <!-- block footer -->
+<footer class="pt-4 my-md-5 pt-md-5 border-top" id="component-footer">
+    <div class="row">
+        <div class="col-12 col-md">
+                <!-- block copyright -->
+
+    <small class="d-block mb-3">
+        Made with
+        <a href="https://github.com/FernandoCelmer/mkdocs-simple-blog" target="_blank" rel="noopener">
+            Simple Blog for MkDocs
+        </a>
+    </small>
+
+<!-- endblock -->
+        </div>
+    </div>
+</footer>
+<!-- endblock -->
+            
+        </div>
+
+            <script src="../assets/js/jquery-3.3.1.slim.min.js""></script>
+            <script src="../assets/js/bootstrap.bundle.min.js""></script>
+            <script src="../assets/js/main.min.js""></script>
+                <script src="../static/js/custom.js" defer></script>
+                <script src="../static/js/malla.js" defer></script>
+                <script src="../static/js/leaflet.js" defer></script>
+                <script src="../static/js/heatmap.js" defer></script>
+                <script src="../static/js/leaflet-heatmap.js" defer></script>
+                <script src="../search/main.js" defer></script>
+
+    </body>
+
+</html>
