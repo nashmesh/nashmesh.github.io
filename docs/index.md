@@ -16,7 +16,7 @@ To learn about Meshtastic, check out their [offical homepage](https://meshtastic
 ## Resources
 <button style="width: 25%; height: 25%"><a href="https://discord.gg/sSS8gEpuh8">Discord</a></button>
 <button style="width: 25%; height: 25%"><a href="https://malla.nashme.sh">Malla</a></button>
-<button style="width: 25%; height: 25%"><a href="https://potato.tnmesh.org">Potato Map</a></button>
+<button style="width: 25%; height: 25%"><a href="https://potato.nashme.sh">Potato Map</a></button>
 
 # Customize
 <button class="color-button" data-theme="light">
