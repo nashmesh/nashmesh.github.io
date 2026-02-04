@@ -1,3 +1,7 @@
+---
+template: base_no_sidebar.html
+---
+
 # Connections
 Below are nodes that have an average SNR of ≥ -20dB or more, or at least for what is stored in Malla. Data for this table is pulled from [here](https://malla.nashme.sh/traceroute-graph).
 

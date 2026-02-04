@@ -8,7 +8,7 @@ Meshtastic is an community-based, open-source project that provides for a decent
 as a messaging platform that provides a backup for everyday communication. Many of us like to use it during disasters, power outages, or to enjoy as a hobby.
 To learn about Meshtastic, check out their [offical homepage](https://meshtastic.org).
 
-## How Do I Get Involved?
+### How Do I Get Involved?
 Feel free to jump into our [discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
 
 ### How Do I Get Started?
