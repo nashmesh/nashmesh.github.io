@@ -93,7 +93,7 @@ async function buildHighSNRNodeConnectionsTable() {
         results.forEach((item, index) => {
             if (item.node?.is_infrastructure_node === 1) {
                 html += `
-                <tr style='background-color: red;'>
+                <tr style='background-color: steelblue;'>
                     <td><a href="https://malla.nashme.sh/node/${item.id}" target="_blank">${item.name}</a></td>
                     <td>${item.connections}</td>
                     <td>${item.packet_count}</td>
