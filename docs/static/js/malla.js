@@ -32,7 +32,7 @@ async function fetchDataForId(id) {
 }
 
 async function fetchNetworkGraph(hours = '24', min_snr = '-20') {
-    const response = await fetch(`${url}/api/traceroute/graph?hours=${hours}&min_snr=${min_snr}`);
+    const response = await fetch(`${url}/api/high-connections?hours=${hours}&min_snr=${min_snr}`);
     if (!response.ok) throw new Error(`Failed to load network graph`);
     const data = await response.json();
     const nodes = data['nodes']
@@ -91,15 +91,27 @@ async function buildHighSNRNodeConnectionsTable() {
         `;
 
         results.forEach((item, index) => {
-            html += `
-            <tr>
-                <td><a href="https://malla.nashme.sh/node/${item.id}" target="_blank">${item.name}</a></td>
-                <td>${item.connections}</td>
-                <td>${item.packet_count}</td>
-                <td>${item.avg_snr ? `${item.avg_snr}dB` : 'Unknown'}</td>
-                <td>${convertTimestampToText(item.last_seen * 1000)}</td>
-            </tr>
-        `;
+            if (item.node?.is_infrastructure_node === 1) {
+                html += `
+                <tr style='background-color: red;'>
+                    <td><a href="https://malla.nashme.sh/node/${item.id}" target="_blank">${item.name}</a></td>
+                    <td>${item.connections}</td>
+                    <td>${item.packet_count}</td>
+                    <td>${item.avg_snr ? `${item.avg_snr}dB` : 'Unknown'}</td>
+                    <td>${convertTimestampToText(item.last_seen * 1000)}</td>
+                </tr>
+            `;
+            } else {
+                html += `
+                <tr>
+                    <td><a href="https://malla.nashme.sh/node/${item.id}" target="_blank">${item.name}</a></td>
+                    <td>${item.connections}</td>
+                    <td>${item.packet_count}</td>
+                    <td>${item.avg_snr ? `${item.avg_snr}dB` : 'Unknown'}</td>
+                    <td>${convertTimestampToText(item.last_seen * 1000)}</td>
+                </tr>
+            `;
+            }
         });
 
         html += `

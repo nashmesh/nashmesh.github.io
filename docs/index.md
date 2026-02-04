@@ -3,7 +3,7 @@
 ## Mission
 Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.
 
-## What is Meshtastic?
+## What Is Meshtastic?
 Meshtastic is an community-based, open-source project that provides for a decentralized, off-grid mesh network built on low-powered devices. It's used
 as a messaging platform that provides a backup for everyday communication. Many of us like to use it during disasters, power outages, or to enjoy as a hobby.
 To learn about Meshtastic, check out their [offical homepage](https://meshtastic.org).
