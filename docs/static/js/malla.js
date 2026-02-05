@@ -274,7 +274,7 @@ function buildInfrastructureMap(nodes) {
 
 
     const nodeLayerMap = L.layerGroup();
-    const circleSize = 2500;
+    const circleSize = 1500;
 
     nodes.forEach((node) => {
         const location = node['location'];
