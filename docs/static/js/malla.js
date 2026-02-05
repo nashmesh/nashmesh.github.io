@@ -257,17 +257,53 @@ function buildMap() {
     });
 }
 
+function buildInfrastructureMap(nodes) {
+    let baseLayer = L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '...',
+        maxZoom: 13
+    }
+    );
+
+    let map = new L.Map('infrastructure-node-map-canvas', {
+        center: new L.LatLng(36.167567024460766, -86.78540125568028),
+        zoom: 9,
+        maxZoom: 14,
+        layers: [baseLayer]
+    });
+
+
+    const nodeLayerMap = L.layerGroup();
+    const circleSize = 2500;
+
+    nodes.forEach((node) => {
+        const location = node['location'];
+
+        if (location !== undefined) {
+            let config = {
+                color: '#67EA94',
+                fillColor: '#67EA9488',
+                fillOpacity: 100,
+            }
+
+            nodeLayerMap.addLayer(
+                L.circle([location['latitude'], location['longitude']], circleSize, config).bindPopup(node['long_name'])
+            )
+        }
+    })
+
+
+    map.addLayer(nodeLayerMap);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     buildHighSNRNodeConnectionsTable();
 
     fetchInfrastructureNodesByRegion().then((data) => {
-        const keys = Object.keys(data).concat(['Middle'])
+        const nodes = data['Middle'] ?? [];
 
-        keys.forEach((key) => {
-            const nodes = data[key] ?? [];
-
-            buildInfrastructureNodesTable(key.toLowerCase(), nodes);
-        });
+        buildInfrastructureNodesTable('middle', nodes);
+        buildInfrastructureMap(nodes);
     });
 
     buildMap();
