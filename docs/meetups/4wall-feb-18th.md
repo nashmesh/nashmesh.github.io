@@ -11,12 +11,6 @@ tags:
 
 <hr />
 
-!!! info "Meet & Greet at 6pm"
-
-    An earlier meet and greet will happen between 6 - 7pm in the same location
-
-<hr />
-
 * **Date & Time:** Wednesday, Feburary 18th, 2026, 7:00 PM CST
 * **Location:** 4Wall Entertainment in Nashville, TN
 * **Address:** 111 Airpark Center E, Nashville, TN 37217
