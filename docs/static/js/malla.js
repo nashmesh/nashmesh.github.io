@@ -9,7 +9,7 @@ async function fetchInfrastructureNodesByRegion() {
 }
 
 async function fetchLocations() {
-    return await fetchNetworkGraph(24, -20);
+    return await fetchNetworkGraph(24, -50);
 }
 
 async function fetchDataForId(id) {
