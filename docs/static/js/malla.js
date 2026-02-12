@@ -9,7 +9,7 @@ async function fetchInfrastructureNodesByRegion() {
 }
 
 async function fetchLocations() {
-    return await fetchNetworkGraph(72, -100);
+    return await fetchNetworkGraph(24, -20);
 }
 
 async function fetchDataForId(id) {
@@ -67,15 +67,13 @@ function convertTimestampToText(time) {
     return timeAgo;
 }
 
-async function buildHighSNRNodeConnectionsTable() {
-    const container = document.getElementById("table-high-snr-node-connections");
+async function buildNodesTable(nodes) {
+    const container = document.getElementById("table-nodes");
     if (!container) return;
 
     container.innerHTML = "<em>Loading…</em>";
 
     try {
-        const results = await fetchNetworkGraph();
-
         let html = `
         <table>
             <thead>
@@ -90,7 +88,7 @@ async function buildHighSNRNodeConnectionsTable() {
             <tbody>
         `;
 
-        results.forEach((item, index) => {
+        nodes.forEach((item, index) => {
             if (item.node?.is_infrastructure_node === 1) {
                 html += `
                 <tr style='background-color: steelblue;'>
@@ -184,7 +182,11 @@ async function buildInfrastructureNodesTable(index, nodes) {
     }
 }
 
-function buildMap() {
+function buildMap(nodes) {
+    if (document.getElementById('homepage-map-canvas') === null) {
+        return;
+    }
+
     let baseLayer = L.tileLayer(
         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '...',
@@ -192,80 +194,82 @@ function buildMap() {
     }
     );
 
-    let map = new L.Map('map-canvas', {
+    let map = new L.Map('homepage-map-canvas', {
         center: new L.LatLng(36.167567024460766, -86.78540125568028),
         zoom: 9,
         maxZoom: 14,
         layers: [baseLayer]
     });
 
-    fetchLocations().then((nodes) => {
-        const nodeLayerMap = L.layerGroup();
-        const circleSize = 400;
+    const nodeLayerMap = L.layerGroup();
+    const circleSize = 400;
 
-        nodes.forEach((node) => {
+    nodes.forEach((node) => {
+        const location = node['location'];
+
+        if (location !== undefined) {
+            let config = {
+                color: '#67EA94',
+                fillColor: '#67EA9488',
+                fillOpacity: 100
+            }
+
+            nodeLayerMap.addLayer(
+                L.circle([location['latitude'], location['longitude']], circleSize, config).bindPopup(node['name'])
+            )
+        }
+    })
+
+    const heatLayer = new HeatmapOverlay({
+        radius: 45,
+        useLocalExtrema: true,
+        maxOpacity: 0.7,
+        latField: 'latitude',
+        lngField: 'longitude',
+        valueField: 'connections'
+    })
+
+    const scaler = 100;
+    heatLayer.setData({
+        data: nodes.map((node) => {
             const location = node['location'];
 
-            if (location !== undefined) {
-                let config = {
-                    color: '#67EA94',
-                    fillColor: '#67EA9488',
-                    fillOpacity: 100
-                }
-
-                nodeLayerMap.addLayer(
-                    L.circle([location['latitude'], location['longitude']], circleSize, config).bindPopup(node['name'])
-                )
+            if (location === undefined) {
+                return null;
             }
-        })
 
-        const heatLayer = new HeatmapOverlay({
-            radius: 45,
-            useLocalExtrema: true,
-            maxOpacity: 0.7,
-            latField: 'latitude',
-            lngField: 'longitude',
-            valueField: 'connections'
-        })
-
-        const scaler = 100;
-        heatLayer.setData({
-            data: nodes.map((node) => {
-                const location = node['location'];
-
-                if (location === undefined) {
-                    return null;
-                }
-
-                return {
-                    latitude: location['latitude'],
-                    longitude: location['longitude'],
-                    connections: node['connections'] * scaler
-                }
-            }).filter((result) => result !== null)
-        })
-
-        map.addLayer(heatLayer);
-
-        map.on('zoomend', function (event) {
-            if (map.getZoom() < 11) {
-                map.removeLayer(nodeLayerMap);
-            } else {
-                map.addLayer(nodeLayerMap);
+            return {
+                latitude: location['latitude'],
+                longitude: location['longitude'],
+                connections: node['connections'] * scaler
             }
-        })
-    });
+        }).filter((result) => result !== null)
+    })
+
+    map.addLayer(heatLayer);
+
+    map.on('zoomend', function (event) {
+        if (map.getZoom() < 11) {
+            map.removeLayer(nodeLayerMap);
+        } else {
+            map.addLayer(nodeLayerMap);
+        }
+    })
 }
 
-function buildInfrastructureMap(nodes) {
+function buildNodesMap(nodes) {
+    if (document.getElementById('node-map-canvas') === null) {
+        return;
+    }
+
     let baseLayer = L.tileLayer(
         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '...',
-        maxZoom: 13
-    }
+            attribution: '...',
+            maxZoom: 13
+        }
     );
 
-    let map = new L.Map('infrastructure-node-map-canvas', {
+    let map = new L.Map('node-map-canvas', {
         center: new L.LatLng(36.167567024460766, -86.78540125568028),
         zoom: 9,
         maxZoom: 14,
@@ -286,8 +290,12 @@ function buildInfrastructureMap(nodes) {
                 fillOpacity: 100,
             }
 
+            if (node.node?.is_infrastructure_node === 1) {
+                config['fillColor'] = 'steelblue';
+            }
+
             nodeLayerMap.addLayer(
-                L.circle([location['latitude'], location['longitude']], circleSize, config).bindPopup(node['long_name'])
+                L.circle([location['latitude'], location['longitude']], circleSize, config).bindPopup(node['name'])
             )
         }
     })
@@ -297,14 +305,9 @@ function buildInfrastructureMap(nodes) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    buildHighSNRNodeConnectionsTable();
-
-    fetchInfrastructureNodesByRegion().then((data) => {
-        const nodes = data['Middle'] ?? [];
-
-        buildInfrastructureNodesTable('middle', nodes);
-        buildInfrastructureMap(nodes);
+    fetchLocations().then((nodes) => {
+        buildMap(nodes);
+        buildNodesTable(nodes);
+        buildNodesMap(nodes);
     });
-
-    buildMap();
 });

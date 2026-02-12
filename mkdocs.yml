@@ -6,8 +6,10 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - MQTT: mqtt.md
-  - Infrastructure Nodes: infrastructure-nodes.md
-  - High SNR Connections: connections.md
+  - Nodes: nodes.md
+  - Posts: posts.md
+  # - Infrastructure Nodes: infrastructure-nodes.md
+  # - High SNR Connections: connections.md
   - Fundraising: https://www.paypal.com/pool/9lX5JfAFdw?sr=wccr
   - Affiliate Links: affiliate.md
   - Discord: https://discord.gg/sSS8gEpuh8
@@ -42,6 +44,14 @@ theme:
 plugins:
   - search
   - macros
+  - blogging:
+      dirs:
+        - posts
+        - meetups
+      # categories:
+      #   - name: meetups
+      #     dirs:
+      #       - meetups
   - link-embeds:
       enabled: true
       name_default: "Untitled Link"
@@ -76,8 +86,8 @@ extra_css:
   - static/styles/link-embeds.css
 
 extra_javascript:
-  - static/js/custom.js
   - static/js/malla.js
+  - static/js/custom.js
   - static/js/leaflet.js
   - static/js/heatmap.js
   - static/js/leaflet-heatmap.js
