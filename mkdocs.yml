@@ -46,6 +46,7 @@ plugins:
   - search
   - macros
   - blogging:
+      locale: en
       dirs:
         - posts
         - meetups
