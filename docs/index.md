@@ -9,7 +9,7 @@ as a messaging platform that provides a backup for everyday communication. Many 
 To learn about Meshtastic, check out their [offical homepage](https://meshtastic.org).
 
 ### How Do I Get Involved?
-Feel free to jump into our [discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
+Feel free to jump into our [Discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
 
 ### How Do I Get Started?
 If you're looking to build or buy a pre-built node, check out our [affiliate](affiliate.md) page where you can browse different pre-builds or componenets. Buying with one of our affiliate links also helps to support the network!

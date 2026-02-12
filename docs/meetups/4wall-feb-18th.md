@@ -24,7 +24,7 @@ tags:
 
 
 ## Event Invitation
-To accept the meeting invitation, [click here](https://discord.gg/7g4jGJNxb?event=1466134174174806268)! To learn more about the meetup, check out the [NashMesh discord](https://discord.gg/sSS8gEpuh8)!
+To accept the meeting invitation, [click here](https://discord.gg/7g4jGJNxb?event=1466134174174806268)! To learn more about the meetup, check out the [NashMesh Discord](https://discord.gg/sSS8gEpuh8)!
 
 ## Parking / Entrance Map
 The image below shows where to park for the meetup.
