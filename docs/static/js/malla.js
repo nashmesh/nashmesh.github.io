@@ -44,7 +44,16 @@ async function fetchNetworkGraph(hours = '24', min_snr = '-20') {
 }
 
 function convertTimestampToText(time) {
-    const lastUpdate = new Date(time);
+    if (!time) {
+        return 'Unknown';
+    }
+
+    let dateString = time;
+    if (!dateString.endsWith('Z') && !dateString.includes('+')) {
+        dateString += 'Z';
+    }
+
+    const lastUpdate = new Date(dateString);
     const now = new Date();
 
     const diffMs = now - lastUpdate;
@@ -96,7 +105,7 @@ async function buildNodesTable(nodes) {
                     <td>${item.connections}</td>
                     <td>${item.packet_count}</td>
                     <td>${item.avg_snr ? `${item.avg_snr}dB` : 'Unknown'}</td>
-                    <td>${convertTimestampToText(item.last_seen * 1000)}</td>
+                    <td>${convertTimestampToText(item.node?.last_packet_str)}</td>
                 </tr>
             `;
             } else {
@@ -106,7 +115,7 @@ async function buildNodesTable(nodes) {
                     <td>${item.connections}</td>
                     <td>${item.packet_count}</td>
                     <td>${item.avg_snr ? `${item.avg_snr}dB` : 'Unknown'}</td>
-                    <td>${convertTimestampToText(item.last_seen * 1000)}</td>
+                    <td>${convertTimestampToText(item.node?.last_packet_str)}</td>
                 </tr>
             `;
             }
