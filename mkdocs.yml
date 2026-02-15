@@ -48,10 +48,6 @@ plugins:
       dirs:
         - posts
         - meetups
-      # categories:
-      #   - name: meetups
-      #     dirs:
-      #       - meetups
   - link-embeds:
       enabled: true
       name_default: "Untitled Link"
@@ -81,6 +77,7 @@ markdown_extensions:
       custom_checkbox: true
 
 extra_css:
+  - static/styles/statistics.css
   - static/styles/leaflet.css
   - static/styles/extra.css
   - static/styles/link-embeds.css

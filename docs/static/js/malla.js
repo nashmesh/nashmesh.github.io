@@ -75,11 +75,12 @@ function convertTimestampToText(time) {
     return timeAgo;
 }
 
-async function buildNodesTable(nodes) {
+async function buildNodesInformation(nodes) {
     let $nodesTable = $('#nodes-table');
     let tableBody = document.getElementById("nodes-table-body");
     if (tableBody === null) return;
 
+    let totalPacketCount = 0;
     try {
         tableBody.innerHTML = '';
 
@@ -108,8 +109,9 @@ async function buildNodesTable(nodes) {
             numConnections.innerText = item.connections;
             packetCount.innerText = item.packet_count;
             averageSnr.innerText = item.avg_snr ? `${item.avg_snr}dB` : 'Unknown';
-
             lastSeen.innerText = convertTimestampToText(item.node?.last_packet_str);
+
+            totalPacketCount +=  item.packet_count;
 
             row.append(nodeName);
             row.append(numConnections);
@@ -119,6 +121,12 @@ async function buildNodesTable(nodes) {
             tableBody.appendChild(row);
         });
         $nodesTable.fadeIn(500).removeAttr('hidden');
+
+        let $totalNodesStatistic = $("#nodes-online-statistic");
+        $totalNodesStatistic.text(nodes.length);
+
+        let $totalPacketsStatistic = $("#total-packets-statistic");
+        $totalPacketsStatistic.text(totalPacketCount.toLocaleString());
     } catch (err) {
         console.log(err);
         $nodesTable.html = `${err}`;
@@ -247,7 +255,7 @@ function buildNodesMap(nodes) {
 document.addEventListener("DOMContentLoaded", function () {
     fetchLocations().then((nodes) => {
         buildMap(nodes);
-        buildNodesTable(nodes);
+        buildNodesInformation(nodes);
         buildNodesMap(nodes);
     });
 });
