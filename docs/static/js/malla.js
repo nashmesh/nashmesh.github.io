@@ -96,8 +96,13 @@ async function buildNodesInformation(nodes) {
             let nodeName = document.createElement("td");
             let numConnections = document.createElement("td");
             let packetCount = document.createElement("td");
+            packetCount.setAttribute('id', 'node-packet-count-column');
+
             let averageSnr = document.createElement("td");
+            averageSnr.setAttribute('id', 'node-avg-snr-column');
+
             let lastSeen = document.createElement("td");
+            lastSeen.setAttribute('id', 'node-last-seen-column');
 
             // malla link for node
             let link = document.createElement('a');
@@ -252,10 +257,42 @@ function buildNodesMap(nodes) {
     map.addLayer(nodeLayerMap);
 }
 
+function handleNodePageResizing() {
+    const $nodesTable = $("#nodes-table");
+    if (!$nodesTable) return;
+
+    const $nodesTableHead = $nodesTable.find("thead");
+    const $nodesTableBody = $nodesTable.find("tbody#nodes-table-body");
+    const $spanResizeInformation = $("span#resize-information");
+    if (window.innerWidth < 500) {
+        $nodesTableHead.find("#node-packet-count-column").attr('hidden', true);
+        $nodesTableHead.find("#node-avg-snr-column").attr('hidden', true);
+
+        $nodesTableBody.find('td#node-packet-count-column').attr('hidden', true);
+        $nodesTableBody.find('td#node-avg-snr-column').attr('hidden', true);
+
+        $spanResizeInformation.text("⚠️ Rotate your device to view additional table columns.");
+    } else {
+        $nodesTableHead.find("#node-packet-count-column").attr('hidden', false);
+        $nodesTableHead.find("#node-avg-snr-column").attr('hidden', false);
+
+        $nodesTableBody.find('td#node-packet-count-column').attr('hidden', false);
+        $nodesTableBody.find('td#node-avg-snr-column').attr('hidden', false);
+
+        $spanResizeInformation.text(null);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+    // Fetch node information from Malla
     fetchLocations().then((nodes) => {
         buildMap(nodes);
         buildNodesInformation(nodes);
         buildNodesMap(nodes);
+        handleNodePageResizing();
+    });
+
+    $(window).on('resize', function () {
+        handleNodePageResizing();
     });
 });

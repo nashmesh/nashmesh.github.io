@@ -22,10 +22,8 @@ function setCookie(cname, cvalue, exdays) {
 
 document.addEventListener("DOMContentLoaded", function () {
     let currentTheme = getCookie("nashmesh-theme");
-    console.log(currentTheme);
 
     if (currentTheme === undefined) {
-        console.log('setting dark theme');
         setCookie("nashmesh-theme", "dark", 99999);
         currentTheme = "dark";
     }

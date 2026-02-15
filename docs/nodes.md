@@ -25,17 +25,19 @@ Nodes displayed have an average SNR of ≥ -50dB or more over a 5 day period. Da
 
 Infrastructure nodes are shaded as <span style="color: steelblue">blue</span> on the table and <span style="color: red">red</span> on the map.
 
+<hr />
+<span id="resize-information"></span>
+
 <table id="nodes-table" hidden>
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Connections</th>
-            <th>Packet Count</th>
-            <th>Average SNR</th>
-            <th>Last Seen</th>
+            <th id="node-name-column">Name</th>
+            <th id="node-connections-column">Connections</th>
+            <th id="node-packet-count-column">Packet Count</th>
+            <th id="node-avg-snr-column">Average SNR</th>
+            <th id="node-last-seen-column">Last Seen</th>
         </tr>
     </thead>
     <tbody id="nodes-table-body">
-        Loading Table...
     </tbody>
 </table>
