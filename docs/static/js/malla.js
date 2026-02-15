@@ -9,7 +9,7 @@ async function fetchInfrastructureNodesByRegion() {
 }
 
 async function fetchLocations() {
-    return await fetchNetworkGraph(48, -50);
+    return await fetchNetworkGraph(24 * 5, -50);
 }
 
 async function fetchDataForId(id) {
@@ -62,7 +62,6 @@ function convertTimestampToText(time) {
     const diffDays = Math.floor(diffMs / 86400000);
 
     let timeAgo;
-
     if (diffMins < 1) {
         timeAgo = 'just now';
     } else if (diffMins < 60) {
@@ -77,124 +76,57 @@ function convertTimestampToText(time) {
 }
 
 async function buildNodesTable(nodes) {
-    const container = document.getElementById("table-nodes");
-    if (!container) return;
-
-    container.innerHTML = "<em>Loading…</em>";
+    let $nodesTable = $('#nodes-table');
+    let tableBody = document.getElementById("nodes-table-body");
+    if (tableBody === null) return;
 
     try {
-        let html = `
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Connections</th>
-                    <th>Packet Count</th>
-                    <th>Average SNR</th>
-                    <th>Last Seen</th>
-                </tr>
-            </thead>
-            <tbody>
-        `;
+        tableBody.innerHTML = '';
 
         nodes.forEach((item, index) => {
+            let row = document.createElement("tr");
+
+            // adjust color of row if infra node
             if (item.node?.is_infrastructure_node === 1) {
-                html += `
-                <tr style='background-color: steelblue;'>
-                    <td><a href="https://malla.nashme.sh/node/${item.id}" target="_blank">${item.name}</a></td>
-                    <td>${item.connections}</td>
-                    <td>${item.packet_count}</td>
-                    <td>${item.avg_snr ? `${item.avg_snr}dB` : 'Unknown'}</td>
-                    <td>${convertTimestampToText(item.node?.last_packet_str)}</td>
-                </tr>
-            `;
-            } else {
-                html += `
-                <tr>
-                    <td><a href="https://malla.nashme.sh/node/${item.id}" target="_blank">${item.name}</a></td>
-                    <td>${item.connections}</td>
-                    <td>${item.packet_count}</td>
-                    <td>${item.avg_snr ? `${item.avg_snr}dB` : 'Unknown'}</td>
-                    <td>${convertTimestampToText(item.node?.last_packet_str)}</td>
-                </tr>
-            `;
-            }
-        });
-
-        html += `
-            </tbody>
-        </table>
-    `;
-
-        container.innerHTML = html;
-    } catch (err) {
-        container.innerHTML = `<p style="color:red;">${err}</p>`;
-    }
-}
-
-async function buildInfrastructureNodesTable(index, nodes) {
-    const container = document.getElementById(`table-infrastructure-node-status-${index}`);
-    if (!container) return;
-
-    container.innerHTML = "<em>Loading…</em>";
-
-    try {
-        if (nodes.length === 0) {
-            container.innerHTML = "<em>Empty</em>";
-            return;
-        }
-
-        nodes.sort((a, b) => a.last_packet_time_diff - b.last_packet_time_diff)
-
-        let html = `
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Last Seen</th>
-                    <th>24hr Packet Count</th>
-                </tr>
-            </thead>
-            <tbody>
-        `;
-
-        nodes.forEach((item, index) => {
-            let status = '✅';
-            // 12 hours without being seen
-            if (item.last_packet_time_diff > 60 * 60 * 12) {
-                status = '❌';
-                // 6 hours without being seen
-            } else if (item.last_packet_time_diff > 60 * 60 * 6) {
-                status = '⚠️';
+                row.style.backgroundColor = 'steelblue';
             }
 
-            html += `
-            <tr>
-                <td><a href="https://malla.nashme.sh/node/${item.node_id}" target="_blank">${item.long_name} (${item.short_name})</a></td>
-                <td>${item.role}</td>
-                <td>${status} ${convertTimestampToText(item.last_packet_time * 1000)}</td>
-                <td>${item.packet_count_24h}</td>
-            </tr>
-        `;
+            // table rows
+            let nodeName = document.createElement("td");
+            let numConnections = document.createElement("td");
+            let packetCount = document.createElement("td");
+            let averageSnr = document.createElement("td");
+            let lastSeen = document.createElement("td");
+
+            // malla link for node
+            let link = document.createElement('a');
+            link.href = `https://malla.nashme.sh/node/${item.id}`;
+            link.innerText = item.name;
+            nodeName.appendChild(link);
+
+            // add data for additional columns
+            numConnections.innerText = item.connections;
+            packetCount.innerText = item.packet_count;
+            averageSnr.innerText = item.avg_snr ? `${item.avg_snr}dB` : 'Unknown';
+
+            lastSeen.innerText = convertTimestampToText(item.node?.last_packet_str);
+
+            row.append(nodeName);
+            row.append(numConnections);
+            row.append(packetCount);
+            row.append(averageSnr);
+            row.append(lastSeen);
+            tableBody.appendChild(row);
         });
-
-        html += `
-            </tbody>
-        </table>
-        `;
-
-        container.innerHTML = html;
-
+        $nodesTable.fadeIn(500).removeAttr('hidden');
     } catch (err) {
-        container.innerHTML = `<p style="color:red;">${err}</p>`;
+        console.log(err);
+        $nodesTable.html = `${err}`;
     }
 }
 
 function buildMap(nodes) {
-    if (document.getElementById('homepage-map-canvas') === null) {
-        return;
-    }
+    if (document.getElementById('homepage-map-canvas') === null) return;
 
     let baseLayer = L.tileLayer(
         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -267,9 +199,7 @@ function buildMap(nodes) {
 }
 
 function buildNodesMap(nodes) {
-    if (document.getElementById('node-map-canvas') === null) {
-        return;
-    }
+    if (document.getElementById('node-map-canvas') === null) return;
 
     let baseLayer = L.tileLayer(
         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -285,9 +215,7 @@ function buildNodesMap(nodes) {
         layers: [baseLayer]
     });
 
-
     const nodeLayerMap = L.layerGroup();
-    const circleSize = 1500;
 
     nodes.forEach((node) => {
         const location = node['location'];
@@ -312,7 +240,6 @@ function buildNodesMap(nodes) {
             )
         }
     })
-
 
     map.addLayer(nodeLayerMap);
 }

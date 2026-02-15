@@ -9,8 +9,6 @@ nav:
   - MQTT: mqtt.md
   - Nodes: nodes.md
   - Posts: posts.md
-  # - Infrastructure Nodes: infrastructure-nodes.md
-  # - High SNR Connections: connections.md
   - Fundraising: https://www.paypal.com/pool/9lX5JfAFdw?sr=wccr
   - Affiliate Links: affiliate.md
   - Discord: https://discord.gg/sSS8gEpuh8
@@ -89,6 +87,7 @@ extra_css:
   - https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
 
 extra_javascript:
+  - static/js/jquery.js
   - static/js/malla.js
   - static/js/custom.js
   - static/js/leaflet.js
