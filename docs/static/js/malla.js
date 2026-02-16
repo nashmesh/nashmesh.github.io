@@ -1,19 +1,24 @@
-const url = "https://malla.tnmesh.org";
+let mallaURL = "https://malla.tnmesh.org";
 
 async function fetchInfrastructureNodesByRegion() {
-    const response = await fetch(`${url}/api/infrastructure-nodes/by-region`);
+    const response = await fetch(`${mallaURL}/api/infrastructure-nodes/by-region`);
     if (!response.ok) throw new Error(`Failed to load infrastructure nodes by region`);
 
     const data = await response.json();
     return data['data'];
 }
 
-async function fetchLocations() {
-    return await fetchNetworkGraph(24 * 5, -50);
+async function fetchNodePageInformation() {
+    const dayInHours = 24;
+    const numOfDays = 5;
+    const maxHours = dayInHours * numOfDays;
+    const maxSnr = -50;
+
+    return await fetchNetworkGraph(maxHours, maxSnr);
 }
 
 async function fetchDataForId(id) {
-    const response = await fetch(`${url}/api/node/${id}/info`);
+    const response = await fetch(`${mallaURL}/api/node/${id}/info`);
     if (!response.ok) throw new Error(`Failed to load ID ${id}`);
 
     const data = await response.json();
@@ -32,7 +37,7 @@ async function fetchDataForId(id) {
 }
 
 async function fetchNetworkGraph(hours = '24', min_snr = '-20') {
-    const response = await fetch(`${url}/api/high-connections?hours=${hours}&min_snr=${min_snr}`);
+    const response = await fetch(`${mallaURL}/api/high-connections?hours=${hours}&min_snr=${min_snr}`);
     if (!response.ok) throw new Error(`Failed to load network graph`);
     const data = await response.json();
     const nodes = data['nodes']
@@ -143,9 +148,9 @@ function buildMap(nodes) {
 
     let baseLayer = L.tileLayer(
         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '...',
-        maxZoom: 13
-    }
+            attribution: '...',
+            maxZoom: 13
+        }
     );
 
     let map = new L.Map('homepage-map-canvas', {
@@ -264,14 +269,15 @@ function handleNodePageResizing() {
     const $nodesTableHead = $nodesTable.find("thead");
     const $nodesTableBody = $nodesTable.find("tbody#nodes-table-body");
     const $spanResizeInformation = $("span#resize-information");
-    if (window.innerWidth < 500) {
+    if (window.outerWidth < 500) {
         $nodesTableHead.find("#node-packet-count-column").attr('hidden', true);
         $nodesTableHead.find("#node-avg-snr-column").attr('hidden', true);
 
         $nodesTableBody.find('td#node-packet-count-column').attr('hidden', true);
         $nodesTableBody.find('td#node-avg-snr-column').attr('hidden', true);
 
-        $spanResizeInformation.text("⚠️ Rotate your device to view additional table columns.");
+        let message = "⚠️ Rotate your device to view additional table columns.";
+        $spanResizeInformation.text(message);
     } else {
         $nodesTableHead.find("#node-packet-count-column").attr('hidden', false);
         $nodesTableHead.find("#node-avg-snr-column").attr('hidden', false);
@@ -285,7 +291,7 @@ function handleNodePageResizing() {
 
 document.addEventListener("DOMContentLoaded", function () {
     // Fetch node information from Malla
-    fetchLocations().then((nodes) => {
+    fetchNodePageInformation().then((nodes) => {
         buildMap(nodes);
         buildNodesInformation(nodes);
         buildNodesMap(nodes);
