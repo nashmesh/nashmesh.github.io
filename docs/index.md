@@ -1,5 +1,14 @@
 ![Image title](./static/images/main.jpg)
 
+<div class="meetup-banner">
+  <span class="meetup-banner-icon">📡</span>
+  <div class="meetup-banner-text">
+    <strong>Meetup — April 15th at 7PM</strong><br>
+    Join us at 4Wall Entertainment! Come see the community funded tower nodes, bring your projects, or drop something at the thrift store table.
+  </div>
+  <a class="meetup-banner-btn" href="meetups/4wall-apr-15th/">Details & RSVP →</a>
+</div>
+
 ## Mission
 Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.
 
@@ -21,9 +30,11 @@ A top-level view of this map provides a heat signature for any active nodes in t
 <div id="homepage-map-canvas" style="width: 100%; height: 50vh; z-index: 1; border-radius: 6px"></div>
 
 ## Resources
-<button style="width: 25%; height: 25%"><a href="https://discord.gg/sSS8gEpuh8">Discord</a></button>
-<button style="width: 25%; height: 25%"><a href="https://malla.nashme.sh">Malla</a></button>
-<button style="width: 25%; height: 25%"><a href="https://potato.nashme.sh">Potato Map</a></button>
+<div class="resource-links">
+  <a class="resource-btn" href="https://discord.gg/sSS8gEpuh8" target="_blank">💬 Discord</a>
+  <a class="resource-btn" href="https://malla.nashme.sh" target="_blank">🗺️ Malla</a>
+  <a class="resource-btn" href="https://potato.nashme.sh" target="_blank">🥔 Potato Map</a>
+</div>
 
 # Customize
 <button class="color-button" data-theme="light">
