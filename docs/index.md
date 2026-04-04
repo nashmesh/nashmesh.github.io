@@ -1,5 +1,14 @@
 ![Image title](./static/images/main.jpg)
 
+<div class="meetup-banner">
+  <span class="meetup-banner-icon">📡</span>
+  <div class="meetup-banner-text">
+    <strong>Meetup — April 15th at 7PM</strong><br>
+    Join us at 4Wall Entertainment! Come see the community funded tower nodes, bring your projects, or drop something at the thrift store table.
+  </div>
+  <a class="meetup-banner-btn" href="meetups/4wall-apr-15th/">Details & RSVP →</a>
+</div>
+
 ## Mission
 Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.
 
