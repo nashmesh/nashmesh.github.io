@@ -12,10 +12,13 @@
 ## Mission
 Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.
 
-## What Is Meshtastic?
-Meshtastic is an community-based, open-source project that provides for a decentralized, off-grid mesh network built on low-powered devices. It's used
-as a messaging platform that provides a backup for everyday communication. Many of us like to use it during disasters, power outages, or to enjoy as a hobby.
-To learn about Meshtastic, check out their [offical homepage](https://meshtastic.org).
+## What Is a Mesh Network?
+A mesh network is a decentralized, off-grid communications network built on low-powered devices. Each node relays messages for others, extending range and resilience without relying on traditional infrastructure. It's used as a messaging platform that provides a backup for everyday communication — popular during disasters, power outages, or simply as a hobby.
+
+Our community supports two mesh networking platforms:
+
+- **[Meshtastic](https://meshtastic.org)** — a community-based, open-source project using LoRa radios to build long-range mesh networks.
+- **[MeshCore](https://meshcore.co.uk)** — an alternative mesh firmware focused on simplicity and interoperability, now active in the Nashville area.
 
 ### How Do I Get Involved?
 Feel free to jump into our [Discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
@@ -37,9 +40,8 @@ A top-level view of this map provides a heat signature for any active nodes in t
 </div>
 
 # Customize
-<button class="color-button" data-theme="light">
-    <code style="background: #ffffff !important; color: #000000 !important">light</code>
-</button>
-<button class="color-button" data-theme="dark">
-    <code style="background: #000000; color: #ffffff !important">dark</code>
-</button>
+<div class="theme-toggle">
+  <button class="color-button theme-btn" data-theme="light">☀️ Light</button>
+  <button class="color-button theme-btn" data-theme="dark">🌙 Dark</button>
+  <button class="color-button theme-btn" data-theme="retro">👾 C64</button>
+</div>

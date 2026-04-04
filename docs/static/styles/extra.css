@@ -1,5 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body.retro-theme .navbar-toggler {
+  background-color: #4040aa;
+  border: 2px solid #aaaaff;
+  border-radius: 0;
+}
+
+body.retro-theme .navbar-toggler-icon {
+  filter: invert(70%) sepia(100%) saturate(300%) hue-rotate(200deg);
+}
+
+body.retro-theme .logo {
+  display: none;
+}
+
+body.retro-theme {
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 0.9rem !important;
+  line-height: 1.8 !important;
+}
+
+body.retro-theme h1,
+body.retro-theme h2,
+body.retro-theme h3,
+body.retro-theme h4 {
+  font-family: 'Press Start 2P', monospace !important;
+}
+
 .navbar-toggler {
 	background-color: black;
+}
+
+body[data-theme="light"] .navbar-toggler {
+  background-color: #e8e8e8;
+  border-color: #aaaaaa;
+}
+
+body[data-theme="light"] .navbar-toggler-icon {
+  filter: invert(0);
 }
 
 .logo {
@@ -53,6 +91,58 @@
 
 .meetup-banner-btn:hover {
   background: #80bfff;
+}
+
+@media (max-width: 600px) {
+  .meetup-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .meetup-banner-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.theme-toggle {
+  display: inline-flex;
+  border: 1px solid #2e6da4;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.theme-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.theme-btn[data-theme="light"] {
+  background: #ffffff;
+  color: #000000;
+}
+
+.theme-btn[data-theme="dark"] {
+  background: #111111;
+  color: #ffffff;
+}
+
+.theme-btn[data-theme="retro"] {
+  background: #4040aa;
+  color: #aaaaff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+}
+
+.theme-btn:hover {
+  filter: brightness(1.2);
 }
 
 .resource-links {
