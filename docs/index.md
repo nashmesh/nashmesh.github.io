@@ -40,9 +40,7 @@ A top-level view of this map provides a heat signature for any active nodes in t
 </div>
 
 # Customize
-<button class="color-button" data-theme="light">
-    <code style="background: #ffffff !important; color: #000000 !important">light</code>
-</button>
-<button class="color-button" data-theme="dark">
-    <code style="background: #000000 !important; color: #ffffff !important">dark</code>
-</button>
+<div class="theme-toggle">
+  <button class="color-button theme-btn" data-theme="light">☀️ Light</button>
+  <button class="color-button theme-btn" data-theme="dark">🌙 Dark</button>
+</div>
