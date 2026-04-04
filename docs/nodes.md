@@ -1,7 +1,7 @@
 ---
 template: base_no_sidebar.html
 ---
-# Nodes
+# Meshtastic Nodes
 <div style="padding: 10px">
     <div id="node-map-canvas" style="width: 100%; height: 40vh">
         Loading Map...
