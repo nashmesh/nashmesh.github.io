@@ -93,6 +93,58 @@ body[data-theme="light"] .navbar-toggler-icon {
   background: #80bfff;
 }
 
+/* Light theme banner */
+body[data-theme="light"] .meetup-banner {
+  background: linear-gradient(135deg, #dceeff, #eef5ff);
+  border-color: #7ab8f5;
+  border-left-color: #2e6da4;
+}
+
+body[data-theme="light"] .meetup-banner-text {
+  color: #1a3a5c;
+}
+
+body[data-theme="light"] .meetup-banner-text strong {
+  color: #0f2540;
+}
+
+body[data-theme="light"] .meetup-banner-btn {
+  background: #2e6da4;
+  color: #ffffff !important;
+}
+
+body[data-theme="light"] .meetup-banner-btn:hover {
+  background: #1a5280;
+}
+
+/* Retro/C64 theme banner */
+body[data-theme="retro"] .meetup-banner {
+  background: #2a2a8a;
+  border-color: #aaaaff;
+  border-left-color: #ffffff;
+  border-radius: 0;
+}
+
+body[data-theme="retro"] .meetup-banner-text {
+  color: #aaaaff;
+}
+
+body[data-theme="retro"] .meetup-banner-text strong {
+  color: #ffffff;
+}
+
+body[data-theme="retro"] .meetup-banner-btn {
+  background: #aaaaff;
+  color: #000033 !important;
+  border-radius: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+}
+
+body[data-theme="retro"] .meetup-banner-btn:hover {
+  background: #ffffff;
+}
+
 @media (max-width: 600px) {
   .meetup-banner {
     flex-direction: column;
