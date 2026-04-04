@@ -44,5 +44,5 @@ A top-level view of this map provides a heat signature for any active nodes in t
     <code style="background: #ffffff !important; color: #000000 !important">light</code>
 </button>
 <button class="color-button" data-theme="dark">
-    <code style="background: #000000; color: #ffffff !important">dark</code>
+    <code style="background: #000000 !important; color: #ffffff !important">dark</code>
 </button>
