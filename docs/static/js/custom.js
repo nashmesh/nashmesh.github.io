@@ -40,18 +40,28 @@ document.addEventListener("DOMContentLoaded", function () {
             "--title": "black",
             "--primary": "black",
             "--background": "white",
+        },
+        retro: {
+            "--text": "#aaaaff",
+            "--title": "#aaaaff",
+            "--primary": "#aaaaff",
+            "--background": "#4040aa",
         }
     };
 
 
-    let n = t[currentTheme];
-    for (var r in n) document.documentElement.style.setProperty(r, n[r]);
+    function applyTheme(themeName) {
+        let n = t[themeName];
+        for (var r in n) document.documentElement.style.setProperty(r, n[r]);
+        document.body.classList.toggle("retro-theme", themeName === "retro");
+    }
+
+    applyTheme(currentTheme);
 
     [...document.querySelectorAll(".color-button")].forEach((e) => {
         e.addEventListener("click", () => {
-            let n = t[e.dataset.theme];
             setCookie("nashmesh-theme", e.dataset.theme, 99999);
-            for (var r in n) document.documentElement.style.setProperty(r, n[r]);
+            applyTheme(e.dataset.theme);
         });
     });
 

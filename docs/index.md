@@ -43,4 +43,5 @@ A top-level view of this map provides a heat signature for any active nodes in t
 <div class="theme-toggle">
   <button class="color-button theme-btn" data-theme="light">☀️ Light</button>
   <button class="color-button theme-btn" data-theme="dark">🌙 Dark</button>
+  <button class="color-button theme-btn" data-theme="retro">👾 C64</button>
 </div>
