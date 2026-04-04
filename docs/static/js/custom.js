@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let n = t[themeName];
         for (var r in n) document.documentElement.style.setProperty(r, n[r]);
         document.body.classList.toggle("retro-theme", themeName === "retro");
+        document.body.setAttribute("data-theme", themeName);
     }
 
     applyTheme(currentTheme);

@@ -31,6 +31,15 @@ body.retro-theme h4 {
 	background-color: black;
 }
 
+body[data-theme="light"] .navbar-toggler {
+  background-color: #e8e8e8;
+  border-color: #aaaaaa;
+}
+
+body[data-theme="light"] .navbar-toggler-icon {
+  filter: invert(0);
+}
+
 .logo {
 	border-radius: 5px;
 }
