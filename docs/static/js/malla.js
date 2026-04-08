@@ -40,7 +40,9 @@ async function fetchNetworkGraph(hours = '24', min_snr = '-20') {
     const response = await fetch(`${mallaURL}/api/high-connections?hours=${hours}&min_snr=${min_snr}`);
     if (!response.ok) throw new Error(`Failed to load network graph`);
     const data = await response.json();
-    const nodes = data['nodes']
+    let nodes = data['nodes'];
+
+    nodes = nodes.filter((node) => node['node']?.region === 'Middle');
 
     // set to descending order based on the connections column
     nodes.sort((a, b) => b.connections - a.connections);
