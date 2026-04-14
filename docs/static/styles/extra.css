@@ -225,6 +225,162 @@ body[data-theme="retro"] .meetup-banner-btn:hover {
   transform: translateY(-2px);
 }
 
+/* ── Tabbed content ──────────────────────────────────────────── */
+
+/* Hide the radio inputs */
+.tabbed-set > input {
+  display: none;
+}
+
+/* Hide all content blocks by default */
+.tabbed-content > .tabbed-block {
+  display: none;
+}
+
+/* Show the active content block */
+.tabbed-set > input:nth-child(1):checked ~ .tabbed-content > .tabbed-block:nth-child(1),
+.tabbed-set > input:nth-child(2):checked ~ .tabbed-content > .tabbed-block:nth-child(2),
+.tabbed-set > input:nth-child(3):checked ~ .tabbed-content > .tabbed-block:nth-child(3),
+.tabbed-set > input:nth-child(4):checked ~ .tabbed-content > .tabbed-block:nth-child(4),
+.tabbed-set > input:nth-child(5):checked ~ .tabbed-content > .tabbed-block:nth-child(5) {
+  display: block;
+}
+
+/* Tab bar */
+.tabbed-labels {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #2a4a6a;
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabbed-labels::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tab logos (outer tabs only) */
+.tabbed-labels > label:nth-child(1)::before,
+.tabbed-labels > label:nth-child(2)::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+  margin-right: 0.45rem;
+  border-radius: 4px;
+}
+
+.tabbed-labels > label:nth-child(1)::before {
+  background-image: url('../images/meshtastic-logo.svg');
+}
+
+.tabbed-labels > label:nth-child(2)::before {
+  background-image: url('../images/meshcore-logo.png');
+}
+
+/* Suppress logos on nested tabs */
+.tabbed-content .tabbed-set .tabbed-labels > label::before {
+  display: none !important;
+}
+
+/* Individual tab */
+.tabbed-labels > label {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6a9abf;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  border-radius: 0.375rem 0.375rem 0 0;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+  user-select: none;
+}
+
+.tabbed-labels > label:hover {
+  color: #a0c8f0;
+  background: rgba(77, 166, 255, 0.06);
+}
+
+/* Active tab — one rule per tab position */
+.tabbed-set > input:nth-child(1):checked ~ .tabbed-labels > label:nth-child(1),
+.tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > label:nth-child(2),
+.tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > label:nth-child(3),
+.tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > label:nth-child(4),
+.tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > label:nth-child(5) {
+  color: #ffffff;
+  background: #0f1f2e;
+  border-color: #2a4a6a #2a4a6a #0f1f2e;
+  border-bottom-color: transparent;
+}
+
+/* Content area */
+.tabbed-content {
+  padding: 0;
+}
+
+/* Light theme */
+body[data-theme="light"] .tabbed-labels {
+  border-bottom-color: #b0ccee;
+}
+
+body[data-theme="light"] .tabbed-labels > label {
+  color: #3a6a9a;
+}
+
+body[data-theme="light"] .tabbed-labels > label:hover {
+  color: #1a4a7a;
+  background: rgba(46, 109, 164, 0.06);
+}
+
+body[data-theme="light"] .tabbed-set > input:nth-child(1):checked ~ .tabbed-labels > label:nth-child(1),
+body[data-theme="light"] .tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > label:nth-child(2),
+body[data-theme="light"] .tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > label:nth-child(3),
+body[data-theme="light"] .tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > label:nth-child(4),
+body[data-theme="light"] .tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > label:nth-child(5) {
+  color: #0f2540;
+  background: #f0f6ff;
+  border-color: #b0ccee #b0ccee #f0f6ff;
+  border-bottom-color: transparent;
+}
+
+/* Retro/C64 theme */
+body[data-theme="retro"] .tabbed-labels {
+  border-bottom-color: #00aa00;
+  border-radius: 0;
+}
+
+body[data-theme="retro"] .tabbed-labels > label {
+  color: #00aa00;
+  border-radius: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  padding: 0.6rem 1rem;
+}
+
+body[data-theme="retro"] .tabbed-labels > label:hover {
+  color: #00ff00;
+  background: #002200;
+}
+
+body[data-theme="retro"] .tabbed-set > input:nth-child(1):checked ~ .tabbed-labels > label:nth-child(1),
+body[data-theme="retro"] .tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > label:nth-child(2),
+body[data-theme="retro"] .tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > label:nth-child(3),
+body[data-theme="retro"] .tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > label:nth-child(4),
+body[data-theme="retro"] .tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > label:nth-child(5) {
+  color: #00ff00;
+  background: #001100;
+  border-color: #00aa00 #00aa00 #001100;
+  border-bottom-color: transparent;
+}
+
 /* ── Fundraiser page ─────────────────────────────────────────── */
 
 .fundraiser-grid {
