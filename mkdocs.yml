@@ -9,8 +9,8 @@ nav:
   - MQTT: mqtt.md
   - Nodes: nodes.md
   - Posts: posts.md
-  - Fundraising: https://www.paypal.com/pool/9lX5JfAFdw?sr=wccr
-  - Affiliate Links: affiliate.md
+  - Fundraising: fundraising.md
+  # - Affiliate Links: affiliate.md
   - Discord: https://discord.gg/sSS8gEpuh8
 
 # Theming
