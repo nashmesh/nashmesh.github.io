@@ -21,6 +21,27 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Copy buttons for explicitly marked code blocks
+    document.querySelectorAll(".copyable-code pre").forEach(function (pre) {
+        var btn = document.createElement("button");
+        btn.className = "code-copy-btn";
+        btn.textContent = "Copy";
+        pre.style.position = "relative";
+        pre.appendChild(btn);
+        btn.addEventListener("click", function () {
+            var code = pre.querySelector("code");
+            navigator.clipboard.writeText(code ? code.innerText : pre.innerText).then(function () {
+                btn.textContent = "Copied!";
+                btn.classList.add("code-copy-btn--copied");
+                setTimeout(function () {
+                    btn.textContent = "Copy";
+                    btn.classList.remove("code-copy-btn--copied");
+                }, 2000);
+            });
+        });
+    });
+
+
     let currentTheme = getCookie("nashmesh-theme");
 
     if (currentTheme === undefined) {

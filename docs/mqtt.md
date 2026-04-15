@@ -63,9 +63,10 @@ MQTT is a message-broker application that mesh nodes can connect to. By connecti
 === "MeshCore"
 
     ## MeshCore MQTT Settings
-    | Key              |  Value       |
-    | ------------ | ---------------- |
-    | Host       | `mqtt.nashme.sh`  |
+
+    | Key        | Value              |
+    | ---------- | ------------------ |
+    | Host       | `mqtt.nashme.sh`   |
     | Username   | `meshdev`          |
     | Password   | `large4cats`       |
 
@@ -74,6 +75,32 @@ MQTT is a message-broker application that mesh nodes can connect to. By connecti
     An Observer is a MeshCore node that reports packets it hears to the [MeshCore Analyzer](https://analyzer.nashme.sh), helping map network coverage and reliability across the region. Observers can be repeaters, room servers, or companion devices, and can stop sharing data at any time.
 
     To set up your node as an observer, visit the [Observer Onboarding page](https://analyzer.letsmesh.net/observer/onboard?type=companion) for step-by-step instructions.
+
+    Use the following configuration to connect your observer to the NashMesh MQTT server:
+
+    <div class="copyable-code">
+
+    ```toml
+    [general]
+    iata = "BNA"
+
+    [[broker]]
+    name = "nashmesh"
+    enabled = true
+    server = "mqtt.nashme.sh"
+    port = 1883
+    transport = "tcp"
+    keepalive = 60
+    qos = 0
+    retain = true
+
+    [broker.auth]
+    method = "password"
+    username = "meshdev"
+    password = "large4cats"
+    ```
+
+    </div>
 
     ### Experimental Observer Firmware
 
