@@ -225,6 +225,82 @@ body[data-theme="retro"] .meetup-banner-btn:hover {
   transform: translateY(-2px);
 }
 
+/* ── Code block copy button ──────────────────────────────────── */
+
+.copyable-code pre {
+  position: relative;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #1a3a5c;
+  color: #a0c8f0;
+  border: 1px solid #2a4a6a;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s, color 0.15s;
+  z-index: 10;
+}
+
+pre:hover .code-copy-btn {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  background: #2a5a8a;
+  color: #ffffff;
+}
+
+.code-copy-btn--copied {
+  background: #1a5a30 !important;
+  color: #3ddc84 !important;
+  border-color: #2a7a4a !important;
+}
+
+body[data-theme="light"] .code-copy-btn {
+  background: #dceeff;
+  color: #2e6da4;
+  border-color: #b0ccee;
+}
+
+body[data-theme="light"] .code-copy-btn:hover {
+  background: #b0ccee;
+  color: #0f2540;
+}
+
+body[data-theme="light"] .code-copy-btn--copied {
+  background: #d4f5e6 !important;
+  color: #1a7a40 !important;
+  border-color: #5cbf8a !important;
+}
+
+body[data-theme="retro"] .code-copy-btn {
+  background: #002200;
+  color: #00aa00;
+  border-color: #006600;
+  border-radius: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  padding: 0.3rem 0.5rem;
+}
+
+body[data-theme="retro"] .code-copy-btn:hover {
+  background: #003300;
+  color: #00ff00;
+}
+
+body[data-theme="retro"] .code-copy-btn--copied {
+  background: #004400 !important;
+  color: #00ff00 !important;
+  border-color: #00aa00 !important;
+}
+
 /* ── Tabbed content ──────────────────────────────────────────── */
 
 /* Hide the radio inputs */
@@ -379,6 +455,71 @@ body[data-theme="retro"] .tabbed-set > input:nth-child(5):checked ~ .tabbed-labe
   background: #001100;
   border-color: #00aa00 #00aa00 #001100;
   border-bottom-color: transparent;
+}
+
+/* ── Coming soon banner ──────────────────────────────────────── */
+
+.coming-soon-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid #2a4a6a;
+  border-left: 4px solid #f0a500;
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.coming-soon-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.coming-soon-text {
+  color: #c0d8f0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.coming-soon-text strong {
+  color: #f0c040;
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+body[data-theme="light"] .coming-soon-banner {
+  background: linear-gradient(135deg, #fffbee, #fff8e0);
+  border-color: #e0c060;
+  border-left-color: #c08000;
+}
+
+body[data-theme="light"] .coming-soon-text {
+  color: #5a4a00;
+}
+
+body[data-theme="light"] .coming-soon-text strong {
+  color: #7a5a00;
+}
+
+body[data-theme="retro"] .coming-soon-banner {
+  background: #1a1a00;
+  border-color: #aaaa00;
+  border-left-color: #ffff00;
+  border-radius: 0;
+}
+
+body[data-theme="retro"] .coming-soon-text {
+  color: #aaaa00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  line-height: 2;
+}
+
+body[data-theme="retro"] .coming-soon-text strong {
+  color: #ffff00;
+  font-family: 'Press Start 2P', monospace;
 }
 
 /* ── Fundraiser page ─────────────────────────────────────────── */
