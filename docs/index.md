@@ -38,6 +38,8 @@ A top-level view of this map provides a heat signature for any active nodes in t
   <a class="resource-btn" href="https://malla.nashme.sh" target="_blank">Malla</a>
   <a class="resource-btn" href="https://potato.nashme.sh" target="_blank">Potato Map</a>
   <a class="resource-btn" href="https://analyzer.nashme.sh" target="_blank">MeshCore Analyzer</a>
+  <a class="resource-btn" href="https://analyzer.nashme.sh" target="_blank">MeshCore Analyzer</a>
+  <a class="resource-btn" href="https://bna.meshmapper.net" target="_blank">MeshMapper</a>
 </div>
 
 # Customize
