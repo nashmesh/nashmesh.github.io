@@ -3,10 +3,10 @@
 <div class="meetup-banner">
   <span class="meetup-banner-icon">📡</span>
   <div class="meetup-banner-text">
-    <strong>Meetup — April 15th at 7PM</strong><br>
-    Join us at 4Wall Entertainment! Come see the community funded tower nodes, bring your projects, or drop something at the thrift store table.
+    <strong>NashMesh is now supporting MeshCore!</strong><br>
+    We're expanding our network to include MeshCore alongside Meshtastic. Join the Discord and check out <strong>#meshcore</strong> to get involved.
   </div>
-  <a class="meetup-banner-btn" href="meetups/4wall-apr-15th/">Details & RSVP →</a>
+  <a class="meetup-banner-btn" href="https://discord.gg/sSS8gEpuh8" target="_blank">Join Discord →</a>
 </div>
 
 ## Mission
