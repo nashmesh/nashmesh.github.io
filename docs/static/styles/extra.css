@@ -62,6 +62,13 @@ body[data-theme="light"] .navbar-toggler-icon {
   flex-shrink: 0;
 }
 
+.meetup-banner-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
 .meetup-banner-text {
   flex: 1;
   min-width: 0;

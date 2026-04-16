@@ -1,7 +1,7 @@
 ![Image title](./static/images/main.jpg)
 
 <div class="meetup-banner">
-  <span class="meetup-banner-icon">📡</span>
+  <img src="static/images/meshcore-logo.png" alt="MeshCore" class="meetup-banner-icon meetup-banner-logo">
   <div class="meetup-banner-text">
     <strong>NashMesh is now supporting MeshCore!</strong><br>
     We're expanding our network to include MeshCore alongside Meshtastic. Join the Discord and check out <strong>#meshcore</strong> to get involved.
