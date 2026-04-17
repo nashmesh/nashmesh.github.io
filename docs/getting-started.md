@@ -77,9 +77,31 @@
 
     # MeshCore
 
-    <div class="coming-soon-banner">
-      <div class="coming-soon-text">
-        <strong>Coming Soon</strong><br>
-        MeshCore getting started guide is on its way. Check back soon!
-      </div>
-    </div>
+    Below are the recommended radio settings for the Nashville area, aligned with the settings recommended by [TennMesh](https://tennmesh.com).
+
+    ## Companion Settings
+
+    | Setting       | Value                         |
+    | ------------- | ----------------------------- |
+    | Preset        | `USA/Canada (Recommended)`    |
+    | Frequency     | `910.525 MHz`                 |
+    | Bandwidth     | `62.5 kHz`                    |
+    | Spread Factor | `7`                           |
+    | Coding Rate   | `5` (or `8` for weak signals) |
+
+    ## Repeater Settings
+
+    | Setting       | Value                      |
+    | ------------- | -------------------------- |
+    | Preset        | `USA/Canada (Recommended)` |
+    | Frequency     | `910.525 MHz`              |
+    | Bandwidth     | `62.5 kHz`                 |
+    | Spread Factor | `7`                        |
+    | Coding Rate   | `8`                        |
+
+    ### Repeater Advert Intervals
+
+    | Type     | Interval   |
+    | -------- | ---------- |
+    | Zero Hop | 60 minutes |
+    | Flood    | 3 hours    |
