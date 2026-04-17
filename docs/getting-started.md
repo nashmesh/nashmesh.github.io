@@ -101,7 +101,95 @@
 
     ### Repeater Advert Intervals
 
+    The following advert intervals are recommended for repeaters operating in the Middle TN area.
+
     | Type     | Interval   |
     | -------- | ---------- |
     | Zero Hop | 60 minutes |
     | Flood    | 3 hours    |
+
+    ### Repeater Commands
+
+    #### Common Settings (all repeaters)
+
+    These settings are recommended for all repeaters, regardless of neighbor count.
+
+    <div class="copyable-code">
+
+    ```
+    set agc.reset.interval 4
+    set multi.acks 1
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor Count: 0–1
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 0.3
+    set direct.txdelay 0.1
+    set agc.reset.interval 4
+    set multi.acks 1
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor Count: 2–4
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 0.5
+    set direct.txdelay 0.3
+    set agc.reset.interval 4
+    set multi.acks 1
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor Count: 5–9
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 1
+    set direct.txdelay 0.5
+    set agc.reset.interval 4
+    set multi.acks 1
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor Count: 10–14
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 1.5
+    set direct.txdelay 1
+    set agc.reset.interval 4
+    set multi.acks 1
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor Count: 15+
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 2
+    set direct.txdelay 2
+    set agc.reset.interval 4
+    set multi.acks 1
+    set rxdelay 3
+    ```
+
+    </div>
