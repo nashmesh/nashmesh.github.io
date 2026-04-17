@@ -21,6 +21,63 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Tab URL hash tracking
+    function slugify(text) {
+        return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    }
+
+    function activateTabFromHash() {
+        var hash = window.location.hash.slice(1);
+        if (!hash) return;
+        document.querySelectorAll('.tabbed-labels > label').forEach(function (label) {
+            if (slugify(label.textContent.trim()) === hash) {
+                var input = document.getElementById(label.getAttribute('for'));
+                if (input) input.checked = true;
+            }
+        });
+    }
+
+    document.querySelectorAll('.tabbed-labels > label').forEach(function (label) {
+        label.addEventListener('click', function () {
+            history.replaceState(null, '', '#' + slugify(label.textContent.trim()));
+        });
+    });
+
+    activateTabFromHash();
+
+    // TOC link: activate tab if target heading is inside a hidden tab block
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            var hash = this.getAttribute('href').slice(1);
+            var target = document.getElementById(hash);
+            if (!target) return;
+
+            var block = target.closest('.tabbed-block');
+            if (!block) return;
+
+            if (getComputedStyle(block).display === 'none') {
+                e.preventDefault();
+
+                var set = block.closest('.tabbed-set');
+                var blocks = Array.from(set.querySelectorAll(':scope > .tabbed-content > .tabbed-block'));
+                var idx = blocks.indexOf(block);
+                var inputs = set.querySelectorAll(':scope > input[type="radio"]');
+
+                if (inputs[idx]) {
+                    inputs[idx].checked = true;
+                    var labels = set.querySelectorAll(':scope > .tabbed-labels > label');
+                    if (labels[idx]) {
+                        history.replaceState(null, '', '#' + slugify(labels[idx].textContent.trim()));
+                    }
+                }
+
+                requestAnimationFrame(function () {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+        });
+    });
+
     // Copy buttons for explicitly marked code blocks
     document.querySelectorAll(".copyable-code pre").forEach(function (pre) {
         var btn = document.createElement("button");
