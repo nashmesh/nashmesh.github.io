@@ -29,12 +29,25 @@ document.addEventListener("DOMContentLoaded", function () {
     function activateTabFromHash() {
         var hash = window.location.hash.slice(1);
         if (!hash) return;
+
+        // Hash format: "tabslug" or "tabslug.sectionid"
+        var dotIdx = hash.indexOf('.');
+        var tabSlug = dotIdx !== -1 ? hash.slice(0, dotIdx) : hash;
+        var sectionId = dotIdx !== -1 ? hash.slice(dotIdx + 1) : null;
+
         document.querySelectorAll('.tabbed-labels > label').forEach(function (label) {
-            if (slugify(label.textContent.trim()) === hash) {
+            if (slugify(label.textContent.trim()) === tabSlug) {
                 var input = document.getElementById(label.getAttribute('for'));
                 if (input) input.checked = true;
             }
         });
+
+        if (sectionId) {
+            requestAnimationFrame(function () {
+                var target = document.getElementById(sectionId);
+                if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
+            });
+        }
     }
 
     document.querySelectorAll('.tabbed-labels > label').forEach(function (label) {
@@ -48,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // TOC link: activate tab if target heading is inside a hidden tab block
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
-            var hash = this.getAttribute('href').slice(1);
-            var target = document.getElementById(hash);
+            var sectionId = this.getAttribute('href').slice(1);
+            var target = document.getElementById(sectionId);
             if (!target) return;
 
             var block = target.closest('.tabbed-block');
@@ -67,7 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     inputs[idx].checked = true;
                     var labels = set.querySelectorAll(':scope > .tabbed-labels > label');
                     if (labels[idx]) {
-                        history.replaceState(null, '', '#' + slugify(labels[idx].textContent.trim()));
+                        var tabSlug = slugify(labels[idx].textContent.trim());
+                        history.replaceState(null, '', '#' + tabSlug + '.' + sectionId);
                     }
                 }
 
