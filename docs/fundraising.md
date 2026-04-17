@@ -1,5 +1,7 @@
 # Tower Node Fundraiser
 
+<img src="../static/images/fundraising/tower_node_fundraiser.jpeg" alt="Tower Node Build" style="width:100%;border-radius:0.5rem;">
+
 Help us build community-funded **XiaoTower nodes** — solar-powered, weatherproof infrastructure nodes that expand NashMesh coverage across Middle Tennessee.
 
 ## Build Components
