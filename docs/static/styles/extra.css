@@ -828,3 +828,143 @@ body[data-theme="retro"] .fundraiser-donate-btn {
 body[data-theme="retro"] .fundraiser-donate-btn:hover {
   background: #00ff00;
 }
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.nashme-footer {
+  background: #0a1a2a;
+  border-top: 1px solid #2a4a6a;
+  padding: 2.5rem 1rem 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.875rem;
+}
+
+.nashme-footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.nashme-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nashme-footer-logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.nashme-footer-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4da6ff;
+  letter-spacing: 0.02em;
+}
+
+.nashme-footer-tagline {
+  color: #7aa8cc;
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.nashme-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.25rem;
+}
+
+.nashme-footer-links a {
+  color: #4da6ff;
+  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #2a4a6a;
+  border-radius: 0.25rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nashme-footer-links a:hover {
+  background: #1a3a5c;
+  color: #ffffff;
+}
+
+.nashme-footer-copy {
+  color: #4a6a8a;
+  margin: 0;
+  font-size: 0.78rem;
+}
+
+/* Light theme footer */
+body[data-theme="light"] .nashme-footer {
+  background: #f0f4f8;
+  border-top-color: #c0d0e0;
+}
+
+body[data-theme="light"] .nashme-footer-name {
+  color: #1a5a9a;
+}
+
+body[data-theme="light"] .nashme-footer-tagline {
+  color: #4a6a8a;
+}
+
+body[data-theme="light"] .nashme-footer-links a {
+  color: #1a5a9a;
+  border-color: #b0c8e0;
+}
+
+body[data-theme="light"] .nashme-footer-links a:hover {
+  background: #dce8f4;
+  color: #0a3a6a;
+}
+
+body[data-theme="light"] .nashme-footer-copy {
+  color: #7a9ab8;
+}
+
+/* Retro theme footer */
+body[data-theme="retro"] .nashme-footer {
+  background: #002200;
+  border-top-color: #004400;
+}
+
+body[data-theme="retro"] .nashme-footer-name {
+  color: #00ff00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+}
+
+body[data-theme="retro"] .nashme-footer-tagline {
+  color: #00aa00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  line-height: 1.8;
+}
+
+body[data-theme="retro"] .nashme-footer-links a {
+  color: #00ff00;
+  border-color: #004400;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  border-radius: 0;
+}
+
+body[data-theme="retro"] .nashme-footer-links a:hover {
+  background: #003300;
+  color: #00ff00;
+}
+
+body[data-theme="retro"] .nashme-footer-copy {
+  color: #006600;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+}
