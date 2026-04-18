@@ -854,11 +854,6 @@ h4:hover .heading-anchor {
   color: #ffffff !important;
 }
 
-.heading-anchor--copied {
-  color: #80bfff !important;
-  opacity: 1 !important;
-}
-
 body[data-theme="light"] .heading-anchor {
   color: #2e6da4 !important;
 }
@@ -867,19 +862,11 @@ body[data-theme="light"] .heading-anchor:hover {
   color: #0a3a6a !important;
 }
 
-body[data-theme="light"] .heading-anchor--copied {
-  color: #1a5a9a !important;
-}
-
 body[data-theme="retro"] .heading-anchor {
   color: #00aa00 !important;
 }
 
 body[data-theme="retro"] .heading-anchor:hover {
-  color: #00ff00 !important;
-}
-
-body[data-theme="retro"] .heading-anchor--copied {
   color: #00ff00 !important;
 }
 

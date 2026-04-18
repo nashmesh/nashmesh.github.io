@@ -126,10 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 hash = '#' + sectionId;
             }
             history.replaceState(null, '', hash);
-            navigator.clipboard.writeText(window.location.href).then(function () {
-                anchor.classList.add('heading-anchor--copied');
-                setTimeout(function () { anchor.classList.remove('heading-anchor--copied'); }, 2000);
-            });
         });
         heading.appendChild(anchor);
     });
