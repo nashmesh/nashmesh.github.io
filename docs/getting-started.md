@@ -138,7 +138,12 @@
 
     </div>
 
+    !!! tip "Adjust as your network grows"
+        Apply the settings that match the number of neighbors your node currently sees. As your node sees more neighbors over time, revisit and update these settings accordingly.
+
     #### Neighbor Count: 0–1
+
+    Use these settings if your node sees **0 to 1** neighbors.
 
     <div class="copyable-code">
 
@@ -182,6 +187,8 @@
 
     #### Neighbor Count: 2–4
 
+    Use these settings if your node sees **2 to 4** neighbors.
+
     <div class="copyable-code">
 
     ```
@@ -223,6 +230,8 @@
     </div>
 
     #### Neighbor Count: 5–9
+
+    Use these settings if your node sees **5 to 9** neighbors.
 
     <div class="copyable-code">
 
@@ -266,6 +275,8 @@
 
     #### Neighbor Count: 10–14
 
+    Use these settings if your node sees **10 to 14** neighbors.
+
     <div class="copyable-code">
 
     ```
@@ -307,6 +318,8 @@
     </div>
 
     #### Neighbor Count: 15+
+
+    Use these settings if your node sees **15 or more** neighbors.
 
     <div class="copyable-code">
 
