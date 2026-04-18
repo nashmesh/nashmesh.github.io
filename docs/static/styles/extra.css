@@ -232,6 +232,56 @@ body[data-theme="retro"] .meetup-banner-btn:hover {
   transform: translateY(-2px);
 }
 
+/* ── Doc button ──────────────────────────────────────────────── */
+
+.doc-btn {
+  display: inline-block;
+  background: #1a3a5c;
+  color: #4da6ff !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #2a4a6a;
+  text-decoration: none !important;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.doc-btn:hover {
+  background: #24527a;
+  border-color: #4da6ff;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+body[data-theme="light"] .doc-btn {
+  background: #dceeff;
+  color: #2e6da4 !important;
+  border-color: #b0ccee;
+}
+
+body[data-theme="light"] .doc-btn:hover {
+  background: #b0ccee;
+  border-color: #2e6da4;
+  color: #0f2540 !important;
+}
+
+body[data-theme="retro"] .doc-btn {
+  background: #001133;
+  color: #4da6ff !important;
+  border-color: #003366;
+  border-radius: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+}
+
+body[data-theme="retro"] .doc-btn:hover {
+  background: #002255;
+  border-color: #4da6ff;
+  color: #80bfff !important;
+  transform: none;
+}
+
 /* ── Code block copy button ──────────────────────────────────── */
 
 .copyable-code {
@@ -251,7 +301,7 @@ body[data-theme="retro"] .meetup-banner-btn:hover {
 .copyable-code pre code {
   color: #a0c8f0 !important;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 0.875rem;
+  font-size: 1.5rem;
   background: transparent !important;
 }
 

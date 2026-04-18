@@ -106,4 +106,4 @@ MQTT is a message-broker application that mesh nodes can connect to. By connecti
 
     Experimental firmwares are available that include observer functionality built directly into the firmware — no companion device or separate install needed. Supported devices include Heltec T190/v3/v4, LilyGo T3S3 SX1262, RAK 3112, Station G2, T-Beam S3 Supreme, T-Beam SX1262/SX1276, and Xiao S3 WIO. Both repeater and room server variants are available.
 
-    [Download experimental firmwares](https://files.gessaman.com/meshcore-observer/1.14.1-experimental-mqtt-observer-firmwares/){ .fundraiser-donate-btn }
+    [Download experimental firmwares](https://files.gessaman.com/meshcore-observer/1.14.1-experimental-mqtt-observer-firmwares/){ .doc-btn }
