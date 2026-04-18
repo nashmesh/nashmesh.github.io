@@ -101,6 +101,39 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Heading anchor links (guard against double-injection since custom.js loads twice)
+    document.querySelectorAll('article h1[id], article h2[id], article h3[id], article h4[id]').forEach(function (heading) {
+        if (heading.querySelector('.heading-anchor')) return;
+        var anchor = document.createElement('a');
+        anchor.className = 'heading-anchor';
+        anchor.textContent = '#';
+        anchor.href = '#' + heading.id;
+        anchor.title = 'Copy link to this section';
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            var rawId = heading.id;
+            var sectionId = rawId.replace(/_\d+$/, '');
+            var block = heading.closest('.tabbed-block');
+            var hash;
+            if (block) {
+                var set = block.closest('.tabbed-set');
+                var blocks = Array.from(set.querySelectorAll(':scope > .tabbed-content > .tabbed-block'));
+                var idx = blocks.indexOf(block);
+                var labels = set.querySelectorAll(':scope > .tabbed-labels > label');
+                var tabSlug = labels[idx] ? slugify(labels[idx].textContent.trim()) : null;
+                hash = tabSlug ? '#' + tabSlug + '.' + sectionId : '#' + sectionId;
+            } else {
+                hash = '#' + sectionId;
+            }
+            history.replaceState(null, '', hash);
+            navigator.clipboard.writeText(window.location.href).then(function () {
+                anchor.classList.add('heading-anchor--copied');
+                setTimeout(function () { anchor.classList.remove('heading-anchor--copied'); }, 2000);
+            });
+        });
+        heading.appendChild(anchor);
+    });
+
     // Copy buttons for explicitly marked code blocks
     document.querySelectorAll(".copyable-code pre").forEach(function (pre) {
         var btn = document.createElement("button");

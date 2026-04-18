@@ -829,6 +829,60 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
   background: #00ff00;
 }
 
+/* ── Heading anchors ─────────────────────────────────────── */
+
+.heading-anchor {
+  opacity: 0;
+  margin-left: 0.45rem;
+  color: #4da6ff !important;
+  font-size: 0.75em;
+  font-weight: 400;
+  text-decoration: none !important;
+  transition: opacity 0.15s, color 0.15s;
+  vertical-align: middle;
+  user-select: none;
+}
+
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor {
+  opacity: 1;
+}
+
+.heading-anchor:hover {
+  color: #ffffff !important;
+}
+
+.heading-anchor--copied {
+  color: #80bfff !important;
+  opacity: 1 !important;
+}
+
+body[data-theme="light"] .heading-anchor {
+  color: #2e6da4 !important;
+}
+
+body[data-theme="light"] .heading-anchor:hover {
+  color: #0a3a6a !important;
+}
+
+body[data-theme="light"] .heading-anchor--copied {
+  color: #1a5a9a !important;
+}
+
+body[data-theme="retro"] .heading-anchor {
+  color: #00aa00 !important;
+}
+
+body[data-theme="retro"] .heading-anchor:hover {
+  color: #00ff00 !important;
+}
+
+body[data-theme="retro"] .heading-anchor--copied {
+  color: #00ff00 !important;
+}
+
 /* ── Footer ─────────────────────────────────────────────── */
 
 .nashme-footer {
