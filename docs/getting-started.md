@@ -1,5 +1,7 @@
 # Getting Started
 
+NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recommended settings and setup guides for whichever platform you're running.
+
 === "Meshtastic"
 
     # Meshtastic
@@ -158,6 +160,8 @@
     ```
 
     </div>
+
+    #### Neighbor-Based Delay Tuning
 
     !!! tip "Adjust as your network grows"
         Apply the settings that match the number of neighbors your node currently sees. As your node sees more neighbors over time, revisit and update these settings accordingly.
