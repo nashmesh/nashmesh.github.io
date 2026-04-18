@@ -108,6 +108,22 @@
     | Zero Hop | 60 minutes |
     | Flood    | 3 hours    |
 
+    ### Path Hash Size
+
+    NashMesh uses a **2-byte hash mode** for path hashing, available on radios running firmware 1.14+. Using 2 bytes helps prevent collisions during routing, improving reliability across the network.
+
+    **Companion nodes:** From the home screen: Gear icon → Experimental Settings → Default Path Hash Size → `2-Byte`
+
+    **Repeaters:** Use the following command via the MeshCore app CLI or [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli):
+
+    <div class="copyable-code">
+
+    ```
+    set path.hash.mode 2
+    ```
+
+    </div>
+
     ### Repeater Commands
 
     #### Common Settings (all repeaters)
