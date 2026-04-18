@@ -133,9 +133,9 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
 
     ### Repeater Commands
 
-    #### Common Settings (all repeaters)
+    #### Common Settings
 
-    These settings are recommended for all repeaters, regardless of neighbor count. Commands can be entered via the command line in the MeshCore app, or by using [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli).
+    These settings are recommended for all repeaters. Commands can be entered via the command line in the MeshCore app, or by using [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli).
 
     <div class="copyable-code">
 
