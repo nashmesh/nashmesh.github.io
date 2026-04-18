@@ -6,14 +6,15 @@
 
     We have some sane default settings that we strongly recommend you follow.
 
-    Please make sure to update the firmware on your device as you get started. The easiest way to do that is to use the Web Flasher. The latest stable release, even if labeled Beta, is generally a very safe option.
-    Most importantly make sure to keep all automatic beacons like telemetry and position (if used on a stationary node) to 6 hours +. If you want to send position while moving, use Smart Position, with minimum 10 minutes and distance trigger 100 to 130. This helps keep our mesh clean of background traffic that's of little use.
-
     If you are joining our network you may visit Discord and '/linknode !nodeid' in the logger channels.
 
     In the Middle TN Area, we have a few recommendations for configuration:
 
     (Make sure to read all the recommended settings)
+
+    ## Flashing Your Device
+
+    Make sure to keep your firmware up to date as you get started. The latest stable release, even if labeled Beta, is generally a very safe option. You can flash your device using the [Meshtastic Web Flasher](https://flasher.meshtastic.org).
 
     ## LoRa
 
@@ -78,6 +79,10 @@
     # MeshCore
 
     Below are the recommended radio settings for the Nashville area, aligned with the settings recommended by [TennMesh](https://tennmesh.com).
+
+    ## Flashing Your Device
+
+    NashMesh recommends running the **latest firmware** on your nodes. You can flash your device using the [MeshCore Web Flasher](https://flasher.meshcore.co.uk).
 
     ## Companion Settings
 
