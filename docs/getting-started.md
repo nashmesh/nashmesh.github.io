@@ -118,7 +118,21 @@
 
     ```
     set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set rxdelay 3
     ```
 
@@ -130,9 +144,37 @@
 
     ```
     set txdelay 0.3
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set direct.txdelay 0.1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set rxdelay 3
     ```
 
@@ -144,9 +186,37 @@
 
     ```
     set txdelay 0.5
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set direct.txdelay 0.3
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set rxdelay 3
     ```
 
@@ -158,9 +228,37 @@
 
     ```
     set txdelay 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set direct.txdelay 0.5
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set rxdelay 3
     ```
 
@@ -172,9 +270,37 @@
 
     ```
     set txdelay 1.5
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set direct.txdelay 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set rxdelay 3
     ```
 
@@ -186,9 +312,37 @@
 
     ```
     set txdelay 2
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set direct.txdelay 2
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
     set rxdelay 3
     ```
 
