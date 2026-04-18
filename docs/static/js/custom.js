@@ -35,16 +35,27 @@ document.addEventListener("DOMContentLoaded", function () {
         var tabSlug = dotIdx !== -1 ? hash.slice(0, dotIdx) : hash;
         var sectionId = dotIdx !== -1 ? hash.slice(dotIdx + 1) : null;
 
+        var activeBlock = null;
         document.querySelectorAll('.tabbed-labels > label').forEach(function (label) {
             if (slugify(label.textContent.trim()) === tabSlug) {
                 var input = document.getElementById(label.getAttribute('for'));
-                if (input) input.checked = true;
+                if (input) {
+                    input.checked = true;
+                    var set = label.closest('.tabbed-set');
+                    var labels = Array.from(set.querySelectorAll(':scope > .tabbed-labels > label'));
+                    var idx = labels.indexOf(label);
+                    var blocks = set.querySelectorAll(':scope > .tabbed-content > .tabbed-block');
+                    if (blocks[idx]) activeBlock = blocks[idx];
+                }
             }
         });
 
-        if (sectionId) {
+        if (sectionId && activeBlock) {
             requestAnimationFrame(function () {
-                var target = document.getElementById(sectionId);
+                // Match exact ID or ID with _N suffix (MkDocs deduplication)
+                var target = activeBlock.querySelector('[id="' + sectionId + '"]')
+                    || activeBlock.querySelector('[id^="' + sectionId + '_"]');
+                if (!target) target = document.getElementById(sectionId);
                 if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
             });
         }
@@ -58,38 +69,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
     activateTabFromHash();
 
-    // TOC link: activate tab if target heading is inside a hidden tab block
+    // TOC link: keep tab prefix in hash, activate tab if hidden
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
-            var sectionId = this.getAttribute('href').slice(1);
-            var target = document.getElementById(sectionId);
+            var rawId = this.getAttribute('href').slice(1);
+            var sectionId = rawId.replace(/_\d+$/, ''); // strip MkDocs _N dedup suffix for clean URL
+            var target = document.getElementById(rawId); // use original ID to find the right element
             if (!target) return;
 
             var block = target.closest('.tabbed-block');
             if (!block) return;
 
+            var set = block.closest('.tabbed-set');
+            var blocks = Array.from(set.querySelectorAll(':scope > .tabbed-content > .tabbed-block'));
+            var idx = blocks.indexOf(block);
+            var inputs = set.querySelectorAll(':scope > input[type="radio"]');
+            var labels = set.querySelectorAll(':scope > .tabbed-labels > label');
+            var tabSlug = labels[idx] ? slugify(labels[idx].textContent.trim()) : null;
+
             if (getComputedStyle(block).display === 'none') {
+                if (inputs[idx]) inputs[idx].checked = true;
+            }
+
+            if (tabSlug) {
                 e.preventDefault();
-
-                var set = block.closest('.tabbed-set');
-                var blocks = Array.from(set.querySelectorAll(':scope > .tabbed-content > .tabbed-block'));
-                var idx = blocks.indexOf(block);
-                var inputs = set.querySelectorAll(':scope > input[type="radio"]');
-
-                if (inputs[idx]) {
-                    inputs[idx].checked = true;
-                    var labels = set.querySelectorAll(':scope > .tabbed-labels > label');
-                    if (labels[idx]) {
-                        var tabSlug = slugify(labels[idx].textContent.trim());
-                        history.replaceState(null, '', '#' + tabSlug + '.' + sectionId);
-                    }
-                }
-
+                history.replaceState(null, '', '#' + tabSlug + '.' + sectionId);
                 requestAnimationFrame(function () {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
             }
         });
+    });
+
+    // Heading anchor links (skip home page, guard against double-injection)
+    var isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+    if (!isHomePage) document.querySelectorAll('article h1[id], article h2[id], article h3[id], article h4[id]').forEach(function (heading) {
+        if (heading.querySelector('.heading-anchor')) return;
+        var anchor = document.createElement('a');
+        anchor.className = 'heading-anchor';
+        anchor.textContent = '#';
+        anchor.href = '#' + heading.id;
+        anchor.title = 'Copy link to this section';
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            var rawId = heading.id;
+            var sectionId = rawId.replace(/_\d+$/, '');
+            var block = heading.closest('.tabbed-block');
+            var hash;
+            if (block) {
+                var set = block.closest('.tabbed-set');
+                var blocks = Array.from(set.querySelectorAll(':scope > .tabbed-content > .tabbed-block'));
+                var idx = blocks.indexOf(block);
+                var labels = set.querySelectorAll(':scope > .tabbed-labels > label');
+                var tabSlug = labels[idx] ? slugify(labels[idx].textContent.trim()) : null;
+                hash = tabSlug ? '#' + tabSlug + '.' + sectionId : '#' + sectionId;
+            } else {
+                hash = '#' + sectionId;
+            }
+            history.replaceState(null, '', hash);
+            heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        heading.appendChild(anchor);
     });
 
     // Copy buttons for explicitly marked code blocks
