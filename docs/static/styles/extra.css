@@ -294,14 +294,14 @@ body[data-theme="retro"] .doc-btn:hover {
   border: 1px solid #2a4a6a;
   border-left: 3px solid #4da6ff;
   border-radius: 0.375rem 0.375rem 0 0;
-  padding: 0.3rem 0.85rem !important;
+  padding: 0.15rem 0.85rem !important;
   margin: 0 !important;
 }
 
 .copyable-code pre code {
   color: #a0c8f0 !important;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background: transparent !important;
 }
 
