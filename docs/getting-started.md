@@ -163,8 +163,7 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
 
     #### Neighbor-Based Delay Tuning
 
-    !!! tip "Adjust as your network grows"
-        Apply the settings that match the number of neighbors your node currently sees. As your node sees more neighbors over time, revisit and update these settings accordingly.
+    Apply the settings that match the number of neighbors your node currently sees. As your node sees more neighbors over time, revisit and update these settings accordingly.
 
     #### Neighbor Count: 0–1
 
