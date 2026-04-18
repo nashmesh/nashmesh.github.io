@@ -101,8 +101,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Heading anchor links (guard against double-injection since custom.js loads twice)
-    document.querySelectorAll('article h1[id], article h2[id], article h3[id], article h4[id]').forEach(function (heading) {
+    // Heading anchor links (skip home page, guard against double-injection)
+    var isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+    if (!isHomePage) document.querySelectorAll('article h1[id], article h2[id], article h3[id], article h4[id]').forEach(function (heading) {
         if (heading.querySelector('.heading-anchor')) return;
         var anchor = document.createElement('a');
         anchor.className = 'heading-anchor';
@@ -126,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 hash = '#' + sectionId;
             }
             history.replaceState(null, '', hash);
+            heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
         heading.appendChild(anchor);
     });
