@@ -35,16 +35,27 @@ document.addEventListener("DOMContentLoaded", function () {
         var tabSlug = dotIdx !== -1 ? hash.slice(0, dotIdx) : hash;
         var sectionId = dotIdx !== -1 ? hash.slice(dotIdx + 1) : null;
 
+        var activeBlock = null;
         document.querySelectorAll('.tabbed-labels > label').forEach(function (label) {
             if (slugify(label.textContent.trim()) === tabSlug) {
                 var input = document.getElementById(label.getAttribute('for'));
-                if (input) input.checked = true;
+                if (input) {
+                    input.checked = true;
+                    var set = label.closest('.tabbed-set');
+                    var labels = Array.from(set.querySelectorAll(':scope > .tabbed-labels > label'));
+                    var idx = labels.indexOf(label);
+                    var blocks = set.querySelectorAll(':scope > .tabbed-content > .tabbed-block');
+                    if (blocks[idx]) activeBlock = blocks[idx];
+                }
             }
         });
 
-        if (sectionId) {
+        if (sectionId && activeBlock) {
             requestAnimationFrame(function () {
-                var target = document.getElementById(sectionId);
+                // Match exact ID or ID with _N suffix (MkDocs deduplication)
+                var target = activeBlock.querySelector('[id="' + sectionId + '"]')
+                    || activeBlock.querySelector('[id^="' + sectionId + '_"]');
+                if (!target) target = document.getElementById(sectionId);
                 if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
             });
         }
@@ -61,8 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // TOC link: keep tab prefix in hash, activate tab if hidden
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
-            var sectionId = this.getAttribute('href').slice(1);
-            var target = document.getElementById(sectionId);
+            var rawId = this.getAttribute('href').slice(1);
+            var sectionId = rawId.replace(/_\d+$/, ''); // strip MkDocs _N dedup suffix for clean URL
+            var target = document.getElementById(rawId); // use original ID to find the right element
             if (!target) return;
 
             var block = target.closest('.tabbed-block');
@@ -76,14 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
             var tabSlug = labels[idx] ? slugify(labels[idx].textContent.trim()) : null;
 
             if (getComputedStyle(block).display === 'none') {
-                e.preventDefault();
                 if (inputs[idx]) inputs[idx].checked = true;
-                requestAnimationFrame(function () {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
             }
 
-            // Always keep the tab prefix in the URL
             if (tabSlug) {
                 e.preventDefault();
                 history.replaceState(null, '', '#' + tabSlug + '.' + sectionId);
