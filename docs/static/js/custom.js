@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     activateTabFromHash();
 
-    // TOC link: activate tab if target heading is inside a hidden tab block
+    // TOC link: keep tab prefix in hash, activate tab if hidden
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
             var sectionId = this.getAttribute('href').slice(1);
@@ -68,23 +68,25 @@ document.addEventListener("DOMContentLoaded", function () {
             var block = target.closest('.tabbed-block');
             if (!block) return;
 
+            var set = block.closest('.tabbed-set');
+            var blocks = Array.from(set.querySelectorAll(':scope > .tabbed-content > .tabbed-block'));
+            var idx = blocks.indexOf(block);
+            var inputs = set.querySelectorAll(':scope > input[type="radio"]');
+            var labels = set.querySelectorAll(':scope > .tabbed-labels > label');
+            var tabSlug = labels[idx] ? slugify(labels[idx].textContent.trim()) : null;
+
             if (getComputedStyle(block).display === 'none') {
                 e.preventDefault();
+                if (inputs[idx]) inputs[idx].checked = true;
+                requestAnimationFrame(function () {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
 
-                var set = block.closest('.tabbed-set');
-                var blocks = Array.from(set.querySelectorAll(':scope > .tabbed-content > .tabbed-block'));
-                var idx = blocks.indexOf(block);
-                var inputs = set.querySelectorAll(':scope > input[type="radio"]');
-
-                if (inputs[idx]) {
-                    inputs[idx].checked = true;
-                    var labels = set.querySelectorAll(':scope > .tabbed-labels > label');
-                    if (labels[idx]) {
-                        var tabSlug = slugify(labels[idx].textContent.trim());
-                        history.replaceState(null, '', '#' + tabSlug + '.' + sectionId);
-                    }
-                }
-
+            // Always keep the tab prefix in the URL
+            if (tabSlug) {
+                e.preventDefault();
+                history.replaceState(null, '', '#' + tabSlug + '.' + sectionId);
                 requestAnimationFrame(function () {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
