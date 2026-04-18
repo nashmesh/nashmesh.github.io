@@ -112,7 +112,7 @@
 
     #### Common Settings (all repeaters)
 
-    These settings are recommended for all repeaters, regardless of neighbor count.
+    These settings are recommended for all repeaters, regardless of neighbor count. Commands can be entered via the command line in the MeshCore app, or by using [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli).
 
     <div class="copyable-code">
 
