@@ -1,19 +1,22 @@
 # Getting Started
 
+NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recommended settings and setup guides for whichever platform you're running.
+
 === "Meshtastic"
 
     # Meshtastic
 
     We have some sane default settings that we strongly recommend you follow.
 
-    Please make sure to update the firmware on your device as you get started. The easiest way to do that is to use the Web Flasher. The latest stable release, even if labeled Beta, is generally a very safe option.
-    Most importantly make sure to keep all automatic beacons like telemetry and position (if used on a stationary node) to 6 hours +. If you want to send position while moving, use Smart Position, with minimum 10 minutes and distance trigger 100 to 130. This helps keep our mesh clean of background traffic that's of little use.
-
     If you are joining our network you may visit Discord and '/linknode !nodeid' in the logger channels.
 
     In the Middle TN Area, we have a few recommendations for configuration:
 
     (Make sure to read all the recommended settings)
+
+    ## Flashing Your Device
+
+    Make sure to keep your firmware up to date as you get started. The latest stable release, even if labeled Beta, is generally a very safe option. You can flash your device using the [Meshtastic Web Flasher](https://flasher.meshtastic.org).
 
     ## LoRa
 
@@ -77,9 +80,308 @@
 
     # MeshCore
 
-    <div class="coming-soon-banner">
-      <div class="coming-soon-text">
-        <strong>Coming Soon</strong><br>
-        MeshCore getting started guide is on its way. Check back soon!
-      </div>
+    Below are the recommended radio settings for the Nashville area, aligned with the settings recommended by [TennMesh](https://tennmesh.com).
+
+    ## Flashing Your Device
+
+    NashMesh recommends running the **latest firmware** on your nodes. You can flash your device using the [MeshCore Web Flasher](https://flasher.meshcore.co.uk).
+
+    ## Companion Settings
+
+    | Setting       | Value                         |
+    | ------------- | ----------------------------- |
+    | Preset        | `USA/Canada (Recommended)`    |
+    | Frequency     | `910.525 MHz`                 |
+    | Bandwidth     | `62.5 kHz`                    |
+    | Spread Factor | `7`                           |
+    | Coding Rate   | `5` (or `8` for weak signals) |
+
+    ## Repeater Settings
+
+    | Setting       | Value                      |
+    | ------------- | -------------------------- |
+    | Preset        | `USA/Canada (Recommended)` |
+    | Frequency     | `910.525 MHz`              |
+    | Bandwidth     | `62.5 kHz`                 |
+    | Spread Factor | `7`                        |
+    | Coding Rate   | `8`                        |
+
+    ### Repeater Advert Intervals
+
+    The following advert intervals are recommended for repeaters operating in the Middle TN area.
+
+    | Type     | Interval   |
+    | -------- | ---------- |
+    | Zero Hop | 60 minutes |
+    | Flood    | 3 hours    |
+
+    ### Path Hash Size
+
+    NashMesh uses a **2-byte hash mode** for path hashing, available on radios running firmware 1.14+. Using 2 bytes helps prevent collisions during routing, improving reliability across the network.
+
+    **Companion nodes:** From the home screen: Gear icon → Experimental Settings → Default Path Hash Size → `2-Byte`
+
+    **Repeaters:** Use the following command via the MeshCore app CLI or [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli):
+
+    <div class="copyable-code">
+
+    ```
+    set path.hash.mode 2
+    ```
+
+    </div>
+
+    ### Repeater Commands
+
+    #### Common Settings (all repeaters)
+
+    These settings are recommended for all repeaters, regardless of neighbor count. Commands can be entered via the command line in the MeshCore app, or by using [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli).
+
+    <div class="copyable-code">
+
+    ```
+    set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor-Based Delay Tuning
+
+    !!! tip "Adjust as your network grows"
+        Apply the settings that match the number of neighbors your node currently sees. As your node sees more neighbors over time, revisit and update these settings accordingly.
+
+    #### Neighbor Count: 0–1
+
+    Use these settings if your node sees **0 to 1** neighbors.
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 0.3
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set direct.txdelay 0.1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor Count: 2–4
+
+    Use these settings if your node sees **2 to 4** neighbors.
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 0.5
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set direct.txdelay 0.3
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor Count: 5–9
+
+    Use these settings if your node sees **5 to 9** neighbors.
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set direct.txdelay 0.5
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor Count: 10–14
+
+    Use these settings if your node sees **10 to 14** neighbors.
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 1.5
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set direct.txdelay 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set rxdelay 3
+    ```
+
+    </div>
+
+    #### Neighbor Count: 15+
+
+    Use these settings if your node sees **15 or more** neighbors.
+
+    <div class="copyable-code">
+
+    ```
+    set txdelay 2
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set direct.txdelay 2
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set agc.reset.interval 4
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set multi.acks 1
+    ```
+
+    </div>
+
+    <div class="copyable-code">
+
+    ```
+    set rxdelay 3
+    ```
+
     </div>
