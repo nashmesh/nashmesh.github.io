@@ -41,9 +41,3 @@ A top-level view of this map provides a heat signature for any active nodes in t
   <a class="resource-btn" href="https://bna.meshmapper.net" target="_blank">MeshMapper</a>
 </div>
 
-# Customize
-<div class="theme-toggle">
-  <button class="color-button theme-btn" data-theme="light">☀️ Light</button>
-  <button class="color-button theme-btn" data-theme="dark">🌙 Dark</button>
-  <button class="color-button theme-btn" data-theme="retro">👾 C64</button>
-</div>

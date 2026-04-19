@@ -191,10 +191,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     applyTheme(currentTheme);
 
+    // Floating theme switcher widget
+    if (!document.getElementById('theme-switcher')) {
+        var switcher = document.createElement('div');
+        switcher.id = 'theme-switcher';
+        switcher.innerHTML = `
+            <div class="theme-switcher-options" id="theme-switcher-options">
+                <button class="color-button theme-option" data-theme="light" title="Light">☀️</button>
+                <button class="color-button theme-option" data-theme="dark" title="Dark">🌙</button>
+                <button class="color-button theme-option" data-theme="retro" title="Retro">👾</button>
+            </div>
+            <button class="theme-switcher-toggle" id="theme-switcher-toggle" title="Change theme">🎨</button>
+        `;
+        document.body.appendChild(switcher);
+
+        var toggle = document.getElementById('theme-switcher-toggle');
+        var options = document.getElementById('theme-switcher-options');
+        toggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            options.classList.toggle('open');
+        });
+        document.addEventListener('click', function () {
+            options.classList.remove('open');
+        });
+    }
+
     [...document.querySelectorAll(".color-button")].forEach((e) => {
         e.addEventListener("click", () => {
             setCookie("nashmesh-theme", e.dataset.theme, 99999);
             applyTheme(e.dataset.theme);
+            var options = document.getElementById('theme-switcher-options');
+            if (options) options.classList.remove('open');
         });
     });
 
