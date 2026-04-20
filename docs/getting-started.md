@@ -126,7 +126,7 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
     <div class="copyable-code">
 
     ```
-    set path.hash.mode 2
+    set path.hash.mode 1
     ```
 
     </div>
