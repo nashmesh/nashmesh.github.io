@@ -86,6 +86,8 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
 
     NashMesh recommends running the **latest firmware** on your nodes. You can flash your device using the [MeshCore Web Flasher](https://flasher.meshcore.co.uk).
 
+    Already have a device running? You can update it wirelessly using [Over-the-Air (OTA) flashing](#flashing-over-the-air-ota).
+
     ## Companion Settings
 
     | Setting       | Value                         |
@@ -384,3 +386,42 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
     ```
 
     </div>
+
+    ## Flashing Over the Air (OTA)
+
+    OTA flashing lets you update your MeshCore device wirelessly without a USB cable, using a Wi-Fi access point created by the device itself.
+
+    !!! warning "Use the un-merged `.bin` file"
+        Download the **un-merged** firmware `.bin` file from the [MeshCore Web Flasher](https://flasher.meshcore.co.uk). Flashing a **merged** bin will overwrite the entire device — including all of your settings — so make sure you select the correct file type.
+
+    #### Step 1 — Start OTA mode
+
+    Open your MeshCore companion app and log in as `admin`. Navigate to the **Remote Management** view and open the **Command Line**. Run the following command:
+
+    <div class="copyable-code">
+
+    ```
+    start ota
+    ```
+
+    </div>
+
+    Your device will create a Wi-Fi access point named **MeshCore-OTA**.
+
+    #### Step 2 — Connect and upload
+
+    On your computer, connect to the **MeshCore-OTA** Wi-Fi network. Then open a browser and navigate to:
+
+    <div class="copyable-code">
+
+    ```
+    http://192.168.4.1/update
+    ```
+
+    </div>
+
+    Upload the un-merged `.bin` file you downloaded in Step 1. Wait for the upload to fully complete before closing the browser or navigating away.
+
+    #### Step 3 — Confirm the update
+
+    Once the upload is done, reopen your companion app and log back into the device. Navigate to **Remote Management** and verify the firmware version to confirm the update was successful.
