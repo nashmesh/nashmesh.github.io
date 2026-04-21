@@ -86,6 +86,8 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
 
     NashMesh recommends running the **latest firmware** on your nodes. You can flash your device using the [MeshCore Web Flasher](https://flasher.meshcore.co.uk).
 
+    Running a Room Server/Repeater or Repeater node? You can update it wirelessly using [Over-the-Air OTA flashing](#flashing-over-the-air-ota).
+
     ## Companion Settings
 
     | Setting       | Value                         |
@@ -384,3 +386,55 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
     ```
 
     </div>
+
+    ## Flashing Over the Air (OTA)
+
+    OTA flashing lets you update your MeshCore device wirelessly without a USB cable, using a Wi-Fi access point created by the device itself.
+
+    !!! info "Supported node types"
+        OTA updates are only supported on **Room Server/Repeater** and **Repeater** nodes.
+
+    !!! warning "Choose the right `.bin` file"
+        Always download the **un-merged** `.bin` from the [MeshCore Web Flasher](https://flasher.meshcore.co.uk) for OTA updates — this updates only the firmware and preserves your settings. Only use the **merged** `.bin` if you intend to fully erase the device and start fresh.
+
+    #### Step 1 — Start OTA mode
+
+    Open your MeshCore companion app and log into the node. From the Command Line, run:
+
+    <div class="copyable-code">
+
+    ```
+    start ota
+    ```
+
+    </div>
+
+    Your device will create a Wi-Fi access point named **MeshCore-OTA**.
+
+    #### Step 2 — Connect and upload
+
+    On your computer, connect to the **MeshCore-OTA** Wi-Fi network. Then open a browser and navigate to:
+
+    <div class="copyable-code">
+
+    ```
+    http://192.168.4.1/update
+    ```
+
+    </div>
+
+    Upload the `.bin` file you downloaded in Step 1. Wait for the upload to fully complete before closing the browser or navigating away.
+
+    #### Step 3 — Confirm the update
+
+    Once the upload is done, reopen your companion app and log back into the device. From the Command Line, run:
+
+    <div class="copyable-code">
+
+    ```
+    version
+    ```
+
+    </div>
+
+    Confirm the firmware version shown matches what you flashed.

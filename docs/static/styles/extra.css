@@ -957,6 +957,192 @@ body[data-theme="retro"] .theme-option:hover {
   color: #00ff00;
 }
 
+/* ── Admonitions ─────────────────────────────────────────── */
+
+.admonition {
+  border-radius: 0.375rem;
+  border: 1px solid;
+  padding: 0;
+  margin: 1.25rem 0;
+  overflow: hidden;
+}
+
+.admonition-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.admonition > p:not(.admonition-title) {
+  padding: 0.75rem 1rem;
+  margin: 0;
+}
+
+/* Warning */
+.admonition.warning {
+  border-color: #c87a00;
+  background: #1a1200;
+}
+
+.admonition.warning .admonition-title {
+  background: #7a4a00;
+  color: #ffd166;
+}
+
+.admonition.warning .admonition-title::before {
+  content: '⚠️  ';
+}
+
+.admonition.warning > p:not(.admonition-title) {
+  color: #f0c060;
+}
+
+/* Tip */
+.admonition.tip {
+  border-color: #2a6a4a;
+  background: #001a0a;
+}
+
+.admonition.tip .admonition-title {
+  background: #1a4a2a;
+  color: #66ffaa;
+}
+
+.admonition.tip .admonition-title::before {
+  content: '💡  ';
+}
+
+.admonition.tip > p:not(.admonition-title) {
+  color: #a0e0c0;
+}
+
+/* Info */
+.admonition.info {
+  border-color: #2a4a6a;
+  background: #050f1a;
+}
+
+.admonition.info .admonition-title {
+  background: #1a3a5c;
+  color: #80c8ff;
+}
+
+.admonition.info .admonition-title::before {
+  content: 'ℹ️  ';
+}
+
+.admonition.info > p:not(.admonition-title) {
+  color: #a0c8f0;
+}
+
+/* Light theme */
+body[data-theme="light"] .admonition.warning {
+  background: #fff8e6;
+  border-color: #e09000;
+}
+
+body[data-theme="light"] .admonition.warning .admonition-title {
+  background: #ffe0a0;
+  color: #7a4a00;
+}
+
+body[data-theme="light"] .admonition.warning > p:not(.admonition-title) {
+  color: #5a3800;
+}
+
+body[data-theme="light"] .admonition.tip {
+  background: #eefff6;
+  border-color: #2a8a5a;
+}
+
+body[data-theme="light"] .admonition.tip .admonition-title {
+  background: #c0f0d8;
+  color: #1a5a3a;
+}
+
+body[data-theme="light"] .admonition.tip > p:not(.admonition-title) {
+  color: #1a4a2a;
+}
+
+body[data-theme="light"] .admonition.info {
+  background: #f0f6ff;
+  border-color: #4a8ac8;
+}
+
+body[data-theme="light"] .admonition.info .admonition-title {
+  background: #c8e0f8;
+  color: #1a3a6a;
+}
+
+body[data-theme="light"] .admonition.info > p:not(.admonition-title) {
+  color: #1a3a5c;
+}
+
+/* Retro theme */
+body[data-theme="retro"] .admonition {
+  border-radius: 0;
+}
+
+body[data-theme="retro"] .admonition.warning {
+  background: #110a00;
+  border-color: #aa6600;
+}
+
+body[data-theme="retro"] .admonition.warning .admonition-title {
+  background: #331a00;
+  color: #ffaa00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+}
+
+body[data-theme="retro"] .admonition.warning > p:not(.admonition-title) {
+  color: #ffaa00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  line-height: 1.8;
+}
+
+body[data-theme="retro"] .admonition.tip {
+  background: #001100;
+  border-color: #006600;
+}
+
+body[data-theme="retro"] .admonition.tip .admonition-title {
+  background: #002200;
+  color: #00ff00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+}
+
+body[data-theme="retro"] .admonition.tip > p:not(.admonition-title) {
+  color: #00cc00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  line-height: 1.8;
+}
+
+body[data-theme="retro"] .admonition.info {
+  background: #00001a;
+  border-color: #0000aa;
+}
+
+body[data-theme="retro"] .admonition.info .admonition-title {
+  background: #000044;
+  color: #4da6ff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+}
+
+body[data-theme="retro"] .admonition.info > p:not(.admonition-title) {
+  color: #4da6ff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  line-height: 1.8;
+}
+
 /* ── Heading anchors ─────────────────────────────────────── */
 
 .heading-anchor {
