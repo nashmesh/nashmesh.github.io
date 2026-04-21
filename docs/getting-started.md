@@ -86,7 +86,7 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
 
     NashMesh recommends running the **latest firmware** on your nodes. You can flash your device using the [MeshCore Web Flasher](https://flasher.meshcore.co.uk).
 
-    Already have a supported node (Room Server/Repeater or Repeater)? You can update it wirelessly using [Over-the-Air (OTA) flashing](#flashing-over-the-air-ota).
+    Running a Room Server/Repeater or Repeater node? You can update it wirelessly using [Over-the-Air OTA flashing](#flashing-over-the-air-ota).
 
     ## Companion Settings
 
@@ -399,7 +399,7 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
 
     #### Step 1 — Start OTA mode
 
-    Open your MeshCore companion app and log in as `admin`. Navigate to the **Remote Management** view and open the **Command Line**. Run the following command:
+    Open your MeshCore companion app, log in as `admin`, and run the following command from the Command Line:
 
     <div class="copyable-code">
 
