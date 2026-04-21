@@ -399,7 +399,7 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
 
     #### Step 1 — Start OTA mode
 
-    Open your MeshCore companion app, log in as `admin`, and run the following command from the Command Line:
+    Open your MeshCore companion app and log into the node. From the Command Line, run:
 
     <div class="copyable-code">
 
@@ -427,4 +427,14 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
 
     #### Step 3 — Confirm the update
 
-    Once the upload is done, reopen your companion app and log back into the device. Navigate to **Remote Management** and verify the firmware version to confirm the update was successful.
+    Once the upload is done, reopen your companion app and log back into the device. From the Command Line, run:
+
+    <div class="copyable-code">
+
+    ```
+    version
+    ```
+
+    </div>
+
+    Confirm the firmware version shown matches what you flashed.
