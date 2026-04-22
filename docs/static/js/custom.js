@@ -132,6 +132,29 @@ document.addEventListener("DOMContentLoaded", function () {
         heading.appendChild(anchor);
     });
 
+    // Wrap h2 sections in alternating background containers
+    document.querySelectorAll('.tabbed-block').forEach(function (block) {
+        var children = Array.from(block.children);
+        var sections = [];
+        var current = null;
+
+        children.forEach(function (child) {
+            if (child.tagName === 'H2') {
+                current = { nodes: [child] };
+                sections.push(current);
+            } else if (current) {
+                current.nodes.push(child);
+            }
+        });
+
+        sections.forEach(function (section, idx) {
+            var div = document.createElement('div');
+            div.className = 'content-section content-section--' + (idx % 2 === 0 ? 'a' : 'b');
+            block.insertBefore(div, section.nodes[0]);
+            section.nodes.forEach(function (node) { div.appendChild(node); });
+        });
+    });
+
     // Copy buttons for explicitly marked code blocks
     document.querySelectorAll(".copyable-code pre").forEach(function (pre) {
         var btn = document.createElement("button");
