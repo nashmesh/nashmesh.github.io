@@ -459,7 +459,7 @@ body[data-theme="retro"] .code-copy-btn--copied {
 /* Individual tab */
 .tabbed-labels > label {
   padding: 0.6rem 1.25rem;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #6a9abf;
   cursor: pointer;
