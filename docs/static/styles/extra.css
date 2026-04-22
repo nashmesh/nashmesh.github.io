@@ -1401,7 +1401,7 @@ body[data-theme="retro"] .content-section--b {
 /* Theme sets html at 80% (~15.4px effective body text).
    Bumping to 90% brings body text to ~17px — readable without being large. */
 html {
-  font-size: 105% !important;
+  font-size: 102% !important;
 }
 
 /* Comfortable line-height and sizing for body content */
