@@ -1425,6 +1425,12 @@ html {
   font-size: 102% !important;
 }
 
+@media only screen and (max-width: 767px) {
+  html {
+    font-size: 90% !important;
+  }
+}
+
 /* Comfortable line-height and sizing for body content */
 .post p,
 .post li,
