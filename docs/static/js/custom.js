@@ -132,6 +132,34 @@ document.addEventListener("DOMContentLoaded", function () {
         heading.appendChild(anchor);
     });
 
+    // Mobile TOC — "On this page" collapsible bar
+    (function () {
+        var sidebarNav = document.querySelector('.sidebar .nav.flex-column');
+        var post = document.querySelector('.post');
+        if (!sidebarNav || !post || document.getElementById('mobile-toc')) return;
+
+        var toc = document.createElement('div');
+        toc.id = 'mobile-toc';
+        toc.className = 'mobile-toc collapsed';
+
+        var header = document.createElement('button');
+        header.className = 'mobile-toc-header';
+        header.innerHTML = '<span>On this page</span><span class="mobile-toc-arrow"></span>';
+
+        var body = document.createElement('div');
+        body.className = 'mobile-toc-body';
+        body.appendChild(sidebarNav.cloneNode(true));
+
+        toc.appendChild(header);
+        toc.appendChild(body);
+        post.insertBefore(toc, post.firstChild);
+
+        header.addEventListener('click', function () {
+            var collapsed = toc.classList.toggle('collapsed');
+            header.querySelector('.mobile-toc-arrow').classList.toggle('open', !collapsed);
+        });
+    })();
+
     // Wrap h2 sections in alternating background containers
     document.querySelectorAll('.tabbed-block').forEach(function (block) {
         var children = Array.from(block.children);
