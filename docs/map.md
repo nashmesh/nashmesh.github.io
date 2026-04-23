@@ -11,3 +11,8 @@ Live map of active NashMesh nodes in the Middle Tennessee area. Data is pulled f
 
 <p id="potato-map-status" style="font-size: 0.85rem; opacity: 0.6; margin-top: 0.5rem;"></p>
 
+<div id="node-list-container">
+  <input id="node-search" type="text" placeholder="Search nodes…" autocomplete="off">
+  <ul id="node-list"></ul>
+</div>
+

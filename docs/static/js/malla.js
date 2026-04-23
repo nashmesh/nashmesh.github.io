@@ -1,4 +1,4 @@
-let mallaURL = "https://malla.tnmesh.org";
+let mallaURL = "https://malla.nashme.sh";
 
 async function fetchInfrastructureNodesByRegion() {
     const response = await fetch(`${mallaURL}/api/infrastructure-nodes/by-region`);

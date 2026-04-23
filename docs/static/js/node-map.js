@@ -12,6 +12,13 @@
         return Math.floor(diff / 86400) + 'd ago';
     }
 
+    // Move node list into sidebar on desktop, leave in content on mobile
+    var nodeListContainer = document.getElementById('node-list-container');
+    var sidebar = document.querySelector('.sidebar.navbar-collapse');
+    if (nodeListContainer && sidebar && window.innerWidth >= 768) {
+        sidebar.appendChild(nodeListContainer);
+    }
+
     var map = L.map('potato-map-canvas', {
         center: [36.167567, -86.785401],
         zoom: 9,
@@ -22,6 +29,37 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 18
     }).addTo(map);
+
+    var markers = [];
+    var allNodes = [];
+
+    function renderList(filter) {
+        var list = document.getElementById('node-list');
+        if (!list) return;
+        var q = (filter || '').toLowerCase();
+        list.innerHTML = '';
+        allNodes.forEach(function (item) {
+            var name = (item.node.long_name || item.node.short_name || item.node.node_id || '').toLowerCase();
+            if (q && name.indexOf(q) === -1) return;
+            var li = document.createElement('li');
+            li.className = 'node-list-item node-list-' + (item.isMeshcore ? 'meshcore' : 'meshtastic');
+            li.innerHTML = '<span class="node-list-dot"></span><span class="node-list-name">' +
+                (item.node.long_name || item.node.short_name || item.node.node_id) + '</span>' +
+                '<span class="node-list-sub">' + (item.node.protocol || '') + '</span>';
+            li.addEventListener('click', function () {
+                map.setView([item.node.latitude, item.node.longitude], 13);
+                item.marker.openPopup();
+            });
+            list.appendChild(li);
+        });
+    }
+
+    var searchInput = document.getElementById('node-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            renderList(this.value);
+        });
+    }
 
     map.whenReady(function () {
         map.invalidateSize();
@@ -57,9 +95,19 @@
 
                     marker.bindPopup('<div class="node-popup">' + popupLines + '</div>');
                     marker.addTo(map);
+                    markers.push(marker);
+                    allNodes.push({ node: node, marker: marker, isMeshcore: isMeshcore });
                     plotted++;
                 });
 
+                // Sort alphabetically
+                allNodes.sort(function (a, b) {
+                    var an = a.node.long_name || a.node.short_name || '';
+                    var bn = b.node.long_name || b.node.short_name || '';
+                    return an.localeCompare(bn);
+                });
+
+                renderList('');
                 if (status) status.textContent = plotted + ' nodes plotted.';
             })
             .catch(function (err) {
