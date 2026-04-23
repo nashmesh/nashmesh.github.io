@@ -5,8 +5,10 @@ site_description: Connecting the Greater Nashville area over Mesh!
 # Navigation
 nav:
   - Home: index.md
-  - Getting Started: getting-started.md
-  - MQTT: mqtt.md
+  - Getting Started:
+    - MeshCore: getting-started/meshcore.md
+    - Meshtastic: getting-started/meshtastic.md
+    - MQTT: mqtt.md
   - Map: map.md
   - Nodes: nodes.md
   - Posts: posts.md

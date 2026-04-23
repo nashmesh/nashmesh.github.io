@@ -1,6 +1,6 @@
 # Node Map
 
-Live map of active NashMesh nodes in the Middle Tennessee area. Data is pulled from [Potato Map](https://potato.nashme.sh) and refreshes on page load.
+Live map of active NashMesh nodes in the Middle Tennessee area. Data is pulled from [Potato Map](https://potato.nashme.sh) and refreshes on page load. Only nodes seen within the last 4 days are shown.
 
 <div class="map-toolbar">
   <div class="map-controls">
