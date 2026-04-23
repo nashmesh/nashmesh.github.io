@@ -1186,12 +1186,38 @@ body[data-theme="retro"] .heading-anchor:hover {
 
 /* ── Footer ─────────────────────────────────────────────── */
 
+/* ── Push footer to bottom on short pages ───────────────── */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body > .container {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+body > .container > main {
+  flex: 1 0 auto;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+
 .nashme-footer {
   background: #0a1a2a;
   border-top: 1px solid #2a4a6a;
   padding: 2.5rem 1rem 1.5rem;
   margin-top: 3rem;
   font-size: 0.875rem;
+  flex-shrink: 0;
 }
 
 .nashme-footer-inner {
