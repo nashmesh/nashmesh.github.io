@@ -119,10 +119,14 @@
     map.whenReady(function () {
         map.invalidateSize();
 
-        fetch('https://potato.nashme.sh/api/nodes')
+        fetch('https://potato.nashme.sh/api/nodes?limit=10000')
             .then(function (r) { return r.json(); })
             .then(function (nodes) {
                 var plotted = 0;
+                var totalMeshcore = nodes.filter(function (n) {
+                    return n.protocol && n.protocol.toLowerCase().includes('meshcore');
+                }).length;
+                var totalMeshtastic = nodes.length - totalMeshcore;
 
                 nodes.forEach(function (node) {
                     if (!node.latitude || !node.longitude) return;
@@ -166,14 +170,12 @@
                 applyFilter();
                 if (status) status.textContent = plotted + ' nodes plotted.';
 
-                var meshcoreCount = allNodes.filter(function (n) { return n.isMeshcore; }).length;
-                var meshtasticCount = allNodes.length - meshcoreCount;
                 var elTotal = document.getElementById('stat-total');
                 var elMeshtastic = document.getElementById('stat-meshtastic');
                 var elMeshcore = document.getElementById('stat-meshcore');
-                if (elTotal) elTotal.textContent = allNodes.length;
-                if (elMeshtastic) elMeshtastic.textContent = meshtasticCount;
-                if (elMeshcore) elMeshcore.textContent = meshcoreCount;
+                if (elTotal) elTotal.textContent = nodes.length;
+                if (elMeshtastic) elMeshtastic.textContent = totalMeshtastic;
+                if (elMeshcore) elMeshcore.textContent = totalMeshcore;
             })
             .catch(function (err) {
                 if (status) status.textContent = 'Failed to load node data.';
