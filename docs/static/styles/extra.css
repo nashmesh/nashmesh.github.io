@@ -1663,6 +1663,59 @@ header:first-of-type {
   opacity: 0.85;
 }
 
+/* ── Leaflet dark theme overrides ───────────────────────── */
+
+.leaflet-bar a {
+  background-color: #0e2030 !important;
+  border-bottom-color: #1e3a52 !important;
+  color: #c8dff0 !important;
+}
+
+.leaflet-bar a:hover,
+.leaflet-bar a:focus {
+  background-color: #162d44 !important;
+  color: #e0f0ff !important;
+}
+
+.leaflet-bar a.leaflet-disabled {
+  background-color: #0a1a28 !important;
+  color: #3a5a72 !important;
+}
+
+.leaflet-control-layers {
+  background: #0e2030 !important;
+  color: #c8dff0 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(10, 20, 35, 0.75) !important;
+  color: #7aaac8 !important;
+}
+
+.leaflet-control-attribution a {
+  color: #4da6ff !important;
+}
+
+body[data-theme="light"] .leaflet-bar a {
+  background-color: #fff !important;
+  border-bottom-color: #ccc !important;
+  color: #000 !important;
+}
+
+body[data-theme="light"] .leaflet-bar a:hover,
+body[data-theme="light"] .leaflet-bar a:focus {
+  background-color: #f4f4f4 !important;
+}
+
+body[data-theme="light"] .leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.75) !important;
+  color: #333 !important;
+}
+
+body[data-theme="light"] .leaflet-control-attribution a {
+  color: #0078d4 !important;
+}
+
 /* ── Map toolbar (filters + stats row) ──────────────────── */
 
 .map-toolbar {

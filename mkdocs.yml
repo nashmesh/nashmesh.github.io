@@ -79,10 +79,10 @@ markdown_extensions:
 
 extra_css:
   - static/styles/statistics.css
+  - https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
   - static/styles/leaflet.css
   - static/styles/extra.css
   - static/styles/link-embeds.css
-  - https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
 
 extra_javascript:
   - static/js/jquery.js
