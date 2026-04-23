@@ -24,8 +24,9 @@ function scrollToEl(el, smooth) {
     var nav = document.querySelector('header:first-of-type');
     var mobileToc = document.getElementById('mobile-toc');
     var offset = nav ? nav.offsetHeight : 0;
+    // Always include the mobile TOC height (header is always sticky, body adds more when open)
     if (mobileToc && mobileToc.offsetHeight) offset += mobileToc.offsetHeight;
-    offset += 6; // breathing room
+    offset += 6;
     var top = el.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top: top, behavior: smooth ? 'smooth' : 'auto' });
 }
@@ -80,15 +81,45 @@ document.addEventListener("DOMContentLoaded", function () {
     activateTabFromHash();
 
     // TOC link: keep tab prefix in hash, activate tab if hidden
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-            var rawId = this.getAttribute('href').slice(1);
-            var sectionId = rawId.replace(/_\d+$/, ''); // strip MkDocs _N dedup suffix for clean URL
-            var target = document.getElementById(rawId); // use original ID to find the right element
+    // Use event delegation so dynamically injected links (mobile TOC) are also handled.
+    // Guard against double-firing from double script load.
+    if (!document.__hashClickHandlerAttached) {
+        document.__hashClickHandlerAttached = true;
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('a[href^="#"]');
+            if (!link) return;
+
+            var rawId = link.getAttribute('href').slice(1);
+            if (!rawId) return;
+            var sectionId = rawId.replace(/_\d+$/, '');
+            var target = document.getElementById(rawId);
             if (!target) return;
 
+            e.preventDefault();
+
+            // Collapse mobile TOC if the clicked link is inside it
+            var mobileToc = document.getElementById('mobile-toc');
+            if (mobileToc && link.closest('#mobile-toc')) {
+                // Force instant collapse (skip CSS transition) so layout is settled before scroll
+                var tocBody = mobileToc.querySelector('.mobile-toc-body');
+                if (tocBody) {
+                    tocBody.style.transition = 'none';
+                    tocBody.style.maxHeight = '0';
+                    tocBody.style.paddingBottom = '0';
+                }
+                mobileToc.classList.add('collapsed');
+                var arrow = mobileToc.querySelector('.mobile-toc-arrow');
+                if (arrow) arrow.classList.remove('open');
+            }
+
             var block = target.closest('.tabbed-block');
-            if (!block) return;
+            if (!block) {
+                history.replaceState(null, '', '#' + sectionId);
+                requestAnimationFrame(function () {
+                    scrollToEl(target, true);
+                });
+                return;
+            }
 
             var set = block.closest('.tabbed-set');
             var blocks = Array.from(set.querySelectorAll(':scope > .tabbed-content > .tabbed-block'));
@@ -102,14 +133,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (tabSlug) {
-                e.preventDefault();
                 history.replaceState(null, '', '#' + tabSlug + '.' + sectionId);
                 requestAnimationFrame(function () {
                     scrollToEl(target, true);
                 });
             }
         });
-    });
+    }
 
     // Heading anchor links (skip home page, guard against double-injection)
     var isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
@@ -144,6 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Mobile TOC — "On this page" collapsible bar
     (function () {
+        if (isHomePage) return;
         var sidebarNav = document.querySelector('.sidebar .nav.flex-column');
         var post = document.querySelector('.post');
         if (!sidebarNav || !post || document.getElementById('mobile-toc')) return;
