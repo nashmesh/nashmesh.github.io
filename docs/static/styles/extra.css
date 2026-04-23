@@ -1422,3 +1422,23 @@ html {
 .sidebar .nav-item[data-bs-level="1"] .nav-link {
   font-size: 0.9em;
 }
+
+/* ── Mobile font size: match desktop ────────────────────── */
+
+/* Theme forces 12px on text below 1200px — restore to desktop size */
+@media only screen and (max-width: 1200px) {
+  a, code, li, p, small {
+    font-size: 1rem !important;
+  }
+}
+
+/* Theme forces 12px text and 18px headings below 780px — restore */
+@media only screen and (max-width: 780px) {
+  a, code, li, p, small {
+    font-size: 1rem !important;
+  }
+
+  .title, h1, h2, h3, h4, h5, h6 {
+    font-size: revert !important;
+  }
+}
