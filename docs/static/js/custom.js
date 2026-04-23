@@ -110,6 +110,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 mobileToc.classList.add('collapsed');
                 var arrow = mobileToc.querySelector('.mobile-toc-arrow');
                 if (arrow) arrow.classList.remove('open');
+                // Restore CSS control after scroll so the TOC can be reopened
+                setTimeout(function () {
+                    if (tocBody) {
+                        tocBody.style.transition = '';
+                        tocBody.style.maxHeight = '';
+                        tocBody.style.paddingBottom = '';
+                    }
+                }, 50);
             }
 
             var block = target.closest('.tabbed-block');
