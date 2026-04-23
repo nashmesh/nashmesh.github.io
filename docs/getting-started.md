@@ -394,6 +394,14 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
     !!! info "Supported node types"
         OTA updates are only supported on **Room Server/Repeater** and **Repeater** nodes.
 
+    !!! warning "nRF52 devices — Bluetooth OTA only"
+        If your device uses an **nRF52** chip, it does not support Wi-Fi OTA. Updates must be performed over **Bluetooth** using a dedicated app:
+
+        - **iOS:** [nRF Device Firmware Update](https://apps.apple.com/us/app/nrf-device-firmware-update/id1624454660)
+        - **Android:** [nRF Connect](https://github.com/nordicsemi/Android-nRF-Connect)
+
+        Download the firmware `.zip` (not `.bin`) from the [MeshCore Web Flasher](https://flasher.meshcore.co.uk) and follow the in-app instructions to perform the update.
+
     !!! warning "Choose the right `.bin` file"
         Always download the **un-merged** `.bin` from the [MeshCore Web Flasher](https://flasher.meshcore.co.uk) for OTA updates — this updates only the firmware and preserves your settings. Only use the **merged** `.bin` if you intend to fully erase the device and start fresh.
 
