@@ -7,6 +7,7 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - MQTT: mqtt.md
+  - Map: map.md
   - Nodes: nodes.md
   - Posts: posts.md
   - Fundraising: fundraising.md
@@ -90,6 +91,7 @@ extra_javascript:
   - static/js/leaflet.js
   - static/js/heatmap.js
   - static/js/leaflet-heatmap.js
+  - static/js/node-map.js
 
 extra:
   social:

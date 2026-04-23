@@ -1617,3 +1617,48 @@ header:first-of-type {
     font-size: 1.6rem !important;
   }
 }
+
+/* ── Node map ───────────────────────────────────────────── */
+
+.map-legend {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.map-legend-item::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+.map-legend-meshtastic::before {
+  background: rgba(77, 166, 255, 0.55);
+  border-color: #4da6ff;
+}
+
+.map-legend-meshcore::before {
+  background: rgba(255, 140, 66, 0.55);
+  border-color: #ff8c42;
+}
+
+.node-popup strong {
+  font-size: 0.95rem;
+}
+
+.node-popup span {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
