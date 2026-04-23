@@ -1,6 +1,6 @@
 (function () {
-    var canvas = document.getElementById('node-map-canvas');
-    var status = document.getElementById('node-map-status');
+    var canvas = document.getElementById('potato-map-canvas');
+    var status = document.getElementById('potato-map-status');
     if (!canvas || canvas._leaflet_id) return; // guard against double-init
 
     function timeAgo(isoString) {
@@ -12,7 +12,7 @@
         return Math.floor(diff / 86400) + 'd ago';
     }
 
-    var map = L.map('node-map-canvas', {
+    var map = L.map('potato-map-canvas', {
         center: [36.167567, -86.785401],
         zoom: 9,
         maxZoom: 16

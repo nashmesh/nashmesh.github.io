@@ -7,7 +7,7 @@ Live map of active NashMesh nodes in the Middle Tennessee area. Data is pulled f
   <span class="map-legend-item map-legend-meshcore">MeshCore</span>
 </div>
 
-<div id="node-map-canvas" style="width: 100%; height: 65vh; z-index: 1; border-radius: 6px; margin-top: 1rem;"></div>
+<div id="potato-map-canvas" style="width: 100%; height: 65vh; z-index: 1; border-radius: 6px; margin-top: 1rem;"></div>
 
-<p id="node-map-status" style="font-size: 0.85rem; opacity: 0.6; margin-top: 0.5rem;"></p>
+<p id="potato-map-status" style="font-size: 0.85rem; opacity: 0.6; margin-top: 0.5rem;"></p>
 
