@@ -131,8 +131,10 @@
                 }).length;
                 var totalMeshtastic = nodes.length - totalMeshcore;
 
+                var fourDaysMs = 4 * 24 * 60 * 60 * 1000;
                 nodes.forEach(function (node) {
                     if (!node.latitude || !node.longitude) return;
+                    if (node.last_seen_iso && (Date.now() - new Date(node.last_seen_iso).getTime()) > fourDaysMs) return;
 
                     var isMeshcore = node.protocol && node.protocol.toLowerCase().includes('meshcore');
                     var color = isMeshcore ? '#4da6ff' : '#67ea94';
