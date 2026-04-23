@@ -146,9 +146,18 @@ document.addEventListener("DOMContentLoaded", function () {
         header.className = 'mobile-toc-header';
         header.innerHTML = '<span>On this page</span><span class="mobile-toc-arrow"></span>';
 
+        var clonedNav = sidebarNav.cloneNode(true);
+        // Strip collapsible classes so all items are visible in mobile TOC
+        clonedNav.querySelectorAll('.toc-sub').forEach(function (el) {
+            el.classList.remove('toc-sub', 'collapsed');
+        });
+        clonedNav.querySelectorAll('.toc-arrow').forEach(function (el) {
+            el.remove();
+        });
+
         var body = document.createElement('div');
         body.className = 'mobile-toc-body';
-        body.appendChild(sidebarNav.cloneNode(true));
+        body.appendChild(clonedNav);
 
         toc.appendChild(header);
         toc.appendChild(body);

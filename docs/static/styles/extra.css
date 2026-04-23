@@ -1530,7 +1530,7 @@ html {
   }
 
   #mobile-toc:not(.collapsed) .mobile-toc-body {
-    max-height: 800px;
+    max-height: 2000px;
   }
 
   .mobile-toc-body .nav-link {
