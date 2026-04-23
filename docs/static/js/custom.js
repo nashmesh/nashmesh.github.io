@@ -20,6 +20,17 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+function scrollToEl(el, smooth) {
+    var nav = document.querySelector('header:first-of-type');
+    var mobileToc = document.getElementById('mobile-toc');
+    var offset = nav ? nav.offsetHeight : 0;
+    // Always include the mobile TOC height (header is always sticky, body adds more when open)
+    if (mobileToc && mobileToc.offsetHeight) offset += mobileToc.offsetHeight;
+    offset += 6;
+    var top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: top, behavior: smooth ? 'smooth' : 'auto' });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     // Tab URL hash tracking
     function slugify(text) {
@@ -56,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var target = activeBlock.querySelector('[id="' + sectionId + '"]')
                     || activeBlock.querySelector('[id^="' + sectionId + '_"]');
                 if (!target) target = document.getElementById(sectionId);
-                if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
+                if (target) scrollToEl(target, false);
             });
         }
     }
@@ -70,15 +81,53 @@ document.addEventListener("DOMContentLoaded", function () {
     activateTabFromHash();
 
     // TOC link: keep tab prefix in hash, activate tab if hidden
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-            var rawId = this.getAttribute('href').slice(1);
-            var sectionId = rawId.replace(/_\d+$/, ''); // strip MkDocs _N dedup suffix for clean URL
-            var target = document.getElementById(rawId); // use original ID to find the right element
+    // Use event delegation so dynamically injected links (mobile TOC) are also handled.
+    // Guard against double-firing from double script load.
+    if (!document.__hashClickHandlerAttached) {
+        document.__hashClickHandlerAttached = true;
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('a[href^="#"]');
+            if (!link) return;
+
+            var rawId = link.getAttribute('href').slice(1);
+            if (!rawId) return;
+            var sectionId = rawId.replace(/_\d+$/, '');
+            var target = document.getElementById(rawId);
             if (!target) return;
 
+            e.preventDefault();
+
+            // Collapse mobile TOC if the clicked link is inside it
+            var mobileToc = document.getElementById('mobile-toc');
+            if (mobileToc && link.closest('#mobile-toc')) {
+                // Force instant collapse (skip CSS transition) so layout is settled before scroll
+                var tocBody = mobileToc.querySelector('.mobile-toc-body');
+                if (tocBody) {
+                    tocBody.style.transition = 'none';
+                    tocBody.style.maxHeight = '0';
+                    tocBody.style.paddingBottom = '0';
+                }
+                mobileToc.classList.add('collapsed');
+                var arrow = mobileToc.querySelector('.mobile-toc-arrow');
+                if (arrow) arrow.classList.remove('open');
+                // Restore CSS control after scroll so the TOC can be reopened
+                setTimeout(function () {
+                    if (tocBody) {
+                        tocBody.style.transition = '';
+                        tocBody.style.maxHeight = '';
+                        tocBody.style.paddingBottom = '';
+                    }
+                }, 50);
+            }
+
             var block = target.closest('.tabbed-block');
-            if (!block) return;
+            if (!block) {
+                history.replaceState(null, '', '#' + sectionId);
+                requestAnimationFrame(function () {
+                    scrollToEl(target, true);
+                });
+                return;
+            }
 
             var set = block.closest('.tabbed-set');
             var blocks = Array.from(set.querySelectorAll(':scope > .tabbed-content > .tabbed-block'));
@@ -92,14 +141,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (tabSlug) {
-                e.preventDefault();
                 history.replaceState(null, '', '#' + tabSlug + '.' + sectionId);
                 requestAnimationFrame(function () {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    scrollToEl(target, true);
                 });
             }
         });
-    });
+    }
 
     // Heading anchor links (skip home page, guard against double-injection)
     var isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
@@ -127,10 +175,54 @@ document.addEventListener("DOMContentLoaded", function () {
                 hash = '#' + sectionId;
             }
             history.replaceState(null, '', hash);
-            heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            scrollToEl(heading, true);
         });
         heading.appendChild(anchor);
     });
+
+    // Mobile TOC — "On this page" collapsible bar
+    (function () {
+        if (isHomePage) return;
+        var sidebarNav = document.querySelector('.sidebar .nav.flex-column');
+        var post = document.querySelector('.post');
+        if (!sidebarNav || !post || document.getElementById('mobile-toc')) return;
+
+        var toc = document.createElement('div');
+        toc.id = 'mobile-toc';
+        toc.className = 'mobile-toc collapsed';
+
+        var header = document.createElement('button');
+        header.className = 'mobile-toc-header';
+        header.innerHTML = '<span>On this page</span><span class="mobile-toc-arrow"></span>';
+
+        var clonedNav = sidebarNav.cloneNode(true);
+        // Strip collapsible classes so all items are visible in mobile TOC
+        clonedNav.querySelectorAll('.toc-sub').forEach(function (el) {
+            el.classList.remove('toc-sub', 'collapsed');
+        });
+        clonedNav.querySelectorAll('.toc-arrow').forEach(function (el) {
+            el.remove();
+        });
+
+        var body = document.createElement('div');
+        body.className = 'mobile-toc-body';
+        body.appendChild(clonedNav);
+
+        toc.appendChild(header);
+        toc.appendChild(body);
+        post.insertBefore(toc, post.firstChild);
+
+        header.addEventListener('click', function () {
+            var collapsed = toc.classList.toggle('collapsed');
+            header.querySelector('.mobile-toc-arrow').classList.toggle('open', !collapsed);
+        });
+
+        // Stick below the sticky nav
+        var nav = document.querySelector('header:first-of-type');
+        if (nav) {
+            toc.style.top = nav.offsetHeight + 'px';
+        }
+    })();
 
     // Wrap h2 sections in alternating background containers
     document.querySelectorAll('.tabbed-block').forEach(function (block) {
