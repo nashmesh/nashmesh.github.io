@@ -1588,3 +1588,12 @@ html {
     background: transparent;
   }
 }
+
+/* ── Sticky top nav ─────────────────────────────────────── */
+
+header:first-of-type {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--background, black);
+}
