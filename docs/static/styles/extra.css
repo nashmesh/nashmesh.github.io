@@ -459,7 +459,7 @@ body[data-theme="retro"] .code-copy-btn--copied {
 /* Individual tab */
 .tabbed-labels > label {
   padding: 0.6rem 1.25rem;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #6a9abf;
   cursor: pointer;
@@ -1322,4 +1322,144 @@ body[data-theme="retro"] .nashme-footer-copy {
   color: #006600;
   font-family: 'Press Start 2P', monospace;
   font-size: 0.5rem;
+}
+/* ── Section contrast (h2 dividers) ─────────────────────── */
+
+.post h2 {
+  margin-top: 2.5rem;
+  padding: 0.5rem 0.8rem;
+  background: rgba(77, 166, 255, 0.06);
+  border-left: 3px solid #4da6ff;
+  border-radius: 0 4px 4px 0;
+}
+
+body[data-theme="light"] .post h2 {
+  background: rgba(46, 109, 164, 0.07);
+  border-left-color: #2e6da4;
+}
+
+body[data-theme="retro"] .post h2 {
+  background: rgba(0, 170, 0, 0.08);
+  border-left: 3px solid #00aa00;
+  border-radius: 0;
+}
+
+/* ── Section contrast (h3 dividers) ─────────────────────── */
+
+.post h3 {
+  margin-top: 1.75rem;
+  padding: 0.35rem 0.8rem;
+  background: rgba(126, 200, 255, 0.05);
+  border-left: 2px solid #7ec8ff;
+  border-radius: 0 4px 4px 0;
+}
+
+body[data-theme="light"] .post h3 {
+  background: rgba(20, 150, 130, 0.06);
+  border-left-color: #149682;
+}
+
+body[data-theme="retro"] .post h3 {
+  background: rgba(0, 170, 170, 0.08);
+  border-left: 2px solid #00aaaa;
+  border-radius: 0;
+}
+
+/* ── Alternating section backgrounds ────────────────────── */
+
+.content-section {
+  border-radius: 6px;
+  padding: 1rem 1.25rem 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.content-section--a {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.content-section--b {
+  background: rgba(77, 166, 255, 0.045);
+}
+
+/* Light theme */
+body[data-theme="light"] .content-section--a {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+body[data-theme="light"] .content-section--b {
+  background: rgba(46, 109, 164, 0.06);
+}
+
+/* Retro theme */
+body[data-theme="retro"] .content-section {
+  border-radius: 0;
+}
+
+body[data-theme="retro"] .content-section--a {
+  background: rgba(0, 170, 0, 0.04);
+}
+
+body[data-theme="retro"] .content-section--b {
+  background: rgba(0, 170, 0, 0.1);
+}
+
+/* ── TOC sub-section indentation ────────────────────────── */
+
+.sidebar .nav-item[data-bs-level="2"] .nav-link {
+  padding-left: 1.25rem;
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
+.sidebar .nav-item[data-bs-level="3"] .nav-link {
+  padding-left: 2.25rem;
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+
+/* ── Accessibility: readable base font size ─────────────── */
+
+/* Theme sets html at 80% (~15.4px effective body text).
+   Bumping to 90% brings body text to ~17px — readable without being large. */
+html {
+  font-size: 102% !important;
+}
+
+/* Comfortable line-height and sizing for body content */
+.post p,
+.post li,
+.post td,
+.post th {
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* Sidebar TOC links — legible but compact */
+.sidebar .nav-link {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.sidebar .nav-item[data-bs-level="1"] .nav-link {
+  font-size: 0.9em;
+}
+
+/* ── Mobile font size: match desktop ────────────────────── */
+
+/* Theme forces 12px on text below 1200px — restore to desktop size */
+@media only screen and (max-width: 1200px) {
+  a, code, li, p, small {
+    font-size: 1rem !important;
+  }
+}
+
+/* Theme forces 12px text and 18px headings below 780px — restore */
+@media only screen and (max-width: 780px) {
+  a, code, li, p, small {
+    font-size: 1rem !important;
+  }
+
+  .title, h1, h2, h3, h4, h5, h6 {
+    font-size: revert !important;
+  }
 }
