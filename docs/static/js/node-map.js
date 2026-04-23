@@ -109,8 +109,8 @@
                     if (!node.latitude || !node.longitude) return;
 
                     var isMeshcore = node.protocol && node.protocol.toLowerCase().includes('meshcore');
-                    var color = isMeshcore ? '#ff8c42' : '#4da6ff';
-                    var fillColor = isMeshcore ? '#ff8c4288' : '#4da6ff88';
+                    var color = isMeshcore ? '#4da6ff' : '#67ea94';
+                    var fillColor = isMeshcore ? '#4da6ff88' : '#67ea9488';
 
                     var marker = L.circleMarker([node.latitude, node.longitude], {
                         radius: 7,
