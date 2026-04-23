@@ -1530,10 +1530,13 @@ html {
     overflow: hidden;
     transition: max-height 0.25s ease;
     background: transparent;
+    padding-bottom: 0;
   }
 
   #mobile-toc:not(.collapsed) .mobile-toc-body {
-    max-height: 2000px;
+    max-height: 50vh;
+    overflow-y: auto;
+    padding-bottom: 1.25rem;
   }
 
   .mobile-toc-body .nav-link {
