@@ -165,6 +165,15 @@
                 renderList();
                 applyFilter();
                 if (status) status.textContent = plotted + ' nodes plotted.';
+
+                var meshcoreCount = allNodes.filter(function (n) { return n.isMeshcore; }).length;
+                var meshtasticCount = allNodes.length - meshcoreCount;
+                var elTotal = document.getElementById('stat-total');
+                var elMeshtastic = document.getElementById('stat-meshtastic');
+                var elMeshcore = document.getElementById('stat-meshcore');
+                if (elTotal) elTotal.textContent = allNodes.length;
+                if (elMeshtastic) elMeshtastic.textContent = meshtasticCount;
+                if (elMeshcore) elMeshcore.textContent = meshcoreCount;
             })
             .catch(function (err) {
                 if (status) status.textContent = 'Failed to load node data.';

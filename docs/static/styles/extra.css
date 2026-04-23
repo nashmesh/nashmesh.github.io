@@ -1663,13 +1663,86 @@ header:first-of-type {
   opacity: 0.85;
 }
 
+/* ── Map toolbar (filters + stats row) ──────────────────── */
+
+.map-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* ── Map stats ──────────────────────────────────────────── */
+
+.map-stats {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.map-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid #1e3a52;
+  border-radius: 6px;
+  background: rgba(77, 166, 255, 0.04);
+  min-width: 80px;
+}
+
+.map-stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #c8dff0;
+}
+
+.map-stat-meshtastic {
+  color: #67ea94;
+}
+
+.map-stat-meshcore {
+  color: #4da6ff;
+}
+
+.map-stat-label {
+  font-size: 0.72rem;
+  opacity: 0.55;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #c8dff0;
+}
+
+body[data-theme="light"] .map-stat-card {
+  border-color: #c0d4e8;
+  background: rgba(46, 109, 164, 0.04);
+}
+
+body[data-theme="light"] .map-stat-value {
+  color: #1a3a5c;
+}
+
+body[data-theme="light"] .map-stat-meshtastic {
+  color: #1a8a4a;
+}
+
+body[data-theme="light"] .map-stat-meshcore {
+  color: #1a5ca0;
+}
+
+body[data-theme="light"] .map-stat-label {
+  color: #4a6a8a;
+}
+
 /* ── Map filter buttons ─────────────────────────────────── */
 
 .map-controls {
   display: flex;
   gap: 0.4rem;
-  margin-top: 1rem;
-  margin-bottom: 0.75rem;
   flex-wrap: wrap;
 }
 
