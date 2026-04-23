@@ -167,6 +167,12 @@ document.addEventListener("DOMContentLoaded", function () {
             var collapsed = toc.classList.toggle('collapsed');
             header.querySelector('.mobile-toc-arrow').classList.toggle('open', !collapsed);
         });
+
+        // Stick below the sticky nav
+        var nav = document.querySelector('header:first-of-type');
+        if (nav) {
+            toc.style.top = nav.offsetHeight + 'px';
+        }
     })();
 
     // Wrap h2 sections in alternating background containers

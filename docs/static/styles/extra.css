@@ -1482,6 +1482,9 @@ html {
 @media only screen and (max-width: 767px) {
   #mobile-toc {
     display: block;
+    position: sticky;
+    z-index: 50;
+    background: var(--background, black);
     border-bottom: 1px solid #1e3a52;
     margin-bottom: 1.5rem;
     overflow: hidden;
