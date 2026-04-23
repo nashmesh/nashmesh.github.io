@@ -1609,3 +1609,11 @@ header:first-of-type {
   z-index: 100;
   background: var(--background, black);
 }
+
+/* ── Mobile site name size ──────────────────────────────── */
+
+@media only screen and (max-width: 780px) {
+  .site-name {
+    font-size: 1.6rem !important;
+  }
+}
