@@ -1952,15 +1952,26 @@ body[data-theme="light"] .map-filter-dot-all {
   color: #c8dff0;
 }
 
-.node-list-sub {
-  font-size: 0.7rem;
-  opacity: 0.5;
+.node-list-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   flex-shrink: 0;
-  color: #c8dff0;
+  gap: 0.1rem;
 }
 
-body[data-theme="light"] .node-list-name,
-body[data-theme="light"] .node-list-sub {
+.node-list-lastseen {
+  font-size: 0.68rem;
+  opacity: 0.5;
+  color: #c8dff0;
+  white-space: nowrap;
+}
+
+body[data-theme="light"] .node-list-name {
+  color: #1a3a5c;
+}
+
+body[data-theme="light"] .node-list-lastseen {
   color: #1a3a5c;
 }
 

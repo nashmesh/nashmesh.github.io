@@ -87,10 +87,13 @@
             var logoSrc = item.isMeshcore
                 ? '../static/images/meshcore-logo.png'
                 : '../static/images/meshtastic-logo.svg';
+            var lastSeen = item.node.last_seen_iso ? timeAgo(item.node.last_seen_iso) : '';
             li.innerHTML = '<img src="' + logoSrc + '" class="node-list-logo" alt="">' +
                 '<span class="node-list-name">' +
                 (item.node.long_name || item.node.short_name || item.node.node_id) + '</span>' +
-                '<span class="node-list-sub">' + (item.node.protocol || '') + '</span>';
+                '<span class="node-list-meta">' +
+                (lastSeen ? '<span class="node-list-lastseen">' + lastSeen + '</span>' : '') +
+                '</span>';
             li.addEventListener('click', function () {
                 map.setView([item.node.latitude, item.node.longitude], 13);
                 item.marker.openPopup();
