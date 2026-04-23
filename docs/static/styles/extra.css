@@ -1418,3 +1418,7 @@ html {
   font-size: 0.95rem;
   line-height: 1.6;
 }
+
+.sidebar .nav-item[data-bs-level="1"] .nav-link {
+  font-size: 0.9em;
+}
