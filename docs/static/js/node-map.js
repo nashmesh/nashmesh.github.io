@@ -32,18 +32,44 @@
 
     var markers = [];
     var allNodes = [];
+    var activeFilter = 'all';
 
-    function renderList(filter) {
+    function applyFilter() {
+        var q = (document.getElementById('node-search') || {}).value || '';
+        q = q.toLowerCase();
+
+        allNodes.forEach(function (item) {
+            var protocolMatch = activeFilter === 'all' ||
+                (activeFilter === 'meshcore' && item.isMeshcore) ||
+                (activeFilter === 'meshtastic' && !item.isMeshcore);
+            var name = (item.node.long_name || item.node.short_name || item.node.node_id || '').toLowerCase();
+            var searchMatch = !q || name.indexOf(q) !== -1;
+            var visible = protocolMatch && searchMatch;
+
+            if (visible) {
+                if (!map.hasLayer(item.marker)) item.marker.addTo(map);
+            } else {
+                if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
+            }
+
+            if (item.listEl) {
+                item.listEl.style.display = visible ? '' : 'none';
+            }
+        });
+    }
+
+    function renderList() {
         var list = document.getElementById('node-list');
         if (!list) return;
-        var q = (filter || '').toLowerCase();
         list.innerHTML = '';
         allNodes.forEach(function (item) {
-            var name = (item.node.long_name || item.node.short_name || item.node.node_id || '').toLowerCase();
-            if (q && name.indexOf(q) === -1) return;
             var li = document.createElement('li');
             li.className = 'node-list-item node-list-' + (item.isMeshcore ? 'meshcore' : 'meshtastic');
-            li.innerHTML = '<span class="node-list-dot"></span><span class="node-list-name">' +
+            var logoSrc = item.isMeshcore
+                ? '../static/images/meshcore-logo.png'
+                : '../static/images/meshtastic-logo.svg';
+            li.innerHTML = '<img src="' + logoSrc + '" class="node-list-logo" alt="">' +
+                '<span class="node-list-name">' +
                 (item.node.long_name || item.node.short_name || item.node.node_id) + '</span>' +
                 '<span class="node-list-sub">' + (item.node.protocol || '') + '</span>';
             li.addEventListener('click', function () {
@@ -51,15 +77,25 @@
                 item.marker.openPopup();
             });
             list.appendChild(li);
+            item.listEl = li;
         });
     }
 
     var searchInput = document.getElementById('node-search');
     if (searchInput) {
         searchInput.addEventListener('input', function () {
-            renderList(this.value);
+            applyFilter();
         });
     }
+
+    document.querySelectorAll('.map-filter-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.map-filter-btn').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            activeFilter = btn.getAttribute('data-filter');
+            applyFilter();
+        });
+    });
 
     map.whenReady(function () {
         map.invalidateSize();
@@ -107,7 +143,8 @@
                     return an.localeCompare(bn);
                 });
 
-                renderList('');
+                renderList();
+                applyFilter();
                 if (status) status.textContent = plotted + ' nodes plotted.';
             })
             .catch(function (err) {
