@@ -84,7 +84,7 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
 
     ## Flashing Your Device
 
-    NashMesh recommends running the **latest firmware** on your nodes. You can flash your device using the [MeshCore Web Flasher](https://flasher.meshcore.co.uk).
+    NashMesh recommends running the **latest firmware** on your nodes. You can flash your device using the [MeshCore Web Flasher](https://flasher.meshcore.io).
 
     Running a Room Server/Repeater or Repeater node? You can update it wirelessly using [Over-the-Air OTA flashing](#flashing-over-the-air-ota).
 
@@ -400,10 +400,10 @@ NashMesh supports both Meshtastic and MeshCore. Use the tabs below to find recom
         - **iOS:** [nRF Device Firmware Update](https://apps.apple.com/us/app/nrf-device-firmware-update/id1624454660)
         - **Android:** [nRF Connect](https://github.com/nordicsemi/Android-nRF-Connect)
 
-        Download the firmware `.zip` (not `.bin`) from the [MeshCore Web Flasher](https://flasher.meshcore.co.uk) and follow the in-app instructions to perform the update.
+        Download the firmware `.zip` (not `.bin`) from the [MeshCore Web Flasher](https://flasher.meshcore.io) and follow the in-app instructions to perform the update.
 
     !!! warning "Choose the right `.bin` file"
-        Always download the **un-merged** `.bin` from the [MeshCore Web Flasher](https://flasher.meshcore.co.uk) for OTA updates — this updates only the firmware and preserves your settings. Only use the **merged** `.bin` if you intend to fully erase the device and start fresh.
+        Always download the **un-merged** `.bin` from the [MeshCore Web Flasher](https://flasher.meshcore.io) for OTA updates — this updates only the firmware and preserves your settings. Only use the **merged** `.bin` if you intend to fully erase the device and start fresh.
 
     #### Step 1 — Start OTA mode
 
