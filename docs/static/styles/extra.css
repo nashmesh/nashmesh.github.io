@@ -1949,6 +1949,49 @@ body[data-theme="light"] .map-filter-dot-all {
   margin-top: 0.5rem;
 }
 
+/* ── Node sort bar ───────────────────────────────────────── */
+
+.node-sort-bar {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.node-sort-btn {
+  flex: 1;
+  padding: 0.25rem 0;
+  font-size: 0.75rem;
+  border: 1px solid #1e3a52;
+  border-radius: 4px;
+  background: transparent;
+  color: #7aaac8;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.node-sort-btn:hover {
+  background: rgba(77, 166, 255, 0.08);
+  border-color: #2a5a7a;
+  color: #c8dff0;
+}
+
+.node-sort-btn.active {
+  background: rgba(77, 166, 255, 0.12);
+  border-color: #4da6ff;
+  color: #e0f0ff;
+}
+
+body[data-theme="light"] .node-sort-btn {
+  border-color: #c0d4e8;
+  color: #4a7aaa;
+}
+
+body[data-theme="light"] .node-sort-btn.active {
+  background: rgba(46, 109, 164, 0.12);
+  border-color: #2e6da4;
+  color: #0a2a4a;
+}
+
 /* ── Node list ───────────────────────────────────────────── */
 
 #node-list-container {

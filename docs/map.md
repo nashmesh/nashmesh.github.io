@@ -31,6 +31,10 @@ Map of active NashMesh nodes. Data is pulled from [Potato Map](https://potato.na
 <div class="map-layout">
   <div id="node-list-container">
     <input id="node-search" type="text" placeholder="Search nodes…" autocomplete="off">
+    <div class="node-sort-bar">
+      <button class="node-sort-btn active" data-sort="lastseen">Recent</button>
+      <button class="node-sort-btn" data-sort="alpha">A–Z</button>
+    </div>
     <ul id="node-list"></ul>
   </div>
   <div class="map-canvas-wrap">

@@ -26,6 +26,23 @@
     var markers = [];
     var allNodes = [];
     var activeFilter = 'all';
+    var activeSort = 'lastseen';
+
+    function sortNodes() {
+        if (activeSort === 'lastseen') {
+            allNodes.sort(function (a, b) {
+                var at = a.node.last_seen_iso ? new Date(a.node.last_seen_iso).getTime() : 0;
+                var bt = b.node.last_seen_iso ? new Date(b.node.last_seen_iso).getTime() : 0;
+                return bt - at;
+            });
+        } else {
+            allNodes.sort(function (a, b) {
+                var an = a.node.long_name || a.node.short_name || '';
+                var bn = b.node.long_name || b.node.short_name || '';
+                return an.localeCompare(bn);
+            });
+        }
+    }
 
     function applyFilter() {
         var q = (document.getElementById('node-search') || {}).value || '';
@@ -93,6 +110,17 @@
         });
     });
 
+    document.querySelectorAll('.node-sort-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.node-sort-btn').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            activeSort = btn.getAttribute('data-sort');
+            sortNodes();
+            renderList();
+            applyFilter();
+        });
+    });
+
     map.whenReady(function () {
         map.invalidateSize();
 
@@ -138,12 +166,7 @@
                     plotted++;
                 });
 
-                // Sort alphabetically
-                allNodes.sort(function (a, b) {
-                    var an = a.node.long_name || a.node.short_name || '';
-                    var bn = b.node.long_name || b.node.short_name || '';
-                    return an.localeCompare(bn);
-                });
+                sortNodes();
 
                 renderList();
                 applyFilter();
