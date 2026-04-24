@@ -16,6 +16,11 @@
 
     function fitLayout() {
         if (!layout) return;
+        if (window.innerWidth < 768) {
+            layout.style.height = '';
+            map && map.invalidateSize();
+            return;
+        }
         var top = layout.getBoundingClientRect().top + window.scrollY;
         var footer = document.getElementById('component-footer');
         var footerH = footer ? footer.offsetHeight : 0;
@@ -93,9 +98,12 @@
                 ? '../static/images/meshcore-logo.png'
                 : '../static/images/meshtastic-logo.svg';
             var lastSeen = item.node.last_seen_iso ? timeAgo(item.node.last_seen_iso) : '';
+            var role = item.node.role ? item.node.role.replace(/_/g, ' ') : '';
             li.innerHTML = '<img src="' + logoSrc + '" class="node-list-logo" alt="">' +
-                '<span class="node-list-name">' +
-                (item.node.long_name || item.node.short_name || item.node.node_id) + '</span>' +
+                '<span class="node-list-info">' +
+                  '<span class="node-list-name">' + (item.node.long_name || item.node.short_name || item.node.node_id) + '</span>' +
+                  (role ? '<span class="node-list-role">' + role + '</span>' : '') +
+                '</span>' +
                 '<span class="node-list-meta">' +
                 (lastSeen ? '<span class="node-list-lastseen">' + lastSeen + '</span>' : '') +
                 '</span>';

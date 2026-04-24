@@ -43,6 +43,6 @@ Map of active NashMesh nodes. Data is pulled from [Potato Map](https://potato.na
   </div>
   <div class="map-canvas-wrap">
     <div id="potato-map-canvas"></div>
-    <p id="potato-map-status"></p><small>Data provided by <a href="https://potato.nasme.sh">Potato</a></small>
+    <p id="potato-map-status"></p><small>Data provided by <a href="https://potato.nashme.sh">Potato</a></small>
   </div>
 </div>

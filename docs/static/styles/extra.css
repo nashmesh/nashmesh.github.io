@@ -2059,7 +2059,7 @@ body[data-theme="light"] .node-sort-btn.active {
 /* ── Node list ───────────────────────────────────────────── */
 
 #node-list-container {
-  width: 260px;
+  width: 320px;
   flex-shrink: 0;
   box-sizing: border-box;
   display: flex;
@@ -2120,13 +2120,29 @@ body[data-theme="light"] .node-sort-btn.active {
   object-fit: contain;
 }
 
+.node-list-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .node-list-name {
   font-size: 0.8rem;
-  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   color: #c8dff0;
+}
+
+.node-list-role {
+  font-size: 0.68rem;
+  opacity: 0.5;
+  color: #c8dff0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
 }
 
 .node-list-meta {
@@ -2144,7 +2160,8 @@ body[data-theme="light"] .node-sort-btn.active {
   white-space: nowrap;
 }
 
-body[data-theme="light"] .node-list-name {
+body[data-theme="light"] .node-list-name,
+body[data-theme="light"] .node-list-role {
   color: #1a3a5c;
 }
 
