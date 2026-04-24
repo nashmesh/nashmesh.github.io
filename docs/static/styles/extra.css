@@ -2024,6 +2024,13 @@ body[data-theme="light"] .map-control-label {
   color: #d0eaff;
 }
 
+/* Center + Refresh button group */
+.map-action-group {
+  display: flex;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
 /* Refresh button */
 .map-refresh-btn {
   display: inline-flex;
@@ -2038,7 +2045,6 @@ body[data-theme="light"] .map-control-label {
   font-size: 0.8rem;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
-  margin-left: auto;
 }
 
 .map-refresh-btn:hover:not(:disabled) {
@@ -2354,6 +2360,10 @@ body[data-theme="light"] .node-list-item:hover {
 
   #node-list {
     max-height: 40vh;
+  }
+
+  .map-action-group {
+    margin-left: 0;
   }
 
   body[data-theme="light"] #node-list-container {
