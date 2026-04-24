@@ -6,9 +6,11 @@ site_description: Connecting the Greater Nashville area over Mesh!
 nav:
   - Home: index.md
   - Getting Started:
-    - MeshCore: getting-started/meshcore.md
-    - Meshtastic: getting-started/meshtastic.md
-    - MQTT: mqtt.md
+    - Choosing a Device: getting-started/devices.md
+    - Choosing a Platform: getting-started/platforms.md
+    - MeshCore Setup: getting-started/meshcore.md
+    - Meshtastic Setup: getting-started/meshtastic.md
+    - Setting up MQTT: mqtt.md
   - Network Map: map.md
   - Posts: posts.md
   - Resources:
