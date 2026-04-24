@@ -169,17 +169,29 @@ function buildMap(nodes) {
         const location = node['location'];
 
         if (location !== undefined) {
-            let config = {
-                color: '#67EA94',
-                fillColor: '#67EA9488',
-                fillOpacity: 100
-            }
-
+            const color = node.isMeshcore ? '#4da6ff' : '#67ea94';
+            const fillColor = node.isMeshcore ? '#4da6ff88' : '#67ea9488';
             nodeLayerMap.addLayer(
-                L.circle([location['latitude'], location['longitude']], circleSize, config).bindPopup(node['name'])
-            )
+                L.circle([location['latitude'], location['longitude']], circleSize, {
+                    color,
+                    fillColor,
+                    fillOpacity: 0.9,
+                    weight: 2
+                }).bindPopup(node['name'])
+            );
         }
-    })
+    });
+
+    // Legend
+    const legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function () {
+        const div = L.DomUtil.create('div', 'homepage-map-legend');
+        div.innerHTML =
+            '<span class="hml-item"><span class="hml-dot hml-meshtastic"></span>Meshtastic</span>' +
+            '<span class="hml-item"><span class="hml-dot hml-meshcore"></span>MeshCore</span>';
+        return div;
+    };
+    legend.addTo(map);
 
     const heatLayer = new HeatmapOverlay({
         radius: 45,
@@ -286,14 +298,38 @@ function handleNodePageResizing() {
     }
 }
 
+async function fetchPotatoNodes() {
+    const fourDaysMs = 4 * 24 * 60 * 60 * 1000;
+    const response = await fetch('https://potato.nashme.sh/api/nodes?limit=10000');
+    if (!response.ok) throw new Error('Failed to load potato nodes');
+    const nodes = await response.json();
+    return nodes
+        .filter((n) => n.latitude && n.longitude)
+        .filter((n) => !n.last_seen_iso || (Date.now() - new Date(n.last_seen_iso).getTime()) <= fourDaysMs)
+        .map((n) => ({
+            name: n.long_name || n.short_name || n.node_id || 'Unknown',
+            connections: n.snr != null ? Math.max(n.snr + 20, 1) : 1,
+            isMeshcore: n.protocol && n.protocol.toLowerCase().includes('meshcore'),
+            location: { latitude: n.latitude, longitude: n.longitude }
+        }));
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Fetch node information from Malla
-    fetchNodePageInformation().then((nodes) => {
-        buildMap(nodes);
-        buildNodesInformation(nodes);
-        buildNodesMap(nodes);
-        handleNodePageResizing();
-    });
+    // Homepage map — fed from Potato (last 4 days only)
+    if (document.getElementById('homepage-map-canvas')) {
+        fetchPotatoNodes().then((nodes) => {
+            buildMap(nodes);
+        }).catch((err) => console.error('potato:', err));
+    }
+
+    // Nodes page — fed from Malla
+    if (document.getElementById('node-map-canvas') || document.getElementById('nodes-table-body')) {
+        fetchNodePageInformation().then((nodes) => {
+            buildNodesInformation(nodes);
+            buildNodesMap(nodes);
+            handleNodePageResizing();
+        });
+    }
 
     $(window).on('resize', function () {
         handleNodePageResizing();

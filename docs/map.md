@@ -14,6 +14,7 @@ Map of active NashMesh nodes. Data is pulled from [Potato Map](https://potato.na
       <button class="map-filter-btn map-filter-meshtastic" data-filter="meshtastic"><img src="../static/images/meshtastic-logo.svg" class="map-filter-logo" alt=""><span class="map-filter-dot map-filter-dot-meshtastic"></span>Meshtastic</button>
       <button class="map-filter-btn map-filter-meshcore" data-filter="meshcore"><img src="../static/images/meshcore-logo.png" class="map-filter-logo" alt=""><span class="map-filter-dot map-filter-dot-meshcore"></span>MeshCore</button>
     </div>
+    <button id="map-center-btn" class="map-refresh-btn">⊕ Center</button>
     <button id="map-refresh-btn" class="map-refresh-btn" disabled>↻ Refresh</button>
   </div>
   <div class="map-stats">

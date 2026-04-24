@@ -32,8 +32,8 @@
     window.addEventListener('resize', fitLayout);
 
     var map = L.map('potato-map-canvas', {
-        center: [36.167567, -86.785401],
-        zoom: 9,
+        center: defaultCenter,
+        zoom: defaultZoom,
         maxZoom: 16
     });
 
@@ -142,6 +142,16 @@
             applyFilter();
         });
     });
+
+    var defaultCenter = [36.167567, -86.785401];
+    var defaultZoom = 9;
+
+    var centerBtn = document.getElementById('map-center-btn');
+    if (centerBtn) {
+        centerBtn.addEventListener('click', function () {
+            map.setView(defaultCenter, defaultZoom);
+        });
+    }
 
     var lastRefresh = 0;
     var cooldownMs = 15000;

@@ -1761,6 +1761,51 @@ header:first-of-type {
   border-radius: 4px;
 }
 
+/* ── Homepage map legend ─────────────────────────────────── */
+
+.homepage-map-legend {
+  background: rgba(10, 20, 35, 0.85);
+  border: 1px solid #1e3a52;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  color: #c8dff0;
+  backdrop-filter: blur(4px);
+}
+
+.hml-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hml-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid;
+  flex-shrink: 0;
+}
+
+.hml-meshtastic {
+  background: rgba(103, 234, 148, 0.5);
+  border-color: #67ea94;
+}
+
+.hml-meshcore {
+  background: rgba(77, 166, 255, 0.5);
+  border-color: #4da6ff;
+}
+
+body[data-theme="light"] .homepage-map-legend {
+  background: rgba(240, 248, 255, 0.9);
+  border-color: #c0d4e8;
+  color: #1a3a5c;
+}
+
 /* ── Leaflet dark theme overrides ───────────────────────── */
 
 .leaflet-bar a {
