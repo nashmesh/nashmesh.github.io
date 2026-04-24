@@ -1537,11 +1537,11 @@ html {
 }
 
 body[data-theme="light"] .sidebar .nav-link {
-  color: #1a3a5c !important;
+  color: #000000 !important;
 }
 
 body[data-theme="light"] .sidebar .nav-link:hover {
-  color: #0f2540 !important;
+  color: #333333 !important;
 }
 
 .sidebar .nav-item[data-bs-level="1"] .nav-link {
@@ -1651,7 +1651,7 @@ body[data-theme="light"] .sidebar .nav-link:hover {
   }
 
   body[data-theme="light"] .mobile-toc-body .nav-link {
-    color: #1a3a5c !important;
+    color: #000000 !important;
   }
 
   .mobile-toc-body .nav-item[data-bs-level="2"] .nav-link {
