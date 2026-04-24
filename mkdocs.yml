@@ -11,13 +11,13 @@ nav:
     - MQTT: mqtt.md
   - Network Map: map.md
   - Posts: posts.md
-  - Fundraising: fundraising.md
   - Resources:
     - Meshtastic Nodes: nodes.md
     - Malla: https://malla.nashme.sh
     - Potato Map: https://potato.nashme.sh
     - MeshCore Analyzer: https://analyzer.nashme.sh
   # - Affiliate Links: affiliate.md
+  - Fundraising: fundraising.md
   - Discord: https://discord.gg/sSS8gEpuh8
 
 # Theming

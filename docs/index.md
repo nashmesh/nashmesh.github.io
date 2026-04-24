@@ -32,12 +32,3 @@ Have a node but not sure how to set it up? Check out our [getting started](getti
 A top-level view of this map provides a heat signature for any active nodes in the area. Zoom in to show where nodes are available.
 <div id="homepage-map-canvas" style="width: 100%; height: 50vh; z-index: 1; border-radius: 6px"></div>
 
-## Resources
-<div class="resource-links">
-  <a class="resource-btn" href="https://discord.gg/sSS8gEpuh8" target="_blank">Discord</a>
-  <a class="resource-btn" href="https://malla.nashme.sh" target="_blank">Malla</a>
-  <a class="resource-btn" href="https://potato.nashme.sh" target="_blank">Potato Map</a>
-  <a class="resource-btn" href="https://analyzer.nashme.sh" target="_blank">MeshCore Analyzer</a>
-  <a class="resource-btn" href="https://bna.meshmapper.net" target="_blank">MeshMapper</a>
-</div>
-
