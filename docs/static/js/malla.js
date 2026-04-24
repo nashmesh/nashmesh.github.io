@@ -239,27 +239,22 @@ function buildNodesMap(nodes) {
 
     nodes.forEach((node) => {
         const location = node['location'];
+        if (location === undefined) return;
 
-        if (location !== undefined) {
-            let config = {}
+        const isInfra = node.node?.is_infrastructure_node === 1;
+        const color = isInfra ? '#ff4444' : '#67ea94';
+        const fillColor = isInfra ? '#ff444488' : '#67ea9488';
 
-            if (node.node?.is_infrastructure_node === 1) {
-                config['icon'] = L.icon({
-                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-                    iconSize: [25, 41],
-                    iconAnchor: [12, 41],
-                    popupAnchor: [1, -34],
-                    shadowSize: [41, 41]
-                });
-                config['zIndexOffset'] = 1000;
-
-            }
-
-            nodeLayerMap.addLayer(
-                L.marker([location['latitude'], location['longitude']], config).bindPopup(node['name'])
-            )
-        }
-    })
+        nodeLayerMap.addLayer(
+            L.circleMarker([location['latitude'], location['longitude']], {
+                radius: 7,
+                color: color,
+                fillColor: fillColor,
+                fillOpacity: 0.9,
+                weight: 2
+            }).bindPopup(node['name'])
+        );
+    });
 
     map.addLayer(nodeLayerMap);
 }

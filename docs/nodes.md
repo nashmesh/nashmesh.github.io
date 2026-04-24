@@ -2,11 +2,6 @@
 template: base_no_sidebar.html
 ---
 # Meshtastic Nodes
-<div style="padding: 10px">
-    <div id="node-map-canvas" style="width: 100%; height: 40vh">
-        Loading Map...
-    </div>
-</div>
 
 <div style="padding: 10px">
     <div class="stats-container">
@@ -23,7 +18,7 @@ template: base_no_sidebar.html
 
 Nodes displayed have an average SNR of ≥ -50dB or more over a 5 day period. Data for this table is pulled from [here](https://malla.nashme.sh/traceroute-graph).
 
-Infrastructure nodes are shaded as <span style="color: steelblue">blue</span> on the table and <span style="color: red">red</span> on the map.
+Infrastructure nodes are shaded as <span style="color: steelblue">blue</span> on the table.
 
 <hr />
 <span id="resize-information"></span>
