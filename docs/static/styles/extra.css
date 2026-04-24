@@ -1835,8 +1835,38 @@ body[data-theme="light"] .map-stat-label {
 
 .map-controls {
   display: flex;
-  gap: 0.4rem;
+  align-items: center;
+  gap: 0.75rem;
   flex-wrap: wrap;
+}
+
+.map-control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid #1e3a52;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+}
+
+.map-control-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #4a7aaa;
+  padding-right: 0.25rem;
+  border-right: 1px solid #1e3a52;
+  margin-right: 0.1rem;
+  white-space: nowrap;
+}
+
+body[data-theme="light"] .map-control-group {
+  border-color: #c0d4e8;
+}
+
+body[data-theme="light"] .map-control-label {
+  color: #6a9ac0;
+  border-right-color: #c0d4e8;
 }
 
 .map-filter-btn {
