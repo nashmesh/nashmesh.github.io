@@ -6,7 +6,7 @@ site_description: Connecting the Greater Nashville area over Mesh!
 nav:
   - Home: index.md
   - Getting Started:
-    - Choosing a Device: getting-started/devices.md
+    # - Choosing a Device: getting-started/devices.md
     - Choosing a Platform: getting-started/platforms.md
     - MeshCore Setup: getting-started/meshcore.md
     - Meshtastic Setup: getting-started/meshtastic.md
