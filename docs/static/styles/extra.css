@@ -1528,12 +1528,20 @@ html {
 .sidebar .nav-link {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #c8dff0 !important;
+  color: #ffffff !important;
   opacity: 1 !important;
 }
 
 .sidebar .nav-link:hover {
-  color: #ffffff !important;
+  color: #a8d4f5 !important;
+}
+
+body[data-theme="light"] .sidebar .nav-link {
+  color: #1a3a5c !important;
+}
+
+body[data-theme="light"] .sidebar .nav-link:hover {
+  color: #0f2540 !important;
 }
 
 .sidebar .nav-item[data-bs-level="1"] .nav-link {
@@ -1638,8 +1646,12 @@ html {
   .mobile-toc-body .nav-link {
     padding: 0.4rem 1rem;
     font-size: 0.9rem;
-    color: #c8dff0 !important;
+    color: #ffffff !important;
     opacity: 1 !important;
+  }
+
+  body[data-theme="light"] .mobile-toc-body .nav-link {
+    color: #1a3a5c !important;
   }
 
   .mobile-toc-body .nav-item[data-bs-level="2"] .nav-link {
