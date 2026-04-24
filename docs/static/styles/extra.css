@@ -1965,11 +1965,14 @@ body[data-theme="light"] .map-filter-dot-all {
 .map-canvas-wrap {
   flex: 1 1 0;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 #potato-map-canvas {
   width: 100%;
-  height: 75vh;
+  flex: 1;
+  min-height: 0;
   z-index: 1;
   border-radius: 6px;
 }
@@ -2063,7 +2066,7 @@ body[data-theme="light"] .node-sort-btn.active {
   margin: 0;
   flex: 1;
   overflow-y: auto;
-  max-height: 75vh;
+  min-height: 0;
 }
 
 .node-list-item {
@@ -2159,6 +2162,7 @@ body[data-theme="light"] .node-list-item:hover {
 
   #potato-map-canvas {
     height: 50vh;
+    flex: none;
   }
 
   #node-list {

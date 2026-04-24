@@ -12,6 +12,20 @@
         return Math.floor(diff / 86400) + 'd ago';
     }
 
+    var layout = document.querySelector('.map-layout');
+
+    function fitLayout() {
+        if (!layout) return;
+        var top = layout.getBoundingClientRect().top + window.scrollY;
+        var footer = document.getElementById('component-footer');
+        var footerH = footer ? footer.offsetHeight : 0;
+        var height = window.innerHeight - top - footerH;
+        layout.style.height = Math.max(height, 300) + 'px';
+        map && map.invalidateSize();
+    }
+
+    window.addEventListener('resize', fitLayout);
+
     var map = L.map('potato-map-canvas', {
         center: [36.167567, -86.785401],
         zoom: 9,
@@ -218,6 +232,7 @@
     }
 
     map.whenReady(function () {
+        fitLayout();
         map.invalidateSize();
         loadNodes();
         startCooldown();
