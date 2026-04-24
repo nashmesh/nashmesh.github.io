@@ -121,8 +121,17 @@
         });
     });
 
-    map.whenReady(function () {
-        map.invalidateSize();
+    var lastRefresh = 0;
+    var cooldownMs = 15000;
+    var refreshBtn = document.getElementById('map-refresh-btn');
+
+    function loadNodes() {
+        if (status) status.textContent = 'Loading…';
+
+        // Clear existing markers and node list
+        markers.forEach(function (m) { map.removeLayer(m); });
+        markers.length = 0;
+        allNodes.length = 0;
 
         fetch('https://potato.nashme.sh/api/nodes?limit=10000')
             .then(function (r) { return r.json(); })
@@ -167,7 +176,6 @@
                 });
 
                 sortNodes();
-
                 renderList();
                 applyFilter();
                 if (status) status.textContent = plotted + ' nodes plotted.';
@@ -183,5 +191,35 @@
                 if (status) status.textContent = 'Failed to load node data.';
                 console.error('node-map:', err);
             });
+    }
+
+    function startCooldown() {
+        if (!refreshBtn) return;
+        lastRefresh = Date.now();
+        refreshBtn.disabled = true;
+        var interval = setInterval(function () {
+            var remaining = Math.ceil((cooldownMs - (Date.now() - lastRefresh)) / 1000);
+            if (remaining <= 0) {
+                clearInterval(interval);
+                refreshBtn.disabled = false;
+                refreshBtn.textContent = '↻ Refresh';
+            } else {
+                refreshBtn.textContent = '↻ ' + remaining + 's';
+            }
+        }, 250);
+    }
+
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', function () {
+            if (Date.now() - lastRefresh < cooldownMs) return;
+            loadNodes();
+            startCooldown();
+        });
+    }
+
+    map.whenReady(function () {
+        map.invalidateSize();
+        loadNodes();
+        startCooldown();
     });
 })();
