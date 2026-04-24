@@ -1922,15 +1922,44 @@ body[data-theme="light"] .map-filter-dot-all {
   background: rgba(128, 128, 128, 0.3);
 }
 
-/* ── Node list sidebar ──────────────────────────────────── */
+/* ── Map two-column layout ───────────────────────────────── */
+
+.map-layout {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: stretch;
+}
+
+.map-canvas-wrap {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+#potato-map-canvas {
+  width: 100%;
+  height: 75vh;
+  z-index: 1;
+  border-radius: 6px;
+}
+
+#potato-map-status {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin-top: 0.5rem;
+}
+
+/* ── Node list ───────────────────────────────────────────── */
 
 #node-list-container {
-  width: 100%;
+  width: 260px;
+  flex-shrink: 0;
   box-sizing: border-box;
-  overflow: hidden;
-  margin-top: 1.25rem;
-  padding: 1rem 0.75rem 0;
-  border-top: 1px solid #1e3a52;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-right: 1px solid #1e3a52;
+  padding-right: 1rem;
 }
 
 #node-search {
@@ -1958,8 +1987,9 @@ body[data-theme="light"] .map-filter-dot-all {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 55vh;
+  flex: 1;
   overflow-y: auto;
+  max-height: 75vh;
 }
 
 .node-list-item {
@@ -2027,22 +2057,42 @@ body[data-theme="light"] #node-search::placeholder {
 }
 
 body[data-theme="light"] #node-list-container {
-  border-top-color: #c0d4e8;
+  border-right-color: #c0d4e8;
 }
 
 body[data-theme="light"] .node-list-item:hover {
   background: rgba(46, 109, 164, 0.07);
 }
 
-/* Mobile: show below map, full width */
+/* Mobile: stack vertically, map first then list */
 @media only screen and (max-width: 767px) {
+  .map-layout {
+    flex-direction: column;
+  }
+
   #node-list-container {
-    margin-top: 1rem;
-    border-top: none;
-    padding: 0;
+    width: 100%;
+    border-right: none;
+    border-top: 1px solid #1e3a52;
+    padding-right: 0;
+    padding-top: 1rem;
+    order: 2;
+  }
+
+  .map-canvas-wrap {
+    order: 1;
+  }
+
+  #potato-map-canvas {
+    height: 50vh;
   }
 
   #node-list {
     max-height: 40vh;
+  }
+
+  body[data-theme="light"] #node-list-container {
+    border-top-color: #c0d4e8;
+    border-right: none;
   }
 }

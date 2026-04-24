@@ -12,32 +12,6 @@
         return Math.floor(diff / 86400) + 'd ago';
     }
 
-    // Move node list between sidebar (desktop) and content (mobile) on load and resize
-    var nodeListContainer = document.getElementById('node-list-container');
-    var sidebar = document.querySelector('.sidebar.navbar-collapse');
-    var contentAnchor = document.getElementById('potato-map-status');
-
-    function placeNodeList() {
-        if (!nodeListContainer || !sidebar || !contentAnchor) return;
-        if (window.innerWidth >= 768) {
-            if (nodeListContainer.parentNode !== sidebar) {
-                sidebar.appendChild(nodeListContainer);
-            }
-        } else {
-            if (nodeListContainer.parentNode !== contentAnchor.parentNode) {
-                contentAnchor.parentNode.insertBefore(nodeListContainer, contentAnchor.nextSibling);
-            }
-        }
-    }
-
-    placeNodeList();
-
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(placeNodeList, 100);
-    });
-
     var map = L.map('potato-map-canvas', {
         center: [36.167567, -86.785401],
         zoom: 9,

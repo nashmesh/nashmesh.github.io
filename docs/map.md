@@ -1,6 +1,10 @@
+---
+template: base_no_sidebar.html
+---
+<!--
 # Node Map
 
-Map of active NashMesh nodes. Data is pulled from [Potato Map](https://potato.nashme.sh). Only nodes seen within the last 4 days are shown.
+Map of active NashMesh nodes. Data is pulled from [Potato Map](https://potato.nashme.sh). Only nodes seen within the last 4 days are shown. -->
 
 <div class="map-toolbar">
   <div class="map-controls">
@@ -24,12 +28,13 @@ Map of active NashMesh nodes. Data is pulled from [Potato Map](https://potato.na
   </div>
 </div>
 
-<div id="potato-map-canvas" style="width: 100%; height: 65vh; z-index: 1; border-radius: 6px; margin-top: 1rem;"></div>
-
-<p id="potato-map-status" style="font-size: 0.85rem; opacity: 0.6; margin-top: 0.5rem;"></p>
-
-<div id="node-list-container">
-  <input id="node-search" type="text" placeholder="Search nodes…" autocomplete="off">
-  <ul id="node-list"></ul>
+<div class="map-layout">
+  <div id="node-list-container">
+    <input id="node-search" type="text" placeholder="Search nodes…" autocomplete="off">
+    <ul id="node-list"></ul>
+  </div>
+  <div class="map-canvas-wrap">
+    <div id="potato-map-canvas"></div>
+    <p id="potato-map-status"></p><small>Data provided by <a href="https://potato.nasme.sh">Potato</a></small>
+  </div>
 </div>
-
