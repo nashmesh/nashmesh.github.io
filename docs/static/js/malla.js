@@ -1,4 +1,4 @@
-let mallaURL = "https://malla.tnmesh.org";
+let mallaURL = "https://malla.nashme.sh";
 
 async function fetchInfrastructureNodesByRegion() {
     const response = await fetch(`${mallaURL}/api/infrastructure-nodes/by-region`);
@@ -169,17 +169,29 @@ function buildMap(nodes) {
         const location = node['location'];
 
         if (location !== undefined) {
-            let config = {
-                color: '#67EA94',
-                fillColor: '#67EA9488',
-                fillOpacity: 100
-            }
-
+            const color = node.isMeshcore ? '#4da6ff' : '#67ea94';
+            const fillColor = node.isMeshcore ? '#4da6ff88' : '#67ea9488';
             nodeLayerMap.addLayer(
-                L.circle([location['latitude'], location['longitude']], circleSize, config).bindPopup(node['name'])
-            )
+                L.circle([location['latitude'], location['longitude']], circleSize, {
+                    color,
+                    fillColor,
+                    fillOpacity: 0.9,
+                    weight: 2
+                }).bindPopup(node['name'])
+            );
         }
-    })
+    });
+
+    // Legend
+    const legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function () {
+        const div = L.DomUtil.create('div', 'homepage-map-legend');
+        div.innerHTML =
+            '<span class="hml-item"><span class="hml-dot hml-meshtastic"></span>Meshtastic</span>' +
+            '<span class="hml-item"><span class="hml-dot hml-meshcore"></span>MeshCore</span>';
+        return div;
+    };
+    legend.addTo(map);
 
     const heatLayer = new HeatmapOverlay({
         radius: 45,
@@ -239,27 +251,22 @@ function buildNodesMap(nodes) {
 
     nodes.forEach((node) => {
         const location = node['location'];
+        if (location === undefined) return;
 
-        if (location !== undefined) {
-            let config = {}
+        const isInfra = node.node?.is_infrastructure_node === 1;
+        const color = isInfra ? '#ff4444' : '#67ea94';
+        const fillColor = isInfra ? '#ff444488' : '#67ea9488';
 
-            if (node.node?.is_infrastructure_node === 1) {
-                config['icon'] = L.icon({
-                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-                    iconSize: [25, 41],
-                    iconAnchor: [12, 41],
-                    popupAnchor: [1, -34],
-                    shadowSize: [41, 41]
-                });
-                config['zIndexOffset'] = 1000;
-
-            }
-
-            nodeLayerMap.addLayer(
-                L.marker([location['latitude'], location['longitude']], config).bindPopup(node['name'])
-            )
-        }
-    })
+        nodeLayerMap.addLayer(
+            L.circleMarker([location['latitude'], location['longitude']], {
+                radius: 7,
+                color: color,
+                fillColor: fillColor,
+                fillOpacity: 0.9,
+                weight: 2
+            }).bindPopup(node['name'])
+        );
+    });
 
     map.addLayer(nodeLayerMap);
 }
@@ -291,14 +298,38 @@ function handleNodePageResizing() {
     }
 }
 
+async function fetchPotatoNodes() {
+    const fourDaysMs = 4 * 24 * 60 * 60 * 1000;
+    const response = await fetch('https://potato.nashme.sh/api/nodes?limit=10000');
+    if (!response.ok) throw new Error('Failed to load potato nodes');
+    const nodes = await response.json();
+    return nodes
+        .filter((n) => n.latitude && n.longitude)
+        .filter((n) => !n.last_seen_iso || (Date.now() - new Date(n.last_seen_iso).getTime()) <= fourDaysMs)
+        .map((n) => ({
+            name: n.long_name || n.short_name || n.node_id || 'Unknown',
+            connections: n.snr != null ? Math.max(n.snr + 20, 1) : 1,
+            isMeshcore: n.protocol && n.protocol.toLowerCase().includes('meshcore'),
+            location: { latitude: n.latitude, longitude: n.longitude }
+        }));
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Fetch node information from Malla
-    fetchNodePageInformation().then((nodes) => {
-        buildMap(nodes);
-        buildNodesInformation(nodes);
-        buildNodesMap(nodes);
-        handleNodePageResizing();
-    });
+    // Homepage map — fed from Potato (last 4 days only)
+    if (document.getElementById('homepage-map-canvas')) {
+        fetchPotatoNodes().then((nodes) => {
+            buildMap(nodes);
+        }).catch((err) => console.error('potato:', err));
+    }
+
+    // Nodes page — fed from Malla
+    if (document.getElementById('node-map-canvas') || document.getElementById('nodes-table-body')) {
+        fetchNodePageInformation().then((nodes) => {
+            buildNodesInformation(nodes);
+            buildNodesMap(nodes);
+            handleNodePageResizing();
+        });
+    }
 
     $(window).on('resize', function () {
         handleNodePageResizing();

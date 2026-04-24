@@ -5,12 +5,19 @@ site_description: Connecting the Greater Nashville area over Mesh!
 # Navigation
 nav:
   - Home: index.md
-  - Getting Started: getting-started.md
-  - MQTT: mqtt.md
-  - Nodes: nodes.md
+  - Getting Started:
+    - MeshCore: getting-started/meshcore.md
+    - Meshtastic: getting-started/meshtastic.md
+    - MQTT: mqtt.md
+  - Network Map: map.md
   - Posts: posts.md
-  - Fundraising: fundraising.md
+  - Resources:
+    - Meshtastic Nodes: nodes.md
+    - Malla: https://malla.nashme.sh
+    - Potato Map: https://potato.nashme.sh
+    - MeshCore Analyzer: https://analyzer.nashme.sh
   # - Affiliate Links: affiliate.md
+  - Fundraising: fundraising.md
   - Discord: https://discord.gg/sSS8gEpuh8
 
 # Theming
@@ -78,10 +85,10 @@ markdown_extensions:
 
 extra_css:
   - static/styles/statistics.css
+  - https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
   - static/styles/leaflet.css
   - static/styles/extra.css
   - static/styles/link-embeds.css
-  - https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
 
 extra_javascript:
   - static/js/jquery.js
@@ -90,6 +97,7 @@ extra_javascript:
   - static/js/leaflet.js
   - static/js/heatmap.js
   - static/js/leaflet-heatmap.js
+  - static/js/node-map.js
 
 extra:
   social:

@@ -1,0 +1,58 @@
+<!doctype html>
+<html data-bs-theme="{{ config.theme.theme_style }}">
+    <head>
+        <title>404 - {{ config.site_name }}</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% if config.theme.favicon %}
+            <link rel="icon" type="image/x-icon" href="{{ config.theme.favicon|url }}">
+        {% else %}
+            <link rel="icon" type="image/x-icon" href="{{ 'assets/img/favicon.ico'|url }}">
+        {% endif %}
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+        <link rel="stylesheet" href="{{ 'assets/css/bootstrap.min.css'|url }}">
+        <link rel="stylesheet" href="{{ 'assets/css/root.min.css'|url }}">
+        <link rel="stylesheet" href="{{ 'assets/css/main.min.css'|url }}">
+        <link rel="stylesheet" href="{{ 'assets/css/media.min.css'|url }}">
+
+        {%- for path in extra_css %}
+            <link href="{{ path }}" rel="stylesheet">
+        {%- endfor %}
+
+        {%- for path in extra_javascript %}
+            <script src="{{ path }}"></script>
+        {%- endfor %}
+
+        {% if config.theme.theme_style == 'dark' %}
+            <style>
+                :root {
+                    --text: white;
+                    --title: white;
+                    --primary: white;
+                    --background: black;
+                }
+            </style>
+        {% endif %}
+    </head>
+
+    <body>
+        <div class="container py-3">
+            <header>
+                {% include "/modules/header.html" %}
+            </header>
+
+            <main>
+                <div class="not-found-page">
+                    <p class="not-found-code">404</p>
+                    <p class="not-found-msg">Node not found.</p>
+                    <a href="{{ '/'|url }}" class="not-found-home">← Back to home</a>
+                </div>
+            </main>
+
+            {% include "/modules/footer.html" %}
+        </div>
+    </body>
+</html>
