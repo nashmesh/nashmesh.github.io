@@ -1,4 +1,4 @@
-# Meshtastic
+<h1 class="page-title-with-logo"><img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">Meshtastic</h1>
 
 We have some sane default settings that we strongly recommend you follow.
 

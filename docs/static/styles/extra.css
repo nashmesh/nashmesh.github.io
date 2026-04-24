@@ -1689,6 +1689,20 @@ header:first-of-type {
   opacity: 0.85;
 }
 
+/* ── Page title with logo ───────────────────────────────── */
+
+.page-title-logo {
+  display: inline;
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 0.35em;
+  position: relative;
+  top: -0.1em;
+  border-radius: 4px;
+}
+
 /* ── Leaflet dark theme overrides ───────────────────────── */
 
 .leaflet-bar a {
