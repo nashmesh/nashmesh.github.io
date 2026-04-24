@@ -45,6 +45,16 @@
         maxZoom: 18
     }).addTo(map);
 
+    var legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function () {
+        var div = L.DomUtil.create('div', 'homepage-map-legend');
+        div.innerHTML =
+            '<span class="hml-item"><span class="hml-dot hml-meshtastic"></span>Meshtastic</span>' +
+            '<span class="hml-item"><span class="hml-dot hml-meshcore"></span>MeshCore</span>';
+        return div;
+    };
+    legend.addTo(map);
+
     var markers = [];
     var allNodes = [];
     var activeFilter = 'all';
