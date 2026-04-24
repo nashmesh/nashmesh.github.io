@@ -12,6 +12,9 @@
         return Math.floor(diff / 86400) + 'd ago';
     }
 
+    var defaultCenter = [36.167567, -86.785401];
+    var defaultZoom = 9;
+
     var layout = document.querySelector('.map-layout');
 
     function fitLayout() {
@@ -142,9 +145,6 @@
             applyFilter();
         });
     });
-
-    var defaultCenter = [36.167567, -86.785401];
-    var defaultZoom = 9;
 
     var centerBtn = document.getElementById('map-center-btn');
     if (centerBtn) {
