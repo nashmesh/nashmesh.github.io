@@ -10,7 +10,7 @@ We have many members of the community who like to run nodes for both Meshtastic 
 If you would like to see what nodes are in your area for each platform, check out our <a href="/map">network map</a>.
 
 ## <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">Meshtastic
-Meshtastic is the first platform that was setup in the Nashville metropolitan area. It uses LoRa (Long Range) radio modules to allow for communication with other radios that have direct line-of-sight.
+Meshtastic is the first platform that was setup in the Nashville metropolitan area. It uses LoRa (Long Range) radio-capable devices to allow for communication with other radios that have direct line-of-sight.
 
 The network is decentralized which allows for nodes to join and leave the network while other nodes continue to provide coverage for the area. Packets can be retransmitted across the network by other nodes to help extend the coverage of the network.
 
