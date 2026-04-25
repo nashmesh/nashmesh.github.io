@@ -46,14 +46,14 @@ If you're wanting to learn more about connecting to our Meshtastic network, chec
 ## <img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore
 MeshCore is the second platform that has been deployed as of January 2026 and is similar in many ways to Meshtastic. It's a decentralized and encrypted mesh network using LoRa technology, but it does handle things differently than Meshtastic for how the network topology is laid out and used.
 
-<h3 class="no-anchor">Features</h3>
+<h4 class="no-anchor">Features</h4>
 MeshCore works by relying on two types of nodes: Companions and Repeaters.
 
 * Companion nodes are similar to a Meshtastic node set-up to transmit user data and to receive data from other nodes. It may also act as a repeater if enabled.
 
 * Repeater nodes are used for one purpose only: to extend the coverage of the network by helping to route packets to their final destination. Repeater nodes are not like Meshtastic repeaters as they do not retransmit every packet they receieve.
 
-<h3 class="no-anchor">Usage</h3>
+<h4 class="no-anchor">Usage</h4>
 MeshCore has a maximum 64-hop limit for packets which is great for communication that extends beyond our region. Our current goal is to link up with the MeshCore network in East Tennessee and eventually across multiple states.
 
 If you're wanting to learn more about connecting to our MeshCore network, check out our <a href="/getting-started/meshcore">setup guide</a>.

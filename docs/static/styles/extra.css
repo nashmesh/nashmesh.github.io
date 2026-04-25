@@ -1457,8 +1457,14 @@ body[data-theme="retro"] .post h3 {
 
 .content-section {
   border-radius: 6px;
-  padding: 1rem 1.25rem 0.75rem;
+  padding: 0.5rem 1.25rem 0.75rem;
   margin: 0.75rem 0;
+}
+
+.content-section > h1:first-child,
+.content-section > h2:first-child,
+.content-section > h3:first-child {
+  margin-top: 0.35rem;
 }
 
 .content-section--a {
