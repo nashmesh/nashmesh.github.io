@@ -2376,11 +2376,12 @@ body[data-theme="light"] .node-list-item:hover {
 
 .yt-embed {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 28.125%; /* 16:9 at 50% width */
   height: 0;
   overflow: hidden;
   border-radius: 8px;
   margin: 1rem 0;
+  max-width: 50%;
 }
 
 .yt-embed iframe {

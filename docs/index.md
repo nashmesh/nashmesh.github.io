@@ -21,7 +21,11 @@ Our community supports two mesh networking platforms:
 - **[MeshCore](https://meshcore.io)** — an alternative mesh firmware focused on simplicity and interoperability, now active in the Nashville area.
 
 ### How Do I Get Started?
-If you're looking to build or buy a pre-built node, check out our [affiliate](affiliate.md) page where you can browse different pre-builds or componenets. Buying with one of our affiliate links also helps to support the network!
+If you've gotten the itch to give the mesh to try, check out the <a href="/getting-started/platforms/">platforms we support</a> to learn more.
+
+
+<!-- . check out first <a href="/getting-started/platforms/">what platform you would like to use</a>. There's no right or wrong platform as NashMesh suports both with well-placed infrastructure nodes.
+If you're looking to build or buy a pre-built node, check out our [affiliate](affiliate.md) page where you can browse different pre-builds or componenets. Buying with one of our affiliate links also helps to support the network! -->
 
 ### How Do I Get Involved?
 Feel free to jump into our [Discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
