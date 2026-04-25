@@ -18,7 +18,7 @@ The network is decentralized which allows for nodes to join and leave the networ
 
 Messages can be sent to a public or private channel, or to another user on the network. Packets are sent using AES-256 encryption to provide a layer of security when transmitting data across the network.
 
-##### Usage
+### Usage
 We've found Meshtastic to be great for ad-hoc communication as packets cannot go further than the maximum 7-hop limit the platform has.
 
 We use it to say "<i>ping... pong!</i>", receive updates on severe weather alerts, for communication during post-disaster events such as power/internet outages, and much more. We have many Meshtastic nodes in-use comprising of client-based users and the infrastructure that community members have deployed around the area.
@@ -48,7 +48,7 @@ MeshCore works by relying on two types of nodes: Companions and Repeaters.
 
 * Repeater nodes are used for one purpose only: to extend the coverage of the network by helping to route packets to their final destination. Repeater nodes are not like Meshtastic repeaters as they do not retransmit every packet they receieve.
 
-##### Usage
+### Usage
 MeshCore has a maximum 64-hop limit for packets which is great for communication that extends beyond our region. Our current goal is to link up with the MeshCore network in East Tennessee and eventually across multiple states.
 
 If you're wanting to learn more about connecting to our MeshCore network, check out our <a href="/getting-started/meshcore">setup guide</a>.
