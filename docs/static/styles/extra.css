@@ -44,6 +44,14 @@ body[data-theme="light"] .navbar-toggler-icon {
 	border-radius: 5px;
 }
 
+@media (min-width: 768px) {
+  #component-menu .nav-link {
+    font-size: 0.96rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+}
+
 .meetup-banner {
   display: flex;
   align-items: center;

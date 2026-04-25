@@ -1,4 +1,4 @@
-# What Do I Use?
+<h1 class="page-title-with-logo">What Do I Use?</h1>
 NashMesh currently supports two platforms:
 
 - <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic"><a href="https://meshtastic.org">Meshtastic</a>
