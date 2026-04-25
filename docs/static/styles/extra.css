@@ -44,6 +44,14 @@ body[data-theme="light"] .navbar-toggler-icon {
 	border-radius: 5px;
 }
 
+@media (min-width: 768px) {
+  #component-menu .nav-link {
+    font-size: 0.96rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+}
+
 .meetup-banner {
   display: flex;
   align-items: center;
@@ -1184,6 +1192,10 @@ body[data-theme="retro"] .heading-anchor:hover {
   color: #00ff00 !important;
 }
 
+.no-anchor .heading-anchor {
+  display: none;
+}
+
 /* ── Footer ─────────────────────────────────────────────── */
 
 /* ── 404 page ───────────────────────────────────────────── */
@@ -1453,8 +1465,14 @@ body[data-theme="retro"] .post h3 {
 
 .content-section {
   border-radius: 6px;
-  padding: 1rem 1.25rem 0.75rem;
+  padding: 0.5rem 1.25rem 0.75rem;
   margin: 0.75rem 0;
+}
+
+.content-section > h1:first-child,
+.content-section > h2:first-child,
+.content-section > h3:first-child {
+  margin-top: 0.35rem;
 }
 
 .content-section--a {
@@ -1485,6 +1503,13 @@ body[data-theme="retro"] .content-section--a {
 
 body[data-theme="retro"] .content-section--b {
   background: rgba(0, 170, 0, 0.1);
+}
+
+@media only screen and (max-width: 767px) {
+  .content-section {
+    padding: 1.25rem 1rem;
+    border-radius: 0;
+  }
 }
 
 /* ── TOC sub-section indentation ────────────────────────── */
