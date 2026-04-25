@@ -2,11 +2,17 @@
 
 Below are the recommended radio settings for the Nashville area, aligned with the settings recommended by [TennMesh](https://tennmesh.com).
 
+<div class="content-section content-section--a" markdown="1">
+
 ## Flashing Your Device
 
 NashMesh recommends running the **latest firmware** on your nodes. You can flash your device using the [MeshCore Web Flasher](https://flasher.meshcore.io).
 
 Running a Room Server/Repeater or Repeater node? You can update it wirelessly using [Over-the-Air OTA flashing](#flashing-over-the-air-ota).
+
+</div>
+
+<div class="content-section content-section--b" markdown="1">
 
 ## Companion Settings
 
@@ -17,6 +23,10 @@ Running a Room Server/Repeater or Repeater node? You can update it wirelessly us
 | Bandwidth     | `62.5 kHz`                    |
 | Spread Factor | `7`                           |
 | Coding Rate   | `5` (or `8` for weak signals) |
+
+</div>
+
+<div class="content-section content-section--a" markdown="1">
 
 ## Repeater Settings
 
@@ -307,6 +317,10 @@ set rxdelay 3
 
 </div>
 
+</div>
+
+<div class="content-section content-section--b" markdown="1">
+
 ## Flashing Over the Air (OTA)
 
 OTA flashing lets you update your MeshCore device wirelessly without a USB cable, using a Wi-Fi access point created by the device itself.
@@ -366,3 +380,5 @@ version
 </div>
 
 Confirm the firmware version shown matches what you flashed.
+
+</div>
