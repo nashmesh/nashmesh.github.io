@@ -1487,6 +1487,13 @@ body[data-theme="retro"] .content-section--b {
   background: rgba(0, 170, 0, 0.1);
 }
 
+@media only screen and (max-width: 767px) {
+  .content-section {
+    padding: 0;
+    border-radius: 0;
+  }
+}
+
 /* ── TOC sub-section indentation ────────────────────────── */
 
 .sidebar .nav-item[data-bs-level="2"] .nav-link {

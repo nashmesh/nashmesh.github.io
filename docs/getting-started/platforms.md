@@ -9,6 +9,8 @@ We have many members of the community who like to run nodes for both Meshtastic 
 
 If you would like to see what nodes are in your area for each platform, check out our <a href="/map">network map</a>.
 
+<div class="content-section content-section--a" markdown="1">
+
 ## <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">Meshtastic
 Meshtastic is the first platform that was setup in the Nashville metropolitan area. It uses LoRa (Long Range) radio-capable devices to allow for communication with other radios that have direct line-of-sight.
 
@@ -33,8 +35,9 @@ If you're wanting to learn more about connecting to our Meshtastic network, chec
   <iframe src="https://www.youtube.com/embed/oAo2sb8LpFc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
+</div>
 
-<hr />
+<div class="content-section content-section--b" markdown="1">
 
 ## <img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore
 MeshCore is the second platform that has been deployed as of January 2026 and is similar in many ways to Meshtastic. It's a decentralized and encrypted mesh network using LoRa technology, but it does handle things differently than Meshtastic for how the network topology is laid out and used.
@@ -56,4 +59,6 @@ If you're wanting to learn more about connecting to our MeshCore network, check 
 
 <div class="yt-embed">
   <iframe src="https://www.youtube.com/embed/iaFltojJrAc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 </div>
