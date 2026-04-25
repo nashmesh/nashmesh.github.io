@@ -1184,6 +1184,10 @@ body[data-theme="retro"] .heading-anchor:hover {
   color: #00ff00 !important;
 }
 
+.no-anchor .heading-anchor {
+  display: none;
+}
+
 /* ── Footer ─────────────────────────────────────────────── */
 
 /* ── 404 page ───────────────────────────────────────────── */
