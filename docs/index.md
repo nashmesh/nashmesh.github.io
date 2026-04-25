@@ -17,11 +17,11 @@ A mesh network is a decentralized, off-grid communications network built on low-
 
 Our community supports two mesh networking platforms:
 
-- **[Meshtastic](https://meshtastic.org)** — a community-based, open-source project using LoRa radios to build long-range mesh networks.
-- **[MeshCore](https://meshcore.io)** — an alternative mesh firmware focused on simplicity and interoperability, now active in the Nashville area.
+- <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">[**Meshtastic**](https://meshtastic.org) — a community-based, open-source project using LoRa radios to build an ad-hoc mesh network.
+- <img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">[**MeshCore**](https://meshcore.io) — an alternative open-source, community-based project focused on long-range communication using LoRa radios.
 
 ### How Do I Get Started?
-If you're looking to build or buy a pre-built node, check out our [affiliate](affiliate.md) page where you can browse different pre-builds or componenets. Buying with one of our affiliate links also helps to support the network!
+If you've gotten the itch to give the mesh a try, check out the <a href="/getting-started/platforms/">platforms we support</a> to learn more about them and to view guides for connecting to the network.
 
 ### How Do I Get Involved?
 Feel free to jump into our [Discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
