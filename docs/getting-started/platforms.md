@@ -23,9 +23,9 @@ The network is decentralized which allows for nodes to join and leave the networ
 Messages can be sent to a public or private channel, or to another user on the network. Packets are sent using AES-256 encryption to provide a layer of security when transmitting data across the network.
 
 <h3 class="no-anchor">Usage</h3>
-We've found Meshtastic to be great for ad-hoc communication as packets cannot go further than the maximum 7-hop limit the platform has.
+We've found Meshtastic to be great for ad-hoc communication as packets can only travel so far due to the 7-hop limit. This allows for our network to stay local to our area.
 
-We use it to say "<i>ping... pong!</i>", receive updates on severe weather alerts, for communication during post-disaster events such as power/internet outages, and much more. We have many Meshtastic nodes in-use comprising of client-based users and the infrastructure that community members have deployed around the area.
+We use it to say "<i>ping... pong!</i>" (and more!) to each other, receive updates on severe weather alerts, for communication during post-disaster events such as power/internet outages, and much more. We have many Meshtastic nodes in-use comprising of client-based users and the infrastructure that community members have deployed around the area.
 
 As of January 2026, we have been using the `MediumFast` network preset to reduce the frequency of packet collisions and to improve the overall reliability of the network. Since the switch, we've noticed a substantial improvement in packet delivery.
 
