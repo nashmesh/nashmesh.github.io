@@ -2417,3 +2417,10 @@ body[data-theme="light"] .node-list-item:hover {
   height: 100%;
   border: 0;
 }
+
+@media only screen and (max-width: 767px) {
+  .yt-embed {
+    max-width: 100%;
+    padding-bottom: 56.25%; /* full 16:9 */
+  }
+}
