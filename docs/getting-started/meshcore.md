@@ -56,11 +56,7 @@ NashMesh uses a **2-byte hash mode** for path hashing, available on radios runni
 **Repeaters:** Use the following command via the MeshCore app CLI or [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli):
 
 <div class="copyable-code">
-
-```
-set path.hash.mode 1
-```
-
+<pre><code>set path.hash.mode 1</code></pre>
 </div>
 
 ### Repeater Commands
@@ -70,27 +66,15 @@ set path.hash.mode 1
 These settings are recommended for all repeaters. Commands can be entered via the command line in the MeshCore app, or by using [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli).
 
 <div class="copyable-code">
-
-```
-set agc.reset.interval 4
-```
-
+<pre><code>set agc.reset.interval 4</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set multi.acks 1
-```
-
+<pre><code>set multi.acks 1</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set rxdelay 3
-```
-
+<pre><code>set rxdelay 3</code></pre>
 </div>
 
 #### Neighbor-Based Delay Tuning
@@ -102,43 +86,23 @@ Apply the settings that match the number of neighbors your node currently sees. 
 Use these settings if your node sees **0 to 1** neighbors.
 
 <div class="copyable-code">
-
-```
-set txdelay 0.3
-```
-
+<pre><code>set txdelay 0.3</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set direct.txdelay 0.1
-```
-
+<pre><code>set direct.txdelay 0.1</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set agc.reset.interval 4
-```
-
+<pre><code>set agc.reset.interval 4</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set multi.acks 1
-```
-
+<pre><code>set multi.acks 1</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set rxdelay 3
-```
-
+<pre><code>set rxdelay 3</code></pre>
 </div>
 
 #### Neighbor Count: 2–4
@@ -146,43 +110,23 @@ set rxdelay 3
 Use these settings if your node sees **2 to 4** neighbors.
 
 <div class="copyable-code">
-
-```
-set txdelay 0.5
-```
-
+<pre><code>set txdelay 0.5</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set direct.txdelay 0.3
-```
-
+<pre><code>set direct.txdelay 0.3</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set agc.reset.interval 4
-```
-
+<pre><code>set agc.reset.interval 4</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set multi.acks 1
-```
-
+<pre><code>set multi.acks 1</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set rxdelay 3
-```
-
+<pre><code>set rxdelay 3</code></pre>
 </div>
 
 #### Neighbor Count: 5–9
@@ -190,43 +134,23 @@ set rxdelay 3
 Use these settings if your node sees **5 to 9** neighbors.
 
 <div class="copyable-code">
-
-```
-set txdelay 1
-```
-
+<pre><code>set txdelay 1</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set direct.txdelay 0.5
-```
-
+<pre><code>set direct.txdelay 0.5</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set agc.reset.interval 4
-```
-
+<pre><code>set agc.reset.interval 4</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set multi.acks 1
-```
-
+<pre><code>set multi.acks 1</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set rxdelay 3
-```
-
+<pre><code>set rxdelay 3</code></pre>
 </div>
 
 #### Neighbor Count: 10–14
@@ -234,43 +158,23 @@ set rxdelay 3
 Use these settings if your node sees **10 to 14** neighbors.
 
 <div class="copyable-code">
-
-```
-set txdelay 1.5
-```
-
+<pre><code>set txdelay 1.5</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set direct.txdelay 1
-```
-
+<pre><code>set direct.txdelay 1</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set agc.reset.interval 4
-```
-
+<pre><code>set agc.reset.interval 4</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set multi.acks 1
-```
-
+<pre><code>set multi.acks 1</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set rxdelay 3
-```
-
+<pre><code>set rxdelay 3</code></pre>
 </div>
 
 #### Neighbor Count: 15+
@@ -278,43 +182,23 @@ set rxdelay 3
 Use these settings if your node sees **15 or more** neighbors.
 
 <div class="copyable-code">
-
-```
-set txdelay 2
-```
-
+<pre><code>set txdelay 2</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set direct.txdelay 2
-```
-
+<pre><code>set direct.txdelay 2</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set agc.reset.interval 4
-```
-
+<pre><code>set agc.reset.interval 4</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set multi.acks 1
-```
-
+<pre><code>set multi.acks 1</code></pre>
 </div>
 
 <div class="copyable-code">
-
-```
-set rxdelay 3
-```
-
+<pre><code>set rxdelay 3</code></pre>
 </div>
 
 </div>
@@ -344,11 +228,7 @@ OTA flashing lets you update your MeshCore device wirelessly without a USB cable
 Open your MeshCore companion app and log into the node. From the Command Line, run:
 
 <div class="copyable-code">
-
-```
-start ota
-```
-
+<pre><code>start ota</code></pre>
 </div>
 
 Your device will create a Wi-Fi access point named **MeshCore-OTA**.
@@ -358,11 +238,7 @@ Your device will create a Wi-Fi access point named **MeshCore-OTA**.
 On your computer, connect to the **MeshCore-OTA** Wi-Fi network. Then open a browser and navigate to:
 
 <div class="copyable-code">
-
-```
-http://192.168.4.1/update
-```
-
+<pre><code>http://192.168.4.1/update</code></pre>
 </div>
 
 Upload the `.bin` file you downloaded in Step 1. Wait for the upload to fully complete before closing the browser or navigating away.
@@ -372,11 +248,7 @@ Upload the `.bin` file you downloaded in Step 1. Wait for the upload to fully co
 Once the upload is done, reopen your companion app and log back into the device. From the Command Line, run:
 
 <div class="copyable-code">
-
-```
-version
-```
-
+<pre><code>version</code></pre>
 </div>
 
 Confirm the firmware version shown matches what you flashed.
