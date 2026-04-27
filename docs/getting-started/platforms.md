@@ -29,6 +29,9 @@ We use it to say "<i>ping... pong!</i>" (and more!) to each other, receive updat
 
 As of January 2026, we have been using the `MediumFast` network preset to reduce the frequency of packet collisions and to improve the overall reliability of the network. Since the switch, we've noticed a substantial improvement in packet delivery.
 
+<h3 class="no-anchor">Setup</h3>
+Our setup guide walks you through everything you need to do to configure your device and connect to the network.
+
 <a href="/getting-started/meshtastic" class="doc-btn">Meshtastic Setup Guide →</a>
 
 <hr />
@@ -55,6 +58,9 @@ MeshCore works by relying on two types of nodes: Companions and Repeaters.
 
 <h3 class="no-anchor">Usage</h3>
 MeshCore has a maximum 64-hop limit for packets which is great for communication that extends beyond our region. Our current goal is to link up with the MeshCore network in East Tennessee and eventually across multiple states.
+
+<h3 class="no-anchor">Setup</h3>
+Our setup guide walks you through everything you need to do to configure your device and connect to the network.
 
 <a href="/getting-started/meshcore" class="doc-btn">MeshCore Setup Guide →</a>
 
