@@ -290,6 +290,15 @@ body[data-theme="retro"] .doc-btn:hover {
   transform: none;
 }
 
+@media only screen and (max-width: 767px) {
+  .doc-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
 /* ── Code block copy button ──────────────────────────────────── */
 
 .copyable-code {
