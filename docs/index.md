@@ -32,3 +32,5 @@ Feel free to jump into our [Discord](https://discord.gg/sSS8gEpuh8)! We have ple
 A top-level view of this map provides a heat signature for any active nodes in the area. Zoom in to show where nodes are available.
 <div id="homepage-map-canvas" style="width: 100%; height: 50vh; z-index: 1; border-radius: 6px"></div>
 
+<script>window.NASHME_POSTS = {{ recent_posts_json() }};</script>
+

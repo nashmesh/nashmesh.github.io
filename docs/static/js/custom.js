@@ -32,6 +32,49 @@ function scrollToEl(el, smooth) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    // New post notification
+    if (window.NASHME_POSTS && window.NASHME_POSTS.length) {
+        var cutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+        var recentPost = null;
+        for (var i = 0; i < window.NASHME_POSTS.length; i++) {
+            var p = window.NASHME_POSTS[i];
+            if (new Date(p.date + "T00:00:00") >= cutoff) { recentPost = p; break; }
+        }
+        if (recentPost) {
+            var dismissKey = "new-post-dismissed:" + recentPost.url;
+            if (!localStorage.getItem(dismissKey) && !document.querySelector(".new-post-banner")) {
+                var banner = document.createElement("div");
+                banner.className = "meetup-banner new-post-banner";
+                var icon = document.createElement("span");
+                icon.className = "meetup-banner-icon";
+                icon.textContent = "📰";
+                var text = document.createElement("div");
+                text.className = "meetup-banner-text";
+                var strong = document.createElement("strong");
+                strong.textContent = "New Post";
+                text.appendChild(strong);
+                text.appendChild(document.createElement("br"));
+                text.appendChild(document.createTextNode(recentPost.title));
+                var btn = document.createElement("a");
+                btn.className = "meetup-banner-btn";
+                btn.href = recentPost.url;
+                btn.textContent = "Read More →";
+                var dismiss = document.createElement("button");
+                dismiss.className = "new-post-dismiss-btn";
+                dismiss.textContent = "✕";
+                dismiss.addEventListener("click", (function (key, el) {
+                    return function () { localStorage.setItem(key, "1"); el.remove(); };
+                })(dismissKey, banner));
+                banner.appendChild(icon);
+                banner.appendChild(text);
+                banner.appendChild(btn);
+                banner.appendChild(dismiss);
+                var ref = document.querySelector(".meetup-banner");
+                if (ref) ref.parentNode.insertBefore(banner, ref);
+            }
+        }
+    }
+
     // Tab URL hash tracking
     function slugify(text) {
         return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
