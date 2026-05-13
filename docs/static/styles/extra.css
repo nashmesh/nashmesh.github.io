@@ -162,14 +162,43 @@ body[data-theme="retro"] .meetup-banner-btn:hover {
 
 @media (max-width: 600px) {
   .meetup-banner {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 0.75rem;
+  }
+
+  .meetup-banner-text {
+    flex: 1;
   }
 
   .meetup-banner-btn {
     width: 100%;
     text-align: center;
+  }
+
+  .new-post-banner {
+    position: relative;
+    padding-right: 2.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .new-post-banner .meetup-banner-text {
+    flex: 1;
+  }
+
+  .new-post-banner .meetup-banner-btn {
+    width: 100%;
+  }
+
+  .new-post-dismiss-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.25rem;
+    padding: 0.4rem 0.6rem;
   }
 }
 
