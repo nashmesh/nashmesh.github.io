@@ -1,7 +1,8 @@
 ---
 title: 2026 NashMesh Community Survey Results
 description: A summary of 50 responses from our recent community survey, covering platform preferences, use cases, and frustrations.
-date: 2026-05-12 12:00:00
+date: 2026-05-12 23:00:00
+template: base_no_sidebar.html
 
 tags:
   - community
