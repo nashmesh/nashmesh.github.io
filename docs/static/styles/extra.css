@@ -173,6 +173,99 @@ body[data-theme="retro"] .meetup-banner-btn:hover {
   }
 }
 
+/* New post notification banner */
+.new-post-banner {
+  background: linear-gradient(135deg, #1a3d1a, #0f2510);
+  border-color: #2e8a2e;
+  border-left-color: #4dcc4d;
+}
+
+.new-post-banner .meetup-banner-text {
+  color: #e0ffe0;
+}
+
+.new-post-banner .meetup-banner-text strong {
+  color: #ffffff;
+}
+
+.new-post-banner .meetup-banner-btn {
+  background: #4dcc4d;
+  color: #000000 !important;
+}
+
+.new-post-banner .meetup-banner-btn:hover {
+  background: #80e680;
+}
+
+.new-post-dismiss-btn {
+  background: none;
+  border: none;
+  color: #99cc99;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.new-post-dismiss-btn:hover {
+  color: #ffffff;
+}
+
+body[data-theme="light"] .new-post-banner {
+  background: linear-gradient(135deg, #e6f7e6, #f0fbf0);
+  border-color: #5aaa5a;
+  border-left-color: #2e8a2e;
+}
+
+body[data-theme="light"] .new-post-banner .meetup-banner-text {
+  color: #1a3d1a;
+}
+
+body[data-theme="light"] .new-post-banner .meetup-banner-text strong {
+  color: #0f2510;
+}
+
+body[data-theme="light"] .new-post-banner .meetup-banner-btn {
+  background: #2e8a2e;
+  color: #ffffff !important;
+}
+
+body[data-theme="light"] .new-post-banner .meetup-banner-btn:hover {
+  background: #1a5c1a;
+}
+
+body[data-theme="light"] .new-post-dismiss-btn {
+  color: #5aaa5a;
+}
+
+body[data-theme="retro"] .new-post-banner {
+  background: #003300;
+  border-color: #00aa00;
+  border-left-color: #00ff00;
+  border-radius: 0;
+}
+
+body[data-theme="retro"] .new-post-banner .meetup-banner-text {
+  color: #00cc00;
+}
+
+body[data-theme="retro"] .new-post-banner .meetup-banner-text strong {
+  color: #00ff00;
+}
+
+body[data-theme="retro"] .new-post-banner .meetup-banner-btn {
+  background: #00aa00;
+  color: #000000 !important;
+  border-radius: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+}
+
+body[data-theme="retro"] .new-post-dismiss-btn {
+  color: #00aa00;
+}
+
 .theme-toggle {
   display: inline-flex;
   border: 1px solid #2e6da4;
