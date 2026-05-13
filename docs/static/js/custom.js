@@ -45,9 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!localStorage.getItem(dismissKey) && !document.querySelector(".new-post-banner")) {
                 var banner = document.createElement("div");
                 banner.className = "meetup-banner new-post-banner";
-                var icon = document.createElement("span");
-                icon.className = "meetup-banner-icon";
-                icon.textContent = "📰";
+                var icon = document.createElement("img");
+                icon.src = "/static/images/logo.png";
+                icon.alt = "NashMesh";
+                icon.className = "meetup-banner-icon meetup-banner-logo";
                 var text = document.createElement("div");
                 text.className = "meetup-banner-text";
                 var strong = document.createElement("strong");
