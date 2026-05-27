@@ -24,6 +24,8 @@
             <meta name="twitter:description" content="{{ config['site_description'] }}" />
             <meta name="twitter:image" content="https://nashme.sh/static/images/logo.png" />
 
+            <link rel="apple-touch-icon" href="https://nashme.sh/static/images/logo.png" />
+
             {% if page and page.is_homepage %}<meta name="description" content="{{ config['site_description'] }}">{% endif %}
             {% if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
             {% if config.site_author %}<meta name="author" content="{{ config.site_author }}">{% endif %}
