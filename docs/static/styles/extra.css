@@ -2556,6 +2556,12 @@ body[data-theme="light"] .node-list-item:hover {
   }
 }
 
+.coding-rate-note {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
 .settings-columns {
   display: flex;
   gap: 2rem;

@@ -26,7 +26,7 @@ Running a Room Server/Repeater or Repeater node? You can update it wirelessly us
 <tr><td>Frequency</td><td><code>910.525 MHz</code></td></tr>
 <tr><td>Bandwidth</td><td><code>62.5 kHz</code></td></tr>
 <tr><td>Spread Factor</td><td><code>7</code></td></tr>
-<tr><td>Coding Rate</td><td><a href="#why-a-coding-rate-of-5"><code>5</code></a></td></tr>
+<tr><td>Coding Rate</td><td><code>5</code></td></tr>
 </tbody>
 </table>
 </div>
@@ -39,11 +39,13 @@ Running a Room Server/Repeater or Repeater node? You can update it wirelessly us
 <tr><td>Frequency</td><td><code>910.525 MHz</code></td></tr>
 <tr><td>Bandwidth</td><td><code>62.5 kHz</code></td></tr>
 <tr><td>Spread Factor</td><td><code>7</code></td></tr>
-<tr><td>Coding Rate</td><td><a href="#why-a-coding-rate-of-5"><code>5</code></a></td></tr>
+<tr><td>Coding Rate</td><td><code>5</code></td></tr>
 </tbody>
 </table>
 </div>
 </div>
+
+<p class="coding-rate-note">Not sure why we use coding rate 5? <a href="#coding-rate">Learn more ↓</a></p>
 
 </div>
 
@@ -62,6 +64,7 @@ The following advert intervals are recommended for repeaters operating in the Mi
 
 ### Path Hash Size
 
+NashMesh uses a **2-byte hash mode** for path hashing, available on radios running firmware 1.14+. Using 2 bytes helps prevent collisions during routing, improving reliability across the network.
 NashMesh uses a **2-byte hash mode** for path hashing, available on radios running firmware 1.14+. Using 2 bytes helps prevent collisions during routing, improving reliability across the network.
 
 **Companion nodes:** From the home screen: Gear icon → Experimental Settings → Default Path Hash Size → `2-Byte`
@@ -218,7 +221,7 @@ Use these settings if your node sees **15 or more** neighbors.
 
 <div class="content-section content-section--b" markdown="1">
 
-<h2 id="why-a-coding-rate-of-5">Why a coding rate of 5?</h2>
+<h2 id="coding-rate">Coding Rate</h2>
 
 ![Coding Rate Comparison](../../static/images/coding-rate.png){ .img-thumbnail }
 
