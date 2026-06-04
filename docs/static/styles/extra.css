@@ -2555,3 +2555,55 @@ body[data-theme="light"] .node-list-item:hover {
     padding-bottom: 56.25%; /* full 16:9 */
   }
 }
+
+.coding-rate-note {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+.settings-columns {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.settings-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+.img-thumbnail {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+  display: block;
+}
+
+.img-thumbnail:hover {
+  opacity: 0.85;
+}
+
+.img-lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.img-lightbox-overlay.open {
+  display: flex;
+}
+
+.img-lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
