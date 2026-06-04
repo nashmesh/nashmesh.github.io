@@ -14,29 +14,46 @@ Running a Room Server/Repeater or Repeater node? You can update it wirelessly us
 
 <div class="content-section content-section--b" markdown="1">
 
-## Companion Settings
+## Radio Settings
 
-| Setting       | Value                         |
-| ------------- | ----------------------------- |
-| Preset        | `USA/Canada (Recommended)`    |
-| Frequency     | `910.525 MHz`                 |
-| Bandwidth     | `62.5 kHz`                    |
-| Spread Factor | `7`                           |
-| Coding Rate   | `5` (or `8` for weak signals) |
+<div class="settings-columns">
+<div class="settings-col">
+<h3>Companion</h3>
+<table>
+<thead><tr><th>Setting</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Preset</td><td><code>USA/Canada</code></td></tr>
+<tr><td>Frequency</td><td><code>910.525 MHz</code></td></tr>
+<tr><td>Bandwidth</td><td><code>62.5 kHz</code></td></tr>
+<tr><td>Spread Factor</td><td><code>7</code></td></tr>
+<tr><td>Coding Rate</td><td><code>5</code></td></tr>
+</tbody>
+</table>
+</div>
+<div class="settings-col">
+<h3>Repeater</h3>
+<table>
+<thead><tr><th>Setting</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Preset</td><td><code>USA/Canada</code></td></tr>
+<tr><td>Frequency</td><td><code>910.525 MHz</code></td></tr>
+<tr><td>Bandwidth</td><td><code>62.5 kHz</code></td></tr>
+<tr><td>Spread Factor</td><td><code>7</code></td></tr>
+<tr><td>Coding Rate</td><td><code>5</code></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+### Why a coding rate of 5?
+
+![Coding Rate Comparison](../../static/images/coding-rate.png){ .img-thumbnail }
 
 </div>
 
 <div class="content-section content-section--a" markdown="1">
 
-## Repeater Settings
-
-| Setting       | Value                      |
-| ------------- | -------------------------- |
-| Preset        | `USA/Canada (Recommended)` |
-| Frequency     | `910.525 MHz`              |
-| Bandwidth     | `62.5 kHz`                 |
-| Spread Factor | `7`                        |
-| Coding Rate   | `8`                        |
+## Repeater Details
 
 ### Repeater Advert Intervals
 
