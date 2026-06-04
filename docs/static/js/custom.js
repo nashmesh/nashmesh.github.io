@@ -482,24 +482,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Image lightbox
-    var overlay = document.createElement('div');
-    overlay.className = 'img-lightbox-overlay';
-    var overlayImg = document.createElement('img');
-    overlay.appendChild(overlayImg);
-    document.body.appendChild(overlay);
+    if (!document.querySelector('.img-lightbox-overlay')) {
+        var overlay = document.createElement('div');
+        overlay.className = 'img-lightbox-overlay';
+        var overlayImg = document.createElement('img');
+        overlay.appendChild(overlayImg);
+        document.body.appendChild(overlay);
 
-    document.querySelectorAll('.img-thumbnail').forEach(function (img) {
-        img.addEventListener('click', function () {
-            overlayImg.src = img.src;
-            overlay.classList.add('open');
+        document.querySelectorAll('.img-thumbnail').forEach(function (img) {
+            img.addEventListener('click', function (e) {
+                e.stopPropagation();
+                overlayImg.src = img.src;
+                overlay.classList.add('open');
+            });
         });
-    });
 
-    overlay.addEventListener('click', function () {
-        overlay.classList.remove('open');
-    });
+        overlay.addEventListener('click', function (e) {
+            e.stopPropagation();
+            overlay.classList.remove('open');
+        });
 
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') overlay.classList.remove('open');
-    });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') overlay.classList.remove('open');
+        });
+    }
 });
