@@ -26,7 +26,7 @@ Running a Room Server/Repeater or Repeater node? You can update it wirelessly us
 <tr><td>Frequency</td><td><code>910.525 MHz</code></td></tr>
 <tr><td>Bandwidth</td><td><code>62.5 kHz</code></td></tr>
 <tr><td>Spread Factor</td><td><code>7</code></td></tr>
-<tr><td>Coding Rate</td><td><code>5</code></td></tr>
+<tr><td>Coding Rate</td><td><a href="#why-a-coding-rate-of-5"><code>5</code></a></td></tr>
 </tbody>
 </table>
 </div>
@@ -39,15 +39,11 @@ Running a Room Server/Repeater or Repeater node? You can update it wirelessly us
 <tr><td>Frequency</td><td><code>910.525 MHz</code></td></tr>
 <tr><td>Bandwidth</td><td><code>62.5 kHz</code></td></tr>
 <tr><td>Spread Factor</td><td><code>7</code></td></tr>
-<tr><td>Coding Rate</td><td><code>5</code></td></tr>
+<tr><td>Coding Rate</td><td><a href="#why-a-coding-rate-of-5"><code>5</code></a></td></tr>
 </tbody>
 </table>
 </div>
 </div>
-
-### Why a coding rate of 5?
-
-![Coding Rate Comparison](../../static/images/coding-rate.png){ .img-thumbnail }
 
 </div>
 
@@ -221,6 +217,14 @@ Use these settings if your node sees **15 or more** neighbors.
 </div>
 
 <div class="content-section content-section--b" markdown="1">
+
+<h2 id="why-a-coding-rate-of-5">Why a coding rate of 5?</h2>
+
+![Coding Rate Comparison](../../static/images/coding-rate.png){ .img-thumbnail }
+
+</div>
+
+<div class="content-section content-section--a" markdown="1">
 
 ## Flashing Over the Air (OTA)
 
