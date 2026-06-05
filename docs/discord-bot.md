@@ -1,6 +1,6 @@
 # Discord Bot
 
-The NashMesh Discord bot lets you link your nodes, look up node info, manage flags, and share community resources — all from within Discord.
+The NashMesh Discord bot lets you link your nodes, look up node info, manage flags, and share community resources.
 
 ---
 
@@ -29,93 +29,6 @@ Link a Meshtastic or MeshCore node to your Discord account. If you don't provide
           <span class="dc-btn dc-btn--primary">Submit</span>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-After submitting, the bot replies with a confirmation embed.
-
-<div class="dc-preview">
-  <!-- Bot success reply -->
-  <div class="dc-message">
-    <div class="dc-avatar">NM</div>
-    <div class="dc-content">
-      <div class="dc-header">
-        <span class="dc-username dc-username--bot">NashMesh Bot</span>
-        <span class="dc-tag">APP</span>
-        <span class="dc-ts">Today at 2:30 PM</span>
-      </div>
-      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/linknode</span></div>
-      <div class="dc-embed">
-        <div class="dc-embed-pill" style="background:#fefdf5;"></div>
-        <div class="dc-embed-body">
-          <div class="dc-embed-author">
-            <div class="dc-embed-author-icon">MH</div>
-            <div class="dc-embed-author-name">M3shHe4d</div>
-          </div>
-          <div class="dc-embed-title">Nashville Node has been successfully linked!</div>
-          <div class="dc-embed-fields">
-            <div class="dc-field--1">
-              <div class="dc-field-name">Malla</div>
-              <div class="dc-field-value">Check out metrics and more for your node on our <a href="#">Malla</a>.</div>
-            </div>
-            <div class="dc-field--1">
-              <div class="dc-field-name">Potato</div>
-              <div class="dc-field-value">Check to see if your node has been seen on our <a href="#">Potato map</a>.</div>
-            </div>
-            <div class="dc-field--1">
-              <div class="dc-field-name">Flags</div>
-              <div class="dc-field-value">Check out <span class="dc-code">/help flags</span> to set flags for your node.</div>
-            </div>
-          </div>
-          <div class="dc-embed-footer">
-            <div class="dc-embed-footer-icon">NM</div>
-            NashMesh <span class="dc-sep">•</span> Today at 2:30 PM
-          </div>
-        </div>
-      </div>
-      <div class="dc-ephemeral">🔒 Only you can see this</div>
-    </div>
-  </div>
-</div>
-
-For **MeshCore** nodes, the Potato link is replaced with an Analyzer link.
-
-<div class="dc-preview">
-  <div class="dc-message">
-    <div class="dc-avatar">NM</div>
-    <div class="dc-content">
-      <div class="dc-header">
-        <span class="dc-username dc-username--bot">NashMesh Bot</span>
-        <span class="dc-tag">APP</span>
-        <span class="dc-ts">Today at 2:31 PM</span>
-      </div>
-      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/linknode</span></div>
-      <div class="dc-embed">
-        <div class="dc-embed-pill" style="background:#fefdf5;"></div>
-        <div class="dc-embed-body">
-          <div class="dc-embed-author">
-            <div class="dc-embed-author-icon">MH</div>
-            <div class="dc-embed-author-name">M3shHe4d</div>
-          </div>
-          <div class="dc-embed-title">MC-Relay has been successfully linked!</div>
-          <div class="dc-embed-fields">
-            <div class="dc-field--1">
-              <div class="dc-field-name">Analyzer</div>
-              <div class="dc-field-value">Check out your node on the <a href="#">NashMe.sh Analyzer</a>.</div>
-            </div>
-            <div class="dc-field--1">
-              <div class="dc-field-name">Flags</div>
-              <div class="dc-field-value">Check out <span class="dc-code">/help flags</span> to set flags for your node.</div>
-            </div>
-          </div>
-          <div class="dc-embed-footer">
-            <div class="dc-embed-footer-icon">NM</div>
-            NashMesh <span class="dc-sep">•</span> Today at 2:31 PM
-          </div>
-        </div>
-      </div>
-      <div class="dc-ephemeral">🔒 Only you can see this</div>
     </div>
   </div>
 </div>
