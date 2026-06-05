@@ -61,37 +61,6 @@ Remove the link between a node and your Discord account. Running the command wit
   </div>
 </div>
 
-After selecting a node (or supplying the node ID directly), the bot confirms:
-
-<div class="dc-preview">
-  <div class="dc-message">
-    <div class="dc-avatar">NM</div>
-    <div class="dc-content">
-      <div class="dc-header">
-        <span class="dc-username dc-username--bot">NashMesh Bot</span>
-        <span class="dc-tag">APP</span>
-        <span class="dc-ts">Today at 2:32 PM</span>
-      </div>
-      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/unlinknode</span></div>
-      <div class="dc-embed">
-        <div class="dc-embed-pill" style="background:#fefdf5;"></div>
-        <div class="dc-embed-body">
-          <div class="dc-embed-author">
-            <div class="dc-embed-author-icon">MH</div>
-            <div class="dc-embed-author-name">M3shHe4d</div>
-          </div>
-          <div class="dc-embed-title">Nashville Node has been successfully unlinked!</div>
-          <div class="dc-embed-footer">
-            <div class="dc-embed-footer-icon">NM</div>
-            NashMesh <span class="dc-sep">•</span> Today at 2:32 PM
-          </div>
-        </div>
-      </div>
-      <div class="dc-ephemeral">🔒 Only you can see this</div>
-    </div>
-  </div>
-</div>
-
 ---
 
 ### `/nodes`
