@@ -41,7 +41,7 @@ After submitting, the bot replies with a confirmation embed.
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:30 PM</span>
       </div>
@@ -86,7 +86,7 @@ For **MeshCore** nodes, the Potato link is replaced with an Analyzer link.
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:31 PM</span>
       </div>
@@ -131,7 +131,7 @@ Remove the link between a node and your Discord account. Running the command wit
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:32 PM</span>
       </div>
@@ -155,7 +155,7 @@ After selecting a node (or supplying the node ID directly), the bot confirms:
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:32 PM</span>
       </div>
@@ -190,7 +190,7 @@ List all nodes linked to you (or another user). Results are paginated if you hav
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:33 PM</span>
       </div>
@@ -231,7 +231,7 @@ Manage per-node flags that control bot behavior. Running `/flags` with no argume
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:35 PM</span>
       </div>
@@ -264,7 +264,7 @@ Clicking a button toggles the flag on or off. When enabled, the button turns gre
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:35 PM</span>
       </div>
@@ -306,7 +306,7 @@ Browse all link categories saved for this server. Select a type from the dropdow
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:36 PM</span>
       </div>
@@ -347,7 +347,7 @@ Show all links for a specific type. If you omit the type, a dropdown appears. Li
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:37 PM</span>
       </div>
@@ -403,7 +403,7 @@ After submitting, the bot confirms what was added:
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:38 PM</span>
       </div>
@@ -426,7 +426,7 @@ Remove links from one or more types. Select the type(s), then pick the URL(s) to
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:39 PM</span>
       </div>
@@ -450,7 +450,7 @@ After picking a type, you choose the specific URLs to remove:
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:39 PM</span>
       </div>
@@ -491,7 +491,7 @@ Posts the MQTT connection settings for both MeshCore and Meshtastic.
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:40 PM</span>
       </div>
@@ -582,7 +582,7 @@ Type any link category name prefixed with `!` to post its links directly to the 
     <div class="dc-avatar">NM</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username dc-username--bot">Meshtastic Bot</span>
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:42 PM</span>
       </div>
