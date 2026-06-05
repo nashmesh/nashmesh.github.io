@@ -368,16 +368,16 @@ https://rokland.com/products/example-antenna</div>
 
 ---
 
-### `/links add` <span class="dc-admin-note">Manage Guild</span>
+### `/links add`
 
-Add one or more URLs to one or more link types. Requires **Manage Server** permission. A modal collects the URLs (one per line) and the type(s).
+Add one or more URLs to one or more link types. A modal collects the URLs (one per line) and the type(s).
 
 <div class="dc-preview">
   <div class="dc-message">
-    <div class="dc-avatar dc-avatar--admin">AD</div>
+    <div class="dc-avatar dc-avatar--user">MH</div>
     <div class="dc-content">
       <div class="dc-header">
-        <span class="dc-username">Admin</span>
+        <span class="dc-username">M3shHe4d</span>
         <span class="dc-ts">Today at 2:38 PM</span>
       </div>
       <div class="dc-body"><span class="dc-cmd">/links add</span></div>
@@ -417,9 +417,9 @@ After submitting, the bot confirms what was added:
 
 ---
 
-### `/links remove` <span class="dc-admin-note">Manage Guild</span>
+### `/links remove`
 
-Remove links from one or more types. Requires **Manage Server** permission. Select the type(s), then pick the URL(s) to remove from a second dropdown.
+Remove links from one or more types. Select the type(s), then pick the URL(s) to remove from a second dropdown.
 
 <div class="dc-preview">
   <div class="dc-message">
@@ -430,7 +430,7 @@ Remove links from one or more types. Requires **Manage Server** permission. Sele
         <span class="dc-tag">APP</span>
         <span class="dc-ts">Today at 2:39 PM</span>
       </div>
-      <div class="dc-interaction"><span class="dc-user">Admin</span> used <span class="dc-cmd">/links remove</span></div>
+      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/links remove</span></div>
       <div class="dc-text">Select link type(s) to remove from:</div>
       <div class="dc-select-wrap">
         <div class="dc-select">
