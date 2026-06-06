@@ -179,6 +179,7 @@ Clicking a button toggles the flag on or off. When enabled, the button turns gre
 
 ---
 
+<!--
 ### `/links list`
 
 Browse all link categories saved for this server. Select a type from the dropdown to post its links to the channel.
@@ -347,6 +348,8 @@ After picking a type, you choose the specific URLs to remove:
     </div>
   </div>
 </div>
+
+-->
 
 ---
 
