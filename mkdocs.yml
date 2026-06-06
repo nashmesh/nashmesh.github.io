@@ -21,8 +21,8 @@ nav:
   # - Affiliate Links: affiliate.md
   - Fundraising: fundraising.md
   - Discord:
-    - Join Server: https://discord.gg/sSS8gEpuh8
     - Information: discord.md
+    - Join Server: https://discord.gg/sSS8gEpuh8
 
 # Theming
 theme:

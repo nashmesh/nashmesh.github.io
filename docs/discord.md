@@ -1,8 +1,8 @@
-# Information
+<h1 class="page-title-with-logo"><img src="../static/images/discord.png" class="page-title-logo" alt="Discord">Discord</h1>
 
-The NashMesh Discord bot lets you link your nodes, look up node info, manage flags, and share community resources.
+Check out our <a href="https://discord.gg/sSS8gEpuh8">Discord server</a> if you ever need help, want to meet new folks, or just want to talk anything radio. We also annnounce upcoming meetings and share information about upcoming deployments.
 
-## MQTT Logging Channels
+# MQTT Logging Channels
 
 MQTT messages are logged to Discord based on firmware and channel. If the sending node is linked to a Discord account, the message will show the owning user.
 
@@ -13,9 +13,13 @@ MQTT messages are logged to Discord based on firmware and channel. If the sendin
 | MeshCore | Public | `#meshcore-logger` |
 | MeshCore | All others | `#meshcore-logger-other` |
 
----
+
+# Discord Bot
+The NashMesh Discord bot lets you link your nodes, look up node info, manage flags, and share community resources.
 
 ## Slash Commands
+
+Slash commands are available from the bot and they allow for control of different features the bot offers.
 
 ### `/linknode`
 
