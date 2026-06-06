@@ -1,6 +1,6 @@
 <h1 class="page-title-with-logo"><img src="../static/images/discord.png" class="page-title-logo" alt="Discord">Discord</h1>
 
-Check out our <a href="https://discord.gg/sSS8gEpuh8">Discord server</a> if you ever need help, want to meet new folks, or just want to talk anything radio. We also annnounce upcoming meetings and share information about upcoming deployments.
+Check out our <a href="https://discord.gg/sSS8gEpuh8">Discord server</a> if you ever need help, want to meet new folks, or just want to talk anything radio. We also announce upcoming meetings and share information about upcoming deployments.
 
 # MQTT Logging Channels
 
@@ -8,10 +8,10 @@ MQTT messages are logged to Discord based on firmware and channel. If the sendin
 
 | Platform | Channel | Discord Channel |
 |----------|---------|-----------------|
-| Meshtastic | `MediumFast` | `#logger` |
-| Meshtastic | All others | `#logger-other` |
-| MeshCore | Public | `#meshcore-logger` |
-| MeshCore | All others | `#meshcore-logger-other` |
+| <img src="../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic"> Meshtastic | `MediumFast` | `#logger` |
+| <img src="../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic"> Meshtastic | All others | `#logger-other` |
+| <img src="../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore"> MeshCore | Public | `#meshcore-logger` |
+| <img src="../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore"> MeshCore | All others | `#meshcore-logger-other` |
 
 
 # Discord Bot
