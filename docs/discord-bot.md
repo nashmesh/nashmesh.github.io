@@ -365,7 +365,7 @@ Posts the MQTT connection settings for both MeshCore and Meshtastic.
 
 ### `!<linktype>`
 
-Type any link category name prefixed with `!` to post its links directly to the channel. Link types are managed via `/links add`.
+Type any link category name prefixed with `!` to post its links directly to the channel. <!-- Link types are managed via `/links add`. -->
 
 <div class="dc-preview">
   <div class="dc-message">
