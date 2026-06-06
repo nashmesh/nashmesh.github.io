@@ -20,7 +20,9 @@ nav:
     - MeshCore Analyzer: https://analyzer.nashme.sh
   # - Affiliate Links: affiliate.md
   - Fundraising: fundraising.md
-  - Discord: https://discord.gg/sSS8gEpuh8
+  - Discord:
+    - Information: discord.md
+    - Join Server: https://discord.gg/sSS8gEpuh8
 
 # Theming
 theme:
@@ -91,6 +93,7 @@ extra_css:
   - static/styles/leaflet.css
   - static/styles/extra.css
   - static/styles/link-embeds.css
+  - static/styles/discord.css
 
 extra_javascript:
   - static/js/jquery.js
