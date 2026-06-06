@@ -49,6 +49,20 @@ Running a Room Server/Repeater or Repeater node? You can update it wirelessly us
 
 </div>
 
+<div class="content-section content-section--b" markdown="1">
+
+## Channels
+
+| Channel | Purpose |
+|---------|---------|
+| `Public` | General chat open to all nodes on the network |
+| `#test` | Testing nodes and available bots |
+| `#bna-wx` | Weather discussion and bot use |
+
+</div>
+
+---
+
 <div class="content-section content-section--a" markdown="1">
 
 ## Repeater Details
@@ -64,7 +78,6 @@ The following advert intervals are recommended for repeaters operating in the Mi
 
 ### Path Hash Size
 
-NashMesh uses a **2-byte hash mode** for path hashing, available on radios running firmware 1.14+. Using 2 bytes helps prevent collisions during routing, improving reliability across the network.
 NashMesh uses a **2-byte hash mode** for path hashing, available on radios running firmware 1.14+. Using 2 bytes helps prevent collisions during routing, improving reliability across the network.
 
 **Companion nodes:** From the home screen: Gear icon → Experimental Settings → Default Path Hash Size → `2-Byte`
