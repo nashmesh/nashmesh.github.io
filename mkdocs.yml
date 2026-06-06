@@ -22,7 +22,7 @@ nav:
   - Fundraising: fundraising.md
   - Discord:
     - Join Server: https://discord.gg/sSS8gEpuh8
-    - Bot Commands: discord/bot-commands.md
+    - Information: discord.md
 
 # Theming
 theme:

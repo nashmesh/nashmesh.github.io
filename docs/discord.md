@@ -1,12 +1,12 @@
-# Discord Bot
+# Information
 
 The NashMesh Discord bot lets you link your nodes, look up node info, manage flags, and share community resources.
 
 ## MQTT Logging Channels
 
-MQTT messages are logged to Discord based on firmware and channel:
+MQTT messages are logged to Discord based on firmware and channel. If the sending node is linked to a Discord account, the message will show the owning user.
 
-| Firmware | Channel | Discord Channel |
+| Platform | Channel | Discord Channel |
 |----------|---------|-----------------|
 | Meshtastic | `MediumFast` | `#logger` |
 | Meshtastic | All others | `#logger-other` |
