@@ -55,9 +55,12 @@ Running a Room Server/Repeater or Repeater node? You can update it wirelessly us
 
 | Channel | Purpose |
 |---------|---------|
-| `Public` | General chat open to all nodes on the network |
-| `#test` | Testing nodes and available bots |
-| `#bna-wx` | Weather discussion and bot use |
+| `Public` | General channel open to all nodes on the network |
+| `#bna-test` | Local test channel and bot use |
+| `#bna-wx` | Local weather discussion and bot use |
+| `#bot` | General bot testing channel
+| `#test` | General testing channel |
+| `#tn-middle` | Channel for Middle TN chat |
 
 </div>
 
