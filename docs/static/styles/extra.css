@@ -2607,3 +2607,24 @@ body[data-theme="light"] .node-list-item:hover {
   border-radius: 8px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
 }
+
+.pdf-view-link {
+  display: none;
+  padding: 14px 24px;
+  background-color: #5865f2;
+  color: #fff !important;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin: 16px 0;
+}
+
+.pdf-view-link:hover {
+  background-color: #4752c4;
+}
+
+@media (max-width: 768px) {
+  .pdf-embed { display: none; }
+  .pdf-view-link { display: inline-block; }
+}
