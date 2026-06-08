@@ -20,6 +20,7 @@ tags:
 
 <hr />
 
-<a href="../../static/docs/personal-thoughts-meshtastic-to-meshcore.pdf" target="_blank" class="pdf-view-link">Tap to read the full article</a>
-
-<iframe class="pdf-embed" src="../../static/docs/personal-thoughts-meshtastic-to-meshcore.pdf" width="100%" height="900px" style="border: none;"></iframe>
+![Page 1](../../static/images/posts/personal-thoughts-mesthastic-to-meshcore/1.png){ .post-article-img }
+![Page 2](../../static/images/posts/personal-thoughts-mesthastic-to-meshcore/2.png){ .post-article-img }
+![Page 3](../../static/images/posts/personal-thoughts-mesthastic-to-meshcore/3.png){ .post-article-img }
+![Page 4](../../static/images/posts/personal-thoughts-mesthastic-to-meshcore/4.png){ .post-article-img }

@@ -2608,6 +2608,17 @@ body[data-theme="light"] .node-list-item:hover {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
 }
 
+.post-article-img {
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .post-article-img {
+    max-width: 65%;
+    display: block;
+  }
+}
+
 .pdf-view-link {
   display: none;
   padding: 14px 24px;
