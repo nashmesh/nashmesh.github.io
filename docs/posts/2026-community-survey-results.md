@@ -1,7 +1,7 @@
 ---
 title: 2026 NashMesh Community Survey Results
 description: A summary of 50 responses from our recent community survey, covering platform preferences, use cases, and frustrations.
-date: 2026-05-12 23:00:00
+date: 2026-05-12
 template: base_no_sidebar.html
 
 tags:
@@ -10,7 +10,7 @@ tags:
 
 # 2026 NashMesh Community Survey Results
 
-*By Stuart W.*
+*Graphic by Stuart W.*
 <br />
 *<small>Discord: @alaricvanvelsor</small>*
 
@@ -18,6 +18,6 @@ tags:
 
 <hr />
 
-![NashMesh Survey Highlights](../static/images/nashmesh_survey_highlights.png)
+![NashMesh Survey Highlights](../static/images/nashmesh_survey_highlights.png){ .post-article-img }
 
 We'll be using this feedback to guide decisions on infrastructure, meetup topics, and resources. If you have questions or want to dig into the results further, come chat in the [NashMesh Discord](https://nashme.sh/discord).
