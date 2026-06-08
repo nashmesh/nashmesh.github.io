@@ -18,6 +18,6 @@ tags:
 
 <hr />
 
-![NashMesh Survey Highlights](../static/images/nashmesh_survey_highlights.png)
+![NashMesh Survey Highlights](../static/images/nashmesh_survey_highlights.png){ .post-article-img }
 
 We'll be using this feedback to guide decisions on infrastructure, meetup topics, and resources. If you have questions or want to dig into the results further, come chat in the [NashMesh Discord](https://nashme.sh/discord).
