@@ -10,7 +10,7 @@ tags:
 
 # 2026 NashMesh Community Survey Results
 
-*By Stuart W.*
+*Graphic by Stuart W.*
 <br />
 *<small>Discord: @alaricvanvelsor</small>*
 
