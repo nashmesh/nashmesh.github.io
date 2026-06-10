@@ -71,7 +71,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 banner.appendChild(btn);
                 banner.appendChild(dismiss);
                 var ref = document.querySelector(".meetup-banner");
+                var container = document.getElementById("banner-container");
                 if (ref) ref.parentNode.insertBefore(banner, ref);
+                else if (container) container.appendChild(banner);
             }
         }
     }
@@ -115,7 +117,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 meetupBanner.appendChild(meetupBtn);
                 meetupBanner.appendChild(meetupDismiss);
                 var meetupRef = document.querySelector(".meetup-banner");
+                var meetupContainer = document.getElementById("banner-container");
                 if (meetupRef) meetupRef.parentNode.insertBefore(meetupBanner, meetupRef);
+                else if (meetupContainer) meetupContainer.appendChild(meetupBanner);
             }
         }
     }

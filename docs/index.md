@@ -1,13 +1,6 @@
 ![Image title](./static/images/main.jpg)
 
-<div class="meetup-banner">
-  <img src="static/images/meshcore-logo.png" alt="MeshCore" class="meetup-banner-icon meetup-banner-logo">
-  <div class="meetup-banner-text">
-    <strong>NashMesh is now supporting MeshCore!</strong><br>
-    We're expanding our network to include MeshCore alongside Meshtastic. Join the Discord and check out <strong>#meshcore</strong> to get involved.
-  </div>
-  <a class="meetup-banner-btn" href="https://discord.gg/sSS8gEpuh8" target="_blank">Join Discord →</a>
-</div>
+<div id="banner-container"></div>
 
 ## Mission
 Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.
