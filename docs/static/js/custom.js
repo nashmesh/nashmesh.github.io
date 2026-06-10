@@ -76,6 +76,50 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // New meetup notification
+    if (window.NASHME_MEETUPS && window.NASHME_MEETUPS.length) {
+        var meetupCutoff = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+        var recentMeetup = null;
+        for (var i = 0; i < window.NASHME_MEETUPS.length; i++) {
+            var m = window.NASHME_MEETUPS[i];
+            if (new Date(m.date + "T00:00:00") >= meetupCutoff) { recentMeetup = m; break; }
+        }
+        if (recentMeetup) {
+            var meetupDismissKey = "new-meetup-dismissed:" + recentMeetup.url;
+            if (!localStorage.getItem(meetupDismissKey) && !document.querySelector(".new-meetup-banner")) {
+                var meetupBanner = document.createElement("div");
+                meetupBanner.className = "meetup-banner new-meetup-banner";
+                var meetupIcon = document.createElement("img");
+                meetupIcon.src = "/static/images/logo.png";
+                meetupIcon.alt = "NashMesh";
+                meetupIcon.className = "meetup-banner-icon meetup-banner-logo";
+                var meetupText = document.createElement("div");
+                meetupText.className = "meetup-banner-text";
+                var meetupStrong = document.createElement("strong");
+                meetupStrong.textContent = "Upcoming Meetup";
+                meetupText.appendChild(meetupStrong);
+                meetupText.appendChild(document.createElement("br"));
+                meetupText.appendChild(document.createTextNode(recentMeetup.title));
+                var meetupBtn = document.createElement("a");
+                meetupBtn.className = "meetup-banner-btn";
+                meetupBtn.href = recentMeetup.url;
+                meetupBtn.textContent = "Learn More →";
+                var meetupDismiss = document.createElement("button");
+                meetupDismiss.className = "new-post-dismiss-btn";
+                meetupDismiss.textContent = "✕";
+                meetupDismiss.addEventListener("click", (function (key, el) {
+                    return function () { localStorage.setItem(key, "1"); el.remove(); };
+                })(meetupDismissKey, meetupBanner));
+                meetupBanner.appendChild(meetupIcon);
+                meetupBanner.appendChild(meetupText);
+                meetupBanner.appendChild(meetupBtn);
+                meetupBanner.appendChild(meetupDismiss);
+                var meetupRef = document.querySelector(".meetup-banner");
+                if (meetupRef) meetupRef.parentNode.insertBefore(meetupBanner, meetupRef);
+            }
+        }
+    }
+
     // Tab URL hash tracking
     function slugify(text) {
         return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
