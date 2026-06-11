@@ -1917,7 +1917,7 @@ body[data-theme="light"] .fc-table td {
 
 .fc-step {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.6rem;
   margin-bottom: 0.5rem;
   font-size: 0.88em;
@@ -1936,7 +1936,6 @@ body[data-theme="light"] .fc-table td {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 0.1rem;
 }
 
 .fc-callout {
