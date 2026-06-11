@@ -47,10 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!localStorage.getItem(meetupDismissKey) && !document.querySelector(".new-meetup-banner")) {
                 var meetupBanner = document.createElement("div");
                 meetupBanner.className = "meetup-banner new-meetup-banner";
-                var meetupIcon = document.createElement("img");
-                meetupIcon.src = "/static/images/logo.png";
-                meetupIcon.alt = "NashMesh";
-                meetupIcon.className = "meetup-banner-icon meetup-banner-logo";
                 var meetupText = document.createElement("div");
                 meetupText.className = "meetup-banner-text";
                 var meetupStrong = document.createElement("strong");
@@ -68,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 meetupDismiss.addEventListener("click", (function (key, el) {
                     return function () { localStorage.setItem(key, "1"); el.remove(); };
                 })(meetupDismissKey, meetupBanner));
-                meetupBanner.appendChild(meetupIcon);
                 meetupBanner.appendChild(meetupText);
                 meetupBanner.appendChild(meetupBtn);
                 meetupBanner.appendChild(meetupDismiss);
@@ -90,10 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!localStorage.getItem(dismissKey) && !document.querySelector(".new-post-banner")) {
                 var banner = document.createElement("div");
                 banner.className = "meetup-banner new-post-banner";
-                var icon = document.createElement("img");
-                icon.src = "/static/images/logo.png";
-                icon.alt = "NashMesh";
-                icon.className = "meetup-banner-icon meetup-banner-logo";
                 var text = document.createElement("div");
                 text.className = "meetup-banner-text";
                 var strong = document.createElement("strong");
@@ -111,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 dismiss.addEventListener("click", (function (key, el) {
                     return function () { localStorage.setItem(key, "1"); el.remove(); };
                 })(dismissKey, banner));
-                banner.appendChild(icon);
                 banner.appendChild(text);
                 banner.appendChild(btn);
                 banner.appendChild(dismiss);
