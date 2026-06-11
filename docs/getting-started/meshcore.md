@@ -207,3 +207,102 @@
   </div>
 </div>
 
+
+---
+
+## Spreading Factor
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">NASHMESH <strong>SF7</strong></span>
+    <span class="fc-badge">DIAL <strong>SF7 → SF12</strong></span>
+    <span class="fc-badge">RULE <strong>each +1 ≈ 2× airtime</strong></span>
+    <span class="fc-badge">MATCH <strong>network-wide</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>A higher SF stretches every symbol over more time, so a receiver can pull a weaker signal out of the noise — that's the extra range. The price: the packet occupies the air far longer (<strong>every step up roughly doubles airtime</strong>) and the data rate drops. Lower SF is the reverse — quick, light on the channel, shorter reach.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 200" role="img" style="width:100%;display:block">
+      <defs>
+        <linearGradient id="sf-grad" x1="0" x2="1">
+          <stop offset="0" stop-color="#ff9f43"/>
+          <stop offset="1" stop-color="#5b7fa8"/>
+        </linearGradient>
+      </defs>
+      <g font-family="'Fira Mono',monospace" font-size="13.0">
+        <text x="20" y="24" fill="#ffbf80" font-weight="700">SF7 — short symbols</text>
+        <g stroke="#ff9f43" stroke-width="2" fill="none">
+          <path d="M40 90 L70 60 L70 90 L100 60 L100 90 L130 60 L130 90 L160 60 L160 90 L190 60 L190 90"/>
+        </g>
+        <text x="40" y="112" fill="#6f5a44">fast · cheap airtime · shorter reach</text>
+        <line x1="410" y1="20" x2="410" y2="180" stroke="#1f2a37"/>
+        <text x="440" y="24" fill="#7fb0d8" font-weight="700">SF12 — stretched symbols</text>
+        <g stroke="#5b7fa8" stroke-width="2" fill="none">
+          <path d="M440 90 L520 60 L520 90 L600 60 L600 90 L680 60 L680 90 L760 60 L760 90"/>
+        </g>
+        <text x="440" y="112" fill="#5b6b7d">slow · heavy airtime · longest reach</text>
+        <text x="20" y="150" fill="#76869a">RANGE &amp; AIRTIME →</text>
+        <rect x="20" y="160" width="780" height="10" rx="5" fill="url(#sf-grad)"/>
+        <g font-size="11.8" fill="#9aa7b6" text-anchor="middle">
+          <circle cx="40" cy="165" r="6" fill="#ff9f43" stroke="#fff" stroke-width="1.5"/>
+          <text x="40" y="190" fill="#ffbf80" font-weight="700">SF7</text>
+          <text x="270" y="190">SF9</text><circle cx="270" cy="165" r="3" fill="#9aa7b6"/>
+          <text x="780" y="190">SF12</text><circle cx="780" cy="165" r="3" fill="#9aa7b6"/>
+        </g>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-pkt" r="3.6" fill="#ff9f43" opacity="0.95">
+          <animateMotion dur="2.55s" begin="-2.01s" repeatCount="indefinite" calcMode="linear" path="M40 90 L70 60 L70 90 L100 60 L100 90 L130 60 L130 90 L160 60 L160 90 L190 60 L190 90"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.55s" begin="-2.01s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="nm-fx nm-pkt" r="3.6" fill="#5b7fa8" opacity="0.95">
+          <animateMotion dur="4.4s" begin="-0.73s" repeatCount="indefinite" calcMode="linear" path="M440 90 L520 60 L520 90 L600 60 L600 90 L680 60 L680 90 L760 60 L760 90"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="4.4s" begin="-0.73s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </svg>
+    <p class="fc-caption">Each step up the dial roughly doubles time-on-air. NashMesh sits at the fast end: SF7.</p>
+  </div>
+  <div class="fc-levels">
+    <div class="fc-level fc-level--rec">
+      <div class="fc-level-pick">★ NASHMESH</div>
+      <div class="fc-level-name">SF7</div>
+      <div class="fc-level-tag">fast end</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>reach</span><strong>shorter</strong></div>
+        <div class="fc-level-row"><span>airtime</span><strong>lowest</strong></div>
+        <div class="fc-level-row"><span>speed</span><strong>fastest</strong></div>
+      </div>
+      <p class="fc-level-note">Brief packets, channel stays open. Repeater density supplies the distance.</p>
+    </div>
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#76869a">SF9</div>
+      <div class="fc-level-tag">middle</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>reach</span><strong>medium</strong></div>
+        <div class="fc-level-row"><span>airtime</span><strong>~4× SF7</strong></div>
+        <div class="fc-level-row"><span>speed</span><strong>medium</strong></div>
+      </div>
+      <p class="fc-level-note">A compromise some sparse rural meshes use. Heavier on the air.</p>
+    </div>
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#7fb0d8">SF12</div>
+      <div class="fc-level-tag">max range</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>reach</span><strong>longest</strong></div>
+        <div class="fc-level-row"><span>airtime</span><strong>~30× SF7</strong></div>
+        <div class="fc-level-row"><span>speed</span><strong>slowest</strong></div>
+      </div>
+      <p class="fc-level-note">One slow packet can hog the channel. Wrong choice for a dense metro.</p>
+    </div>
+  </div>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>SF is part of the channel, not a personal range boost</strong>
+      <p>It's tempting to read "higher SF = more range" and turn it up. But SF must match across the mesh — raise it alone and you simply vanish from the network. Distance is the repeaters' job; your job is short, cheap packets.</p>
+    </div>
+  </div>
+</div>
