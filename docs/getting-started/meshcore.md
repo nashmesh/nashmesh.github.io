@@ -554,6 +554,8 @@
     <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Flood <span style="color:#4a586a">set flood.advert.interval</span></span><span class="fc-setting-value" style="color:#37e08a">3 h</span></div>
   </div>
   <p style="font-size:0.85em;color:#76869a;margin-top:0.5rem">3 h is the firmware minimum — chosen while the mesh is still growing so new nodes discover routes fast. As density increases, raise the flood interval to reclaim airtime.</p>
+  <div class="copyable-code" style="margin-top:0.5rem"><pre><code>set advert.interval 3600</code></pre></div>
+  <div class="copyable-code"><pre><code>set flood.advert.interval 10800</code></pre></div>
 </div>
 
 ---
