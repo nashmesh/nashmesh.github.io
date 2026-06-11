@@ -35,14 +35,16 @@ reboot</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>set rxdelay 3</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set agc.reset.interval 4</code></pre></div>
 <div class="fc-step"><span class="fc-step-num">4</span><span>TX delay — set both values for your neighbor count, check with <code>neighbors</code>:</span></div>
-<div class="fc-settings-list" style="margin:0.3rem 0 0.5rem">
-  <div class="fc-setting" style="font-size:0.78em"><span class="fc-setting-label" style="color:#9d7bff;font-weight:700">Neighbors</span><span class="fc-setting-value" style="color:#cdbcff">txdelay</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);color:#d9e2ec">direct.txdelay</span></div>
-  <div class="fc-setting"><span class="fc-setting-label">0 – 1</span><span class="fc-setting-value" style="color:#cdbcff">0.3</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">0.1</span></div>
-  <div class="fc-setting"><span class="fc-setting-label">2 – 4</span><span class="fc-setting-value" style="color:#cdbcff">0.5</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">0.3</span></div>
-  <div class="fc-setting"><span class="fc-setting-label">5 – 9</span><span class="fc-setting-value" style="color:#cdbcff">1</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">0.5</span></div>
-  <div class="fc-setting"><span class="fc-setting-label">10 – 14</span><span class="fc-setting-value" style="color:#cdbcff">1.5</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">1</span></div>
-  <div class="fc-setting fc-setting--last"><span class="fc-setting-label">15 +</span><span class="fc-setting-value" style="color:#cdbcff">2</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">2</span></div>
-</div>
+<table class="fc-table">
+  <thead><tr><th>Neighbors</th><th>txdelay</th><th>direct.txdelay</th></tr></thead>
+  <tbody>
+    <tr><td>0 – 1</td><td>0.3</td><td>0.1</td></tr>
+    <tr><td>2 – 4</td><td>0.5</td><td>0.3</td></tr>
+    <tr><td>5 – 9</td><td>1</td><td>0.5</td></tr>
+    <tr><td>10 – 14</td><td>1.5</td><td>1</td></tr>
+    <tr><td>15 +</td><td>2</td><td>2</td></tr>
+  </tbody>
+</table>
 <div class="fc-step"><span class="fc-step-num">5</span><span>Advert intervals (zero-hop 60 min, flood 3 h):</span></div>
 <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>set advert.interval 3600</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set flood.advert.interval 10800</code></pre></div>
@@ -830,14 +832,16 @@ reboot</code></pre></div>
     </svg>
     <p class="fc-caption">Each repeater waits a random slice before repeating. More neighbors competing = wider window needed.</p>
   </div>
-  <div class="fc-settings-list" style="margin-top:0.75rem">
-    <div class="fc-setting" style="font-size:0.78em"><span class="fc-setting-label" style="color:#9d7bff;font-weight:700">Neighbors your node sees</span><span class="fc-setting-value" style="color:#cdbcff">txdelay</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em;color:#d9e2ec">direct.txdelay</span></div>
-    <div class="fc-setting"><span class="fc-setting-label">0 – 1</span><span class="fc-setting-value" style="color:#cdbcff">0.3</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">0.1</span></div>
-    <div class="fc-setting"><span class="fc-setting-label">2 – 4</span><span class="fc-setting-value" style="color:#cdbcff">0.5</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">0.3</span></div>
-    <div class="fc-setting"><span class="fc-setting-label">5 – 9</span><span class="fc-setting-value" style="color:#cdbcff">1</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">0.5</span></div>
-    <div class="fc-setting"><span class="fc-setting-label">10 – 14</span><span class="fc-setting-value" style="color:#cdbcff">1.5</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">1</span></div>
-    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">15 +</span><span class="fc-setting-value" style="color:#cdbcff">2</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">2</span></div>
-  </div>
+  <table class="fc-table">
+  <thead><tr><th>Neighbors</th><th>txdelay</th><th>direct.txdelay</th></tr></thead>
+  <tbody>
+    <tr><td>0 – 1</td><td>0.3</td><td>0.1</td></tr>
+    <tr><td>2 – 4</td><td>0.5</td><td>0.3</td></tr>
+    <tr><td>5 – 9</td><td>1</td><td>0.5</td></tr>
+    <tr><td>10 – 14</td><td>1.5</td><td>1</td></tr>
+    <tr><td>15 +</td><td>2</td><td>2</td></tr>
+  </tbody>
+</table>
   <p style="font-size:0.82em;color:#76869a;margin:0.4rem 0 0.5rem">Check your count with the <code>neighbors</code> command, and revisit these as the node sees more over time.</p>
   <div class="copyable-code"><pre><code>set txdelay 0.5</code></pre></div>
   <div class="copyable-code"><pre><code>set direct.txdelay 0.3</code></pre></div>

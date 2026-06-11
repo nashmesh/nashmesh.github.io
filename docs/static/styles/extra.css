@@ -1693,6 +1693,59 @@ h3:has(+ .fc-card-header) {
   margin-bottom: 0.2rem !important;
 }
 
+/* ── Field Card compact table ────────────────────────────────────── */
+
+.fc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--md-code-font-family);
+  font-size: 0.82em;
+  margin: 0.4rem 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fc-table th,
+.fc-table td {
+  padding: 0.45rem 0.75rem;
+  text-align: right;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fc-table th:first-child,
+.fc-table td:first-child {
+  text-align: left;
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-table th {
+  color: var(--md-default-fg-color--light);
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: 0.04em;
+}
+
+.fc-table tr:last-child td {
+  border-bottom: none;
+}
+
+.fc-table td:not(:first-child) {
+  color: #cdbcff;
+  font-weight: 700;
+}
+
+body[data-theme="light"] .fc-table {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .fc-table th,
+body[data-theme="light"] .fc-table td {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
 /* Quick setup — tighten internal spacing */
 .content-section h4 {
   margin: 0 0 0.4rem !important;
