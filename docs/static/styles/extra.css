@@ -1693,6 +1693,19 @@ h3:has(+ .fc-card-header) {
   margin-bottom: 0.2rem !important;
 }
 
+/* Quick setup — tighten internal spacing */
+.content-section h4 {
+  margin: 0 0 0.4rem !important;
+}
+
+.content-section .fc-step {
+  margin-bottom: 0.3rem;
+}
+
+.content-section + .content-section {
+  margin-top: 0.25rem;
+}
+
 .fc-card-sub {
   color: var(--md-default-fg-color--light);
   margin: 0 0 0.75rem;
