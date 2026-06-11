@@ -89,3 +89,65 @@
     </div>
   </div>
 </div>
+
+---
+
+## Frequency
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">NASHMESH <strong>910.525 MHz</strong></span>
+    <span class="fc-badge">BAND <strong>US 902–928</strong></span>
+    <span class="fc-badge">RULE <strong>must match exactly</strong></span>
+    <span class="fc-badge">REBOOT <strong>to apply</strong></span>
+  </div>
+</div>
+
+### What it is
+
+<div class="content-section content-section--b">
+  <p>Frequency is the center of your radio channel — the precise point in the band where every transmission happens. Two radios on different frequencies are like two people on different stations: each is talking, neither hears the other. It's the <strong>first</strong> thing that has to match across the mesh.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 120" role="img" style="width:100%;display:block">
+      <g font-family="'Fira Mono',monospace" font-size="14.5">
+        <text x="14" y="16" fill="#c6e96b" font-weight="700">US ISM band · 902 – 928 MHz</text>
+        <line x1="20" y1="64" x2="660" y2="64" stroke="#3a4757" stroke-width="2"/>
+        <line x1="20" y1="58" x2="20" y2="70" stroke="#5a6b7d"/><text x="20" y="90" fill="#76869a" font-size="12">902</text>
+        <line x1="660" y1="58" x2="660" y2="70" stroke="#5a6b7d"/><text x="660" y="90" fill="#76869a" font-size="12">928</text>
+        <line x1="250" y1="54" x2="250" y2="64" stroke="#a3e635" stroke-width="2.5"/>
+        <circle cx="250" cy="54" r="6.5" fill="#a3e635" stroke="#fff" stroke-width="1.5"/>
+        <text x="250" y="44" text-anchor="middle" fill="#c6e96b" font-weight="700" font-size="15">910.525</text>
+        <text x="250" y="106" text-anchor="middle" fill="#8aa83a" font-size="12.5">the NashMesh channel — everyone tunes here</text>
+        <circle cx="730" cy="44" r="18" fill="#0c1118" stroke="#ff4d63" stroke-dasharray="3,4"/><text x="730" y="49" text-anchor="middle" fill="#ff8593" font-size="12">915?</text>
+        <text x="730" y="78" text-anchor="middle" fill="#ff6678" font-size="11">wrong freq</text><text x="730" y="92" text-anchor="middle" fill="#ff6678" font-size="11">= unheard</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-ping" cx="250" cy="54" r="7" fill="none" stroke="#a3e635" stroke-width="1.8">
+          <animate attributeName="r" values="7;37" dur="2.4s" begin="-0.0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/>
+          <animate attributeName="opacity" values="0.55;0" dur="2.4s" begin="-0.0s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="nm-fx nm-ping" cx="250" cy="54" r="7" fill="none" stroke="#a3e635" stroke-width="1.8">
+          <animate attributeName="r" values="7;37" dur="2.4s" begin="-1.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/>
+          <animate attributeName="opacity" values="0.55;0" dur="2.4s" begin="-1.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="nm-fx" cx="730" cy="44" r="18" fill="none" stroke="#ff4d63" stroke-dasharray="3,4">
+          <animate attributeName="opacity" values="0.2;1;0.2" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </svg>
+    <p class="fc-caption">Frequency is the exact point in the band where all transmissions happen. A node elsewhere is on a different station.</p>
+  </div>
+  <p>Every node — companion or repeater — uses <strong>910.525 MHz</strong>, inside the US 902–928 MHz ISM band that the USA/Canada preset selects. Load the preset first; it puts you in the right band, then confirm the exact frequency.</p>
+</div>
+
+### Why you don't touch it alone
+
+<div class="content-section content-section--b">
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>This is which channel — bandwidth and SF only shape it</strong>
+      <p>Frequency is the shared address: get it wrong and nothing else matters, because no one else is listening there. It's tempting to nudge it to dodge interference, but moving it alone just removes you from the mesh. Different regions use entirely different bands (Europe sits at 868 MHz), which is why picking the right preset comes first.</p>
+    </div>
+  </div>
+</div>
