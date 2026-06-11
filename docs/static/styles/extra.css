@@ -1736,6 +1736,12 @@ h3:has(+ .fc-card-header) {
   font-weight: 700;
 }
 
+/* Signal table keeps its traffic-light colors on all themes */
+.fc-table--signal td[style*="color"],
+.fc-table--signal th[style*="color"] {
+  font-weight: 700;
+}
+
 body[data-theme="light"] .fc-table {
   background: rgba(0, 0, 0, 0.03);
   border-color: rgba(0, 0, 0, 0.08);
@@ -2110,8 +2116,13 @@ body[data-theme="light"] .fc-card-header {
 }
 
 body[data-theme="light"] .fc-badge {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+body[data-theme="light"] .fc-badge strong {
+  color: rgba(0, 0, 0, 0.87);
 }
 
 body[data-theme="light"] .fc-section {

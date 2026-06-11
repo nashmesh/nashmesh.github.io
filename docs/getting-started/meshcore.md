@@ -857,12 +857,36 @@
 
 <div class="content-section content-section--b">
   <p><strong>RSSI</strong> is how strong the incoming signal is. The <strong>noise floor</strong> is the ambient RF racket your receiver sits in. <strong>SNR</strong> is how far the signal stands above that noise — roughly RSSI minus the noise floor — and it's the single best gauge of link quality.</p>
-  <div class="fc-settings-list" style="margin-top:0.5rem">
-    <div class="fc-setting" style="font-size:0.78em"><span class="fc-setting-label" style="color:#9bdcfb;font-weight:700">Metric</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em;color:#5fd6a0">Good</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em;color:#e3c069">OK / edge</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em;color:#ff7a8a">Problem</span></div>
-    <div class="fc-setting"><span class="fc-setting-label">RSSI (dBm)</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#5fd6a0">≳ −100</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#e3c069">−100 to −118</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#ff7a8a">≲ −120</span></div>
-    <div class="fc-setting"><span class="fc-setting-label">SNR (dB)</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#5fd6a0">≥ 0</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#e3c069">0 to −7 *</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#ff7a8a">&lt; −7.5 *</span></div>
-    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Noise floor (dBm)</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#5fd6a0">≤ −120</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#e3c069">−120 to −110</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#ff7a8a">≳ −105</span></div>
-  </div>
+  <table class="fc-table fc-table--signal" style="margin-top:0.5rem">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th style="color:#5fd6a0">Good</th>
+        <th style="color:#e3c069">OK / edge</th>
+        <th style="color:#ff7a8a">Problem</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>RSSI (dBm)</td>
+        <td style="color:#5fd6a0">≳ −100</td>
+        <td style="color:#e3c069">−100 to −118</td>
+        <td style="color:#ff7a8a">≲ −120</td>
+      </tr>
+      <tr>
+        <td>SNR (dB)</td>
+        <td style="color:#5fd6a0">≥ 0</td>
+        <td style="color:#e3c069">0 to −7 *</td>
+        <td style="color:#ff7a8a">&lt; −7.5 *</td>
+      </tr>
+      <tr>
+        <td>Noise floor (dBm)</td>
+        <td style="color:#5fd6a0">≤ −120</td>
+        <td style="color:#e3c069">−120 to −110</td>
+        <td style="color:#ff7a8a">≳ −105</td>
+      </tr>
+    </tbody>
+  </table>
   <p style="font-size:0.82em;color:#76869a;margin:0.4rem 0 0.5rem">* LoRa decodes <strong>below</strong> the noise floor — negative SNR still works. At NashMesh's SF7 the limit is about −7.5 dB.</p>
   <div class="copyable-code"><pre><code>stats-radio  # noise floor · last RSSI/SNR</code></pre></div>
   <div class="copyable-code"><pre><code>neighbors    # who you hear, with SNR</code></pre></div>
