@@ -2076,9 +2076,15 @@ body[data-theme="light"] .fc-section {
   border-bottom-color: rgba(0, 0, 0, 0.06);
 }
 
-body[data-theme="light"] .fc-diagram {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.08);
+body[data-theme="light"] .fc-diagram,
+body[data-theme="retro"] .fc-diagram {
+  background: #0d1520;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body[data-theme="light"] .fc-caption,
+body[data-theme="retro"] .fc-caption {
+  color: rgba(217, 226, 236, 0.65);
 }
 
 body[data-theme="light"] .fc-settings-list {
