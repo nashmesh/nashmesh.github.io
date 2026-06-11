@@ -2637,6 +2637,5 @@ body[data-theme="light"] .node-list-item:hover {
 }
 
 @media (max-width: 768px) {
-  .pdf-embed { display: none; }
   .pdf-view-link { display: inline-block; }
 }

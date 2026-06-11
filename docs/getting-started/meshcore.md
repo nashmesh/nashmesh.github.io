@@ -308,7 +308,6 @@ Confirm the firmware version shown matches what you flashed.
 
 This 23-card set covers everything you need to get on NashMesh and understand why it works the way it does. The cards walk through each radio setting (frequency, bandwidth, spreading factor, and coding rate), explain the reasoning behind the values NashMesh uses, and include the exact CLI commands for companion nodes and repeaters. They also cover airtime as a shared resource, routing, messaging, channel access, and field repair so you have enough context to troubleshoot problems. Thanks to KA4RLW for providing these!
 
-<iframe class="pdf-embed" src="/static/docs/nashmesh_field_cards.pdf" width="100%" height="800px" style="margin-top: 1rem; border: none; border-radius: 6px;"></iframe>
-<a class="pdf-view-link" href="/static/docs/nashmesh_field_cards.pdf" target="_blank">View Field Cards</a>
+<iframe class="pdf-embed" src="https://docs.google.com/viewer?url=https://nashme.sh/static/docs/nashmesh_field_cards.pdf&embedded=true" width="100%" height="800px" style="margin-top: 1rem; border: none; border-radius: 6px;"></iframe>
 
 </div>
