@@ -10,7 +10,9 @@ tags:
 
 **Finally another meetup on the books! Would love to chat about how well MeshCore has been working, and maybe finalize some plans on "officially" switching the remaining infrastructure, and formally adopting MeshCore as the official mesh of NashMe.sh!**
 
-**There will be a "bits and bobs" thrift store, show and tell, and maybe some surprises. Don't wanna miss this one. - Max**
+**There will be a "bits and bobs" thrift store, show and tell, and maybe some surprises. Don't wanna miss this one.**
+
+**- Max**
 
 <hr />
 
