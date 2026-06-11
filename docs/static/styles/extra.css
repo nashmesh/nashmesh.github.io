@@ -1854,6 +1854,11 @@ body[data-theme="light"] .fc-table td {
   padding: 1rem 1rem 0.6rem;
   margin: 0.75rem 0 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+}
+
+.fc-diagram svg {
+  min-width: 560px;
 }
 
 .fc-caption {
@@ -2064,7 +2069,28 @@ body[data-theme="light"] .fc-level-note {
 
 @media only screen and (max-width: 650px) {
   .fc-levels {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+  }
+
+  .fc-level {
+    min-width: 120px;
+    max-width: 38vw;
+    flex-shrink: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .fc-level-row {
+    flex-wrap: wrap;
+    gap: 0.1rem;
+  }
+
+  .fc-level-note {
+    white-space: normal;
   }
 }
 
