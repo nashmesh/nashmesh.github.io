@@ -1672,6 +1672,292 @@ html {
   }
 }
 
+/* ── Field Card elements ─────────────────────────────────────────── */
+
+/* Hide SMIL animation overlays when printing or user prefers no motion */
+@media print { .nm-fx { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .nm-fx { display: none !important; } }
+
+.fc-card-header {
+  padding: 0.25rem 0 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 0.25rem;
+}
+
+.fc-card-title {
+  margin: 0 0 0.4rem !important;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.fc-card-cmd {
+  font-family: var(--md-code-font-family);
+  font-size: 0.6em;
+  font-weight: 400;
+  color: #37e08a;
+  opacity: 0.85;
+}
+
+.fc-card-sub {
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 0.75rem;
+  font-size: 0.92em;
+}
+
+.fc-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.fc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  padding: 0.18rem 0.5rem;
+  font-size: 0.72em;
+  font-family: var(--md-code-font-family);
+  letter-spacing: 0.04em;
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-badge strong {
+  color: var(--md-default-fg-color);
+}
+
+.fc-badge--green {
+  background: rgba(55, 224, 138, 0.1);
+  border-color: rgba(55, 224, 138, 0.3);
+  color: #37e08a;
+}
+
+.fc-badge--green strong {
+  color: #9bf0c4;
+}
+
+.fc-section {
+  padding: 1.1rem 0 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fc-section--last {
+  border-bottom: none;
+}
+
+.fc-sech {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.fc-num {
+  background: rgba(55, 224, 138, 0.15);
+  color: #37e08a;
+  font-family: var(--md-code-font-family);
+  font-size: 0.8em;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.fc-sech h3 {
+  margin: 0 0 0.1rem !important;
+  font-size: 1em;
+}
+
+.fc-sech-sub {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.85em;
+  margin: 0;
+}
+
+.fc-diagram {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  padding: 1rem 1rem 0.6rem;
+  margin: 0.75rem 0 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fc-caption {
+  font-size: 0.78em;
+  color: var(--md-default-fg-color--light);
+  text-align: center;
+  margin: 0.5rem 0 0;
+  font-style: italic;
+}
+
+.fc-settings-list {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.fc-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--md-code-font-family);
+  font-size: 0.88em;
+}
+
+.fc-setting--last {
+  border-bottom: none;
+}
+
+.fc-setting-label {
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-setting-value {
+  color: var(--md-default-fg-color);
+  font-weight: 700;
+  text-align: right;
+}
+
+.fc-setting-value--green {
+  color: #37e08a;
+}
+
+.fc-setting-note {
+  color: var(--md-default-fg-color--lighter, #4a586a);
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+.fc-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.fc-steps-col h4 {
+  margin: 0 0 0.6rem !important;
+  font-size: 0.88em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.88em;
+}
+
+.fc-step-num {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--md-default-fg-color--light);
+  font-family: var(--md-code-font-family);
+  font-size: 0.8em;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.fc-callout {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: rgba(55, 224, 138, 0.05);
+  border: 1px solid rgba(55, 224, 138, 0.18);
+  border-left: 3px solid #37e08a;
+  border-radius: 4px;
+  padding: 0.7rem 1rem;
+  margin: 0.75rem 0 0.25rem;
+}
+
+.fc-callout-ic {
+  background: #37e08a;
+  color: #0a0e14;
+  font-weight: 700;
+  font-size: 0.85em;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.fc-callout p {
+  margin: 0.3rem 0 0;
+  font-size: 0.88em;
+}
+
+/* Light theme adjustments */
+body[data-theme="light"] .fc-card-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .fc-badge {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="light"] .fc-section {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .fc-diagram {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .fc-settings-list {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .fc-setting {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .fc-callout {
+  background: rgba(0, 100, 60, 0.05);
+  border-color: rgba(0, 100, 60, 0.18);
+  border-left-color: #1a9a5e;
+}
+
+body[data-theme="light"] .fc-callout-ic {
+  background: #1a9a5e;
+  color: #fff;
+}
+
+/* Mobile: stack the steps side by side */
+@media only screen and (max-width: 600px) {
+  .fc-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Comfortable line-height and sizing for body content */
 .post p,
 .post li,

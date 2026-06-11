@@ -1,313 +1,94 @@
 <h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore</h1>
 
-<div class="meetup-banner">
-  <div class="meetup-banner-text">
-    <strong>NashMesh Field Cards are here!</strong><br>
-    <a href="#field-cards">Download them below ↓</a>
+<div class="content-section content-section--b">
+
+<div class="fc-card-header">
+  <h2 class="fc-card-title">Radio Settings</h2>
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">PRESET <strong>USA/Canada</strong></span>
+    <span class="fc-badge">FREQ <strong>910.525 MHz</strong></span>
+    <span class="fc-badge">BW <strong>62.5 kHz</strong></span>
+    <span class="fc-badge">SF <strong>7</strong></span>
+    <span class="fc-badge">CR <strong>5</strong></span>
+    <span class="fc-badge">RULE <strong>must match the mesh</strong></span>
   </div>
 </div>
 
-Below are the recommended radio settings for the Nashville area, aligned with the settings recommended by [TennMesh](https://tennmesh.com).
-
-<div class="content-section content-section--a" markdown="1">
-
-## Flashing Your Device
-
-NashMesh recommends running the **latest firmware** on your nodes. You can flash your device using the [MeshCore Web Flasher](https://flasher.meshcore.io).
-
-Running a Room Server/Repeater or Repeater node? You can update it wirelessly using [Over-the-Air OTA flashing](#flashing-over-the-air-ota).
-
+<div class="fc-section">
+  <div class="fc-sech"><div class="fc-num">1</div><div><h3>How to set it</h3><p class="fc-sech-sub">Load the preset, confirm the values, reboot.</p></div></div>
+  <div class="fc-steps-grid">
+    <div class="fc-steps-col">
+      <h4>Companion app</h4>
+      <div class="fc-step"><span class="fc-step-num">1</span><span>Pick the <strong>USA/Canada</strong> preset — it loads the right band plan.</span></div>
+      <div class="fc-step"><span class="fc-step-num">2</span><span>Confirm frequency <strong>910.525</strong>, bandwidth <strong>62.5</strong>, SF <strong>7</strong>, CR <strong>5</strong>.</span></div>
+      <div class="fc-step"><span class="fc-step-num">3</span><span>Same values on <strong>every</strong> device — companion and repeater alike.</span></div>
+    </div>
+    <div class="fc-steps-col">
+      <h4>Repeater (CLI)</h4>
+      <div class="fc-step"><span class="fc-step-num">1</span><span>Set all four radio params in one command, then reboot to apply.</span></div>
+      <div class="copyable-code" style="margin-top:0.5rem">
+        <pre><code>set radio 910.525,62.5,7,5
+reboot
+get radio  # verify</code></pre>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="content-section content-section--b" markdown="1">
-
-## Radio Settings
-
-<div class="settings-columns">
-<div class="settings-col">
-<h3>Companion</h3>
-<table>
-<thead><tr><th>Setting</th><th>Value</th></tr></thead>
-<tbody>
-<tr><td>Preset</td><td><code>USA/Canada</code></td></tr>
-<tr><td>Frequency</td><td><code>910.525 MHz</code></td></tr>
-<tr><td>Bandwidth</td><td><code>62.5 kHz</code></td></tr>
-<tr><td>Spread Factor</td><td><code>7</code></td></tr>
-<tr><td>Coding Rate</td><td><code>5</code></td></tr>
-</tbody>
-</table>
+<div class="fc-section fc-section--last">
+  <div class="fc-sech"><div class="fc-num">2</div><div><h3>Why it must match</h3><p class="fc-sech-sub">Get one value wrong and the mesh can't hear you.</p></div></div>
+  <p>Frequency, bandwidth and spreading factor together define a LoRa <strong>channel</strong>. If even one differs from the rest of the mesh, your transmissions are unreadable — you'll hear nothing and no one hears you.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 150" role="img" style="width:100%;display:block">
+      <g font-family="'Fira Mono',monospace" font-size="14">
+        <text x="20" y="24" fill="#37e08a" font-weight="700">MATCH → linked</text>
+        <g fill="#0c1118" stroke="#37e08a" stroke-width="2"><circle cx="115" cy="74" r="21"/><circle cx="300" cy="74" r="21"/></g>
+        <circle cx="115" cy="74" r="3.6" fill="#37e08a"/><circle cx="300" cy="74" r="3.6" fill="#37e08a"/>
+        <line x1="138" y1="74" x2="277" y2="74" stroke="#37e08a" stroke-width="2.6"/>
+        <g stroke="#37e08a" stroke-width="1.6" opacity=".55" fill="none"><path d="M192 60 q15 -11 30 0"/><path d="M192 88 q15 11 30 0"/></g>
+        <text x="115" y="113" text-anchor="middle" fill="#9bf0c4" font-size="15" font-weight="700">910.525</text>
+        <text x="300" y="113" text-anchor="middle" fill="#9bf0c4" font-size="15" font-weight="700">910.525</text>
+        <text x="115" y="133" text-anchor="middle" fill="#6f8a7e" font-size="12.5">62.5 · SF7</text>
+        <text x="300" y="133" text-anchor="middle" fill="#6f8a7e" font-size="12.5">62.5 · SF7</text>
+        <line x1="410" y1="14" x2="410" y2="140" stroke="#1f2a37"/>
+        <text x="442" y="24" fill="#ff6678" font-weight="700">MISMATCH → silence</text>
+        <g fill="#0c1118" stroke="#2c3a4d" stroke-width="2"><circle cx="540" cy="74" r="21"/><circle cx="740" cy="74" r="21"/></g>
+        <circle cx="540" cy="74" r="3.6" fill="#6b7785"/><circle cx="740" cy="74" r="3.6" fill="#ff6678"/>
+        <line x1="563" y1="74" x2="717" y2="74" stroke="#ff4d63" stroke-width="2.2" stroke-dasharray="3,7"/>
+        <text x="640" y="82" text-anchor="middle" fill="#ff6678" font-size="23" font-weight="700">✕</text>
+        <text x="540" y="113" text-anchor="middle" fill="#c9d6e3" font-size="15" font-weight="700">910.525</text>
+        <text x="740" y="113" text-anchor="middle" fill="#ff9aa6" font-size="15" font-weight="700">915.0</text>
+        <text x="540" y="133" text-anchor="middle" fill="#6b7785" font-size="12.5">62.5 · SF7</text>
+        <text x="740" y="133" text-anchor="middle" fill="#ff8593" font-size="12.5">62.5 · SF7</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-ping" cx="115" cy="74" r="21" fill="none" stroke="#37e08a" stroke-width="1.8">
+          <animate attributeName="r" values="21;51" dur="2.6s" begin="-0.0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/>
+          <animate attributeName="opacity" values="0.55;0" dur="2.6s" begin="-0.0s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="nm-fx nm-ping" cx="115" cy="74" r="21" fill="none" stroke="#37e08a" stroke-width="1.8">
+          <animate attributeName="r" values="21;51" dur="2.6s" begin="-1.3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/>
+          <animate attributeName="opacity" values="0.55;0" dur="2.6s" begin="-1.3s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#37e08a" opacity="0.95">
+          <animateMotion dur="2.2s" begin="-0.0s" repeatCount="indefinite" calcMode="linear" path="M138 74 L277 74"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.2s" begin="-0.0s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#37e08a" opacity="0.95">
+          <animateMotion dur="2.2s" begin="-1.1s" repeatCount="indefinite" calcMode="linear" path="M138 74 L277 74"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.2s" begin="-1.1s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </svg>
+    <p class="fc-caption">Same frequency / bandwidth / spreading factor = a link. Any mismatch = mutual silence.</p>
+  </div>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>This is your address, not a tuning knob</strong>
+      <p>Frequency, bandwidth and spreading factor together define the channel the whole mesh agrees on. Changing any of them on your node alone doesn't "improve" anything — it just removes you from the conversation. Match the network exactly, every time.</p>
+    </div>
+  </div>
 </div>
-<div class="settings-col">
-<h3>Repeater</h3>
-<table>
-<thead><tr><th>Setting</th><th>Value</th></tr></thead>
-<tbody>
-<tr><td>Preset</td><td><code>USA/Canada</code></td></tr>
-<tr><td>Frequency</td><td><code>910.525 MHz</code></td></tr>
-<tr><td>Bandwidth</td><td><code>62.5 kHz</code></td></tr>
-<tr><td>Spread Factor</td><td><code>7</code></td></tr>
-<tr><td>Coding Rate</td><td><code>5</code></td></tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<p class="coding-rate-note">Not sure why we use coding rate 5? <a href="#coding-rate">Learn more ↓</a></p>
-
-</div>
-
-<div class="content-section content-section--b" markdown="1">
-
-## Channels
-
-| Channel | Purpose |
-|---------|---------|
-| `Public` | General channel open to all nodes on the network |
-| `#bna-test` | Local test channel and bot use |
-| `#bna-wx` | Local weather discussion and bot use |
-| `#bot` | General bot testing channel
-| `#test` | General testing channel |
-| `#tn-middle` | Channel for Middle TN chat |
-
-</div>
-
----
-
-<div class="content-section content-section--a" markdown="1">
-
-## Repeater Details
-
-### Repeater Advert Intervals
-
-The following advert intervals are recommended for repeaters operating in the Middle TN area.
-
-| Type     | Interval   |
-| -------- | ---------- |
-| Zero Hop | 60 minutes |
-| Flood    | 3 hours    |
-
-### Path Hash Size
-
-NashMesh uses a **2-byte hash mode** for path hashing, available on radios running firmware 1.14+. Using 2 bytes helps prevent collisions during routing, improving reliability across the network.
-
-**Companion nodes:** From the home screen: Gear icon → Experimental Settings → Default Path Hash Size → `2-Byte`
-
-**Repeaters:** Use the following command via the MeshCore app CLI or [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli):
-
-<div class="copyable-code">
-<pre><code>set path.hash.mode 1</code></pre>
-</div>
-
-### Repeater Commands
-
-#### Common Settings
-
-These settings are recommended for all repeaters. Commands can be entered via the command line in the MeshCore app, or by using [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli).
-
-<div class="copyable-code">
-<pre><code>set agc.reset.interval 4</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set multi.acks 1</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set rxdelay 3</code></pre>
-</div>
-
-#### Neighbor-Based Delay Tuning
-
-Apply the settings that match the number of neighbors your node currently sees. As your node sees more neighbors over time, revisit and update these settings accordingly.
-
-#### Neighbor Count: 0–1
-
-Use these settings if your node sees **0 to 1** neighbors.
-
-<div class="copyable-code">
-<pre><code>set txdelay 0.3</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set direct.txdelay 0.1</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set agc.reset.interval 4</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set multi.acks 1</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set rxdelay 3</code></pre>
-</div>
-
-#### Neighbor Count: 2–4
-
-Use these settings if your node sees **2 to 4** neighbors.
-
-<div class="copyable-code">
-<pre><code>set txdelay 0.5</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set direct.txdelay 0.3</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set agc.reset.interval 4</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set multi.acks 1</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set rxdelay 3</code></pre>
-</div>
-
-#### Neighbor Count: 5–9
-
-Use these settings if your node sees **5 to 9** neighbors.
-
-<div class="copyable-code">
-<pre><code>set txdelay 1</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set direct.txdelay 0.5</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set agc.reset.interval 4</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set multi.acks 1</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set rxdelay 3</code></pre>
-</div>
-
-#### Neighbor Count: 10–14
-
-Use these settings if your node sees **10 to 14** neighbors.
-
-<div class="copyable-code">
-<pre><code>set txdelay 1.5</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set direct.txdelay 1</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set agc.reset.interval 4</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set multi.acks 1</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set rxdelay 3</code></pre>
-</div>
-
-#### Neighbor Count: 15+
-
-Use these settings if your node sees **15 or more** neighbors.
-
-<div class="copyable-code">
-<pre><code>set txdelay 2</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set direct.txdelay 2</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set agc.reset.interval 4</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set multi.acks 1</code></pre>
-</div>
-
-<div class="copyable-code">
-<pre><code>set rxdelay 3</code></pre>
-</div>
-
-</div>
-
-<div class="content-section content-section--b" markdown="1">
-
-<h2 id="coding-rate">Coding Rate</h2>
-
-![Coding Rate Comparison](../../static/images/coding-rate.png){ .img-thumbnail }
-
-</div>
-
-<div class="content-section content-section--a" markdown="1">
-
-## Flashing Over the Air (OTA)
-
-OTA flashing lets you update your MeshCore device wirelessly without a USB cable, using a Wi-Fi access point created by the device itself.
-
-!!! info "Supported node types"
-    OTA updates are only supported on **Room Server/Repeater** and **Repeater** nodes.
-
-!!! warning "nRF52 devices — Bluetooth OTA only"
-    If your device uses an **nRF52** chip, it does not support Wi-Fi OTA. Updates must be performed over **Bluetooth** using a dedicated app:
-
-    - **iOS:** [nRF Device Firmware Update](https://apps.apple.com/us/app/nrf-device-firmware-update/id1624454660)
-    - **Android:** [nRF Connect](https://github.com/nordicsemi/Android-nRF-Connect)
-
-    Download the firmware `.zip` (not `.bin`) from the [MeshCore Web Flasher](https://flasher.meshcore.io) and follow the in-app instructions to perform the update.
-
-!!! warning "Choose the right `.bin` file"
-    Always download the **un-merged** `.bin` from the [MeshCore Web Flasher](https://flasher.meshcore.io) for OTA updates — this updates only the firmware and preserves your settings. Only use the **merged** `.bin` if you intend to fully erase the device and start fresh.
-
-#### Step 1 — Start OTA mode
-
-Open your MeshCore companion app and log into the node. From the Command Line, run:
-
-<div class="copyable-code">
-<pre><code>start ota</code></pre>
-</div>
-
-Your device will create a Wi-Fi access point named **MeshCore-OTA**.
-
-#### Step 2 — Connect and upload
-
-On your computer, connect to the **MeshCore-OTA** Wi-Fi network. Then open a browser and navigate to:
-
-<div class="copyable-code">
-<pre><code>http://192.168.4.1/update</code></pre>
-</div>
-
-Upload the `.bin` file you downloaded in Step 1. Wait for the upload to fully complete before closing the browser or navigating away.
-
-#### Step 3 — Confirm the update
-
-Once the upload is done, reopen your companion app and log back into the device. From the Command Line, run:
-
-<div class="copyable-code">
-<pre><code>version</code></pre>
-</div>
-
-Confirm the firmware version shown matches what you flashed.
-
-</div>
-
-<div class="content-section content-section--b" markdown="1">
-
-## Field Cards
-
-This 23-card set covers everything you need to get on NashMesh and understand why it works the way it does. The cards walk through each radio setting (frequency, bandwidth, spreading factor, and coding rate), explain the reasoning behind the values NashMesh uses, and include the exact CLI commands for companion nodes and repeaters. They also cover airtime as a shared resource, routing, messaging, channel access, and field repair so you have enough context to troubleshoot problems. Thanks to KA4RLW for providing these!
-
-<iframe class="pdf-embed" src="https://docs.google.com/viewer?url=https://nashme.sh/static/docs/nashmesh_field_cards.pdf&embedded=true" width="100%" height="800px" style="margin-top: 1rem; border: none; border-radius: 6px;"></iframe>
 
 </div>
