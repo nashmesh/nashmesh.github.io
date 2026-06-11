@@ -700,7 +700,7 @@
       <p class="fc-level-note">Relies only on the dedup cache.</p>
     </div>
     <div class="fc-level">
-      <div class="fc-level-name" style="color:#43c4f0">Minimal</div>
+      <div class="fc-level-name" class="fc-cat-label">Minimal</div>
       <div class="fc-level-tag">very lax</div>
       <div class="fc-level-rows">
         <div class="fc-level-row"><span>1-byte</span><strong>4+ hits</strong></div>
@@ -943,13 +943,13 @@
 <div class="content-section content-section--b">
   <p>A channel is a group room secured by one symmetric key (AES) that every member shares. Anyone with the key reads and sends; anyone without it just hears noise. Unlike a DM, a channel message is a flood — it spreads across every repeater with no delivery confirmation.</p>
   <div class="fc-settings-list" style="margin-top:0.5rem">
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Regional</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">Regional</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>#tn-middle</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">all of Middle Tennessee</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>#tn-davidson</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">your county — #tn-&lt;county&gt; for any nearby one</span></div>
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Topic</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">Topic</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>#tenntalk</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">statewide general chatter</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>#ham</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">amateur radio operators</span></div>
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Bots &amp; testing</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">Bots &amp; testing</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>#bna-wx</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">weather chatter + NashMesh wx bot</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>#bna-bot · #bot</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">automated traffic from bots</span></div>
     <div class="fc-setting fc-setting--last"><span class="fc-setting-label"><code>#test</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">human-to-human "can you hear me?" checks</span></div>
@@ -972,7 +972,7 @@
 <div class="content-section content-section--b">
   <p>Message any of these on <strong>#bna-wx</strong>. <code>wx</code> uses NOAA (US only); <code>gwx</code> uses Open-Meteo (worldwide). Leave off a place and it defaults to Nashville.</p>
   <div class="fc-settings-list" style="margin-top:0.5rem">
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">US weather (wx)</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">US weather (wx)</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>wx</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">Nashville forecast (bot's home)</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>wx franklin, tn</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">city, state</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>wx 37130</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">ZIP code</span></div>
@@ -980,13 +980,13 @@
     <div class="fc-setting"><span class="fc-setting-label"><code>wx nashville 3d</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">3-day (also 5d, 7d)</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>wx nashville hourly</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">hourly forecast</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>wx 37130 alerts</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">active weather alerts</span></div>
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Worldwide (gwx)</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">Worldwide (gwx)</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>gwx tokyo</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">city lookup</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>gwx paris, france</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">city, country</span></div>
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Precipitation nowcast</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">Precipitation nowcast</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>rain</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">rain at home · rain 37130 for a place</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>snow</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">snow depth · snow denver for a place</span></div>
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Ham &amp; solar extras</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">Ham &amp; solar extras</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>aurora</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">aurora / KP-index forecast</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>hfcond</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">HF band propagation</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>solar</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">solar conditions + HF band status</span></div>
@@ -1011,16 +1011,16 @@
 <div class="content-section content-section--b">
   <p>Reachability and routing checks. Message a command on <strong>#bot</strong> or <strong>#bna-bot</strong> and BNABot answers with connection info, decoded paths, and network lookups.</p>
   <div class="fc-settings-list" style="margin-top:0.5rem">
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Core checks</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">Core checks</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>test</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">confirms bot got your message; reports direct/routed, SNR, path</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>ping</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">simplest liveness check → Pong!</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>help</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">lists all commands · help &lt;cmd&gt; for details</span></div>
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Path &amp; link diagnostics</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">Path &amp; link diagnostics</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>path</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">decode and show the full routing path your message took</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>tracer 01,7a,55</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">round-trip trace; bot hears the reply (use this one)</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>trace 01,7a,55</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">one-direction trace; return may not be heard</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>multitest</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">listens 6 s and collects every unique path — how many routes are live</span></div>
-    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Network utility</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label fc-cat-label">Network utility</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>prefix 1A</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">look up repeaters by their 2-char prefix</span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>stats</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">bot usage over the last 24 h</span></div>
     <div class="fc-setting fc-setting--last"><span class="fc-setting-label"><code>channels</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">list / inspect hashtag channels on the network</span></div>

@@ -2094,6 +2094,16 @@ body[data-theme="light"] .fc-download-btn:hover {
   background: rgba(0, 100, 60, 0.14);
 }
 
+/* Category label color in settings lists */
+.fc-cat-label {
+  color: #43c4f0;
+}
+
+body[data-theme="light"] .fc-cat-label,
+body[data-theme="retro"] .fc-cat-label {
+  color: #0077aa;
+}
+
 /* Light theme adjustments */
 body[data-theme="light"] .fc-card-header {
   border-bottom-color: rgba(0, 0, 0, 0.08);
