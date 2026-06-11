@@ -1,9 +1,8 @@
 <h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore</h1>
 
-<div class="content-section content-section--b">
+## Radio Settings
 
 <div class="fc-card-header">
-  <h2 class="fc-card-title">Radio Settings</h2>
   <div class="fc-badges">
     <span class="fc-badge fc-badge--green">PRESET <strong>USA/Canada</strong></span>
     <span class="fc-badge">FREQ <strong>910.525 MHz</strong></span>
@@ -14,8 +13,9 @@
   </div>
 </div>
 
-<div class="fc-section">
-  <div class="fc-sech"><div class="fc-num">1</div><div><h3>How to set it</h3><p class="fc-sech-sub">Load the preset, confirm the values, reboot.</p></div></div>
+### How to set it
+
+<div class="content-section content-section--b">
   <div class="fc-steps-grid">
     <div class="fc-steps-col">
       <h4>Companion app</h4>
@@ -26,17 +26,16 @@
     <div class="fc-steps-col">
       <h4>Repeater (CLI)</h4>
       <div class="fc-step"><span class="fc-step-num">1</span><span>Set all four radio params in one command, then reboot to apply.</span></div>
-      <div class="copyable-code" style="margin-top:0.5rem">
-        <pre><code>set radio 910.525,62.5,7,5
-reboot
-get radio  # verify</code></pre>
-      </div>
+      <div class="copyable-code" style="margin-top:0.5rem"><pre><code>set radio 910.525,62.5,7,5</code></pre></div>
+      <div class="copyable-code"><pre><code>reboot</code></pre></div>
+      <div class="copyable-code"><pre><code>get radio</code></pre></div>
     </div>
   </div>
 </div>
 
-<div class="fc-section fc-section--last">
-  <div class="fc-sech"><div class="fc-num">2</div><div><h3>Why it must match</h3><p class="fc-sech-sub">Get one value wrong and the mesh can't hear you.</p></div></div>
+### Why it must match
+
+<div class="content-section content-section--b">
   <p>Frequency, bandwidth and spreading factor together define a LoRa <strong>channel</strong>. If even one differs from the rest of the mesh, your transmissions are unreadable — you'll hear nothing and no one hears you.</p>
   <div class="fc-diagram">
     <svg viewBox="0 0 820 150" role="img" style="width:100%;display:block">
@@ -89,6 +88,4 @@ get radio  # verify</code></pre>
       <p>Frequency, bandwidth and spreading factor together define the channel the whole mesh agrees on. Changing any of them on your node alone doesn't "improve" anything — it just removes you from the conversation. Match the network exactly, every time.</p>
     </div>
   </div>
-</div>
-
 </div>
