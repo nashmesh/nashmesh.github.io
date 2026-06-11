@@ -1,5 +1,64 @@
 <h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore</h1>
 
+Recommended settings for the Nashville area, aligned with [TennMesh](https://tennmesh.com). Flash your device at [flasher.meshcore.io](https://flasher.meshcore.io), then follow the steps for your node type.
+
+## Quick Setup
+
+<div class="content-section content-section--a">
+<div class="fc-steps-grid">
+<div class="fc-steps-col">
+
+<h4>Companion</h4>
+
+<div class="fc-step"><span class="fc-step-num">1</span><span>Flash firmware using the <a href="https://flasher.meshcore.io">MeshCore Web Flasher</a>.</span></div>
+<div class="fc-step"><span class="fc-step-num">2</span><span>Open Settings → Radio → pick the <strong>USA/Canada</strong> preset, then confirm these values:</span></div>
+
+<div class="fc-settings-list" style="margin:0.3rem 0 0.5rem">
+  <div class="fc-setting"><span class="fc-setting-label">Frequency</span><span class="fc-setting-value">910.525 MHz</span></div>
+  <div class="fc-setting"><span class="fc-setting-label">Bandwidth</span><span class="fc-setting-value">62.5 kHz</span></div>
+  <div class="fc-setting"><span class="fc-setting-label">Spreading Factor</span><span class="fc-setting-value">7</span></div>
+  <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Coding Rate</span><span class="fc-setting-value">5</span></div>
+</div>
+
+<div class="fc-step"><span class="fc-step-num">3</span><span>Settings → Experimental → Default Path Hash Size → <strong>2-Byte</strong>.</span></div>
+<div class="fc-step"><span class="fc-step-num">4</span><span>Send an advert to announce yourself to the mesh.</span></div>
+
+</div>
+<div class="fc-steps-col">
+
+<h4>Repeater</h4>
+
+<div class="fc-step"><span class="fc-step-num">1</span><span>Flash firmware using the <a href="https://flasher.meshcore.io">MeshCore Web Flasher</a>. For OTA updates, download the <strong>un-merged</strong> <code>.bin</code>.</span></div>
+<div class="fc-step"><span class="fc-step-num">2</span><span>Set radio and reboot:</span></div>
+<div class="copyable-code" style="margin:0.2rem 0 0.5rem"><pre><code>set radio 910.525,62.5,7,5
+reboot</code></pre></div>
+<div class="fc-step"><span class="fc-step-num">3</span><span>Routing and reliability:</span></div>
+<div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>set path.hash.mode 1</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>set loop.detect moderate</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>set multi.acks 1</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>set rxdelay 3</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set agc.reset.interval 4</code></pre></div>
+<div class="fc-step"><span class="fc-step-num">4</span><span>TX delay — set both values for your neighbor count, check with <code>neighbors</code>:</span></div>
+<div class="fc-settings-list" style="margin:0.3rem 0 0.5rem;font-size:0.82em">
+  <div class="fc-setting" style="font-size:0.78em"><span class="fc-setting-label" style="color:#9d7bff;font-weight:700">Neighbors</span><span class="fc-setting-value" style="color:#cdbcff">txdelay</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);color:#d9e2ec">direct.txdelay</span></div>
+  <div class="fc-setting"><span class="fc-setting-label">0 – 1</span><span class="fc-setting-value" style="color:#cdbcff">0.3</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">0.1</span></div>
+  <div class="fc-setting"><span class="fc-setting-label">2 – 4</span><span class="fc-setting-value" style="color:#cdbcff">0.5</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">0.3</span></div>
+  <div class="fc-setting"><span class="fc-setting-label">5 – 9</span><span class="fc-setting-value" style="color:#cdbcff">1</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">0.5</span></div>
+  <div class="fc-setting"><span class="fc-setting-label">10 – 14</span><span class="fc-setting-value" style="color:#cdbcff">1.5</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">1</span></div>
+  <div class="fc-setting fc-setting--last"><span class="fc-setting-label">15 +</span><span class="fc-setting-value" style="color:#cdbcff">2</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">2</span></div>
+</div>
+<div class="fc-step"><span class="fc-step-num">5</span><span>Advert intervals (zero-hop 60 min, flood 3 h):</span></div>
+<div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>set advert.interval 3600</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set flood.advert.interval 10800</code></pre></div>
+<div class="fc-step"><span class="fc-step-num">6</span><span>Set your contact info so other operators can reach you:</span></div>
+<div class="copyable-code" style="margin:0.2rem 0 0"><pre><code>set owner.info N0CALL | contact | site name</code></pre></div>
+
+</div>
+</div>
+</div>
+
+---
+
 ## Radio Settings
 
 <div class="fc-card-header">
