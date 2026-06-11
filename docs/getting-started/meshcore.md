@@ -1106,3 +1106,12 @@
     </div>
   </div>
 </div>
+
+---
+
+### Field Cards
+
+<div class="content-section content-section--b">
+  <p>The NashMesh Field Cards are a 25-card reference deck covering every setting on this page — what it does, why NashMesh uses the value it does, and the exact commands to set it. Thanks to KA4RLW for putting them together.</p>
+  <a href="https://nashme.sh/static/docs/nashmesh_field_cards.pdf" class="fc-download-btn" download>Download Field Cards PDF</a>
+</div>

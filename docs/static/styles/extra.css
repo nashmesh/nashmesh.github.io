@@ -2062,6 +2062,38 @@ body[data-theme="light"] .fc-level-note {
   }
 }
 
+/* ── Field Card download button ──────────────────────────────────── */
+
+.fc-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: rgba(55, 224, 138, 0.12);
+  border: 1px solid rgba(55, 224, 138, 0.35);
+  border-radius: 4px;
+  color: #37e08a !important;
+  font-size: 0.88em;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.fc-download-btn:hover {
+  background: rgba(55, 224, 138, 0.2);
+  border-color: rgba(55, 224, 138, 0.6);
+}
+
+body[data-theme="light"] .fc-download-btn {
+  background: rgba(0, 100, 60, 0.07);
+  border-color: rgba(0, 100, 60, 0.3);
+  color: #1a8a52 !important;
+}
+
+body[data-theme="light"] .fc-download-btn:hover {
+  background: rgba(0, 100, 60, 0.14);
+}
+
 /* Light theme adjustments */
 body[data-theme="light"] .fc-card-header {
   border-bottom-color: rgba(0, 0, 0, 0.08);
