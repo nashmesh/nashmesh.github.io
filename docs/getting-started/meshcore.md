@@ -140,14 +140,97 @@
   <p>Every node — companion or repeater — uses <strong>910.525 MHz</strong>, inside the US 902–928 MHz ISM band that the USA/Canada preset selects. Load the preset first; it puts you in the right band, then confirm the exact frequency.</p>
 </div>
 
-### Why you don't touch it alone
+---
+
+## Bandwidth
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">NASHMESH <strong>62.5 kHz</strong></span>
+    <span class="fc-badge">DIAL <strong>62.5 → 500 kHz</strong></span>
+    <span class="fc-badge">NARROW <strong>= reach, slow</strong></span>
+    <span class="fc-badge">MATCH <strong>network-wide</strong></span>
+  </div>
+</div>
+
+### What it is
+
+<div class="content-section content-section--b">
+  <p>A <strong>narrow</strong> bandwidth concentrates the signal's energy into less spectrum, so the receiver hears it more easily — more range and sensitivity — but the data rate drops and packets take longer. A <strong>wide</strong> bandwidth spreads energy out: faster data, but shorter reach and it scoops up more background noise.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 190" role="img" style="width:100%;display:block">
+      <g font-family="'Fira Mono',monospace" font-size="13.0">
+        <text x="20" y="22" fill="#7df0e0" font-weight="700">62.5 kHz — narrow</text>
+        <path d="M40 150 C120 150 120 50 160 50 C200 50 200 150 280 150" fill="none" stroke="#2dd4bf" stroke-width="2.5"/>
+        <line x1="40" y1="150" x2="280" y2="150" stroke="#2c3a4d"/>
+        <text x="40" y="172" fill="#5e8a82">energy concentrated → sensitive · slower</text>
+        <line x1="410" y1="20" x2="410" y2="170" stroke="#1f2a37"/>
+        <text x="440" y="22" fill="#9aa7b6" font-weight="700">500 kHz — wide</text>
+        <path d="M440 150 C520 150 520 95 600 95 C680 95 680 150 760 150" fill="none" stroke="#6f8db0" stroke-width="2.5"/>
+        <line x1="440" y1="150" x2="760" y2="150" stroke="#2c3a4d"/>
+        <text x="440" y="172" fill="#5e6b7d">energy spread → faster · shorter · noisier</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-pkt" r="3.6" fill="#2dd4bf" opacity="0.95">
+          <animateMotion dur="4.33s" begin="-0.47s" repeatCount="indefinite" calcMode="linear" path="M40 150 C120 150 120 50 160 50 C200 50 200 150 280 150"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="4.33s" begin="-0.47s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="nm-fx nm-pkt" r="3.6" fill="#6f8db0" opacity="0.95">
+          <animateMotion dur="4.4s" begin="-0.2s" repeatCount="indefinite" calcMode="linear" path="M440 150 C520 150 520 95 600 95 C680 95 680 150 760 150"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="4.4s" begin="-0.2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </svg>
+    <p class="fc-caption">Narrow bandwidth packs the signal into less spectrum — easier to hear, but slower.</p>
+  </div>
+</div>
+
+### The dial
+
+<div class="content-section content-section--b">
+  <div class="fc-levels">
+    <div class="fc-level fc-level--rec">
+      <div class="fc-level-pick">★ NASHMESH</div>
+      <div class="fc-level-name">62.5</div>
+      <div class="fc-level-tag">kHz · narrow</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>reach</span><strong>longest</strong></div>
+        <div class="fc-level-row"><span>speed</span><strong>slowest</strong></div>
+        <div class="fc-level-row"><span>noise caught</span><strong>least</strong></div>
+      </div>
+      <p class="fc-level-note">Maximum sensitivity. Paired with fast SF7 for a reach/airtime balance.</p>
+    </div>
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#76869a">125 / 250</div>
+      <div class="fc-level-tag">kHz · mid</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>reach</span><strong>medium</strong></div>
+        <div class="fc-level-row"><span>speed</span><strong>faster</strong></div>
+        <div class="fc-level-row"><span>noise caught</span><strong>more</strong></div>
+      </div>
+      <p class="fc-level-note">Common defaults on other meshes; quicker but less sensitive.</p>
+    </div>
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#7fb0d8">500</div>
+      <div class="fc-level-tag">kHz · wide</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>reach</span><strong>shortest</strong></div>
+        <div class="fc-level-row"><span>speed</span><strong>fastest</strong></div>
+        <div class="fc-level-row"><span>noise caught</span><strong>most</strong></div>
+      </div>
+      <p class="fc-level-note">High throughput, but pulls in more interference. Not used here.</p>
+    </div>
+  </div>
+</div>
+
+### Why NashMesh runs 62.5 kHz
 
 <div class="content-section content-section--b">
   <div class="fc-callout">
     <div class="fc-callout-ic">!</div>
     <div>
-      <strong>This is which channel — bandwidth and SF only shape it</strong>
-      <p>Frequency is the shared address: get it wrong and nothing else matters, because no one else is listening there. It's tempting to nudge it to dodge interference, but moving it alone just removes you from the mesh. Different regions use entirely different bands (Europe sits at 868 MHz), which is why picking the right preset comes first.</p>
+      <strong>Part of the channel — must match exactly</strong>
+      <p>Like frequency and spreading factor, bandwidth defines the channel everyone shares. 62.5 kHz on every node, no exceptions — a different bandwidth simply can't be heard. Think of SF and bandwidth as a pair: NashMesh runs narrow bandwidth (for reach) with a fast spreading factor (for airtime), balancing the two.</p>
     </div>
   </div>
 </div>

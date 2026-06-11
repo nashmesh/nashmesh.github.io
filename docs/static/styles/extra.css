@@ -1905,6 +1905,101 @@ h3:has(+ .fc-card-header) {
   font-size: 0.88em;
 }
 
+/* ── Field Card levels comparison ───────────────────────────────── */
+
+.fc-levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.fc-level {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 0.7rem 0.75rem;
+}
+
+.fc-level--rec {
+  background: rgba(55, 224, 138, 0.06);
+  border-color: rgba(55, 224, 138, 0.2);
+}
+
+.fc-level-pick {
+  font-size: 0.68em;
+  font-family: var(--md-code-font-family);
+  color: #37e08a;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+
+.fc-level-name {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+  font-family: var(--md-code-font-family);
+  line-height: 1.1;
+}
+
+.fc-level-tag {
+  font-size: 0.73em;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.4rem;
+}
+
+.fc-level-rows {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.fc-level-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78em;
+  padding: 0.12rem 0;
+  font-family: var(--md-code-font-family);
+}
+
+.fc-level-row span {
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-level-row strong {
+  color: var(--md-default-fg-color);
+}
+
+.fc-level-note {
+  font-size: 0.76em;
+  color: var(--md-default-fg-color--light);
+  margin: 0.4rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.35rem;
+  font-style: italic;
+}
+
+body[data-theme="light"] .fc-level {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .fc-level--rec {
+  background: rgba(0, 100, 60, 0.05);
+  border-color: rgba(0, 100, 60, 0.18);
+}
+
+body[data-theme="light"] .fc-level-rows,
+body[data-theme="light"] .fc-level-note {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+@media only screen and (max-width: 650px) {
+  .fc-levels {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Light theme adjustments */
 body[data-theme="light"] .fc-card-header {
   border-bottom-color: rgba(0, 0, 0, 0.08);
