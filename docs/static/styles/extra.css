@@ -177,7 +177,8 @@ body[data-theme="retro"] .meetup-banner-btn:hover {
     text-align: center;
   }
 
-  .new-post-banner {
+  .new-post-banner,
+  .new-meetup-banner {
     position: relative;
     padding-right: 2.5rem;
     flex-direction: row;
