@@ -306,3 +306,744 @@
     </div>
   </div>
 </div>
+
+---
+
+## Coding Rate
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">DEFAULT <strong>CR5 (4/5)</strong></span>
+    <span class="fc-badge">DIAL <strong>4/5 → 4/8</strong></span>
+    <span class="fc-badge">EFFECT <strong>airtime vs armor</strong></span>
+    <span class="fc-badge fc-badge--green">PER-PACKET <strong>· mixable</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>LoRa adds redundant bits so a receiver can rebuild a packet that arrived partly garbled. Coding rate sets how much: <strong>CR5 (4/5)</strong> adds the least — one parity block per four data blocks — so packets are short and fast but tolerate the least corruption. <strong>CR8 (4/8)</strong> adds the most: tough against interference, but each packet takes far longer on the air.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 190" role="img" style="width:100%;display:block">
+      <g font-family="'Fira Mono',monospace" font-size="13.0">
+        <text x="14" y="20" fill="#76869a">each packet = 4 data blocks + error-correction blocks</text>
+        <text x="14" y="52" fill="#8fd0ff" font-weight="700">CR5 (4/5)</text>
+        <rect x="150" y="38" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="176" y="38" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="202" y="38" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="228" y="38" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/>
+        <rect x="254" y="38" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#4ea8ff"/>
+        <text x="312" y="52" fill="#5e7187">+1 · lightest, fastest</text>
+        <text x="14" y="92" fill="#9aa7b6" font-weight="700">CR6 (4/6)</text>
+        <rect x="150" y="78" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="176" y="78" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="202" y="78" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="228" y="78" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/>
+        <rect x="254" y="78" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#6f8db0"/><rect x="280" y="78" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#6f8db0"/>
+        <text x="338" y="92" fill="#5e7187">+2</text>
+        <text x="14" y="132" fill="#9aa7b6" font-weight="700">CR7 (4/7)</text>
+        <rect x="150" y="118" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="176" y="118" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="202" y="118" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="228" y="118" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/>
+        <rect x="254" y="118" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#6f8db0"/><rect x="280" y="118" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#6f8db0"/><rect x="306" y="118" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#6f8db0"/>
+        <text x="364" y="132" fill="#5e7187">+3</text>
+        <text x="14" y="172" fill="#cdb3ff" font-weight="700">CR8 (4/8)</text>
+        <rect x="150" y="158" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="176" y="158" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="202" y="158" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/><rect x="228" y="158" width="22" height="22" rx="3" fill="#16314f" stroke="#3a6ea5"/>
+        <rect x="254" y="158" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#9d7bff"/><rect x="280" y="158" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#9d7bff"/><rect x="306" y="158" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#9d7bff"/><rect x="332" y="158" width="22" height="22" rx="3" fill="rgba(78,168,255,.18)" stroke="#9d7bff"/>
+        <text x="390" y="172" fill="#5e7187">+4 · heaviest, toughest</text>
+      </g>
+    </svg>
+    <p class="fc-caption">More parity = more interference survived, but every extra block is more time on the air.</p>
+  </div>
+  <div class="fc-levels">
+    <div class="fc-level fc-level--rec">
+      <div class="fc-level-pick">★ DEFAULT</div>
+      <div class="fc-level-name">CR5</div>
+      <div class="fc-level-tag">4 / 5</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>overhead</span><strong>+25%</strong></div>
+        <div class="fc-level-row"><span>airtime</span><strong>lowest</strong></div>
+        <div class="fc-level-row"><span>resilience</span><strong>basic</strong></div>
+      </div>
+      <p class="fc-level-note">NashMesh default now that most links are reliable.</p>
+    </div>
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#76869a">CR6–7</div>
+      <div class="fc-level-tag">4/6 – 4/7</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>overhead</span><strong>+50–75%</strong></div>
+        <div class="fc-level-row"><span>airtime</span><strong>higher</strong></div>
+        <div class="fc-level-row"><span>resilience</span><strong>more</strong></div>
+      </div>
+      <p class="fc-level-note">Middle ground for moderately noisy links.</p>
+    </div>
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#cdb3ff">CR8</div>
+      <div class="fc-level-tag">4 / 8</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>overhead</span><strong>+100%</strong></div>
+        <div class="fc-level-row"><span>airtime</span><strong>highest</strong></div>
+        <div class="fc-level-row"><span>resilience</span><strong>max</strong></div>
+      </div>
+      <p class="fc-level-note">For a marginal far node hardening its hop to the relay.</p>
+    </div>
+  </div>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>Coding rate is per-packet — mixing is fine</strong>
+      <p>Unlike frequency, bandwidth and spreading factor, CR rides inside each packet's header. Any receiver reads it and adapts, so a CR8 node and a CR5 node hear each other perfectly. Default to CR5; leave a marginal far node on CR8 until its link firms up.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Airtime
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">TYPE <strong>shared resource</strong></span>
+    <span class="fc-badge">RULE <strong>one TX at a time</strong></span>
+    <span class="fc-badge">DRIVER <strong>SF · BW · CR · size</strong></span>
+    <span class="fc-badge">FLOOD <strong>cost × nodes</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Every node on NashMesh shares <strong>one</strong> frequency, and radios can't talk over each other. So airtime — how long each packet occupies the channel — is a finite, shared budget. When too many packets compete for the same moment, they <strong>collide and are lost</strong>, and the whole mesh slows down.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 100" role="img" style="width:100%;display:block">
+      <g font-family="'Fira Mono',monospace" font-size="14">
+        <text x="14" y="20" fill="#76869a">one channel · one transmitter at a time · time is the shared budget →</text>
+        <rect x="14" y="30" width="792" height="36" rx="6" fill="#0c1118" stroke="#243349"/>
+        <rect x="18" y="34" width="120" height="28" rx="4" fill="rgba(255,122,89,.35)" stroke="#ff7a59"/><text x="78" y="53" text-anchor="middle" fill="#ffcab9" font-size="13">packet</text>
+        <rect x="142" y="34" width="70" height="28" rx="4" fill="rgba(255,122,89,.25)" stroke="#ff7a59"/>
+        <rect x="216" y="34" width="150" height="28" rx="4" fill="rgba(255,122,89,.35)" stroke="#ff7a59"/><text x="291" y="53" text-anchor="middle" fill="#ffcab9" font-size="10.5">long packet (high SF/CR)</text>
+        <rect x="370" y="34" width="60" height="28" rx="4" fill="rgba(255,122,89,.25)" stroke="#ff7a59"/>
+        <rect x="470" y="34" width="80" height="28" rx="4" fill="rgba(255,77,99,.4)" stroke="#ff4d63"/>
+        <rect x="500" y="34" width="80" height="28" rx="4" fill="rgba(255,77,99,.4)" stroke="#ff4d63"/>
+        <rect x="600" y="34" width="60" height="28" rx="4" fill="rgba(255,122,89,.2)" stroke="#5a4036"/>
+        <text x="720" y="53" text-anchor="middle" fill="#6b7785" font-size="13">…full?</text>
+        <text x="540" y="88" text-anchor="middle" fill="#ff6678" font-size="13">overlap = COLLISION, both lost</text>
+      </g>
+    </svg>
+    <p class="fc-caption">Every transmission claims a slice of the same timeline. Fill it up and packets collide.</p>
+  </div>
+  <div class="fc-settings-list" style="margin-top:0.75rem">
+    <div class="fc-setting"><span class="fc-setting-label">Spreading factor <span style="color:#4a586a">(biggest lever)</span></span><span class="fc-setting-value" style="color:#ff7a59">each +1 ≈ 2×</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">Narrow bandwidth</span><span class="fc-setting-value" style="color:#ffb38a">halving BW ≈ 2×</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">Heavier coding rate (CR8 vs CR5)</span><span class="fc-setting-value" style="color:#ffb38a">≈ 1.6×</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">Bigger payload</span><span class="fc-setting-value" style="color:#ffb38a">linear</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Re-flooding (every repeater repeats it)</span><span class="fc-setting-value" style="color:#ff7a59">× nodes that hear it</span></div>
+  </div>
+  <div class="fc-callout" style="margin-top:0.75rem">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>Airtime is the budget every other setting spends</strong>
+      <p>SF, bandwidth, coding rate, advert interval, hop count, loop detection — every one of them is ultimately a decision about how much of the shared timeline you consume. A flood mesh repeats each packet across many nodes, so the cost multiplies. Keep packets short and adverts sane, and the whole network stays fast for everyone.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Duty Cycle
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">FIRMWARE DEFAULT <strong>50%</strong></span>
+    <span class="fc-badge">RANGE <strong>1–100%</strong></span>
+    <span class="fc-badge">US <strong>no legal limit</strong></span>
+    <span class="fc-badge">EU <strong>often 1–10%</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Duty cycle is the share of time a radio may spend transmitting. After each transmission the firmware holds the radio silent so its long-run on-air time stays under the cap. In the US 902–928 MHz band there's no fixed limit, so the firmware default of 50% is fine and we don't change it.</p>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>Leave it at the default for US operation</strong>
+      <p>The point of this card isn't to tune anything — it's so you recognise the setting. If you ever operate where limits apply (much of Europe caps 868 MHz at 1–10%), the firmware enforces the cap for you. For NashMesh, leave it at 50%.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Advert Intervals
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">ZERO-HOP <strong>60 min</strong></span>
+    <span class="fc-badge fc-badge--green">FLOOD <strong>3 h</strong></span>
+    <span class="fc-badge">FLOOD range <strong>3–168 h</strong></span>
+    <span class="fc-badge">COST <strong>mesh-wide airtime</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>A <strong>zero-hop</strong> advert reaches only nodes in direct range — a quiet local hello. A <strong>flood</strong> advert is rebroadcast by every repeater that hears it, propagating across the entire mesh so far-off nodes learn a route to you.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 196" role="img" style="width:100%;display:block">
+      <defs><marker id="ai-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#43c4f0"/></marker></defs>
+      <g font-family="'Fira Mono',monospace" font-size="14">
+        <text x="20" y="22" fill="#9fe2fb" font-weight="700">ZERO-HOP — heard locally only</text>
+        <circle cx="150" cy="104" r="22" fill="rgba(67,196,240,.18)" stroke="#43c4f0" stroke-width="2"/><text x="150" y="109" text-anchor="middle" fill="#9fe2fb" font-size="12">YOU</text>
+        <circle cx="150" cy="104" r="44" fill="none" stroke="#43c4f0" stroke-width="1.5" opacity=".5"/>
+        <circle cx="150" cy="104" r="66" fill="none" stroke="#2c3a4d" stroke-width="1.3" stroke-dasharray="3,5"/>
+        <g fill="#0c1118" stroke="#3a6b80" stroke-width="1.5"><circle cx="120" cy="62" r="10"/><circle cx="206" cy="92" r="10"/><circle cx="120" cy="150" r="10"/></g>
+        <text x="150" y="188" text-anchor="middle" fill="#6f93a0" font-size="12.5">direct neighbours only · cheap</text>
+        <line x1="410" y1="18" x2="410" y2="182" stroke="#1f2a37"/>
+        <text x="440" y="22" fill="#9fe2fb" font-weight="700">FLOOD — repeated mesh-wide</text>
+        <circle cx="492" cy="104" r="20" fill="rgba(67,196,240,.18)" stroke="#43c4f0" stroke-width="2"/><text x="492" y="109" text-anchor="middle" fill="#9fe2fb" font-size="12">YOU</text>
+        <g fill="#0c1118" stroke="#43c4f0" stroke-width="1.5"><circle cx="596" cy="66" r="12"/><circle cx="600" cy="148" r="12"/><circle cx="694" cy="48" r="10"/><circle cx="712" cy="104" r="10"/><circle cx="700" cy="160" r="10"/><circle cx="776" cy="86" r="9"/><circle cx="778" cy="140" r="9"/></g>
+        <g stroke="#43c4f0" stroke-width="1.5" opacity=".85"><line x1="514" y1="96" x2="579" y2="72" marker-end="url(#ai-arrow)"/><line x1="513" y1="113" x2="583" y2="141" marker-end="url(#ai-arrow)"/><line x1="611" y1="63" x2="678" y2="51" marker-end="url(#ai-arrow)"/><line x1="610" y1="71" x2="697" y2="99" marker-end="url(#ai-arrow)"/><line x1="615" y1="150" x2="684" y2="158" marker-end="url(#ai-arrow)"/><line x1="615" y1="147" x2="763" y2="141" marker-end="url(#ai-arrow)"/><line x1="725" y1="100" x2="762" y2="90" marker-end="url(#ai-arrow)"/></g>
+        <text x="612" y="188" text-anchor="middle" fill="#6f93a0" font-size="12.5">every repeater rebroadcasts it · cost multiplies</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-ping" cx="150" cy="104" r="22" fill="none" stroke="#43c4f0" stroke-width="1.8"><animate attributeName="r" values="22;52" dur="2.6s" begin="-0.0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/><animate attributeName="opacity" values="0.55;0" dur="2.6s" begin="-0.0s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-ping" cx="150" cy="104" r="22" fill="none" stroke="#43c4f0" stroke-width="1.8"><animate attributeName="r" values="22;52" dur="2.6s" begin="-1.3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/><animate attributeName="opacity" values="0.55;0" dur="2.6s" begin="-1.3s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-ping" cx="492" cy="104" r="20" fill="none" stroke="#43c4f0" stroke-width="1.8"><animate attributeName="r" values="20;50" dur="2.6s" begin="-0.0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/><animate attributeName="opacity" values="0.55;0" dur="2.6s" begin="-0.0s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#43c4f0" opacity="0.95"><animateMotion dur="1.4s" begin="-0.68s" repeatCount="indefinite" calcMode="linear" path="M514 96 L579 72"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="1.4s" begin="-0.68s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#43c4f0" opacity="0.95"><animateMotion dur="1.4s" begin="-1.05s" repeatCount="indefinite" calcMode="linear" path="M513 113 L583 141"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="1.4s" begin="-1.05s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#43c4f0" opacity="0.95"><animateMotion dur="1.4s" begin="-0.02s" repeatCount="indefinite" calcMode="linear" path="M611 63 L678 51"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="1.4s" begin="-0.02s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#43c4f0" opacity="0.95"><animateMotion dur="2.12s" begin="-0.13s" repeatCount="indefinite" calcMode="linear" path="M615 147 L763 141"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.12s" begin="-0.13s" repeatCount="indefinite"/></circle>
+      </g>
+    </svg>
+    <p class="fc-caption">Zero-hop is a quiet local "I'm here." A flood advert propagates across the entire mesh — powerful, and expensive.</p>
+  </div>
+  <div class="fc-settings-list" style="margin-top:0.75rem">
+    <div class="fc-setting"><span class="fc-setting-label">Zero-Hop <span style="color:#4a586a">set advert.interval</span></span><span class="fc-setting-value" style="color:#37e08a">60 min</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Flood <span style="color:#4a586a">set flood.advert.interval</span></span><span class="fc-setting-value" style="color:#37e08a">3 h</span></div>
+  </div>
+  <p style="font-size:0.85em;color:#76869a;margin-top:0.5rem">3 h is the firmware minimum — chosen while the mesh is still growing so new nodes discover routes fast. As density increases, raise the flood interval to reclaim airtime.</p>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>The flood interval is the airtime dial you'll relax as the mesh matures</strong>
+      <p>A flood advert is repeated by every repeater that hears it, so its cost multiplies across the network. Right now 3 h buys fast discovery for a growing mesh. Once routes are well-known and repeaters are permanent, stretching the flood interval reclaims that airtime with no loss of reachability.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Discovery & Adverts
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge">ADVERT <strong>name · pos · key</strong></span>
+    <span class="fc-badge fc-badge--green">SIGNED <strong>anti-spoof</strong></span>
+    <span class="fc-badge">CLIENTS <strong>on demand</strong></span>
+    <span class="fc-badge">REPEATERS <strong>~12 h flood</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>A new MeshCore mesh feels dead — by design. Nodes stay quiet; until two have each received the other's <strong>advert</strong>, they won't appear in each other's contacts, even on the same channel. An advert is a signed broadcast of your <strong>name, position, and public key</strong> — the handshake that makes private messaging possible.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 140" role="img" style="width:100%;display:block">
+      <g font-family="'Fira Mono',monospace" font-size="13.0">
+        <text x="30" y="22" fill="#ff7a8a" font-size="13.5" font-weight="700">same channel, no advert → invisible</text>
+        <circle cx="110" cy="80" r="20" fill="#0c1118" stroke="#5a6573" stroke-width="2.3"/><text x="110" y="85" text-anchor="middle" fill="#9aa7b6" font-size="12.5">YOU</text>
+        <circle cx="310" cy="80" r="20" fill="#0c1118" stroke="#5a6573" stroke-width="2.3"/><text x="310" y="85" text-anchor="middle" fill="#9aa7b6" font-size="12.5">NODE</text>
+        <line x1="134" y1="80" x2="286" y2="80" stroke="#5a6573" stroke-width="1.6" stroke-dasharray="4,5"/>
+        <text x="212" y="75" text-anchor="middle" fill="#ff7a8a" font-size="15.3" font-weight="700">✕</text>
+        <text x="212" y="126" text-anchor="middle" fill="#7d8794" font-size="12.5">not in each other's contacts</text>
+        <line x1="400" y1="20" x2="400" y2="130" stroke="#1f2733"/>
+        <text x="490" y="22" fill="#60a5fa" font-size="13.5" font-weight="700">after an advert → keys traded</text>
+        <circle cx="490" cy="80" r="20" fill="#0c1118" stroke="#60a5fa" stroke-width="2.3"/><text x="490" y="85" text-anchor="middle" fill="#bcd7ff" font-size="12.5">YOU</text>
+        <circle cx="720" cy="80" r="20" fill="#0c1118" stroke="#60a5fa" stroke-width="2.3"/><text x="720" y="85" text-anchor="middle" fill="#bcd7ff" font-size="12.5">NODE</text>
+        <line x1="514" y1="80" x2="696" y2="80" stroke="#60a5fa" stroke-width="2.2"/>
+        <text x="610" y="126" text-anchor="middle" fill="#7d8794" font-size="12.5">in contacts · DMs now possible</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#60a5fa" opacity="0.95"><animateMotion dur="2.46s" begin="-2.13s" repeatCount="indefinite" calcMode="linear" path="M514 80 L696 80"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.46s" begin="-2.13s" repeatCount="indefinite"/></circle>
+      </g>
+    </svg>
+    <p class="fc-caption">On the same channel you can both use Public — but DMs need a traded advert first.</p>
+  </div>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>An advert is a signed introduction</strong>
+      <p>Every advert carries your name, position, and public key, and it's signed so nobody can impersonate you. That public key is exactly what a DM encrypts to — which is why two nodes can't message privately until each has heard the other's advert. If the mesh looks empty, fire a zero-hop advert or a Public message and watch contacts appear. Don't read silence as a broken mesh — MeshCore is quiet by design.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Path Hash Mode
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">RECOMMENDED <strong>2-byte</strong></span>
+    <span class="fc-badge">DEFAULT <strong>0 (1-byte)</strong></span>
+    <span class="fc-badge">NEEDS <strong>firmware 1.14+</strong></span>
+    <span class="fc-badge">PAIRS <strong>loop detection</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>With a one-byte path ID there are only <strong>256</strong> possible values. On a mesh of hundreds of nodes, two repeaters inevitably share one — which muddies path diagnostics and triggers <strong>false loop-detection hits</strong>. Two-byte IDs (65,536) make collisions vanish.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 122" role="img" style="width:100%;display:block">
+      <defs>
+        <marker id="ph-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ff4d63"/></marker>
+        <marker id="ph-cyan" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker>
+      </defs>
+      <g font-family="'Fira Mono',monospace" font-size="13">
+        <text x="6" y="15" fill="#76869a" font-size="12.5">1-byte path ID → only 256 possible slots. With hundreds of nodes, two land on the same one.</text>
+        <circle cx="58" cy="46" r="14" fill="rgba(34,211,238,.16)" stroke="#22d3ee" stroke-width="1.8"/><text x="58" y="51" text-anchor="middle" fill="#9af0fb" font-size="12">A</text>
+        <circle cx="58" cy="82" r="14" fill="rgba(255,77,99,.16)" stroke="#ff4d63" stroke-width="1.8"/><text x="58" y="87" text-anchor="middle" fill="#ffb3bd" font-size="12">B</text>
+        <line x1="75" y1="49" x2="186" y2="62" stroke="#22d3ee" stroke-width="1.8" marker-end="url(#ph-cyan)"/>
+        <line x1="75" y1="79" x2="186" y2="70" stroke="#ff4d63" stroke-width="1.8" marker-end="url(#ph-red)"/>
+        <rect x="192" y="46" width="54" height="40" rx="6" fill="rgba(255,182,39,.16)" stroke="#ffb627" stroke-width="1.9"/><text x="219" y="72" text-anchor="middle" fill="#ffd27a" font-weight="700" font-size="18">A4</text>
+        <line x1="252" y1="66" x2="404" y2="66" stroke="#ff4d63" stroke-width="2.2" marker-end="url(#ph-red)"/>
+        <text x="430" y="60" fill="#ff6678" font-weight="700" font-size="15.5">same hash ID → collision</text>
+        <text x="430" y="84" fill="#8895a8" font-size="12.5">muddies path tracing · false loop-detection hits</text>
+        <text x="6" y="117" fill="#4a586a" font-size="12">2-byte = 65,536 slots → collisions effectively gone, routing stays clean.</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-ping" cx="58" cy="46" r="14" fill="none" stroke="#22d3ee" stroke-width="1.8"><animate attributeName="r" values="14;44" dur="2.6s" begin="-0.0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/><animate attributeName="opacity" values="0.55;0" dur="2.6s" begin="-0.0s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-ping" cx="58" cy="82" r="14" fill="none" stroke="#ff4d63" stroke-width="1.8"><animate attributeName="r" values="14;44" dur="2.6s" begin="-0.0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/><animate attributeName="opacity" values="0.55;0" dur="2.6s" begin="-0.0s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#ff4d63" opacity="0.95"><animateMotion dur="2.17s" begin="-1.89s" repeatCount="indefinite" calcMode="linear" path="M252 66 L404 66"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.17s" begin="-1.89s" repeatCount="indefinite"/></circle>
+      </g>
+    </svg>
+    <p class="fc-caption">Two different repeaters sharing one 1-byte ID confuse routing and trip loop detection.</p>
+  </div>
+  <div class="fc-levels">
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#76869a">Mode 0</div>
+      <div class="fc-level-tag">1-byte</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>unique IDs</span><strong>256</strong></div>
+        <div class="fc-level-row"><span>max hops</span><strong>64</strong></div>
+        <div class="fc-level-row"><span>collisions</span><strong>likely</strong></div>
+      </div>
+      <p class="fc-level-note">Legacy/universal. Fine for tiny meshes; collides on a big one.</p>
+    </div>
+    <div class="fc-level fc-level--rec">
+      <div class="fc-level-pick">★ RECOMMENDED</div>
+      <div class="fc-level-name">Mode 1</div>
+      <div class="fc-level-tag">2-byte</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>unique IDs</span><strong>65,536</strong></div>
+        <div class="fc-level-row"><span>max hops</span><strong>32</strong></div>
+        <div class="fc-level-row"><span>collisions</span><strong>rare</strong></div>
+      </div>
+      <p class="fc-level-note">Clean routing &amp; reliable loop detection. Needs firmware 1.14+.</p>
+    </div>
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#9af0fb">Mode 2</div>
+      <div class="fc-level-tag">3-byte</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>unique IDs</span><strong>16.7 M</strong></div>
+        <div class="fc-level-row"><span>max hops</span><strong>21</strong></div>
+        <div class="fc-level-row"><span>collisions</span><strong>none</strong></div>
+      </div>
+      <p class="fc-level-note">Some run 3-byte — the 21-hop cap keeps floods more local.</p>
+    </div>
+  </div>
+  <p style="font-size:0.85em;color:#76869a;margin:0.6rem 0 0.3rem"><strong>Companion:</strong> Gear → Experimental Settings → Default Path Hash Size → 2-Byte</p>
+  <p style="font-size:0.85em;color:#76869a;margin:0 0 0.5rem"><strong>Repeater (CLI):</strong></p>
+  <div class="copyable-code"><pre><code>set path.hash.mode 1</code></pre></div>
+  <div class="copyable-code"><pre><code>get path.hash.mode  # 0=1B · 1=2B · 2=3B</code></pre></div>
+</div>
+
+---
+
+## Loop Detection
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">NASHMESH <strong>moderate</strong></span>
+    <span class="fc-badge">DEFAULT <strong>off</strong></span>
+    <span class="fc-badge">PAIRS <strong>path hash mode</strong></span>
+    <span class="fc-badge">NEEDS <strong>firmware 1.14+</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Every repeater that hears a flood packet rebroadcasts it. If a faulty node keeps changing its path ID or a packet loops, the mesh can amplify it into a storm. Loop detection stops a healthy repeater from being an amplifier — it checks whether its own ID already appears in the path, and if so, drops the packet.</p>
+  <div class="fc-levels" style="grid-template-columns:repeat(4,1fr)">
+    <div class="fc-level" style="opacity:0.6">
+      <div class="fc-level-name" style="color:#4a586a">Off</div>
+      <div class="fc-level-tag">default</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>checking</span><strong>none</strong></div>
+      </div>
+      <p class="fc-level-note">Relies only on the dedup cache.</p>
+    </div>
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#43c4f0">Minimal</div>
+      <div class="fc-level-tag">very lax</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>1-byte</span><strong>4+ hits</strong></div>
+        <div class="fc-level-row"><span>2-byte</span><strong>2+ hits</strong></div>
+      </div>
+      <p class="fc-level-note">Rarely fires on a hop-limited mesh.</p>
+    </div>
+    <div class="fc-level fc-level--rec">
+      <div class="fc-level-pick">★ NASHMESH</div>
+      <div class="fc-level-name">Moderate</div>
+      <div class="fc-level-tag">balanced</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>1-byte</span><strong>2+ hits</strong></div>
+        <div class="fc-level-row"><span>2-byte</span><strong>1+ hit</strong></div>
+      </div>
+      <p class="fc-level-note">Catches real loops; false-positive risk stays low.</p>
+    </div>
+    <div class="fc-level">
+      <div class="fc-level-name" style="color:#ff6678">Strict</div>
+      <div class="fc-level-tag">aggressive</div>
+      <div class="fc-level-rows">
+        <div class="fc-level-row"><span>1-byte</span><strong>1+ hit</strong></div>
+        <div class="fc-level-row"><span>2-byte</span><strong>1+ hit</strong></div>
+      </div>
+      <p class="fc-level-note">Risky on 1-byte paths — prefix collisions cause false drops.</p>
+    </div>
+  </div>
+  <div class="copyable-code" style="margin-top:0.75rem"><pre><code>set loop.detect moderate</code></pre></div>
+  <div class="copyable-code"><pre><code>get loop.detect  # verify</code></pre></div>
+</div>
+
+---
+
+## Multi-Acks
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">NASHMESH <strong>1 (on)</strong></span>
+    <span class="fc-badge">DEFAULT <strong>0 (off)</strong></span>
+    <span class="fc-badge">HELPS <strong>remote admin</strong></span>
+    <span class="fc-badge">COST <strong>tiny</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>When you send a command to a repeater remotely, the node acts on it and sends back an ACK. Over several hops, that single confirmation can die on the return path — leaving you unsure whether to resend. Multi-acks sends <strong>two confirmations instead of one</strong>, which dramatically increases the chance at least one arrives.</p>
+  <div class="copyable-code"><pre><code>set multi.acks 1</code></pre></div>
+  <div class="copyable-code"><pre><code>get multi.acks  # 0 = off · 1 = on</code></pre></div>
+</div>
+
+---
+
+## RX Delay
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">NASHMESH <strong>3</strong></span>
+    <span class="fc-badge">DEFAULT <strong>0</strong></span>
+    <span class="fc-badge">STATUS <strong>experimental</strong></span>
+    <span class="fc-badge">EFFECT <strong>prefers clean paths</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>In a flood, every repeater that hears a packet rebroadcasts it — including nodes that barely caught it. Those weak-signal repeats spend airtime and add congestion without improving delivery. RX delay adds a short processing delay scaled to signal quality: <strong>strong-signal copies are handled immediately; weak ones wait</strong>. By the time a weak copy would be processed, the packet has usually already propagated and it's dropped as a duplicate.</p>
+  <div class="copyable-code"><pre><code>set rxdelay 3</code></pre></div>
+  <div class="copyable-code"><pre><code>get rxdelay  # experimental · range 0–20</code></pre></div>
+</div>
+
+---
+
+## TX Delay
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">TUNED BY <strong>neighbor count</strong></span>
+    <span class="fc-badge">DEFAULT <strong>0.5 / 0.2</strong></span>
+    <span class="fc-badge">RANGE <strong>0–2</strong></span>
+    <span class="fc-badge">SCOPE <strong>flood + direct</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>When multiple repeaters hear the same flood packet and rebroadcast it at the same instant, their signals <strong>collide and the packet is lost</strong>. TX delay staggers when each repeater fires by adding a random wait window — the more neighbors competing, the wider the window needs to be.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 118" role="img" style="width:100%;display:block">
+      <g font-family="'Fira Mono',monospace" font-size="14">
+        <text x="190" y="22" text-anchor="middle" fill="#ff8585" font-weight="700">no spacing → fire together</text>
+        <g stroke="#ff4d63" stroke-width="2.4"><line x1="120" y1="42" x2="120" y2="96"/><line x1="124" y1="42" x2="124" y2="96"/><line x1="190" y1="42" x2="190" y2="96"/><line x1="194" y1="42" x2="194" y2="96"/><line x1="260" y1="42" x2="260" y2="96"/><line x1="264" y1="42" x2="264" y2="96"/></g>
+        <text x="345" y="74" text-anchor="middle" fill="#ff6678" font-weight="700">✕ collision</text>
+        <line x1="410" y1="14" x2="410" y2="104" stroke="#1f2a37"/>
+        <text x="610" y="22" text-anchor="middle" fill="#bfa8ff" font-weight="700">txdelay → random window</text>
+        <g stroke="#9d7bff" stroke-width="2.4"><line x1="470" y1="42" x2="470" y2="96"/><line x1="474" y1="42" x2="474" y2="96"/><line x1="575" y1="42" x2="575" y2="96"/><line x1="579" y1="42" x2="579" y2="96"/><line x1="675" y1="42" x2="675" y2="96"/><line x1="679" y1="42" x2="679" y2="96"/></g>
+        <line x1="470" y1="106" x2="690" y2="106" stroke="#3a4757"/>
+        <text x="740" y="74" text-anchor="middle" fill="#bfa8ff" font-weight="700">✓ clear</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <rect class="nm-fx" x="108" y="38" width="168" height="62" rx="6" fill="#ff4d63" opacity="0"><animate attributeName="opacity" values="0;0.22;0" keyTimes="0;0.12;0.5" dur="2.4s" repeatCount="indefinite"/></rect>
+        <rect class="nm-fx" x="464" y="40" width="16" height="58" rx="3" fill="#9d7bff" opacity="0"><animate attributeName="opacity" values="0;0.5;0" keyTimes="0;0.1;0.4" dur="2.4s" begin="-0.0s" repeatCount="indefinite"/></rect>
+        <rect class="nm-fx" x="569" y="40" width="16" height="58" rx="3" fill="#9d7bff" opacity="0"><animate attributeName="opacity" values="0;0.5;0" keyTimes="0;0.1;0.4" dur="2.4s" begin="-0.5s" repeatCount="indefinite"/></rect>
+        <rect class="nm-fx" x="669" y="40" width="16" height="58" rx="3" fill="#9d7bff" opacity="0"><animate attributeName="opacity" values="0;0.5;0" keyTimes="0;0.1;0.4" dur="2.4s" begin="-1.0s" repeatCount="indefinite"/></rect>
+      </g>
+    </svg>
+    <p class="fc-caption">Each repeater waits a random slice before repeating. More neighbors competing = wider window needed.</p>
+  </div>
+  <div class="fc-settings-list" style="margin-top:0.75rem">
+    <div class="fc-setting" style="font-size:0.78em"><span class="fc-setting-label" style="color:#9d7bff;font-weight:700">Neighbors your node sees</span><span class="fc-setting-value" style="color:#cdbcff">txdelay</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em;color:#d9e2ec">direct.txdelay</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">0 – 1</span><span class="fc-setting-value" style="color:#cdbcff">0.3</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">0.1</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">2 – 4</span><span class="fc-setting-value" style="color:#cdbcff">0.5</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">0.3</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">5 – 9</span><span class="fc-setting-value" style="color:#cdbcff">1</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">0.5</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">10 – 14</span><span class="fc-setting-value" style="color:#cdbcff">1.5</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">1</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">15 +</span><span class="fc-setting-value" style="color:#cdbcff">2</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em">2</span></div>
+  </div>
+  <p style="font-size:0.82em;color:#76869a;margin:0.4rem 0 0.5rem">Check your count with the <code>neighbors</code> command, and revisit these as the node sees more over time.</p>
+  <div class="copyable-code"><pre><code>set txdelay 0.5</code></pre></div>
+  <div class="copyable-code"><pre><code>set direct.txdelay 0.3</code></pre></div>
+</div>
+
+---
+
+## AGC Reset Interval
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">NASHMESH <strong>4 sec</strong></span>
+    <span class="fc-badge">DEFAULT <strong>0 (off)</strong></span>
+    <span class="fc-badge">STEP <strong>multiples of 4</strong></span>
+    <span class="fc-badge">FOR <strong>elevated nodes</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>The SX1262 radio's automatic gain control can get stuck when hit by a strong out-of-band signal — a broadcast tower, a cell site, a nearby handheld. When it does, the noise floor pins at −120 dBm and the repeater goes deaf to weak signals until power-cycled. On an unattended hilltop node, that's a dead repeater nobody notices. Setting an interval makes the firmware reset the AGC on a timer so it recovers on its own — no reboot, no climb.</p>
+  <div class="copyable-code"><pre><code>set agc.reset.interval 4</code></pre></div>
+  <div class="copyable-code"><pre><code>get agc.reset.interval  # seconds · 0 = off</code></pre></div>
+</div>
+
+---
+
+## Reading Your Signal
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">SOURCE <strong>stats-radio / app</strong></span>
+    <span class="fc-badge">UNITS <strong>dBm · dB</strong></span>
+    <span class="fc-badge fc-badge--green">KEY METRIC <strong>SNR</strong></span>
+    <span class="fc-badge">LoRa <strong>decodes below noise</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p><strong>RSSI</strong> is how strong the incoming signal is. The <strong>noise floor</strong> is the ambient RF racket your receiver sits in. <strong>SNR</strong> is how far the signal stands above that noise — roughly RSSI minus the noise floor — and it's the single best gauge of link quality.</p>
+  <div class="fc-settings-list" style="margin-top:0.5rem">
+    <div class="fc-setting" style="font-size:0.78em"><span class="fc-setting-label" style="color:#9bdcfb;font-weight:700">Metric</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em;color:#5fd6a0">Good</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em;color:#e3c069">OK / edge</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em;color:#ff7a8a">Problem</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">RSSI (dBm)</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#5fd6a0">≳ −100</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#e3c069">−100 to −118</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#ff7a8a">≲ −120</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">SNR (dB)</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#5fd6a0">≥ 0</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#e3c069">0 to −7 *</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#ff7a8a">&lt; −7.5 *</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Noise floor (dBm)</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#5fd6a0">≤ −120</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#e3c069">−120 to −110</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.85em;color:#ff7a8a">≳ −105</span></div>
+  </div>
+  <p style="font-size:0.82em;color:#76869a;margin:0.4rem 0 0.5rem">* LoRa decodes <strong>below</strong> the noise floor — negative SNR still works. At NashMesh's SF7 the limit is about −7.5 dB.</p>
+  <div class="copyable-code"><pre><code>stats-radio  # noise floor · last RSSI/SNR</code></pre></div>
+  <div class="copyable-code"><pre><code>neighbors    # who you hear, with SNR</code></pre></div>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>Watch SNR, not RSSI</strong>
+      <p>RSSI alone can fool you — a strong signal in a noisy spot still decodes badly. SNR already folds signal and noise together, so it's the truest read on link health. A negative SNR isn't automatically broken — LoRa can still pull signal out from under the noise, especially at higher spreading factors.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Access & Admin
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">ADMIN <strong>full control</strong></span>
+    <span class="fc-badge">GUEST <strong>read-only</strong></span>
+    <span class="fc-badge">DEFAULT <strong>password = "password"</strong></span>
+    <span class="fc-badge">REACH <strong>BLE / mesh</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Every repeater ships with the admin door unlocked: the default admin password is the literal word <code>password</code>, and it's publicly known. Until you change it, anyone can reconfigure your node. A separate guest password controls read-only access — leave it blank and anyone can read your node's info without logging in.</p>
+  <p>The companion app's Remote Management reaches a node two ways: over Bluetooth when you're beside it, or across the mesh over LoRa when you're not — routed through your companion node, no internet involved.</p>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>Change the admin password before deploying any unattended node</strong>
+      <p>The default is public knowledge. Lock it down first, then manage from wherever you are. Don't fire config you can't confirm landed over a long, weak path — use multi-acks to increase confidence.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Owner Info
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">COMMAND <strong>set owner.info</strong></span>
+    <span class="fc-badge">FIRMWARE <strong>1.12+</strong></span>
+    <span class="fc-badge">VISIBLE <strong>when guest blank</strong></span>
+    <span class="fc-badge">TIP <strong>call sign + contact</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Your repeater is unattended and probably somewhere annoying to reach. When it misbehaves, other operators can see which node is the problem but have no way to reach you — unless your contact is on the node itself. Owner info is that note, readable by anyone who can log in as a guest (which is everyone when the guest password is blank).</p>
+  <p style="font-size:0.85em;color:#76869a">Keep it brief: call sign or name, a contact method, and maybe a site name. The <code>|</code> character becomes a line break.</p>
+  <div class="copyable-code"><pre><code>set owner.info N0CALL | n0call@example.com | Site Name</code></pre></div>
+</div>
+
+---
+
+## Direct Messages
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">PRIVATE <strong>1-to-1</strong></span>
+    <span class="fc-badge fc-badge--green">END-TO-END <strong>encrypted</strong></span>
+    <span class="fc-badge">ROUTING <strong>flood then follow path</strong></span>
+    <span class="fc-badge">REQUIRES <strong>traded advert</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>A MeshCore DM is encrypted to <strong>one contact's public key</strong> — only they can read it. The first DM floods the mesh so it can reach the recipient regardless of where they are; once a route is established, subsequent messages follow that path. Two nodes can't DM each other until each has received the other's advert (the key exchange — see Discovery &amp; Adverts).</p>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>DMs need a traded advert first</strong>
+      <p>You'll see a node in your contacts only after you've each heard the other's advert. If you can't DM someone, send a zero-hop advert and ask them to do the same. Once keys are traded, messages are end-to-end encrypted — repeaters relay the ciphertext without being able to read it.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Channels
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">TYPE <strong>group · shared key</strong></span>
+    <span class="fc-badge">ROUTING <strong>flood · no ACK</strong></span>
+    <span class="fc-badge">NASHMESH <strong>#tn-* · #bna-*</strong></span>
+    <span class="fc-badge">PRIVATE <strong>own PSK</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>A channel is a group room secured by one symmetric key (AES) that every member shares. Anyone with the key reads and sends; anyone without it just hears noise. Unlike a DM, a channel message is a flood — it spreads across every repeater with no delivery confirmation.</p>
+  <div class="fc-settings-list" style="margin-top:0.5rem">
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Regional</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>#tn-middle</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">all of Middle Tennessee</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>#tn-davidson</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">your county — #tn-&lt;county&gt; for any nearby one</span></div>
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Topic</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>#tenntalk</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">statewide general chatter</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>#ham</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">amateur radio operators</span></div>
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Bots &amp; testing</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>#bna-wx</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">weather chatter + NashMesh wx bot</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>#bna-bot · #bot</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">automated traffic from bots</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label"><code>#test</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">human-to-human "can you hear me?" checks</span></div>
+  </div>
+</div>
+
+---
+
+## Weather Bot
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">HOME <strong>Nashville</strong></span>
+    <span class="fc-badge">US wx</span>
+    <span class="fc-badge">WORLD gwx</span>
+    <span class="fc-badge">ON <strong>#bna-wx</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Message any of these on <strong>#bna-wx</strong>. <code>wx</code> uses NOAA (US only); <code>gwx</code> uses Open-Meteo (worldwide). Leave off a place and it defaults to Nashville.</p>
+  <div class="fc-settings-list" style="margin-top:0.5rem">
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">US weather (wx)</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>wx</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">Nashville forecast (bot's home)</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>wx franklin, tn</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">city, state</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>wx 37130</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">ZIP code</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>wx nashville tomorrow</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">tomorrow's forecast</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>wx nashville 3d</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">3-day (also 5d, 7d)</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>wx nashville hourly</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">hourly forecast</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>wx 37130 alerts</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">active weather alerts</span></div>
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Worldwide (gwx)</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>gwx tokyo</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">city lookup</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>gwx paris, france</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">city, country</span></div>
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Precipitation nowcast</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>rain</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">rain at home · rain 37130 for a place</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>snow</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">snow depth · snow denver for a place</span></div>
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Ham &amp; solar extras</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>aurora</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">aurora / KP-index forecast</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>hfcond</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">HF band propagation</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>solar</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">solar conditions + HF band status</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>aqi nashville</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">air quality index</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label"><code>satpass iss</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">satellite pass predictions</span></div>
+  </div>
+</div>
+
+---
+
+## Test Bot
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">CHECK <strong>test · ping</strong></span>
+    <span class="fc-badge fc-badge--green">PATHS <strong>tracer · path</strong></span>
+    <span class="fc-badge">ON <strong>#bot · #bna-bot</strong></span>
+    <span class="fc-badge">IDS <strong>2-char hex</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Reachability and routing checks. Message a command on <strong>#bot</strong> or <strong>#bna-bot</strong> and BNABot answers with connection info, decoded paths, and network lookups.</p>
+  <div class="fc-settings-list" style="margin-top:0.5rem">
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Core checks</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>test</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">confirms bot got your message; reports direct/routed, SNR, path</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>ping</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">simplest liveness check → Pong!</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>help</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">lists all commands · help &lt;cmd&gt; for details</span></div>
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Path &amp; link diagnostics</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>path</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">decode and show the full routing path your message took</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>tracer 01,7a,55</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">round-trip trace; bot hears the reply (use this one)</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>trace 01,7a,55</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">one-direction trace; return may not be heard</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>multitest</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">listens 6 s and collects every unique path — how many routes are live</span></div>
+    <div class="fc-setting"><span class="fc-setting-label" style="color:#43c4f0">Network utility</span><span class="fc-setting-value"></span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>prefix 1A</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">look up repeaters by their 2-char prefix</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><code>stats</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">bot usage over the last 24 h</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label"><code>channels</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">list / inspect hashtag channels on the network</span></div>
+  </div>
+</div>
+
+---
+
+## Troubleshooting
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">START <strong>radio match</strong></span>
+    <span class="fc-badge">THEN <strong>discovery</strong></span>
+    <span class="fc-badge">THEN <strong>signal</strong></span>
+    <span class="fc-badge">LAST <strong>deafness</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Work down the list. Stop at the first thing that's wrong.</p>
+  <div class="fc-settings-list" style="margin-top:0.5rem">
+    <div class="fc-setting"><span class="fc-setting-label"><strong>1</strong> Same channel?</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">freq · BW · SF · preset identical to the mesh</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><strong>2</strong> Traded adverts?</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">you only see nodes you've swapped keys with — send a zero-hop advert</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><strong>3</strong> Signal above the floor?</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">RSSI / SNR healthy — if weak: height, antenna, clear the path</span></div>
+    <div class="fc-setting"><span class="fc-setting-label"><strong>4</strong> Radio gone deaf?</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">noise floor pinned at −120 dBm — AGC reset or reboot</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label"><strong>5</strong> One-way link?</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">they hear you but you don't — check your RX: antenna, coax, local interference</span></div>
+  </div>
+  <div class="fc-settings-list" style="margin-top:0.75rem">
+    <div class="fc-setting" style="font-size:0.78em"><span class="fc-setting-label" style="color:#9bdcfb;font-weight:700">Symptom</span><span class="fc-setting-value" style="color:#9bdcfb">First move</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">No one hears me</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">confirm preset / radio params match exactly</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">Contacts list is empty</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">send an advert — the mesh is quiet by design</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">Heard, but barely</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">raise the antenna before anything else — height beats power</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">Was fine, now deaf</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">reboot or AGC reset; suspect a pinned noise floor</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">They hear me, I don't</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">the problem is on your receive side</span></div>
+  </div>
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>Re-send an advert after any move</strong>
+      <p>After changing location, antenna, or any radio setting, fire a zero-hop advert so neighbours re-learn your path. A stale route is one of the most common reasons a node is heard but messages don't get through.</p>
+    </div>
+  </div>
+</div>
