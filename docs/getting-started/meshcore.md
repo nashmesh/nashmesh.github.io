@@ -26,8 +26,8 @@ Recommended settings for the Nashville area, aligned with [TennMesh](https://ten
 
 <div class="fc-step"><span class="fc-step-num">1</span><span>Flash firmware using the <a href="https://flasher.meshcore.io">MeshCore Web Flasher</a>. For OTA updates, download the <strong>un-merged</strong> <code>.bin</code>.</span></div>
 <div class="fc-step"><span class="fc-step-num">2</span><span>Set radio and reboot:</span></div>
-<div class="copyable-code" style="margin:0.2rem 0 0.5rem"><pre><code>set radio 910.525,62.5,7,5
-reboot</code></pre></div>
+<div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>set radio 910.525,62.5,7,5</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>reboot</code></pre></div>
 <div class="fc-step"><span class="fc-step-num">3</span><span>Routing and reliability:</span></div>
 <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>set path.hash.mode 1</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>set loop.detect moderate</code></pre></div>
@@ -45,6 +45,8 @@ reboot</code></pre></div>
     <tr><td>15 +</td><td>2</td><td>2</td></tr>
   </tbody>
 </table>
+<div class="copyable-code" style="margin:0.3rem 0 0.2rem"><pre><code>set txdelay &lt;value&gt;</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set direct.txdelay &lt;value&gt;</code></pre></div>
 <div class="fc-step"><span class="fc-step-num">5</span><span>Advert intervals (zero-hop 60 min, flood 3 h):</span></div>
 <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>set advert.interval 3600</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set flood.advert.interval 10800</code></pre></div>
