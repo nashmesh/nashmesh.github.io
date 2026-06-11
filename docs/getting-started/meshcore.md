@@ -223,14 +223,3 @@
   </div>
 </div>
 
-### Why NashMesh runs 62.5 kHz
-
-<div class="content-section content-section--b">
-  <div class="fc-callout">
-    <div class="fc-callout-ic">!</div>
-    <div>
-      <strong>Part of the channel — must match exactly</strong>
-      <p>Like frequency and spreading factor, bandwidth defines the channel everyone shares. 62.5 kHz on every node, no exceptions — a different bandwidth simply can't be heard. Think of SF and bandwidth as a pair: NashMesh runs narrow bandwidth (for reach) with a fast spreading factor (for airtime), balancing the two.</p>
-    </div>
-  </div>
-</div>
