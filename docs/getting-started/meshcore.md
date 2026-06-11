@@ -56,6 +56,8 @@
 
 ## Guide
 
+<p style="font-size:0.85em;color:#76869a;margin:0 0 1rem">Want the full reference in print? <a href="#field-cards">Download the Field Cards PDF ↓</a></p>
+
 ### Radio Settings
 
 <div class="fc-card-header">
