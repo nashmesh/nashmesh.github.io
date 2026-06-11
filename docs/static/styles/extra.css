@@ -1988,15 +1988,12 @@ body[data-theme="light"] .fc-table td {
 
 .fc-level--rec {
   background: rgba(55, 224, 138, 0.06);
-  border-color: rgba(55, 224, 138, 0.2);
+  border-color: #37e08a;
+  border-width: 2px;
 }
 
 .fc-level-pick {
-  font-size: 0.68em;
-  font-family: var(--md-code-font-family);
-  color: #37e08a;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.2rem;
+  display: none;
 }
 
 .fc-level-name {
