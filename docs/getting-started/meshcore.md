@@ -103,8 +103,6 @@
   </div>
 </div>
 
-### What it is
-
 <div class="content-section content-section--b">
   <p>Frequency is the center of your radio channel — the precise point in the band where every transmission happens. Two radios on different frequencies are like two people on different stations: each is talking, neither hears the other. It's the <strong>first</strong> thing that has to match across the mesh.</p>
   <div class="fc-diagram">
@@ -153,8 +151,6 @@
   </div>
 </div>
 
-### What it is
-
 <div class="content-section content-section--b">
   <p>A <strong>narrow</strong> bandwidth concentrates the signal's energy into less spectrum, so the receiver hears it more easily — more range and sensitivity — but the data rate drops and packets take longer. A <strong>wide</strong> bandwidth spreads energy out: faster data, but shorter reach and it scoops up more background noise.</p>
   <div class="fc-diagram">
@@ -183,11 +179,6 @@
     </svg>
     <p class="fc-caption">Narrow bandwidth packs the signal into less spectrum — easier to hear, but slower.</p>
   </div>
-</div>
-
-### The dial
-
-<div class="content-section content-section--b">
   <div class="fc-levels">
     <div class="fc-level fc-level--rec">
       <div class="fc-level-pick">★ NASHMESH</div>
