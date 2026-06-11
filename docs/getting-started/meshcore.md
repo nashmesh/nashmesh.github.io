@@ -52,7 +52,9 @@ reboot</code></pre></div>
 
 ---
 
-## Radio Settings
+## Guide
+
+### Radio Settings
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -137,7 +139,7 @@ reboot</code></pre></div>
 
 ---
 
-## Frequency
+### Frequency
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -185,7 +187,7 @@ reboot</code></pre></div>
 
 ---
 
-## Bandwidth
+### Bandwidth
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -262,7 +264,7 @@ reboot</code></pre></div>
 
 ---
 
-## Spreading Factor
+### Spreading Factor
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -361,7 +363,7 @@ reboot</code></pre></div>
 
 ---
 
-## Coding Rate
+### Coding Rate
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -442,7 +444,7 @@ reboot</code></pre></div>
 
 ---
 
-## Airtime
+### Airtime
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -491,7 +493,7 @@ reboot</code></pre></div>
 
 ---
 
-## Duty Cycle
+### Duty Cycle
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -515,7 +517,7 @@ reboot</code></pre></div>
 
 ---
 
-## Advert Intervals
+### Advert Intervals
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -573,7 +575,7 @@ reboot</code></pre></div>
 
 ---
 
-## Discovery & Adverts
+### Discovery & Adverts
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -619,7 +621,7 @@ reboot</code></pre></div>
 
 ---
 
-## Path Hash Mode
+### Path Hash Mode
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -699,7 +701,7 @@ reboot</code></pre></div>
 
 ---
 
-## Loop Detection
+### Loop Detection
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -756,7 +758,7 @@ reboot</code></pre></div>
 
 ---
 
-## Multi-Acks
+### Multi-Acks
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -775,7 +777,7 @@ reboot</code></pre></div>
 
 ---
 
-## RX Delay
+### RX Delay
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -794,7 +796,7 @@ reboot</code></pre></div>
 
 ---
 
-## TX Delay
+### TX Delay
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -843,7 +845,7 @@ reboot</code></pre></div>
 
 ---
 
-## AGC Reset Interval
+### AGC Reset Interval
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -862,7 +864,7 @@ reboot</code></pre></div>
 
 ---
 
-## Reading Your Signal
+### Reading Your Signal
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -895,7 +897,7 @@ reboot</code></pre></div>
 
 ---
 
-## Access & Admin
+### Access & Admin
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -920,7 +922,7 @@ reboot</code></pre></div>
 
 ---
 
-## Owner Info
+### Owner Info
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -939,7 +941,7 @@ reboot</code></pre></div>
 
 ---
 
-## Direct Messages
+### Direct Messages
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -963,7 +965,7 @@ reboot</code></pre></div>
 
 ---
 
-## Channels
+### Channels
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -992,7 +994,7 @@ reboot</code></pre></div>
 
 ---
 
-## Weather Bot
+### Weather Bot
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1031,7 +1033,7 @@ reboot</code></pre></div>
 
 ---
 
-## Test Bot
+### Test Bot
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1063,7 +1065,7 @@ reboot</code></pre></div>
 
 ---
 
-## Troubleshooting
+### Troubleshooting
 
 <div class="fc-card-header">
   <div class="fc-badges">
