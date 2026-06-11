@@ -1,7 +1,5 @@
 <h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore</h1>
 
-Recommended settings for the Nashville area, aligned with [TennMesh](https://tennmesh.com). Flash your device at [flasher.meshcore.io](https://flasher.meshcore.io), then follow the steps for your node type.
-
 ## Quick Setup
 
 <div class="content-section content-section--a">
@@ -131,13 +129,6 @@ Recommended settings for the Nashville area, aligned with [TennMesh](https://ten
       </g>
     </svg>
     <p class="fc-caption">Same frequency / bandwidth / spreading factor = a link. Any mismatch = mutual silence.</p>
-  </div>
-  <div class="fc-callout">
-    <div class="fc-callout-ic">!</div>
-    <div>
-      <strong>This is your address, not a tuning knob</strong>
-      <p>Frequency, bandwidth and spreading factor together define the channel the whole mesh agrees on. Changing any of them on your node alone doesn't "improve" anything — it just removes you from the conversation. Match the network exactly, every time.</p>
-    </div>
   </div>
 </div>
 
@@ -510,13 +501,6 @@ Recommended settings for the Nashville area, aligned with [TennMesh](https://ten
 
 <div class="content-section content-section--b">
   <p>Duty cycle is the share of time a radio may spend transmitting. After each transmission the firmware holds the radio silent so its long-run on-air time stays under the cap. In the US 902–928 MHz band there's no fixed limit, so the firmware default of 50% is fine and we don't change it.</p>
-  <div class="fc-callout">
-    <div class="fc-callout-ic">!</div>
-    <div>
-      <strong>Leave it at the default for US operation</strong>
-      <p>The point of this card isn't to tune anything — it's so you recognise the setting. If you ever operate where limits apply (much of Europe caps 868 MHz at 1–10%), the firmware enforces the cap for you. For NashMesh, leave it at 50%.</p>
-    </div>
-  </div>
 </div>
 
 ---
@@ -568,13 +552,6 @@ Recommended settings for the Nashville area, aligned with [TennMesh](https://ten
     <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Flood <span style="color:#4a586a">set flood.advert.interval</span></span><span class="fc-setting-value" style="color:#37e08a">3 h</span></div>
   </div>
   <p style="font-size:0.85em;color:#76869a;margin-top:0.5rem">3 h is the firmware minimum — chosen while the mesh is still growing so new nodes discover routes fast. As density increases, raise the flood interval to reclaim airtime.</p>
-  <div class="fc-callout">
-    <div class="fc-callout-ic">!</div>
-    <div>
-      <strong>The flood interval is the airtime dial you'll relax as the mesh matures</strong>
-      <p>A flood advert is repeated by every repeater that hears it, so its cost multiplies across the network. Right now 3 h buys fast discovery for a growing mesh. Once routes are well-known and repeaters are permanent, stretching the flood interval reclaims that airtime with no loss of reachability.</p>
-    </div>
-  </div>
 </div>
 
 ---
@@ -613,13 +590,6 @@ Recommended settings for the Nashville area, aligned with [TennMesh](https://ten
       </g>
     </svg>
     <p class="fc-caption">On the same channel you can both use Public — but DMs need a traded advert first.</p>
-  </div>
-  <div class="fc-callout">
-    <div class="fc-callout-ic">!</div>
-    <div>
-      <strong>An advert is a signed introduction</strong>
-      <p>Every advert carries your name, position, and public key, and it's signed so nobody can impersonate you. That public key is exactly what a DM encrypts to — which is why two nodes can't message privately until each has heard the other's advert. If the mesh looks empty, fire a zero-hop advert or a Public message and watch contacts appear. Don't read silence as a broken mesh — MeshCore is quiet by design.</p>
-    </div>
   </div>
 </div>
 
@@ -917,13 +887,6 @@ Recommended settings for the Nashville area, aligned with [TennMesh](https://ten
 <div class="content-section content-section--b">
   <p>Every repeater ships with the admin door unlocked: the default admin password is the literal word <code>password</code>, and it's publicly known. Until you change it, anyone can reconfigure your node. A separate guest password controls read-only access — leave it blank and anyone can read your node's info without logging in.</p>
   <p>The companion app's Remote Management reaches a node two ways: over Bluetooth when you're beside it, or across the mesh over LoRa when you're not — routed through your companion node, no internet involved.</p>
-  <div class="fc-callout">
-    <div class="fc-callout-ic">!</div>
-    <div>
-      <strong>Change the admin password before deploying any unattended node</strong>
-      <p>The default is public knowledge. Lock it down first, then manage from wherever you are. Don't fire config you can't confirm landed over a long, weak path — use multi-acks to increase confidence.</p>
-    </div>
-  </div>
 </div>
 
 ---
@@ -960,13 +923,6 @@ Recommended settings for the Nashville area, aligned with [TennMesh](https://ten
 
 <div class="content-section content-section--b">
   <p>A MeshCore DM is encrypted to <strong>one contact's public key</strong> — only they can read it. The first DM floods the mesh so it can reach the recipient regardless of where they are; once a route is established, subsequent messages follow that path. Two nodes can't DM each other until each has received the other's advert (the key exchange — see Discovery &amp; Adverts).</p>
-  <div class="fc-callout">
-    <div class="fc-callout-ic">!</div>
-    <div>
-      <strong>DMs need a traded advert first</strong>
-      <p>You'll see a node in your contacts only after you've each heard the other's advert. If you can't DM someone, send a zero-hop advert and ask them to do the same. Once keys are traded, messages are end-to-end encrypted — repeaters relay the ciphertext without being able to read it.</p>
-    </div>
-  </div>
 </div>
 
 ---
