@@ -13,8 +13,6 @@
   </div>
 </div>
 
-### How to set it
-
 <div class="content-section content-section--b">
   <div class="fc-steps-grid">
     <div class="fc-steps-col">
@@ -31,11 +29,6 @@
       <div class="copyable-code"><pre><code>get radio</code></pre></div>
     </div>
   </div>
-</div>
-
-### Why it must match
-
-<div class="content-section content-section--b">
   <p>Frequency, bandwidth and spreading factor together define a LoRa <strong>channel</strong>. If even one differs from the rest of the mesh, your transmissions are unreadable — you'll hear nothing and no one hears you.</p>
   <div class="fc-diagram">
     <svg viewBox="0 0 820 150" role="img" style="width:100%;display:block">
