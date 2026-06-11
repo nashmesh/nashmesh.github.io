@@ -1732,7 +1732,7 @@ h3:has(+ .fc-card-header) {
 }
 
 .fc-table td:not(:first-child) {
-  color: #cdbcff;
+  color: var(--md-default-fg-color);
   font-weight: 700;
 }
 
