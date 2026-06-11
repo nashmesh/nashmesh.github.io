@@ -1027,6 +1027,49 @@
 
 ---
 
+### Flashing Over the Air (OTA)
+
+<div class="content-section content-section--b">
+  <p>OTA flashing lets you update a repeater wirelessly without a USB cable. The device creates a temporary Wi-Fi access point and serves a browser-based update page.</p>
+
+  <div class="fc-callout">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>Supported node types</strong>
+      <p>OTA updates are only supported on <strong>Room Server/Repeater</strong> and <strong>Repeater</strong> nodes. Companion nodes must be flashed via USB.</p>
+    </div>
+  </div>
+
+  <div class="fc-callout" style="margin-top:0.5rem">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>nRF52 devices — Bluetooth OTA only</strong>
+      <p>If your device uses an <strong>nRF52</strong> chip, Wi-Fi OTA is not supported. Use <a href="https://apps.apple.com/us/app/nrf-device-firmware-update/id1624454660">nRF Device Firmware Update</a> (iOS) or <a href="https://github.com/nordicsemi/Android-nRF-Connect">nRF Connect</a> (Android) with the firmware <code>.zip</code> file instead of the <code>.bin</code>.</p>
+    </div>
+  </div>
+
+  <div class="fc-callout" style="margin-top:0.5rem">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>Always use the un-merged <code>.bin</code> for OTA</strong>
+      <p>The <strong>un-merged</strong> <code>.bin</code> updates only the firmware and preserves your settings. The <strong>merged</strong> <code>.bin</code> fully erases the device — only use it for a clean start.</p>
+    </div>
+  </div>
+
+  <div class="fc-step" style="margin-top:0.75rem"><span class="fc-step-num">1</span><span>From the companion app, log into the node and run:</span></div>
+  <div class="copyable-code" style="margin:0.2rem 0 0.5rem"><pre><code>start ota</code></pre></div>
+  <p style="font-size:0.85em;color:#76869a;margin:0 0 0.5rem">The device will create a Wi-Fi access point named <strong>MeshCore-OTA</strong>.</p>
+
+  <div class="fc-step"><span class="fc-step-num">2</span><span>Connect your computer to the <strong>MeshCore-OTA</strong> network, then open a browser and navigate to:</span></div>
+  <div class="copyable-code" style="margin:0.2rem 0 0.5rem"><pre><code>http://192.168.4.1/update</code></pre></div>
+  <p style="font-size:0.85em;color:#76869a;margin:0 0 0.5rem">Upload the un-merged <code>.bin</code> and wait for the upload to fully complete before navigating away.</p>
+
+  <div class="fc-step"><span class="fc-step-num">3</span><span>Reconnect to the node in the companion app and confirm the firmware version:</span></div>
+  <div class="copyable-code" style="margin:0.2rem 0 0"><pre><code>version</code></pre></div>
+</div>
+
+---
+
 ### Troubleshooting
 
 <div class="fc-card-header">
