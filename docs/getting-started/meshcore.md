@@ -5,9 +5,6 @@ Recommended settings for the Nashville area, aligned with [TennMesh](https://ten
 ## Quick Setup
 
 <div class="content-section content-section--a">
-<div class="fc-steps-grid">
-<div class="fc-steps-col">
-
 <h4>Companion</h4>
 
 <div class="fc-step"><span class="fc-step-num">1</span><span>Flash firmware using the <a href="https://flasher.meshcore.io">MeshCore Web Flasher</a>.</span></div>
@@ -22,10 +19,9 @@ Recommended settings for the Nashville area, aligned with [TennMesh](https://ten
 
 <div class="fc-step"><span class="fc-step-num">3</span><span>Settings → Experimental → Default Path Hash Size → <strong>2-Byte</strong>.</span></div>
 <div class="fc-step"><span class="fc-step-num">4</span><span>Send an advert to announce yourself to the mesh.</span></div>
-
 </div>
-<div class="fc-steps-col">
 
+<div class="content-section content-section--a" style="margin-top:0.5rem">
 <h4>Repeater</h4>
 
 <div class="fc-step"><span class="fc-step-num">1</span><span>Flash firmware using the <a href="https://flasher.meshcore.io">MeshCore Web Flasher</a>. For OTA updates, download the <strong>un-merged</strong> <code>.bin</code>.</span></div>
@@ -39,7 +35,7 @@ reboot</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>set rxdelay 3</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set agc.reset.interval 4</code></pre></div>
 <div class="fc-step"><span class="fc-step-num">4</span><span>TX delay — set both values for your neighbor count, check with <code>neighbors</code>:</span></div>
-<div class="fc-settings-list" style="margin:0.3rem 0 0.5rem;font-size:0.82em">
+<div class="fc-settings-list" style="margin:0.3rem 0 0.5rem">
   <div class="fc-setting" style="font-size:0.78em"><span class="fc-setting-label" style="color:#9d7bff;font-weight:700">Neighbors</span><span class="fc-setting-value" style="color:#cdbcff">txdelay</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);color:#d9e2ec">direct.txdelay</span></div>
   <div class="fc-setting"><span class="fc-setting-label">0 – 1</span><span class="fc-setting-value" style="color:#cdbcff">0.3</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">0.1</span></div>
   <div class="fc-setting"><span class="fc-setting-label">2 – 4</span><span class="fc-setting-value" style="color:#cdbcff">0.5</span><span style="flex:1;text-align:right;font-family:var(--md-code-font-family);font-size:0.9em">0.3</span></div>
@@ -52,9 +48,6 @@ reboot</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set flood.advert.interval 10800</code></pre></div>
 <div class="fc-step"><span class="fc-step-num">6</span><span>Set your contact info so other operators can reach you:</span></div>
 <div class="copyable-code" style="margin:0.2rem 0 0"><pre><code>set owner.info N0CALL | contact | site name</code></pre></div>
-
-</div>
-</div>
 </div>
 
 ---
