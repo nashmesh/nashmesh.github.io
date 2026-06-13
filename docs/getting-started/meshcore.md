@@ -22,7 +22,7 @@
 <div class="content-section content-section--a" style="margin-top:0.5rem">
 <h4>Repeater</h4>
 
-<div class="fc-step"><span class="fc-step-num">1</span><span>Flash firmware using the <a href="https://flasher.meshcore.io">MeshCore Web Flasher</a>. For OTA updates, download the <strong>un-merged</strong> <code>.bin</code>.</span></div>
+<div class="fc-step"><span class="fc-step-num">1</span><span>Flash firmware using the <a href="https://flasher.meshcore.io">MeshCore Web Flasher</a>. Updating wirelessly? See <a href="#flashing-over-the-air-ota">OTA Flashing</a>.</span></div>
 <div class="fc-step"><span class="fc-step-num">2</span><span>Set radio and reboot:</span></div>
 <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>set radio 910.525,62.5,7,5</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>reboot</code></pre></div>
@@ -189,9 +189,6 @@
 <div class="fc-card-header">
   <div class="fc-badges">
     <span class="fc-badge fc-badge--green">NASHMESH <strong>62.5 kHz</strong></span>
-    <span class="fc-badge">DIAL <strong>62.5 → 500 kHz</strong></span>
-    <span class="fc-badge">NARROW <strong>= reach, slow</strong></span>
-    <span class="fc-badge">MATCH <strong>network-wide</strong></span>
   </div>
 </div>
 
@@ -266,9 +263,7 @@
 <div class="fc-card-header">
   <div class="fc-badges">
     <span class="fc-badge fc-badge--green">NASHMESH <strong>SF7</strong></span>
-    <span class="fc-badge">DIAL <strong>SF7 → SF12</strong></span>
     <span class="fc-badge">RULE <strong>each +1 ≈ 2× airtime</strong></span>
-    <span class="fc-badge">MATCH <strong>network-wide</strong></span>
   </div>
 </div>
 
@@ -365,8 +360,6 @@
 <div class="fc-card-header">
   <div class="fc-badges">
     <span class="fc-badge fc-badge--green">DEFAULT <strong>CR5 (4/5)</strong></span>
-    <span class="fc-badge">DIAL <strong>4/5 → 4/8</strong></span>
-    <span class="fc-badge">EFFECT <strong>airtime vs armor</strong></span>
     <span class="fc-badge fc-badge--green">PER-PACKET <strong>· mixable</strong></span>
   </div>
 </div>
@@ -447,8 +440,6 @@
   <div class="fc-badges">
     <span class="fc-badge fc-badge--green">TYPE <strong>shared resource</strong></span>
     <span class="fc-badge">RULE <strong>one TX at a time</strong></span>
-    <span class="fc-badge">DRIVER <strong>SF · BW · CR · size</strong></span>
-    <span class="fc-badge">FLOOD <strong>cost × nodes</strong></span>
   </div>
 </div>
 
@@ -743,7 +734,6 @@
     <span class="fc-badge fc-badge--green">NASHMESH <strong>1 (on)</strong></span>
     <span class="fc-badge">DEFAULT <strong>0 (off)</strong></span>
     <span class="fc-badge">HELPS <strong>remote admin</strong></span>
-    <span class="fc-badge">COST <strong>tiny</strong></span>
   </div>
 </div>
 
@@ -944,7 +934,6 @@
   <div class="fc-badges">
     <span class="fc-badge fc-badge--green">PRIVATE <strong>1-to-1</strong></span>
     <span class="fc-badge fc-badge--green">END-TO-END <strong>encrypted</strong></span>
-    <span class="fc-badge">ROUTING <strong>flood then follow path</strong></span>
     <span class="fc-badge">REQUIRES <strong>traded advert</strong></span>
   </div>
 </div>
@@ -960,7 +949,6 @@
 <div class="fc-card-header">
   <div class="fc-badges">
     <span class="fc-badge fc-badge--green">TYPE <strong>group · shared key</strong></span>
-    <span class="fc-badge">ROUTING <strong>flood · no ACK</strong></span>
     <span class="fc-badge">NASHMESH <strong>#tn-* · #bna-*</strong></span>
     <span class="fc-badge">PRIVATE <strong>own PSK</strong></span>
   </div>
@@ -1030,7 +1018,6 @@
     <span class="fc-badge fc-badge--green">CHECK <strong>test · ping</strong></span>
     <span class="fc-badge fc-badge--green">PATHS <strong>tracer · path</strong></span>
     <span class="fc-badge">ON <strong>#bot · #bna-bot</strong></span>
-    <span class="fc-badge">IDS <strong>2-char hex</strong></span>
   </div>
 </div>
 
