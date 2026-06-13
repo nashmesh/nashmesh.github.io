@@ -2447,6 +2447,26 @@ header:first-of-type {
 
 /* ── Page title with logo ───────────────────────────────── */
 
+.page-title-ai-badge {
+  float: right;
+  font-size: 0.45em;
+  font-weight: 500;
+  font-family: var(--md-code-font-family);
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color--light);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  padding: 0.2em 0.5em;
+  white-space: nowrap;
+  margin-top: 0.3em;
+}
+
+body[data-theme="light"] .page-title-ai-badge {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
 .page-title-logo {
   display: inline;
   width: 1em;

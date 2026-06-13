@@ -1,4 +1,4 @@
-<h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore</h1>
+<h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore<span class="page-title-ai-badge">AI Assisted</span></h1>
 
 ## Quick Setup
 
@@ -512,7 +512,7 @@
 <div class="fc-card-header">
   <div class="fc-badges">
     <span class="fc-badge fc-badge--green">ZERO-HOP <strong>60 min</strong></span>
-    <span class="fc-badge fc-badge--green">FLOOD <strong>3 h</strong></span>
+    <span class="fc-badge fc-badge--green">FLOOD <strong>3h</strong></span>
     <span class="fc-badge">FLOOD range <strong>3–168 h</strong></span>
     <span class="fc-badge">COST <strong>mesh-wide airtime</strong></span>
   </div>
@@ -551,7 +551,7 @@
   </div>
   <div class="fc-settings-list" style="margin-top:0.75rem">
     <div class="fc-setting"><span class="fc-setting-label">Zero-Hop <span style="color:#4a586a">set advert.interval</span></span><span class="fc-setting-value" style="color:#37e08a">60 min</span></div>
-    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Flood <span style="color:#4a586a">set flood.advert.interval</span></span><span class="fc-setting-value" style="color:#37e08a">3 h</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Flood <span style="color:#4a586a">set flood.advert.interval</span></span><span class="fc-setting-value" style="color:#37e08a">3h</span></div>
   </div>
   <p style="font-size:0.85em;color:#76869a;margin-top:0.5rem">3 hours is the firmware minimum — chosen while the mesh is still growing so new nodes discover routes fast. As density increases, raise the flood interval to reclaim airtime.</p>
   <div class="copyable-code" style="margin-top:0.5rem"><pre><code>set advert.interval 3600</code></pre></div>
