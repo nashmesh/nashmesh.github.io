@@ -1,9 +1,8 @@
 ---
 template: map_fullscreen.html
 ---
-<div id="map-panel-toggle" role="button" aria-label="Toggle node list">☰ Nodes</div>
-
 <div id="map-side-panel">
+  <div id="map-panel-toggle" role="button" aria-label="Toggle node list"></div>
   <div class="map-panel-inner">
     <div class="map-panel-header">
       <span class="map-panel-title">Nodes</span>

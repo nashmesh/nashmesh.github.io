@@ -2303,30 +2303,42 @@ body[data-theme="light"] .map-filter-dot-all {
   margin: 0;
 }
 
-/* ── Panel toggle button ─────────────────────────────────── */
+/* ── Panel toggle tab ────────────────────────────────────── */
 
 #map-panel-toggle {
   position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 500;
-  padding: 0.4rem 0.75rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  background: rgba(8, 18, 32, 0.88);
-  border: 1px solid #2a4a6a;
-  border-radius: 6px;
-  color: #a0c8f0;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 18px;
+  padding: 1.25rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 18, 32, 0.96);
+  border: 1px solid #1e3a52;
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  color: #4a7a9a;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
-  backdrop-filter: blur(4px);
+  font-size: 0.75rem;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.35);
+  transition: color 0.15s, background 0.15s;
+  user-select: none;
 }
 
-#map-panel-toggle:hover,
-#map-panel-toggle.panel-open {
-  background: rgba(77, 166, 255, 0.15);
-  border-color: #4da6ff;
-  color: #e0f0ff;
+#map-panel-toggle::before {
+  content: '›';
+}
+
+#map-side-panel.open #map-panel-toggle::before {
+  content: '‹';
+}
+
+#map-panel-toggle:hover {
+  color: #a0c8f0;
+  background: rgba(20, 40, 65, 0.98);
 }
 
 /* ── Floating action buttons ─────────────────────────────── */
@@ -2612,16 +2624,14 @@ body[data-theme="light"] #map-panel-close {
 }
 
 body[data-theme="light"] #map-panel-toggle {
-  background: rgba(240, 246, 255, 0.9);
-  border-color: #b0ccee;
-  color: #1a3a5c;
+  background: rgba(240, 246, 255, 0.96);
+  border-color: #c0d4e8;
+  color: #8aaac8;
 }
 
-body[data-theme="light"] #map-panel-toggle:hover,
-body[data-theme="light"] #map-panel-toggle.panel-open {
-  background: rgba(46, 109, 164, 0.1);
-  border-color: #2e6da4;
-  color: #0a2a4a;
+body[data-theme="light"] #map-panel-toggle:hover {
+  background: #e8f2ff;
+  color: #2e6da4;
 }
 
 body[data-theme="light"] .node-list-name {
