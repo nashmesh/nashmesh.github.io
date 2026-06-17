@@ -15,25 +15,6 @@
     var defaultCenter = [36.167567, -86.785401];
     var defaultZoom = 9;
 
-    var layout = document.querySelector('.map-layout');
-
-    function fitLayout() {
-        if (!layout) return;
-        if (window.innerWidth < 768) {
-            layout.style.height = '';
-            map && map.invalidateSize();
-            return;
-        }
-        var top = layout.getBoundingClientRect().top + window.scrollY;
-        var footer = document.getElementById('component-footer');
-        var footerH = footer ? footer.offsetHeight : 0;
-        var height = window.innerHeight - top - footerH;
-        layout.style.height = Math.max(height, 300) + 'px';
-        map && map.invalidateSize();
-    }
-
-    window.addEventListener('resize', fitLayout);
-
     var map = L.map('potato-map-canvas', {
         center: defaultCenter,
         zoom: defaultZoom,
@@ -55,6 +36,30 @@
     };
     legend.addTo(map);
 
+    // ── Panel toggle ──────────────────────────────────────────
+    var panel = document.getElementById('map-side-panel');
+    var toggleBtn = document.getElementById('map-panel-toggle');
+    var closeBtn = document.getElementById('map-panel-close');
+
+    function openPanel() {
+        if (panel) panel.classList.add('open');
+        if (toggleBtn) toggleBtn.classList.add('panel-open');
+        map.invalidateSize();
+    }
+
+    function closePanel() {
+        if (panel) panel.classList.remove('open');
+        if (toggleBtn) toggleBtn.classList.remove('panel-open');
+        map.invalidateSize();
+    }
+
+    if (toggleBtn) toggleBtn.addEventListener('click', function () {
+        panel && panel.classList.contains('open') ? closePanel() : openPanel();
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closePanel);
+
+    // ── Markers + filter ─────────────────────────────────────
     var markers = [];
     var allNodes = [];
     var activeFilter = 'all';
@@ -131,9 +136,7 @@
 
     var searchInput = document.getElementById('node-search');
     if (searchInput) {
-        searchInput.addEventListener('input', function () {
-            applyFilter();
-        });
+        searchInput.addEventListener('input', function () { applyFilter(); });
     }
 
     document.querySelectorAll('.map-filter-btn').forEach(function (btn) {
@@ -170,7 +173,6 @@
     function loadNodes() {
         if (status) status.textContent = 'Loading…';
 
-        // Clear existing markers and node list
         markers.forEach(function (m) { map.removeLayer(m); });
         markers.length = 0;
         allNodes.length = 0;
@@ -260,7 +262,6 @@
     }
 
     map.whenReady(function () {
-        fitLayout();
         map.invalidateSize();
         loadNodes();
         startCooldown();
