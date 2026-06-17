@@ -1,4 +1,4 @@
-<h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore<span class="page-title-ai-badge">AI Assisted</span></h1>
+<h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore<span class="page-title-ai-badge">AI Assisted Page</span></h1>
 
 ## Quick Setup
 
