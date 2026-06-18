@@ -54,8 +54,10 @@
         var lines = children.slice(0, limit).map(function (m) {
             var n = m._nodeData || {};
             var name = n.long_name || n.short_name || n.node_id || '?';
-            var role = n.role ? ' <span class="nht-role">' + n.role.replace(/_/g, ' ') + '</span>' : '';
-            return '<span class="nht-name">' + name + '</span>' + role;
+            var isMc = m.isMeshcore || (n.protocol && n.protocol.toLowerCase().includes('meshcore'));
+            var logo = isMc ? '../static/images/meshcore-logo.png' : '../static/images/meshtastic-logo.svg';
+            var role = n.role ? '<span class="nht-role">' + n.role.replace(/_/g, ' ') + '</span>' : '';
+            return '<span class="nht-header"><img src="' + logo + '" class="nht-logo" alt=""><span class="nht-name">' + name + '</span>' + role + '</span>';
         });
         if (children.length > limit) {
             lines.push('<span class="nht-more">+' + (children.length - limit) + ' more</span>');
@@ -98,6 +100,7 @@
     var allNodes = [];
     var activeFilter = 'all';
     var activeSort = 'lastseen';
+    var clusteringEnabled = true;
 
     function sortNodes() {
         if (activeSort === 'lastseen') {
@@ -128,9 +131,16 @@
             var visible = protocolMatch && searchMatch;
 
             if (visible) {
-                if (!clusterGroup.hasLayer(item.marker)) clusterGroup.addLayer(item.marker);
+                if (clusteringEnabled) {
+                    if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
+                    if (!clusterGroup.hasLayer(item.marker)) clusterGroup.addLayer(item.marker);
+                } else {
+                    if (clusterGroup.hasLayer(item.marker)) clusterGroup.removeLayer(item.marker);
+                    if (!map.hasLayer(item.marker)) item.marker.addTo(map);
+                }
             } else {
                 if (clusterGroup.hasLayer(item.marker)) clusterGroup.removeLayer(item.marker);
+                if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
             }
 
             if (item.listEl) {
@@ -195,6 +205,58 @@
         });
     });
 
+    // ── Utility panel drag ────────────────────────────────────
+    var utilityPanel = document.getElementById('map-utility-panel');
+    var utilityHandle = document.getElementById('map-utility-handle');
+
+    if (utilityPanel && utilityHandle) {
+        var dragging = false, dragOX, dragOY;
+
+        function onDragStart(cx, cy) {
+            dragging = true;
+            var rect = utilityPanel.getBoundingClientRect();
+            var wrapRect = utilityPanel.parentElement.getBoundingClientRect();
+            // store click offset from panel's top-left corner
+            dragOX = cx - rect.left;
+            dragOY = cy - rect.top;
+            // pin left/top to current rendered position before clearing right/bottom
+            utilityPanel.style.left   = (rect.left - wrapRect.left) + 'px';
+            utilityPanel.style.top    = (rect.top  - wrapRect.top)  + 'px';
+            utilityPanel.style.right  = 'auto';
+            utilityPanel.style.bottom = 'auto';
+        }
+
+        function onDragMove(cx, cy) {
+            if (!dragging) return;
+            var wrapRect = utilityPanel.parentElement.getBoundingClientRect();
+            utilityPanel.style.left = Math.max(0, cx - wrapRect.left - dragOX) + 'px';
+            utilityPanel.style.top  = Math.max(0, cy - wrapRect.top  - dragOY) + 'px';
+        }
+
+        utilityHandle.addEventListener('mousedown', function (e) { onDragStart(e.clientX, e.clientY); e.preventDefault(); });
+        document.addEventListener('mousemove', function (e) { onDragMove(e.clientX, e.clientY); });
+        document.addEventListener('mouseup', function () { dragging = false; });
+
+        utilityHandle.addEventListener('touchstart', function (e) { var t = e.touches[0]; onDragStart(t.clientX, t.clientY); }, { passive: true });
+        document.addEventListener('touchmove', function (e) { if (!dragging) return; var t = e.touches[0]; onDragMove(t.clientX, t.clientY); }, { passive: true });
+        document.addEventListener('touchend', function () { dragging = false; });
+    }
+
+    var clusterBtn = document.getElementById('map-cluster-btn');
+    if (clusterBtn) {
+        var clusterSwitch = clusterBtn.querySelector('.map-utility-switch');
+        clusterBtn.addEventListener('click', function () {
+            clusteringEnabled = !clusteringEnabled;
+            if (clusterSwitch) clusterSwitch.classList.toggle('active', clusteringEnabled);
+            if (clusteringEnabled) {
+                if (!map.hasLayer(clusterGroup)) clusterGroup.addTo(map);
+            } else {
+                if (map.hasLayer(clusterGroup)) map.removeLayer(clusterGroup);
+            }
+            applyFilter();
+        });
+    }
+
     var centerBtn = document.getElementById('map-center-btn');
     if (centerBtn) {
         centerBtn.addEventListener('click', function () {
@@ -250,9 +312,10 @@
 
                     marker.bindPopup('<div class="node-popup">' + popupLines + '</div>');
                     marker._nodeData = node;
+                    var tipLogo = isMeshcore ? '../static/images/meshcore-logo.png' : '../static/images/meshtastic-logo.svg';
                     marker.bindTooltip(
                         '<div class="node-hover-tip">' +
-                        '<span class="nht-name">' + (node.long_name || node.short_name || node.node_id) + '</span>' +
+                        '<span class="nht-header"><img src="' + tipLogo + '" class="nht-logo" alt=""><span class="nht-name">' + (node.long_name || node.short_name || node.node_id) + '</span></span>' +
                         (node.role ? '<span class="nht-role">' + node.role.replace(/_/g, ' ') + '</span>' : '') +
                         (node.last_seen_iso ? '<span class="nht-time">' + timeAgo(node.last_seen_iso) + '</span>' : '') +
                         '</div>',

@@ -50,5 +50,17 @@ template: map_fullscreen.html
   </div>
 </div>
 
+<div id="map-utility-panel">
+  <div id="map-utility-handle" title="Drag to move">Map Controls</div>
+  <div class="map-utility-controls">
+    <label class="map-utility-row" id="map-cluster-btn">
+      <span class="map-utility-label">Cluster</span>
+      <span class="map-utility-switch active">
+        <span class="map-utility-thumb"></span>
+      </span>
+    </label>
+  </div>
+</div>
+
 <div id="potato-map-canvas"></div>
 <p id="potato-map-status"></p>
