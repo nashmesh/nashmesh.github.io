@@ -2215,10 +2215,6 @@ body[data-theme="light"] .leaflet-control-attribution a {
   background: #fff;
 }
 
-/* Push zoom control below the top bar */
-#map-page-wrap .leaflet-top {
-  top: 3.75rem;
-}
 
 /* ── Map toolbar (filters + stats row) ──────────────────── */
 

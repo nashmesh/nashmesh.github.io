@@ -18,7 +18,8 @@
     var map = L.map('potato-map-canvas', {
         center: defaultCenter,
         zoom: defaultZoom,
-        maxZoom: 16
+        maxZoom: 16,
+        zoomControl: false
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -35,6 +36,9 @@
         return div;
     };
     legend.addTo(map);
+
+    // zoom added after legend so it renders above it in the bottom-right stack
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
 
     var clusterGroup = L.markerClusterGroup({
         maxClusterRadius: 50,
