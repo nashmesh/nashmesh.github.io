@@ -136,8 +136,10 @@
 
             if (visible) {
                 if (clusteringEnabled) {
-                    if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
-                    if (!clusterGroup.hasLayer(item.marker)) clusterGroup.addLayer(item.marker);
+                    if (!clusterGroup.hasLayer(item.marker)) {
+                        if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
+                        clusterGroup.addLayer(item.marker);
+                    }
                 } else {
                     if (clusterGroup.hasLayer(item.marker)) clusterGroup.removeLayer(item.marker);
                     if (!map.hasLayer(item.marker)) item.marker.addTo(map);
@@ -305,16 +307,17 @@
                         weight: 2
                     });
 
-                    var popupLines = [
-                        '<strong>' + (node.long_name || node.short_name || node.node_id) + '</strong>',
-                        node.short_name ? '<span>' + node.short_name + '</span>' : '',
-                        '<span>Protocol: ' + (node.protocol || 'unknown') + '</span>',
-                        node.hw_model ? '<span>Hardware: ' + node.hw_model + '</span>' : '',
-                        node.role ? '<span>Role: ' + node.role + '</span>' : '',
-                        node.last_seen_iso ? '<span>Last seen: ' + timeAgo(node.last_seen_iso) + '</span>' : ''
-                    ].filter(Boolean).join('<br>');
+                    var popupLogo = isMeshcore ? '../static/images/meshcore-logo.png' : '../static/images/meshtastic-logo.svg';
+                    var popupContent =
+                        '<div class="node-popup">' +
+                        '<span class="nht-header"><img src="' + popupLogo + '" class="nht-logo" alt=""><span class="nht-name">' + (node.long_name || node.short_name || node.node_id) + '</span></span>' +
+                        (node.short_name && node.long_name ? '<span class="nht-role">' + node.short_name + '</span>' : '') +
+                        (node.role ? '<span class="nht-role">' + node.role.replace(/_/g, ' ') + '</span>' : '') +
+                        (node.hw_model ? '<span class="nht-role">' + node.hw_model + '</span>' : '') +
+                        (node.last_seen_iso ? '<span class="nht-time">Last seen ' + timeAgo(node.last_seen_iso) + '</span>' : '') +
+                        '</div>';
 
-                    marker.bindPopup('<div class="node-popup">' + popupLines + '</div>');
+                    marker.bindPopup(popupContent);
                     marker._nodeData = node;
                     var tipLogo = isMeshcore ? '../static/images/meshcore-logo.png' : '../static/images/meshtastic-logo.svg';
                     marker.bindTooltip(
@@ -385,6 +388,13 @@
                     renderList();
                     applyFilter();
                 }
+
+                // refresh all displayed timestamps regardless of poll results
+                allNodes.forEach(function (item) {
+                    if (!item.node.last_seen_iso || !item.listEl) return;
+                    var el = item.listEl.querySelector('.node-list-lastseen');
+                    if (el) el.textContent = timeAgo(item.node.last_seen_iso);
+                });
             })
             .catch(function (err) { console.error('node-map poll:', err); });
     }
