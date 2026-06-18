@@ -2264,21 +2264,29 @@ body[data-theme="light"] .map-filter-dot-all {
 
 /* ── Fullscreen map page ─────────────────────────────────── */
 
+html:has(body.map-fullscreen-page) {
+  overflow: hidden;
+  height: 100dvh;
+}
+
 .map-fullscreen-page {
   display: flex;
   flex-direction: column;
+  width: 100vw;
   height: 100dvh;
   overflow: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .map-fullscreen-page .map-header-bar {
   flex-shrink: 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  width: 100%;
 }
 
 #map-page-wrap {
   flex: 1;
+  width: 100vw;
   position: relative;
   overflow: hidden;
 }
