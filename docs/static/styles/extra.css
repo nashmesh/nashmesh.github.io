@@ -2690,11 +2690,21 @@ body[data-theme="light"] .node-list-item:hover {
   background: rgba(46, 109, 164, 0.07);
 }
 
-/* Mobile: narrower panel */
+/* Mobile: narrower panel + compact top bar */
 @media only screen and (max-width: 767px) {
   #map-side-panel {
     width: 85vw;
     max-width: 320px;
+  }
+
+  #map-top-bar {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .map-top-stats {
+    display: none;
   }
 }
 
