@@ -4,8 +4,8 @@ template: map_fullscreen.html
 <div id="map-top-bar">
   <div class="map-control-group">
     <button class="map-filter-btn active" data-filter="all"><span class="map-filter-dot map-filter-dot-all"></span>All</button>
-    <button class="map-filter-btn map-filter-meshtastic" data-filter="meshtastic"><img src="../static/images/meshtastic-logo.svg" class="map-filter-logo" alt=""><span class="map-filter-dot map-filter-dot-meshtastic"></span>Meshtastic</button>
-    <button class="map-filter-btn map-filter-meshcore" data-filter="meshcore"><img src="../static/images/meshcore-logo.png" class="map-filter-logo" alt=""><span class="map-filter-dot map-filter-dot-meshcore"></span>MeshCore</button>
+    <button class="map-filter-btn map-filter-meshtastic" data-filter="meshtastic"><img src="../static/images/meshtastic-logo.svg" class="map-filter-logo" alt="Meshtastic"><span class="map-filter-dot map-filter-dot-meshtastic"></span></button>
+    <button class="map-filter-btn map-filter-meshcore" data-filter="meshcore"><img src="../static/images/meshcore-logo.png" class="map-filter-logo" alt="MeshCore"><span class="map-filter-dot map-filter-dot-meshcore"></span></button>
   </div>
   <div class="map-stats map-top-stats">
     <div class="map-stat-card">
