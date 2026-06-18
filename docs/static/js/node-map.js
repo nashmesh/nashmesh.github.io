@@ -224,6 +224,11 @@
                 applyFilter();
                 if (status) status.textContent = plotted + ' nodes plotted.';
 
+                // start polling after initial load
+                if (!window._nodeMapPollInterval) {
+                    window._nodeMapPollInterval = setInterval(pollNodes, 10000);
+                }
+
                 var elTotal = document.getElementById('stat-total');
                 var elMeshtastic = document.getElementById('stat-meshtastic');
                 var elMeshcore = document.getElementById('stat-meshcore');
@@ -235,6 +240,41 @@
                 if (status) status.textContent = 'Failed to load node data.';
                 console.error('node-map:', err);
             });
+    }
+
+    function pollNodes() {
+        var since = Math.floor(Date.now() / 1000) - 60;
+        fetch('https://potato.nashme.sh/api/nodes?limit=10000&since=' + since)
+            .then(function (r) { return r.json(); })
+            .then(function (nodes) {
+                var anyUpdated = false;
+                nodes.forEach(function (updated) {
+                    if (!updated.node_id || !updated.last_seen_iso) return;
+                    var item = null;
+                    for (var i = 0; i < allNodes.length; i++) {
+                        if (allNodes[i].node.node_id === updated.node_id) {
+                            item = allNodes[i];
+                            break;
+                        }
+                    }
+                    if (!item) return;
+                    item.node.last_seen_iso = updated.last_seen_iso;
+                    var popup = item.marker.getPopup();
+                    if (popup) {
+                        popup.setContent(popup.getContent().replace(
+                            /Last seen: [^<]*/,
+                            'Last seen: ' + timeAgo(updated.last_seen_iso)
+                        ));
+                    }
+                    anyUpdated = true;
+                });
+                if (anyUpdated) {
+                    sortNodes();
+                    renderList();
+                    applyFilter();
+                }
+            })
+            .catch(function (err) { console.error('node-map poll:', err); });
     }
 
     function startCooldown() {
