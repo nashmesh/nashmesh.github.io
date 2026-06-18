@@ -2638,9 +2638,13 @@ body[data-theme="light"] #map-top-bar {
 }
 
 .map-panel-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
   background: rgba(8, 18, 32, 0.96);
   backdrop-filter: blur(8px);
   border-right: 1px solid #1e3a52;
