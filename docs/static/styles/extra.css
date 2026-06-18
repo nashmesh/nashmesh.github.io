@@ -2558,19 +2558,19 @@ body[data-theme="light"] #map-top-bar {
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  width: 18px;
-  padding: 1.25rem 0;
+  width: 24px;
+  padding: 1.75rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(8, 18, 32, 0.96);
-  border: 1px solid #1e3a52;
+  border: 1px solid #2a4a6a;
   border-left: none;
-  border-radius: 0 6px 6px 0;
-  color: #4a7a9a;
+  border-radius: 0 8px 8px 0;
+  color: #6a9ac0;
   cursor: pointer;
-  font-size: 0.75rem;
-  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.35);
+  font-size: 1rem;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
   transition: color 0.15s, background 0.15s;
   user-select: none;
 }
