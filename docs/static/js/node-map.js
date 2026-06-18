@@ -261,9 +261,30 @@
         });
     }
 
-    map.whenReady(function () {
-        map.invalidateSize();
+    var mapReady = false;
+
+    function onFirstReady() {
+        if (mapReady) return;
+        mapReady = true;
+        map.invalidateSize({ animate: false });
+        map.setView(defaultCenter, defaultZoom);
         loadNodes();
         startCooldown();
-    });
+    }
+
+    if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(function (entries) {
+            var rect = entries[0].contentRect;
+            if (rect.width > 0 && rect.height > 0) {
+                if (!mapReady) {
+                    onFirstReady();
+                } else {
+                    map.invalidateSize({ animate: false });
+                }
+            }
+        }).observe(canvas);
+    } else {
+        window.addEventListener('resize', function () { map.invalidateSize(); });
+        map.whenReady(onFirstReady);
+    }
 })();

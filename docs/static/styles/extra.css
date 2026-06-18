@@ -2311,6 +2311,59 @@ html:has(body.map-fullscreen-page) {
   margin: 0;
 }
 
+/* ── Map top bar ─────────────────────────────────────────── */
+
+#map-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 490;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 1rem;
+  background: rgba(8, 18, 32, 0.88);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #1e3a52;
+  flex-wrap: wrap;
+}
+
+.map-top-stats {
+  flex-wrap: nowrap;
+}
+
+.map-top-stats .map-stat-card {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  min-width: unset;
+  border: none;
+  background: none;
+}
+
+.map-top-stats .map-stat-value {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.map-top-stats .map-stat-label {
+  font-size: 0.68rem;
+  margin-top: 0;
+}
+
+.map-action-group {
+  display: flex;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
+body[data-theme="light"] #map-top-bar {
+  background: rgba(240, 246, 255, 0.92);
+  border-bottom-color: #c0d4e8;
+}
+
 /* ── Panel toggle tab ────────────────────────────────────── */
 
 #map-panel-toggle {
@@ -2349,22 +2402,6 @@ html:has(body.map-fullscreen-page) {
   background: rgba(20, 40, 65, 0.98);
 }
 
-/* ── Floating action buttons ─────────────────────────────── */
-
-.map-floating-actions {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  z-index: 500;
-  display: flex;
-  gap: 0.4rem;
-}
-
-.map-floating-actions .map-refresh-btn {
-  background: rgba(8, 18, 32, 0.88);
-  backdrop-filter: blur(4px);
-  border-color: #2a4a6a;
-}
 
 /* ── Side panel ──────────────────────────────────────────── */
 
@@ -2428,27 +2465,6 @@ html:has(body.map-fullscreen-page) {
   background: rgba(77, 166, 255, 0.1);
 }
 
-.map-panel-filters {
-  padding: 0.6rem 1rem;
-  border-bottom: 1px solid #1e3a52;
-  flex-shrink: 0;
-}
-
-.map-panel-stats {
-  padding: 0.4rem 1rem;
-  border-bottom: 1px solid #1e3a52;
-  flex-shrink: 0;
-  justify-content: space-around;
-}
-
-.map-panel-stats .map-stat-card {
-  padding: 0.35rem 0.5rem;
-  min-width: 60px;
-}
-
-.map-panel-stats .map-stat-value {
-  font-size: 1.1rem;
-}
 
 .map-panel-footer {
   padding: 0.5rem 1rem;
