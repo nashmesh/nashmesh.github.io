@@ -971,6 +971,10 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
 
 /* ── Theme switcher ──────────────────────────────────────── */
 
+.map-fullscreen-page #theme-switcher {
+  display: none;
+}
+
 #theme-switcher {
   position: fixed;
   bottom: 1.5rem;
@@ -2272,7 +2276,6 @@ html:has(body.map-fullscreen-page) {
 .map-fullscreen-page {
   display: flex;
   flex-direction: column;
-  width: 100vw;
   height: 100dvh;
   overflow: hidden;
   margin: 0 !important;
@@ -2281,21 +2284,23 @@ html:has(body.map-fullscreen-page) {
 
 .map-fullscreen-page .map-header-bar {
   flex-shrink: 0;
-  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 #map-page-wrap {
-  flex: 1;
-  width: 100vw;
+  flex: 1 1 0;
+  min-height: 0;
   position: relative;
   overflow: hidden;
 }
 
 #potato-map-canvas {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 1;
 }
 
