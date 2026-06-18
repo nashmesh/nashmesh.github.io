@@ -2569,67 +2569,62 @@ body[data-theme="light"] .node-sort-btn.active {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.25rem;
+  padding: 0.4rem 0.75rem;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.15s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.12s;
+}
+
+.node-list-item:last-child {
+  border-bottom: none;
 }
 
 .node-list-item:hover {
-  background: rgba(77, 166, 255, 0.08);
+  background: rgba(77, 166, 255, 0.06);
 }
 
 .node-list-logo {
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
+  opacity: 0.75;
 }
 
 .node-list-info {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  gap: 0.4rem;
   min-width: 0;
+  overflow: hidden;
 }
 
 .node-list-name {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   color: #c8dff0;
+  flex-shrink: 1;
 }
 
 .node-list-role {
-  display: inline-block;
-  font-size: 0.62rem;
-  color: #7aaac8;
-  background: rgba(77, 166, 255, 0.1);
-  border: 1px solid rgba(77, 166, 255, 0.25);
-  border-radius: 3px;
-  padding: 0.05rem 0.35rem;
+  font-size: 0.65rem;
+  color: #4a7a9a;
   text-transform: capitalize;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  margin-top: 0.15rem;
+  flex-shrink: 0;
 }
 
 .node-list-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   flex-shrink: 0;
-  gap: 0.1rem;
 }
 
 .node-list-lastseen {
   font-size: 0.68rem;
-  opacity: 0.5;
-  color: #c8dff0;
+  color: #4a7a9a;
   white-space: nowrap;
 }
 
@@ -2670,13 +2665,15 @@ body[data-theme="light"] .node-list-name {
 }
 
 body[data-theme="light"] .node-list-role {
-  color: #2e6da4;
-  background: rgba(46, 109, 164, 0.08);
-  border-color: rgba(46, 109, 164, 0.25);
+  color: #5a8aaa;
 }
 
 body[data-theme="light"] .node-list-lastseen {
-  color: #1a3a5c;
+  color: #5a8aaa;
+}
+
+body[data-theme="light"] .node-list-item {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
 }
 
 body[data-theme="light"] #node-search {
