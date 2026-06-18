@@ -341,7 +341,7 @@
 
                 // start polling after initial load
                 if (!window._nodeMapPollInterval) {
-                    window._nodeMapPollInterval = setInterval(pollNodes, 10000);
+                    window._nodeMapPollInterval = setInterval(pollNodes, 120000);
                 }
 
                 var elTotal = document.getElementById('stat-total');
