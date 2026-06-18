@@ -36,6 +36,40 @@
     };
     legend.addTo(map);
 
+    var clusterGroup = L.markerClusterGroup({
+        maxClusterRadius: 50,
+        disableClusteringAtZoom: 13,
+        spiderfyOnMaxZoom: true,
+        spiderfyDistanceMultiplier: 1.5,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true
+    });
+    clusterGroup.addTo(map);
+
+    var clusterTip = L.tooltip({ sticky: false, className: 'node-hover-tooltip', offset: [0, -8] });
+
+    clusterGroup.on('clustermouseover', function (e) {
+        var children = e.layer.getAllChildMarkers();
+        var limit = 10;
+        var lines = children.slice(0, limit).map(function (m) {
+            var n = m._nodeData || {};
+            var name = n.long_name || n.short_name || n.node_id || '?';
+            var role = n.role ? ' <span class="nht-role">' + n.role.replace(/_/g, ' ') + '</span>' : '';
+            return '<span class="nht-name">' + name + '</span>' + role;
+        });
+        if (children.length > limit) {
+            lines.push('<span class="nht-more">+' + (children.length - limit) + ' more</span>');
+        }
+        clusterTip
+            .setContent('<div class="node-hover-tip">' + lines.join('') + '</div>')
+            .setLatLng(e.layer.getLatLng())
+            .addTo(map);
+    });
+
+    clusterGroup.on('clustermouseout', function () {
+        clusterTip.remove();
+    });
+
     // ── Panel toggle ──────────────────────────────────────────
     var panel = document.getElementById('map-side-panel');
     var toggleBtn = document.getElementById('map-panel-toggle');
@@ -94,9 +128,9 @@
             var visible = protocolMatch && searchMatch;
 
             if (visible) {
-                if (!map.hasLayer(item.marker)) item.marker.addTo(map);
+                if (!clusterGroup.hasLayer(item.marker)) clusterGroup.addLayer(item.marker);
             } else {
-                if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
+                if (clusterGroup.hasLayer(item.marker)) clusterGroup.removeLayer(item.marker);
             }
 
             if (item.listEl) {
@@ -127,7 +161,9 @@
                 '</span>';
             li.addEventListener('click', function () {
                 map.setView([item.node.latitude, item.node.longitude], 13);
-                item.marker.openPopup();
+                clusterGroup.zoomToShowLayer(item.marker, function () {
+                    item.marker.openPopup();
+                });
             });
             list.appendChild(li);
             item.listEl = li;
@@ -173,7 +209,7 @@
     function loadNodes() {
         if (status) status.textContent = 'Loading…';
 
-        markers.forEach(function (m) { map.removeLayer(m); });
+        clusterGroup.clearLayers();
         markers.length = 0;
         allNodes.length = 0;
 
@@ -213,7 +249,16 @@
                     ].filter(Boolean).join('<br>');
 
                     marker.bindPopup('<div class="node-popup">' + popupLines + '</div>');
-                    marker.addTo(map);
+                    marker._nodeData = node;
+                    marker.bindTooltip(
+                        '<div class="node-hover-tip">' +
+                        '<span class="nht-name">' + (node.long_name || node.short_name || node.node_id) + '</span>' +
+                        (node.role ? '<span class="nht-role">' + node.role.replace(/_/g, ' ') + '</span>' : '') +
+                        (node.last_seen_iso ? '<span class="nht-time">' + timeAgo(node.last_seen_iso) + '</span>' : '') +
+                        '</div>',
+                        { sticky: true, offset: [10, 0], className: 'node-hover-tooltip' }
+                    );
+                    clusterGroup.addLayer(marker);
                     markers.push(marker);
                     allNodes.push({ node: node, marker: marker, isMeshcore: isMeshcore });
                     plotted++;
@@ -325,6 +370,7 @@
         }).observe(canvas);
     } else {
         window.addEventListener('resize', function () { map.invalidateSize(); });
+
         map.whenReady(onFirstReady);
     }
 })();

@@ -91,6 +91,8 @@ extra_css:
   - static/styles/statistics.css
   - https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
   - static/styles/leaflet.css
+  - static/styles/leaflet.markercluster.css
+  - static/styles/leaflet.markercluster.default.css
   - static/styles/extra.css
   - static/styles/link-embeds.css
   - static/styles/discord.css
@@ -102,6 +104,7 @@ extra_javascript:
   - static/js/leaflet.js
   - static/js/heatmap.js
   - static/js/leaflet-heatmap.js
+  - static/js/leaflet.markercluster.js
   - static/js/node-map.js
 
 extra:

@@ -2040,6 +2040,80 @@ body[data-theme="light"] .leaflet-control-attribution a {
   color: #0078d4 !important;
 }
 
+/* ── Node hover tooltips ─────────────────────────────────── */
+
+.node-hover-tooltip .leaflet-tooltip-top:before,
+.node-hover-tooltip.leaflet-tooltip {
+  background: rgba(8, 18, 32, 0.92);
+  border: 1px solid #1e3a52;
+  border-radius: 5px;
+  color: #c8dff0;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  white-space: nowrap;
+}
+
+.node-hover-tooltip.leaflet-tooltip::before {
+  border-top-color: #1e3a52;
+}
+
+.node-hover-tip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.nht-name {
+  font-weight: 600;
+  color: #e0f0ff;
+  display: block;
+}
+
+.nht-role {
+  font-size: 0.68rem;
+  color: #4a7a9a;
+  text-transform: capitalize;
+  display: block;
+}
+
+.nht-time {
+  font-size: 0.68rem;
+  color: #4a7a9a;
+  display: block;
+}
+
+.nht-more {
+  font-size: 0.68rem;
+  color: #4a7a9a;
+  font-style: italic;
+  display: block;
+  margin-top: 0.1rem;
+}
+
+/* ── Marker cluster styling ──────────────────────────────── */
+
+.marker-cluster-small,
+.marker-cluster-medium,
+.marker-cluster-large {
+  background-color: rgba(10, 25, 45, 0.85) !important;
+}
+
+.marker-cluster-small div,
+.marker-cluster-medium div,
+.marker-cluster-large div {
+  background-color: rgba(77, 166, 255, 0.75) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.leaflet-cluster-spider-leg {
+  stroke: rgba(77, 166, 255, 0.55) !important;
+  stroke-width: 1.5px !important;
+  stroke-dasharray: none !important;
+}
+
 /* Push zoom control below the top bar */
 #map-page-wrap .leaflet-top {
   top: 3.75rem;
