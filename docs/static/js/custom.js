@@ -36,11 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // New meetup notification
     if (window.NASHME_MEETUPS && window.NASHME_MEETUPS.length) {
-        var meetupCutoff = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+        var now = new Date();
         var recentMeetup = null;
         for (var i = 0; i < window.NASHME_MEETUPS.length; i++) {
             var m = window.NASHME_MEETUPS[i];
-            if (new Date(m.date + "T00:00:00") >= meetupCutoff) { recentMeetup = m; break; }
+            if (new Date(m.date + "T00:00:00") >= now) { recentMeetup = m; break; }
         }
         if (recentMeetup) {
             var meetupDismissKey = "new-meetup-dismissed:" + recentMeetup.url;

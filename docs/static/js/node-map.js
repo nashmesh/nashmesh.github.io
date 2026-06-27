@@ -15,29 +15,11 @@
     var defaultCenter = [36.167567, -86.785401];
     var defaultZoom = 9;
 
-    var layout = document.querySelector('.map-layout');
-
-    function fitLayout() {
-        if (!layout) return;
-        if (window.innerWidth < 768) {
-            layout.style.height = '';
-            map && map.invalidateSize();
-            return;
-        }
-        var top = layout.getBoundingClientRect().top + window.scrollY;
-        var footer = document.getElementById('component-footer');
-        var footerH = footer ? footer.offsetHeight : 0;
-        var height = window.innerHeight - top - footerH;
-        layout.style.height = Math.max(height, 300) + 'px';
-        map && map.invalidateSize();
-    }
-
-    window.addEventListener('resize', fitLayout);
-
     var map = L.map('potato-map-canvas', {
         center: defaultCenter,
         zoom: defaultZoom,
-        maxZoom: 16
+        maxZoom: 16,
+        zoomControl: false
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -55,10 +37,74 @@
     };
     legend.addTo(map);
 
+    // zoom added after legend so it renders above it in the bottom-right stack
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+    var clusterGroup = L.markerClusterGroup({
+        maxClusterRadius: 50,
+        disableClusteringAtZoom: 13,
+        spiderfyOnMaxZoom: true,
+        spiderfyDistanceMultiplier: 1.5,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true
+    });
+    clusterGroup.addTo(map);
+
+    var clusterTip = L.tooltip({ sticky: false, className: 'node-hover-tooltip', offset: [0, -8] });
+
+    clusterGroup.on('clustermouseover', function (e) {
+        var children = e.layer.getAllChildMarkers();
+        var limit = 10;
+        var lines = children.slice(0, limit).map(function (m) {
+            var n = m._nodeData || {};
+            var name = n.long_name || n.short_name || n.node_id || '?';
+            var isMc = m.isMeshcore || (n.protocol && n.protocol.toLowerCase().includes('meshcore'));
+            var logo = isMc ? '../static/images/meshcore-logo.png' : '../static/images/meshtastic-logo.svg';
+            var role = n.role ? '<span class="nht-role">' + n.role.replace(/_/g, ' ') + '</span>' : '';
+            return '<span class="nht-header"><img src="' + logo + '" class="nht-logo" alt=""><span class="nht-name">' + name + '</span>' + role + '</span>';
+        });
+        if (children.length > limit) {
+            lines.push('<span class="nht-more">+' + (children.length - limit) + ' more</span>');
+        }
+        clusterTip
+            .setContent('<div class="node-hover-tip">' + lines.join('') + '</div>')
+            .setLatLng(e.layer.getLatLng())
+            .addTo(map);
+    });
+
+    clusterGroup.on('clustermouseout', function () {
+        clusterTip.remove();
+    });
+
+    // ── Panel toggle ──────────────────────────────────────────
+    var panel = document.getElementById('map-side-panel');
+    var toggleBtn = document.getElementById('map-panel-toggle');
+    var closeBtn = document.getElementById('map-panel-close');
+
+    function openPanel() {
+        if (panel) panel.classList.add('open');
+        if (toggleBtn) toggleBtn.classList.add('panel-open');
+        map.invalidateSize();
+    }
+
+    function closePanel() {
+        if (panel) panel.classList.remove('open');
+        if (toggleBtn) toggleBtn.classList.remove('panel-open');
+        map.invalidateSize();
+    }
+
+    if (toggleBtn) toggleBtn.addEventListener('click', function () {
+        panel && panel.classList.contains('open') ? closePanel() : openPanel();
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closePanel);
+
+    // ── Markers + filter ─────────────────────────────────────
     var markers = [];
     var allNodes = [];
     var activeFilter = 'all';
     var activeSort = 'lastseen';
+    var clusteringEnabled = true;
 
     function sortNodes() {
         if (activeSort === 'lastseen') {
@@ -89,8 +135,17 @@
             var visible = protocolMatch && searchMatch;
 
             if (visible) {
-                if (!map.hasLayer(item.marker)) item.marker.addTo(map);
+                if (clusteringEnabled) {
+                    if (!clusterGroup.hasLayer(item.marker)) {
+                        if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
+                        clusterGroup.addLayer(item.marker);
+                    }
+                } else {
+                    if (clusterGroup.hasLayer(item.marker)) clusterGroup.removeLayer(item.marker);
+                    if (!map.hasLayer(item.marker)) item.marker.addTo(map);
+                }
             } else {
+                if (clusterGroup.hasLayer(item.marker)) clusterGroup.removeLayer(item.marker);
                 if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
             }
 
@@ -122,7 +177,9 @@
                 '</span>';
             li.addEventListener('click', function () {
                 map.setView([item.node.latitude, item.node.longitude], 13);
-                item.marker.openPopup();
+                clusterGroup.zoomToShowLayer(item.marker, function () {
+                    item.marker.openPopup();
+                });
             });
             list.appendChild(li);
             item.listEl = li;
@@ -131,9 +188,7 @@
 
     var searchInput = document.getElementById('node-search');
     if (searchInput) {
-        searchInput.addEventListener('input', function () {
-            applyFilter();
-        });
+        searchInput.addEventListener('input', function () { applyFilter(); });
     }
 
     document.querySelectorAll('.map-filter-btn').forEach(function (btn) {
@@ -156,6 +211,58 @@
         });
     });
 
+    // ── Utility panel drag ────────────────────────────────────
+    var utilityPanel = document.getElementById('map-utility-panel');
+    var utilityHandle = document.getElementById('map-utility-handle');
+
+    if (utilityPanel && utilityHandle) {
+        var dragging = false, dragOX, dragOY;
+
+        function onDragStart(cx, cy) {
+            dragging = true;
+            var rect = utilityPanel.getBoundingClientRect();
+            var wrapRect = utilityPanel.parentElement.getBoundingClientRect();
+            // store click offset from panel's top-left corner
+            dragOX = cx - rect.left;
+            dragOY = cy - rect.top;
+            // pin left/top to current rendered position before clearing right/bottom
+            utilityPanel.style.left   = (rect.left - wrapRect.left) + 'px';
+            utilityPanel.style.top    = (rect.top  - wrapRect.top)  + 'px';
+            utilityPanel.style.right  = 'auto';
+            utilityPanel.style.bottom = 'auto';
+        }
+
+        function onDragMove(cx, cy) {
+            if (!dragging) return;
+            var wrapRect = utilityPanel.parentElement.getBoundingClientRect();
+            utilityPanel.style.left = Math.max(0, cx - wrapRect.left - dragOX) + 'px';
+            utilityPanel.style.top  = Math.max(0, cy - wrapRect.top  - dragOY) + 'px';
+        }
+
+        utilityHandle.addEventListener('mousedown', function (e) { onDragStart(e.clientX, e.clientY); e.preventDefault(); });
+        document.addEventListener('mousemove', function (e) { onDragMove(e.clientX, e.clientY); });
+        document.addEventListener('mouseup', function () { dragging = false; });
+
+        utilityHandle.addEventListener('touchstart', function (e) { var t = e.touches[0]; onDragStart(t.clientX, t.clientY); }, { passive: true });
+        document.addEventListener('touchmove', function (e) { if (!dragging) return; var t = e.touches[0]; onDragMove(t.clientX, t.clientY); }, { passive: true });
+        document.addEventListener('touchend', function () { dragging = false; });
+    }
+
+    var clusterBtn = document.getElementById('map-cluster-btn');
+    if (clusterBtn) {
+        var clusterSwitch = clusterBtn.querySelector('.map-utility-switch');
+        clusterBtn.addEventListener('click', function () {
+            clusteringEnabled = !clusteringEnabled;
+            if (clusterSwitch) clusterSwitch.classList.toggle('active', clusteringEnabled);
+            if (clusteringEnabled) {
+                if (!map.hasLayer(clusterGroup)) clusterGroup.addTo(map);
+            } else {
+                if (map.hasLayer(clusterGroup)) map.removeLayer(clusterGroup);
+            }
+            applyFilter();
+        });
+    }
+
     var centerBtn = document.getElementById('map-center-btn');
     if (centerBtn) {
         centerBtn.addEventListener('click', function () {
@@ -170,8 +277,7 @@
     function loadNodes() {
         if (status) status.textContent = 'Loading…';
 
-        // Clear existing markers and node list
-        markers.forEach(function (m) { map.removeLayer(m); });
+        clusterGroup.clearLayers();
         markers.length = 0;
         allNodes.length = 0;
 
@@ -201,17 +307,28 @@
                         weight: 2
                     });
 
-                    var popupLines = [
-                        '<strong>' + (node.long_name || node.short_name || node.node_id) + '</strong>',
-                        node.short_name ? '<span>' + node.short_name + '</span>' : '',
-                        '<span>Protocol: ' + (node.protocol || 'unknown') + '</span>',
-                        node.hw_model ? '<span>Hardware: ' + node.hw_model + '</span>' : '',
-                        node.role ? '<span>Role: ' + node.role + '</span>' : '',
-                        node.last_seen_iso ? '<span>Last seen: ' + timeAgo(node.last_seen_iso) + '</span>' : ''
-                    ].filter(Boolean).join('<br>');
+                    var popupLogo = isMeshcore ? '../static/images/meshcore-logo.png' : '../static/images/meshtastic-logo.svg';
+                    var popupContent =
+                        '<div class="node-popup">' +
+                        '<span class="nht-header"><img src="' + popupLogo + '" class="nht-logo" alt=""><span class="nht-name">' + (node.long_name || node.short_name || node.node_id) + '</span></span>' +
+                        (node.short_name && node.long_name ? '<span class="nht-role">' + node.short_name + '</span>' : '') +
+                        (node.role ? '<span class="nht-role">' + node.role.replace(/_/g, ' ') + '</span>' : '') +
+                        (node.hw_model ? '<span class="nht-role">' + node.hw_model + '</span>' : '') +
+                        (node.last_seen_iso ? '<span class="nht-time">Last seen ' + timeAgo(node.last_seen_iso) + '</span>' : '') +
+                        '</div>';
 
-                    marker.bindPopup('<div class="node-popup">' + popupLines + '</div>');
-                    marker.addTo(map);
+                    marker.bindPopup(popupContent);
+                    marker._nodeData = node;
+                    var tipLogo = isMeshcore ? '../static/images/meshcore-logo.png' : '../static/images/meshtastic-logo.svg';
+                    marker.bindTooltip(
+                        '<div class="node-hover-tip">' +
+                        '<span class="nht-header"><img src="' + tipLogo + '" class="nht-logo" alt=""><span class="nht-name">' + (node.long_name || node.short_name || node.node_id) + '</span></span>' +
+                        (node.role ? '<span class="nht-role">' + node.role.replace(/_/g, ' ') + '</span>' : '') +
+                        (node.last_seen_iso ? '<span class="nht-time">' + timeAgo(node.last_seen_iso) + '</span>' : '') +
+                        '</div>',
+                        { sticky: true, offset: [10, 0], className: 'node-hover-tooltip' }
+                    );
+                    clusterGroup.addLayer(marker);
                     markers.push(marker);
                     allNodes.push({ node: node, marker: marker, isMeshcore: isMeshcore });
                     plotted++;
@@ -221,6 +338,11 @@
                 renderList();
                 applyFilter();
                 if (status) status.textContent = plotted + ' nodes plotted.';
+
+                // start polling after initial load
+                if (!window._nodeMapPollInterval) {
+                    window._nodeMapPollInterval = setInterval(pollNodes, 120000);
+                }
 
                 var elTotal = document.getElementById('stat-total');
                 var elMeshtastic = document.getElementById('stat-meshtastic');
@@ -233,6 +355,48 @@
                 if (status) status.textContent = 'Failed to load node data.';
                 console.error('node-map:', err);
             });
+    }
+
+    function pollNodes() {
+        var since = Math.floor(Date.now() / 1000) - 60;
+        fetch('https://potato.nashme.sh/api/nodes?limit=10000&since=' + since)
+            .then(function (r) { return r.json(); })
+            .then(function (nodes) {
+                var anyUpdated = false;
+                nodes.forEach(function (updated) {
+                    if (!updated.node_id || !updated.last_seen_iso) return;
+                    var item = null;
+                    for (var i = 0; i < allNodes.length; i++) {
+                        if (allNodes[i].node.node_id === updated.node_id) {
+                            item = allNodes[i];
+                            break;
+                        }
+                    }
+                    if (!item) return;
+                    item.node.last_seen_iso = updated.last_seen_iso;
+                    var popup = item.marker.getPopup();
+                    if (popup) {
+                        popup.setContent(popup.getContent().replace(
+                            /Last seen: [^<]*/,
+                            'Last seen: ' + timeAgo(updated.last_seen_iso)
+                        ));
+                    }
+                    anyUpdated = true;
+                });
+                if (anyUpdated) {
+                    sortNodes();
+                    renderList();
+                    applyFilter();
+                }
+
+                // refresh all displayed timestamps regardless of poll results
+                allNodes.forEach(function (item) {
+                    if (!item.node.last_seen_iso || !item.listEl) return;
+                    var el = item.listEl.querySelector('.node-list-lastseen');
+                    if (el) el.textContent = timeAgo(item.node.last_seen_iso);
+                });
+            })
+            .catch(function (err) { console.error('node-map poll:', err); });
     }
 
     function startCooldown() {
@@ -259,10 +423,31 @@
         });
     }
 
-    map.whenReady(function () {
-        fitLayout();
-        map.invalidateSize();
+    var mapReady = false;
+
+    function onFirstReady() {
+        if (mapReady) return;
+        mapReady = true;
+        map.invalidateSize({ animate: false });
+        map.setView(defaultCenter, defaultZoom);
         loadNodes();
         startCooldown();
-    });
+    }
+
+    if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(function (entries) {
+            var rect = entries[0].contentRect;
+            if (rect.width > 0 && rect.height > 0) {
+                if (!mapReady) {
+                    onFirstReady();
+                } else {
+                    map.invalidateSize({ animate: false });
+                }
+            }
+        }).observe(canvas);
+    } else {
+        window.addEventListener('resize', function () { map.invalidateSize(); });
+
+        map.whenReady(onFirstReady);
+    }
 })();
