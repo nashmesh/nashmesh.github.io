@@ -6,17 +6,14 @@
 Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.
 
 ## What Is a Mesh Network?
-A mesh network is a decentralized, off-grid communications network built on low-powered devices. Each node relays messages for others, extending range and resilience without relying on traditional infrastructure. It's used as a messaging platform that provides a backup for everyday communication — popular during disasters, power outages, or simply as a hobby.
+A mesh network is a decentralized, off-grid communications network built on low-powered devices. Each node relays messages for others, extending range and resilience without relying on traditional infrastructure. It's used as a messaging platform that provides a backup for everyday communication, popular during disasters, power outages, or simply as a hobby.
 
-Our community supports two mesh networking platforms:
-
-- <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">[**Meshtastic**](https://meshtastic.org) — a community-based, open-source project using LoRa radios to build an ad-hoc mesh network.
-- <img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">[**MeshCore**](https://meshcore.io) — an alternative open-source, community-based project focused on long-range communication using LoRa radios.
+NashMesh runs on <img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">[**MeshCore**](https://meshcore.io), an open-source, decentralized mesh network using LoRa radios designed for long-range communication without relying on traditional infrastructure.
 
 ### How Do I Get Started?
-Got the itch to give the mesh a try? Check out the <a href="/getting-started/platforms/">platforms we support</a> to learn more about them.
+Got the itch to give the mesh a try? Check out our <a href="/getting-started/meshcore">MeshCore setup guide</a> to get on the network.
 
-If you're looking to setup a device you have, check out our <a href="/getting-started/meshtastic">Meshtastic setup guide</a> or <a href="/getting-started/meshcore">MeshCore setup guide</a>.
+Community members who run <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">[Meshtastic](https://meshtastic.org) nodes are also welcome. See the <a href="/getting-started/platforms/">platforms page</a> for more info.
 
 ### How Do I Get Involved?
 Feel free to jump into our [Discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
