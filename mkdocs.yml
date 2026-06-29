@@ -9,13 +9,13 @@ nav:
     # - Choosing a Device: getting-started/devices.md
     - What is MeshCore?: getting-started/platforms.md
     - MeshCore Setup: getting-started/meshcore.md
-    - Meshtastic Setup: getting-started/meshtastic.md
     - Setting up MQTT: mqtt.md
   - Network Map: map.md
   - Posts: posts.md
   - Resources:
     # - Meshtastic Nodes: nodes.md
     # - Malla: https://malla.nashme.sh
+    - Meshtastic Setup: getting-started/meshtastic.md
     - Potato Map: https://potato.nashme.sh
     - MeshCore Analyzer: https://analyzer.nashme.sh
   # - Affiliate Links: affiliate.md

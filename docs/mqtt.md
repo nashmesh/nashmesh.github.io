@@ -4,6 +4,8 @@ MQTT is a message-broker application that mesh nodes can connect to. By connecti
 
 ## MQTT Settings
 
+These settings work for both <img src="../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">**MeshCore** and <img src="../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">**Meshtastic**.
+
 | Key        | Value              |
 | ---------- | ------------------ |
 | Host       | `mqtt.nashme.sh`   |
@@ -113,3 +115,5 @@ After rebooting, verify your connections with:
 </div>
 
 If connected successfully, each configured preset will show `ok`.
+
+<div class="ai-badge-footer"><span class="page-title-ai-badge">AI Assisted Page</span></div>

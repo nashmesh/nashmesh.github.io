@@ -13,7 +13,7 @@ NashMesh runs on <img src="../../static/images/meshcore-logo.png" class="page-ti
 ### How Do I Get Started?
 Got the itch to give the mesh a try? Check out our <a href="/getting-started/meshcore">MeshCore setup guide</a> to get on the network.
 
-Community members who run <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">[Meshtastic](https://meshtastic.org) nodes are also welcome. See the <a href="/getting-started/platforms/">platforms page</a> for more info.
+Community members who run <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">[Meshtastic](https://meshtastic.org) nodes are also welcome. See the <a href="/getting-started/meshtastic/">Meshtastic setup guide</a> under Resources for more info.
 
 ### How Do I Get Involved?
 Feel free to jump into our [Discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
