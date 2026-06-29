@@ -1,4 +1,4 @@
-<h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore<span class="page-title-ai-badge">AI Assisted Page</span></h1>
+<h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">MeshCore</h1>
 
 ## Quick Setup
 
@@ -1127,3 +1127,5 @@
   <p>The NashMesh Field Cards are a 25-card reference deck covering every setting on this page: what it does, why NashMesh uses the value it does, and the exact commands to set it. Thanks to KA4RLW for putting them together.</p>
   <a href="https://nashme.sh/static/docs/nashmesh_field_cards.pdf" class="fc-download-btn" download>Download Field Cards PDF</a>
 </div>
+
+<div class="ai-badge-footer"><span class="page-title-ai-badge">AI Assisted Page</span></div>

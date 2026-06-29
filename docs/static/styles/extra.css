@@ -2506,6 +2506,18 @@ body[data-theme="light"] .page-title-ai-badge {
   border-color: rgba(0, 0, 0, 0.12);
 }
 
+.ai-badge-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.ai-badge-footer .page-title-ai-badge {
+  float: none;
+  font-size: 1.1rem;
+  margin-top: 0;
+  padding: 0.4em 1em;
+}
+
 .page-title-logo {
   display: inline;
   width: 1em;
