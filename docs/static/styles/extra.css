@@ -584,11 +584,11 @@ body[data-theme="retro"] .code-copy-btn--copied {
 }
 
 .tabbed-labels > label:nth-child(1)::before {
-  background-image: url('../images/meshtastic-logo.svg');
+  background-image: url('../images/meshcore-logo.png');
 }
 
 .tabbed-labels > label:nth-child(2)::before {
-  background-image: url('../images/meshcore-logo.png');
+  background-image: url('../images/meshtastic-logo.svg');
 }
 
 /* Suppress logos on nested tabs */
@@ -980,42 +980,50 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
 }
 
 .theme-switcher-toggle {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  border: 1px solid #2a4a6a;
-  background: #0a1a2a;
-  font-size: 1.1rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(10,20,36,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #8fb8d8;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .theme-switcher-toggle:hover {
-  background: #1a3a5c;
-  border-color: #4da6ff;
-  transform: scale(1.08);
+  background: rgba(26,58,92,0.9);
+  border-color: rgba(77,166,255,0.4);
+  color: #c8dff5;
 }
 
 .theme-switcher-options {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  right: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.4rem;
+  flex-direction: row;
+  gap: 0;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(0.5rem);
+  transform: translateY(4px);
   transition: opacity 0.15s, transform 0.15s;
+  background: rgba(10,20,36,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .theme-switcher-options.open {
@@ -1027,18 +1035,22 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
 .theme-option {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 2rem;
-  border: 1px solid #2a4a6a;
-  background: #0a1a2a;
-  color: #c8dff5;
-  font-size: 0.8rem;
-  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border: none;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  background: transparent;
+  color: #8fb8d8;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s;
+}
+
+.theme-option:last-child {
+  border-right: none;
 }
 
 .theme-option::after {
@@ -1046,31 +1058,35 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
 }
 
 .theme-option:hover {
-  background: #1a3a5c;
-  border-color: #4da6ff;
-  color: #ffffff;
+  background: rgba(77,166,255,0.12);
+  color: #e0f0ff;
 }
 
 /* Light theme overrides */
 body[data-theme="light"] .theme-switcher-toggle {
-  background: #f0f6ff;
-  border-color: #b0ccee;
+  background: rgba(240,246,255,0.9);
+  border-color: rgba(0,0,0,0.1);
+  color: #3a6a9a;
 }
 
 body[data-theme="light"] .theme-switcher-toggle:hover {
-  background: #dceeff;
-  border-color: #2e6da4;
-}
-
-body[data-theme="light"] .theme-option {
-  background: #f0f6ff;
-  border-color: #b0ccee;
+  background: rgba(220,238,255,0.95);
+  border-color: rgba(46,109,164,0.4);
   color: #1a3a5c;
 }
 
+body[data-theme="light"] .theme-switcher-options {
+  background: rgba(240,246,255,0.95);
+  border-color: rgba(0,0,0,0.1);
+}
+
+body[data-theme="light"] .theme-option {
+  border-right-color: rgba(0,0,0,0.08);
+  color: #3a6a9a;
+}
+
 body[data-theme="light"] .theme-option:hover {
-  background: #dceeff;
-  border-color: #2e6da4;
+  background: rgba(46,109,164,0.1);
   color: #0a2040;
 }
 
@@ -1676,6 +1692,532 @@ html {
   }
 }
 
+/* ── Field Card elements ─────────────────────────────────────────── */
+
+/* Hide SMIL animation overlays when printing or user prefers no motion */
+@media print { .nm-fx { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .nm-fx { display: none !important; } }
+
+.fc-card-header {
+  padding: 0.25rem 0 0.5rem;
+  margin-bottom: -0.25rem;
+}
+
+h3 + .content-section,
+h3 + .fc-card-header {
+  margin-top: 0.2rem !important;
+}
+
+h3:has(+ .content-section),
+h3:has(+ .fc-card-header) {
+  margin-bottom: 0.2rem !important;
+}
+
+/* ── Field Card compact table ────────────────────────────────────── */
+
+.fc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--md-code-font-family);
+  font-size: 0.82em;
+  margin: 0.4rem 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fc-table th,
+.fc-table td {
+  padding: 0.45rem 0.75rem;
+  text-align: right;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fc-table th:first-child,
+.fc-table td:first-child {
+  text-align: left;
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-table th {
+  color: var(--md-default-fg-color--light);
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: 0.04em;
+}
+
+.fc-table tr:last-child td {
+  border-bottom: none;
+}
+
+.fc-table td:not(:first-child) {
+  color: var(--md-default-fg-color);
+  font-weight: 700;
+}
+
+/* Signal table keeps its traffic-light colors on all themes */
+.fc-table--signal td[style*="color"],
+.fc-table--signal th[style*="color"] {
+  font-weight: 700;
+}
+
+body[data-theme="light"] .fc-table {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .fc-table th,
+body[data-theme="light"] .fc-table td {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Quick setup — tighten internal spacing */
+.content-section h4 {
+  margin: 0 0 0.4rem !important;
+}
+
+.content-section .fc-step {
+  margin-bottom: 0.3rem;
+}
+
+.content-section + .content-section {
+  margin-top: 0.25rem;
+}
+
+.fc-card-sub {
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 0.75rem;
+  font-size: 0.92em;
+}
+
+.fc-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.fc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  padding: 0.18rem 0.5rem;
+  font-size: 0.72em;
+  font-family: var(--md-code-font-family);
+  letter-spacing: 0.04em;
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-badge strong {
+  color: var(--md-default-fg-color);
+}
+
+.fc-badge--green {
+  background: rgba(55, 224, 138, 0.1);
+  border-color: rgba(55, 224, 138, 0.3);
+  color: #37e08a;
+}
+
+.fc-badge--green strong {
+  color: #9bf0c4;
+}
+
+.fc-section {
+  padding: 1.1rem 0 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fc-section--last {
+  border-bottom: none;
+}
+
+.fc-sech {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.fc-num {
+  background: rgba(55, 224, 138, 0.15);
+  color: #37e08a;
+  font-family: var(--md-code-font-family);
+  font-size: 0.8em;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.fc-sech h3 {
+  margin: 0 0 0.1rem !important;
+  font-size: 1em;
+}
+
+.fc-sech-sub {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.85em;
+  margin: 0;
+}
+
+.fc-diagram {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  padding: 1rem 1rem 0.6rem;
+  margin: 0.75rem 0 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+}
+
+.fc-diagram svg {
+  min-width: 560px;
+}
+
+.fc-caption {
+  font-size: 0.78em;
+  color: var(--md-default-fg-color--light);
+  text-align: center;
+  margin: 0.5rem 0 0;
+  font-style: italic;
+}
+
+.fc-settings-list {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.fc-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--md-code-font-family);
+  font-size: 0.88em;
+}
+
+.fc-setting--last {
+  border-bottom: none;
+}
+
+.fc-setting-label {
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-setting-value {
+  color: var(--md-default-fg-color);
+  font-weight: 700;
+  text-align: right;
+}
+
+.fc-setting-value--green {
+  color: #37e08a;
+}
+
+.fc-setting-note {
+  color: var(--md-default-fg-color--lighter, #4a586a);
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+.fc-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.fc-steps-col h4 {
+  margin: 0 0 0.6rem !important;
+  font-size: 0.88em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.88em;
+}
+
+.fc-step-num {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--md-default-fg-color--light);
+  font-family: var(--md-code-font-family);
+  font-size: 0.8em;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fc-callout {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: rgba(55, 224, 138, 0.05);
+  border: 1px solid rgba(55, 224, 138, 0.18);
+  border-left: 3px solid #37e08a;
+  border-radius: 4px;
+  padding: 0.7rem 1rem;
+  margin: 0.75rem 0 0.25rem;
+}
+
+.fc-callout-ic {
+  background: #37e08a;
+  color: #0a0e14;
+  font-weight: 700;
+  font-size: 0.85em;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.fc-callout p {
+  margin: 0.3rem 0 0;
+  font-size: 0.88em;
+}
+
+/* ── Field Card levels comparison ───────────────────────────────── */
+
+.fc-levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.fc-level {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 0.7rem 0.75rem;
+}
+
+.fc-level--rec {
+  background: rgba(55, 224, 138, 0.06);
+  border-color: #37e08a;
+  border-width: 2px;
+}
+
+.fc-level-pick {
+  display: none;
+}
+
+.fc-level-name {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+  font-family: var(--md-code-font-family);
+  line-height: 1.1;
+}
+
+.fc-level-tag {
+  font-size: 0.73em;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.4rem;
+}
+
+.fc-level-rows {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.fc-level-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78em;
+  padding: 0.12rem 0;
+  font-family: var(--md-code-font-family);
+}
+
+.fc-level-row span {
+  color: var(--md-default-fg-color--light);
+}
+
+.fc-level-row strong {
+  color: var(--md-default-fg-color);
+}
+
+.fc-level-note {
+  font-size: 0.76em;
+  color: var(--md-default-fg-color--light);
+  margin: 0.4rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.35rem;
+  font-style: italic;
+}
+
+body[data-theme="light"] .fc-level {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .fc-level--rec {
+  background: rgba(0, 100, 60, 0.05);
+  border-color: rgba(0, 100, 60, 0.18);
+}
+
+body[data-theme="light"] .fc-level-rows,
+body[data-theme="light"] .fc-level-note {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .fc-level .fc-level-name,
+body[data-theme="retro"] .fc-level .fc-level-name {
+  color: var(--md-default-fg-color) !important;
+}
+
+@media only screen and (max-width: 650px) {
+  .fc-levels {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+  }
+
+  .fc-level {
+    min-width: 120px;
+    max-width: 38vw;
+    flex-shrink: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .fc-level-row {
+    flex-wrap: wrap;
+    gap: 0.1rem;
+  }
+
+  .fc-level-note {
+    white-space: normal;
+  }
+}
+
+/* ── Field Card download button ──────────────────────────────────── */
+
+.fc-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: rgba(55, 224, 138, 0.12);
+  border: 1px solid rgba(55, 224, 138, 0.35);
+  border-radius: 4px;
+  color: #37e08a !important;
+  font-size: 0.88em;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.fc-download-btn:hover {
+  background: rgba(55, 224, 138, 0.2);
+  border-color: rgba(55, 224, 138, 0.6);
+}
+
+body[data-theme="light"] .fc-download-btn {
+  background: rgba(0, 100, 60, 0.07);
+  border-color: rgba(0, 100, 60, 0.3);
+  color: #1a8a52 !important;
+}
+
+body[data-theme="light"] .fc-download-btn:hover {
+  background: rgba(0, 100, 60, 0.14);
+}
+
+/* Category label color in settings lists */
+.fc-cat-label {
+  color: #43c4f0;
+}
+
+body[data-theme="light"] .fc-cat-label,
+body[data-theme="retro"] .fc-cat-label {
+  color: #0077aa;
+}
+
+/* Light theme adjustments */
+body[data-theme="light"] .fc-card-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .fc-badge {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+body[data-theme="light"] .fc-badge strong {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+body[data-theme="light"] .fc-section {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .fc-diagram,
+body[data-theme="retro"] .fc-diagram {
+  background: #0d1520;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body[data-theme="light"] .fc-caption,
+body[data-theme="retro"] .fc-caption {
+  color: rgba(217, 226, 236, 0.65);
+}
+
+body[data-theme="light"] .fc-settings-list {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .fc-setting {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .fc-callout {
+  background: rgba(0, 100, 60, 0.05);
+  border-color: rgba(0, 100, 60, 0.18);
+  border-left-color: #1a9a5e;
+}
+
+body[data-theme="light"] .fc-callout-ic {
+  background: #1a9a5e;
+  color: #fff;
+}
+
+/* Mobile: stack the steps side by side */
+@media only screen and (max-width: 600px) {
+  .fc-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Comfortable line-height and sizing for body content */
 .post p,
 .post li,
@@ -1958,6 +2500,39 @@ header:first-of-type {
 }
 
 /* ── Page title with logo ───────────────────────────────── */
+
+.page-title-ai-badge {
+  float: right;
+  font-size: 0.45em;
+  font-weight: 500;
+  font-family: var(--md-code-font-family);
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color--light);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  padding: 0.15em 0.5em;
+  line-height: 1;
+  white-space: nowrap;
+  margin-top: 0.55em;
+}
+
+body[data-theme="light"] .page-title-ai-badge {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.ai-badge-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.ai-badge-footer .page-title-ai-badge {
+  float: none;
+  font-size: 1.1rem;
+  margin-top: 0;
+  padding: 0.4em 1em;
+}
 
 .page-title-logo {
   display: inline;
@@ -2939,12 +3514,11 @@ body[data-theme="light"] .node-list-item:hover {
 
 .yt-embed {
   position: relative;
-  padding-bottom: 28.125%; /* 16:9 at 50% width */
+  padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
   border-radius: 8px;
   margin: 1rem 0;
-  max-width: 50%;
 }
 
 .yt-embed iframe {
@@ -2956,12 +3530,6 @@ body[data-theme="light"] .node-list-item:hover {
   border: 0;
 }
 
-@media only screen and (max-width: 767px) {
-  .yt-embed {
-    max-width: 100%;
-    padding-bottom: 56.25%; /* full 16:9 */
-  }
-}
 
 .coding-rate-note {
   margin-top: 1rem;
