@@ -390,11 +390,16 @@ document.addEventListener("DOMContentLoaded", function () {
         switcher.id = 'theme-switcher';
         switcher.innerHTML = `
             <div class="theme-switcher-options" id="theme-switcher-options">
-                <button class="color-button theme-option" data-theme="light" title="Light">☀️</button>
-                <button class="color-button theme-option" data-theme="dark" title="Dark">🌙</button>
-                <button class="color-button theme-option" data-theme="retro" title="Retro">👾</button>
+                <button class="color-button theme-option" data-theme="light" title="Light"></button>
+                <button class="color-button theme-option" data-theme="dark" title="Dark"></button>
+                <button class="color-button theme-option" data-theme="retro" title="Retro"></button>
             </div>
-            <button class="theme-switcher-toggle" id="theme-switcher-toggle" title="Change theme">🎨</button>
+            <button class="theme-switcher-toggle" id="theme-switcher-toggle" title="Change theme">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/>
+                </svg>
+            </button>
         `;
         document.body.appendChild(switcher);
 

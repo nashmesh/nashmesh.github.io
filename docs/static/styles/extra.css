@@ -584,11 +584,11 @@ body[data-theme="retro"] .code-copy-btn--copied {
 }
 
 .tabbed-labels > label:nth-child(1)::before {
-  background-image: url('../images/meshtastic-logo.svg');
+  background-image: url('../images/meshcore-logo.png');
 }
 
 .tabbed-labels > label:nth-child(2)::before {
-  background-image: url('../images/meshcore-logo.png');
+  background-image: url('../images/meshtastic-logo.svg');
 }
 
 /* Suppress logos on nested tabs */
@@ -980,42 +980,50 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
 }
 
 .theme-switcher-toggle {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  border: 1px solid #2a4a6a;
-  background: #0a1a2a;
-  font-size: 1.1rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(10,20,36,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #8fb8d8;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .theme-switcher-toggle:hover {
-  background: #1a3a5c;
-  border-color: #4da6ff;
-  transform: scale(1.08);
+  background: rgba(26,58,92,0.9);
+  border-color: rgba(77,166,255,0.4);
+  color: #c8dff5;
 }
 
 .theme-switcher-options {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  right: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.4rem;
+  flex-direction: row;
+  gap: 0;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(0.5rem);
+  transform: translateY(4px);
   transition: opacity 0.15s, transform 0.15s;
+  background: rgba(10,20,36,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .theme-switcher-options.open {
@@ -1027,18 +1035,22 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
 .theme-option {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 2rem;
-  border: 1px solid #2a4a6a;
-  background: #0a1a2a;
-  color: #c8dff5;
-  font-size: 0.8rem;
-  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border: none;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  background: transparent;
+  color: #8fb8d8;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s;
+}
+
+.theme-option:last-child {
+  border-right: none;
 }
 
 .theme-option::after {
@@ -1046,31 +1058,35 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
 }
 
 .theme-option:hover {
-  background: #1a3a5c;
-  border-color: #4da6ff;
-  color: #ffffff;
+  background: rgba(77,166,255,0.12);
+  color: #e0f0ff;
 }
 
 /* Light theme overrides */
 body[data-theme="light"] .theme-switcher-toggle {
-  background: #f0f6ff;
-  border-color: #b0ccee;
+  background: rgba(240,246,255,0.9);
+  border-color: rgba(0,0,0,0.1);
+  color: #3a6a9a;
 }
 
 body[data-theme="light"] .theme-switcher-toggle:hover {
-  background: #dceeff;
-  border-color: #2e6da4;
-}
-
-body[data-theme="light"] .theme-option {
-  background: #f0f6ff;
-  border-color: #b0ccee;
+  background: rgba(220,238,255,0.95);
+  border-color: rgba(46,109,164,0.4);
   color: #1a3a5c;
 }
 
+body[data-theme="light"] .theme-switcher-options {
+  background: rgba(240,246,255,0.95);
+  border-color: rgba(0,0,0,0.1);
+}
+
+body[data-theme="light"] .theme-option {
+  border-right-color: rgba(0,0,0,0.08);
+  color: #3a6a9a;
+}
+
 body[data-theme="light"] .theme-option:hover {
-  background: #dceeff;
-  border-color: #2e6da4;
+  background: rgba(46,109,164,0.1);
   color: #0a2040;
 }
 
@@ -3498,12 +3514,11 @@ body[data-theme="light"] .node-list-item:hover {
 
 .yt-embed {
   position: relative;
-  padding-bottom: 28.125%; /* 16:9 at 50% width */
+  padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
   border-radius: 8px;
   margin: 1rem 0;
-  max-width: 50%;
 }
 
 .yt-embed iframe {
@@ -3515,12 +3530,6 @@ body[data-theme="light"] .node-list-item:hover {
   border: 0;
 }
 
-@media only screen and (max-width: 767px) {
-  .yt-embed {
-    max-width: 100%;
-    padding-bottom: 56.25%; /* full 16:9 */
-  }
-}
 
 .coding-rate-note {
   margin-top: 1rem;

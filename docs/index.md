@@ -8,12 +8,12 @@ Our mission is to provide a reliable mesh network along with resources, guidance
 ## What Is a Mesh Network?
 A mesh network is a decentralized, off-grid communications network built on low-powered devices. Each node relays messages for others, extending range and resilience without relying on traditional infrastructure. It's used as a messaging platform that provides a backup for everyday communication, popular during disasters, power outages, or simply as a hobby.
 
-NashMesh runs on <img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">[**MeshCore**](https://meshcore.io), an open-source, decentralized mesh network using LoRa radios designed for long-range communication without relying on traditional infrastructure.
+NashMesh runs on <img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">[**MeshCore**](https://meshcore.io), an open-source, decentralized mesh network using LoRa radios designed for long-range communication without relying on traditional infrastructure. Want to learn more? Check out our <a href="/getting-started/platforms/">What is MeshCore?</a> page.
 
 ### How Do I Get Started?
 Got the itch to give the mesh a try? Check out our <a href="/getting-started/meshcore">MeshCore setup guide</a> to get on the network.
 
-Community members who run <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">[Meshtastic](https://meshtastic.org) nodes are also welcome. See the <a href="/getting-started/meshtastic/">Meshtastic setup guide</a> under Resources for more info.
+Community members who run <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">[Meshtastic](https://meshtastic.org) nodes are also welcome. See the <a href="/getting-started/meshtastic/">Meshtastic setup guide</a> for more info.
 
 ### How Do I Get Involved?
 Feel free to jump into our [Discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
