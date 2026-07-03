@@ -2968,7 +2968,8 @@ body[data-theme="light"] .leaflet-control-attribution a {
 
 /* Slim drag grip in place of a title bar */
 #map-utility-handle {
-  height: 15px;
+  position: relative;
+  height: 18px;
   background: rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid #1e3a52;
   cursor: grab;
@@ -2987,6 +2988,94 @@ body[data-theme="light"] .leaflet-control-attribution a {
 
 #map-utility-handle:active {
   cursor: grabbing;
+}
+
+#map-utility-hide {
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #6a92b5;
+  font-size: 0.72rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+#map-utility-hide:hover {
+  color: #d6ebff;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Merged key (legend) inside the controls panel */
+.map-utility-key {
+  border-top: 1px solid #1e3a52;
+  margin-top: 0.1rem;
+  padding-top: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.map-utility-key-title {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #4a7a9a;
+  margin-top: 0.25rem;
+}
+
+.map-utility-key-title:first-child {
+  margin-top: 0;
+}
+
+.map-utility-key-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #c8dff0;
+}
+
+/* Hidden panel + floating show button */
+#map-utility-panel.hidden {
+  display: none;
+}
+
+#map-controls-show {
+  position: absolute;
+  top: 3.75rem;
+  right: 0.75rem;
+  z-index: 500;
+  display: none;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 18, 32, 0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid #1e3a52;
+  border-radius: 6px;
+  color: #a0c8f0;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+#map-controls-show.visible {
+  display: flex;
+}
+
+#map-controls-show:hover {
+  border-color: #4da6ff;
+  color: #d6ebff;
 }
 
 .map-utility-select {
@@ -3753,16 +3842,27 @@ body[data-theme="light"] .node-list-item:hover {
 
   #map-top-bar {
     flex-wrap: wrap;
-    gap: 0.35rem;
-    padding: 0.35rem 0.5rem;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  /* Groups fill the row evenly and center instead of floating apart */
+  .map-control-group {
+    justify-content: center;
+  }
+
+  .map-action-group {
+    margin-left: 0;
   }
 
   .map-top-stats {
     display: none;
   }
 
-  /* Clear the wrapped (two-row) top bar */
-  #map-utility-panel {
+  /* Clear the wrapped top bar */
+  #map-utility-panel,
+  #map-controls-show {
     top: 6rem;
   }
 

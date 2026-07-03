@@ -88,20 +88,6 @@
         });
     }
 
-    var legend = L.control({ position: 'bottomright' });
-    legend.onAdd = function () {
-        var div = L.DomUtil.create('div', 'homepage-map-legend');
-        div.innerHTML =
-            '<span class="hml-heading">Protocol</span>' +
-            '<span class="hml-item"><span class="hml-dot hml-meshtastic"></span>Meshtastic</span>' +
-            '<span class="hml-item"><span class="hml-dot hml-meshcore"></span>MeshCore</span>' +
-            '<span class="hml-heading">Role</span>' +
-            '<span class="hml-item">' + nodeGlyphSvg('router', '#c8dff0') + 'Router / Repeater</span>' +
-            '<span class="hml-item">' + nodeGlyphSvg('client', '#c8dff0') + 'Client</span>' +
-            '<span class="hml-item">' + nodeGlyphSvg('server', '#c8dff0') + 'Server / Base</span>';
-        return div;
-    };
-    legend.addTo(map);
 
     // zoom added after legend so it renders above it in the bottom-right stack
     L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -323,6 +309,23 @@
         utilityHandle.addEventListener('touchstart', function (e) { var t = e.touches[0]; onDragStart(t.clientX, t.clientY); }, { passive: true });
         document.addEventListener('touchmove', function (e) { if (!dragging) return; var t = e.touches[0]; onDragMove(t.clientX, t.clientY); }, { passive: true });
         document.addEventListener('touchend', function () { dragging = false; });
+    }
+
+    // Hide / show the whole controls panel.
+    var hideBtn = document.getElementById('map-utility-hide');
+    var showBtn = document.getElementById('map-controls-show');
+    function setControlsHidden(hidden) {
+        if (utilityPanel) utilityPanel.classList.toggle('hidden', hidden);
+        if (showBtn) showBtn.classList.toggle('visible', hidden);
+    }
+    if (hideBtn) {
+        // Stop the hide tap from also starting a drag on the handle.
+        hideBtn.addEventListener('mousedown', function (e) { e.stopPropagation(); });
+        hideBtn.addEventListener('touchstart', function (e) { e.stopPropagation(); }, { passive: true });
+        hideBtn.addEventListener('click', function (e) { e.stopPropagation(); setControlsHidden(true); });
+    }
+    if (showBtn) {
+        showBtn.addEventListener('click', function () { setControlsHidden(false); });
     }
 
     var clusterBtn = document.getElementById('map-cluster-btn');
