@@ -56,43 +56,42 @@ template: map_fullscreen.html
   </div>
 </div>
 
-<div id="map-utility-panel">
-  <div id="map-utility-handle" title="Drag to move" aria-label="Drag to move">
-    <button id="map-utility-hide" type="button" title="Hide controls" aria-label="Hide controls">✕</button>
-  </div>
-  <div class="map-utility-controls">
-    <label class="map-utility-row" id="map-cluster-btn">
-      <span class="map-utility-label">Cluster</span>
-      <span class="map-utility-switch active">
-        <span class="map-utility-thumb"></span>
-      </span>
-    </label>
-    <label class="map-utility-row" for="map-layer-select">
-      <span class="map-utility-label">Base map</span>
-      <select class="map-utility-select" id="map-layer-select">
-        <option value="Dark">Dark</option>
-        <option value="Light">Light</option>
-        <option value="Standard">Standard</option>
-        <option value="Satellite">Satellite</option>
-      </select>
-    </label>
-    <div class="map-utility-key">
-      <span class="map-utility-key-title">Protocol</span>
-      <span class="map-utility-key-row"><span class="hml-dot hml-meshtastic"></span>Meshtastic</span>
-      <span class="map-utility-key-row"><span class="hml-dot hml-meshcore"></span>MeshCore</span>
-      <span class="map-utility-key-title">Role</span>
-      <span class="map-utility-key-row"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,3.5 16.5,16.5 3.5,16.5" fill="currentColor"/></svg>Router / Repeater</span>
-      <span class="map-utility-key-row"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="currentColor"/></svg>Client</span>
-      <span class="map-utility-key-row"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,2.5 17.5,10 10,17.5 2.5,10" fill="currentColor"/></svg>Server / Base</span>
+<div id="map-controls">
+  <button id="map-controls-toggle" type="button" title="Map controls" aria-label="Toggle map controls" aria-expanded="false">
+    <svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <line x1="3" y1="6.5" x2="17" y2="6.5"/><circle cx="8" cy="6.5" r="2.3" fill="currentColor" stroke="none"/>
+      <line x1="3" y1="13.5" x2="17" y2="13.5"/><circle cx="13" cy="13.5" r="2.3" fill="currentColor" stroke="none"/>
+    </svg>
+  </button>
+  <div id="map-utility-panel">
+    <div class="map-utility-controls">
+      <label class="map-utility-row" id="map-cluster-btn">
+        <span class="map-utility-label">Cluster</span>
+        <span class="map-utility-switch active">
+          <span class="map-utility-thumb"></span>
+        </span>
+      </label>
+      <label class="map-utility-row" for="map-layer-select">
+        <span class="map-utility-label">Base map</span>
+        <select class="map-utility-select" id="map-layer-select">
+          <option value="Dark">Dark</option>
+          <option value="Light">Light</option>
+          <option value="Standard">Standard</option>
+          <option value="Satellite">Satellite</option>
+        </select>
+      </label>
+      <div class="map-utility-key">
+        <span class="map-utility-key-title">Platform</span>
+        <span class="map-utility-key-row"><span class="hml-dot hml-meshtastic"></span>Meshtastic</span>
+        <span class="map-utility-key-row"><span class="hml-dot hml-meshcore"></span>MeshCore</span>
+        <span class="map-utility-key-title">Role</span>
+        <span class="map-utility-key-row"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,3.5 16.5,16.5 3.5,16.5" fill="currentColor"/></svg>Router / Repeater</span>
+        <span class="map-utility-key-row"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="currentColor"/></svg>Client</span>
+        <span class="map-utility-key-row"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,2.5 17.5,10 10,17.5 2.5,10" fill="currentColor"/></svg>Server / Base</span>
+      </div>
     </div>
   </div>
 </div>
-<button id="map-controls-show" type="button" title="Map controls" aria-label="Show map controls">
-  <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-    <line x1="3" y1="6.5" x2="17" y2="6.5"/><circle cx="8" cy="6.5" r="2.3" fill="currentColor" stroke="none"/>
-    <line x1="3" y1="13.5" x2="17" y2="13.5"/><circle cx="13" cy="13.5" r="2.3" fill="currentColor" stroke="none"/>
-  </svg>
-</button>
 
 <div id="potato-map-canvas"></div>
 <p id="potato-map-status"></p>

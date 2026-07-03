@@ -274,58 +274,14 @@
         });
     });
 
-    // ── Utility panel drag ────────────────────────────────────
-    var utilityPanel = document.getElementById('map-utility-panel');
-    var utilityHandle = document.getElementById('map-utility-handle');
-
-    if (utilityPanel && utilityHandle) {
-        var dragging = false, dragOX, dragOY;
-
-        function onDragStart(cx, cy) {
-            dragging = true;
-            var rect = utilityPanel.getBoundingClientRect();
-            var wrapRect = utilityPanel.parentElement.getBoundingClientRect();
-            // store click offset from panel's top-left corner
-            dragOX = cx - rect.left;
-            dragOY = cy - rect.top;
-            // pin left/top to current rendered position before clearing right/bottom
-            utilityPanel.style.left   = (rect.left - wrapRect.left) + 'px';
-            utilityPanel.style.top    = (rect.top  - wrapRect.top)  + 'px';
-            utilityPanel.style.right  = 'auto';
-            utilityPanel.style.bottom = 'auto';
-        }
-
-        function onDragMove(cx, cy) {
-            if (!dragging) return;
-            var wrapRect = utilityPanel.parentElement.getBoundingClientRect();
-            utilityPanel.style.left = Math.max(0, cx - wrapRect.left - dragOX) + 'px';
-            utilityPanel.style.top  = Math.max(0, cy - wrapRect.top  - dragOY) + 'px';
-        }
-
-        utilityHandle.addEventListener('mousedown', function (e) { onDragStart(e.clientX, e.clientY); e.preventDefault(); });
-        document.addEventListener('mousemove', function (e) { onDragMove(e.clientX, e.clientY); });
-        document.addEventListener('mouseup', function () { dragging = false; });
-
-        utilityHandle.addEventListener('touchstart', function (e) { var t = e.touches[0]; onDragStart(t.clientX, t.clientY); }, { passive: true });
-        document.addEventListener('touchmove', function (e) { if (!dragging) return; var t = e.touches[0]; onDragMove(t.clientX, t.clientY); }, { passive: true });
-        document.addEventListener('touchend', function () { dragging = false; });
-    }
-
-    // Hide / show the whole controls panel.
-    var hideBtn = document.getElementById('map-utility-hide');
-    var showBtn = document.getElementById('map-controls-show');
-    function setControlsHidden(hidden) {
-        if (utilityPanel) utilityPanel.classList.toggle('hidden', hidden);
-        if (showBtn) showBtn.classList.toggle('visible', hidden);
-    }
-    if (hideBtn) {
-        // Stop the hide tap from also starting a drag on the handle.
-        hideBtn.addEventListener('mousedown', function (e) { e.stopPropagation(); });
-        hideBtn.addEventListener('touchstart', function (e) { e.stopPropagation(); }, { passive: true });
-        hideBtn.addEventListener('click', function (e) { e.stopPropagation(); setControlsHidden(true); });
-    }
-    if (showBtn) {
-        showBtn.addEventListener('click', function () { setControlsHidden(false); });
+    // ── Map controls: icon toggles the panel (closed by default) ──
+    var controlsWrap = document.getElementById('map-controls');
+    var controlsToggle = document.getElementById('map-controls-toggle');
+    if (controlsWrap && controlsToggle) {
+        controlsToggle.addEventListener('click', function () {
+            var open = controlsWrap.classList.toggle('open');
+            controlsToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
     }
 
     var clusterBtn = document.getElementById('map-cluster-btn');
