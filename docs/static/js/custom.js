@@ -439,27 +439,27 @@ document.addEventListener("DOMContentLoaded", function () {
             switcher.classList.remove('options-open');
         });
 
-        // Back-to-top button: reveal once the table of contents has scrolled
-        // out of view, hide it again when the TOC (or top of page) is visible.
+        // Back-to-top button: reveal once the page has been scrolled down far
+        // enough (about three-quarters of a viewport) to warrant it.
         var backToTop = document.getElementById('back-to-top');
         backToTop.addEventListener('click', function (e) {
             e.stopPropagation();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        var toc = document.querySelector('#component-sidebar .sidebar') ||
-            document.querySelector('.sidebar');
-        if (toc && 'IntersectionObserver' in window) {
-            var tocObserver = new IntersectionObserver(function (entries) {
-                var entry = entries[0];
-                // A display:none TOC (mobile) reports zero height — never show then.
-                var tocRendered = entry.boundingClientRect.height > 0;
-                var scrolledPast = !entry.isIntersecting &&
-                    entry.boundingClientRect.bottom < 0;
-                switcher.classList.toggle('show-back-to-top', tocRendered && scrolledPast);
-            });
-            tocObserver.observe(toc);
+        var backToTopTicking = false;
+        function updateBackToTop() {
+            backToTopTicking = false;
+            switcher.classList.toggle('show-back-to-top',
+                window.scrollY > window.innerHeight * 0.75);
         }
+        window.addEventListener('scroll', function () {
+            if (!backToTopTicking) {
+                backToTopTicking = true;
+                window.requestAnimationFrame(updateBackToTop);
+            }
+        }, { passive: true });
+        updateBackToTop();
     }
 
     [...document.querySelectorAll(".color-button")].forEach((e) => {
