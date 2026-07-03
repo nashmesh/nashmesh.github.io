@@ -22,20 +22,72 @@
         zoomControl: false
     });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 18
-    }).addTo(map);
-
-    var legend = L.control({ position: 'bottomright' });
-    legend.onAdd = function () {
-        var div = L.DomUtil.create('div', 'homepage-map-legend');
-        div.innerHTML =
-            '<span class="hml-item"><span class="hml-dot hml-meshtastic"></span>Meshtastic</span>' +
-            '<span class="hml-item"><span class="hml-dot hml-meshcore"></span>MeshCore</span>';
-        return div;
+    var osmAttr = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+    var cartoAttr = osmAttr + ' &copy; <a href="https://carto.com/attributions">CARTO</a>';
+    var baseLayers = {
+        'Standard': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19, attribution: osmAttr
+        }),
+        'Dark': L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 20, subdomains: 'abcd', attribution: cartoAttr
+        }),
+        'Light': L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 20, subdomains: 'abcd', attribution: cartoAttr
+        }),
+        'Satellite': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19, attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>, Maxar, Earthstar Geographics'
+        })
     };
-    legend.addTo(map);
+
+    // Restore the visitor's last-used base layer (default to Dark to match
+    // the site's dark UI now that tiles are no longer CSS-inverted).
+    var savedLayer = null;
+    try { savedLayer = localStorage.getItem('nashmesh-map-layer'); } catch (e) {}
+    var currentBaseName = baseLayers[savedLayer] ? savedLayer : 'Dark';
+    var currentBase = baseLayers[currentBaseName];
+    currentBase.addTo(map);
+
+    // Base-map selector lives in the Map Controls panel.
+    var layerSelect = document.getElementById('map-layer-select');
+    if (layerSelect) {
+        layerSelect.value = currentBaseName;
+        layerSelect.addEventListener('change', function () {
+            var next = baseLayers[layerSelect.value];
+            if (!next || next === currentBase) return;
+            map.removeLayer(currentBase);
+            currentBase = next;
+            currentBase.addTo(map);
+            try { localStorage.setItem('nashmesh-map-layer', layerSelect.value); } catch (e) {}
+        });
+    }
+
+    // ── Node glyphs: colour encodes protocol, shape encodes role ──────
+    function nodeRoleShape(role) {
+        var r = (role || '').toUpperCase();
+        if (r.indexOf('ROUTER') !== -1 || r.indexOf('REPEATER') !== -1) return 'router';
+        if (r.indexOf('SERVER') !== -1 || r.indexOf('BASE') !== -1) return 'server';
+        return 'client';
+    }
+
+    function nodeGlyphSvg(shape, fill) {
+        var g;
+        if (shape === 'router') g = '<polygon points="10,3.5 16.5,16.5 3.5,16.5"';
+        else if (shape === 'server') g = '<polygon points="10,2.5 17.5,10 10,17.5 2.5,10"';
+        else g = '<circle cx="10" cy="10" r="5.6"';
+        return '<svg viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg">' +
+            g + ' fill="' + fill + '" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+    }
+
+    function buildNodeIcon(isMeshcore, role) {
+        return L.divIcon({
+            className: 'node-glyph-icon',
+            html: nodeGlyphSvg(nodeRoleShape(role), isMeshcore ? '#4da6ff' : '#67ea94'),
+            iconSize: [20, 20],
+            iconAnchor: [10, 10],
+            popupAnchor: [0, -11]
+        });
+    }
+
 
     // zoom added after legend so it renders above it in the bottom-right stack
     L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -103,6 +155,7 @@
     var markers = [];
     var allNodes = [];
     var activeFilter = 'all';
+    var activeRole = 'all';
     var activeSort = 'lastseen';
     var clusteringEnabled = true;
 
@@ -130,9 +183,10 @@
             var protocolMatch = activeFilter === 'all' ||
                 (activeFilter === 'meshcore' && item.isMeshcore) ||
                 (activeFilter === 'meshtastic' && !item.isMeshcore);
+            var roleMatch = activeRole === 'all' || item.roleShape === activeRole;
             var name = (item.node.long_name || item.node.short_name || item.node.node_id || '').toLowerCase();
             var searchMatch = !q || name.indexOf(q) !== -1;
-            var visible = protocolMatch && searchMatch;
+            var visible = protocolMatch && roleMatch && searchMatch;
 
             if (visible) {
                 if (clusteringEnabled) {
@@ -191,11 +245,20 @@
         searchInput.addEventListener('input', function () { applyFilter(); });
     }
 
-    document.querySelectorAll('.map-filter-btn').forEach(function (btn) {
+    document.querySelectorAll('.map-filter-btn[data-filter]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-            document.querySelectorAll('.map-filter-btn').forEach(function (b) { b.classList.remove('active'); });
+            document.querySelectorAll('.map-filter-btn[data-filter]').forEach(function (b) { b.classList.remove('active'); });
             btn.classList.add('active');
             activeFilter = btn.getAttribute('data-filter');
+            applyFilter();
+        });
+    });
+
+    document.querySelectorAll('.map-role-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.map-role-btn').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            activeRole = btn.getAttribute('data-role');
             applyFilter();
         });
     });
@@ -211,41 +274,14 @@
         });
     });
 
-    // ── Utility panel drag ────────────────────────────────────
-    var utilityPanel = document.getElementById('map-utility-panel');
-    var utilityHandle = document.getElementById('map-utility-handle');
-
-    if (utilityPanel && utilityHandle) {
-        var dragging = false, dragOX, dragOY;
-
-        function onDragStart(cx, cy) {
-            dragging = true;
-            var rect = utilityPanel.getBoundingClientRect();
-            var wrapRect = utilityPanel.parentElement.getBoundingClientRect();
-            // store click offset from panel's top-left corner
-            dragOX = cx - rect.left;
-            dragOY = cy - rect.top;
-            // pin left/top to current rendered position before clearing right/bottom
-            utilityPanel.style.left   = (rect.left - wrapRect.left) + 'px';
-            utilityPanel.style.top    = (rect.top  - wrapRect.top)  + 'px';
-            utilityPanel.style.right  = 'auto';
-            utilityPanel.style.bottom = 'auto';
-        }
-
-        function onDragMove(cx, cy) {
-            if (!dragging) return;
-            var wrapRect = utilityPanel.parentElement.getBoundingClientRect();
-            utilityPanel.style.left = Math.max(0, cx - wrapRect.left - dragOX) + 'px';
-            utilityPanel.style.top  = Math.max(0, cy - wrapRect.top  - dragOY) + 'px';
-        }
-
-        utilityHandle.addEventListener('mousedown', function (e) { onDragStart(e.clientX, e.clientY); e.preventDefault(); });
-        document.addEventListener('mousemove', function (e) { onDragMove(e.clientX, e.clientY); });
-        document.addEventListener('mouseup', function () { dragging = false; });
-
-        utilityHandle.addEventListener('touchstart', function (e) { var t = e.touches[0]; onDragStart(t.clientX, t.clientY); }, { passive: true });
-        document.addEventListener('touchmove', function (e) { if (!dragging) return; var t = e.touches[0]; onDragMove(t.clientX, t.clientY); }, { passive: true });
-        document.addEventListener('touchend', function () { dragging = false; });
+    // ── Map controls: icon toggles the panel (closed by default) ──
+    var controlsWrap = document.getElementById('map-controls');
+    var controlsToggle = document.getElementById('map-controls-toggle');
+    if (controlsWrap && controlsToggle) {
+        controlsToggle.addEventListener('click', function () {
+            var open = controlsWrap.classList.toggle('open');
+            controlsToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
     }
 
     var clusterBtn = document.getElementById('map-cluster-btn');
@@ -296,15 +332,9 @@
                     if (node.last_seen_iso && (Date.now() - new Date(node.last_seen_iso).getTime()) > fourDaysMs) return;
 
                     var isMeshcore = node.protocol && node.protocol.toLowerCase().includes('meshcore');
-                    var color = isMeshcore ? '#4da6ff' : '#67ea94';
-                    var fillColor = isMeshcore ? '#4da6ff88' : '#67ea9488';
 
-                    var marker = L.circleMarker([node.latitude, node.longitude], {
-                        radius: 7,
-                        color: color,
-                        fillColor: fillColor,
-                        fillOpacity: 0.9,
-                        weight: 2
+                    var marker = L.marker([node.latitude, node.longitude], {
+                        icon: buildNodeIcon(isMeshcore, node.role)
                     });
 
                     var popupLogo = isMeshcore ? '../static/images/meshcore-logo.png' : '../static/images/meshtastic-logo.svg';
@@ -330,7 +360,7 @@
                     );
                     clusterGroup.addLayer(marker);
                     markers.push(marker);
-                    allNodes.push({ node: node, marker: marker, isMeshcore: isMeshcore });
+                    allNodes.push({ node: node, marker: marker, isMeshcore: isMeshcore, roleShape: nodeRoleShape(node.role) });
                     plotted++;
                 });
 

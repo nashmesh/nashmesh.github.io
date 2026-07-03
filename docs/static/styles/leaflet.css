@@ -660,7 +660,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		}
 	}
 
-.leaflet-layer,
+/* Note: tiles (.leaflet-layer) are intentionally NOT inverted — the base-layer
+   switcher provides real dark/light/satellite tiles, so inverting would flip
+   dark<->light. Controls keep the invert to match the dark UI. */
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out,
 .leaflet-control-attribution {
