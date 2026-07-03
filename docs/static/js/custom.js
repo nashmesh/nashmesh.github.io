@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Heading anchor links (skip home page, guard against double-injection)
     var isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
-    if (!isHomePage) document.querySelectorAll('article h1[id], article h2[id], article h3[id], article h4[id]').forEach(function (heading) {
+    if (!isHomePage) document.querySelectorAll('article h1[id], article h2[id], article h3[id], article h4[id], article h5[id]').forEach(function (heading) {
         if (heading.querySelector('.heading-anchor')) return;
         var anchor = document.createElement('a');
         anchor.className = 'heading-anchor';
