@@ -1784,6 +1784,20 @@ body[data-theme="retro"] .content-section--b {
   opacity: 0.7;
 }
 
+/* Tighten the indent steps on the narrow md sidebar so deeper titles keep
+   enough room and rarely have to break mid-word. */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .sidebar .nav-item[data-bs-level="2"] .nav-link {
+    padding-left: 0.75rem;
+  }
+  .sidebar .nav-item[data-bs-level="3"] .nav-link {
+    padding-left: 1.5rem;
+  }
+  .sidebar .nav-item[data-bs-level="4"] .nav-link {
+    padding-left: 2.25rem;
+  }
+}
+
 /* ── Accessibility: readable base font size ─────────────── */
 
 /* Theme sets html at 80% (~15.4px effective body text).
@@ -2339,6 +2353,17 @@ body[data-theme="light"] .fc-callout-ic {
   line-height: 1.6;
   color: #ffffff !important;
   opacity: 1 !important;
+  /* Let long titles wrap/break instead of spilling past the card border
+     when the sidebar is narrow. */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* The TOC nests flex containers (.nav > .nav-item > .nav); min-width:0
+   lets them shrink below their longest word so nothing overflows. */
+.sidebar .nav,
+.sidebar .nav-item {
+  min-width: 0;
 }
 
 .sidebar .nav-link:hover {
