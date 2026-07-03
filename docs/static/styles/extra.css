@@ -2421,6 +2421,10 @@ body[data-theme="light"] .sidebar .nav-link:hover {
   #mobile-toc {
     display: block;
     position: sticky;
+    /* Lock just below the sticky header. --header-height tracks the live
+       header size (JS keeps it current on resize), so the bar never slips
+       under the taller mobile header. */
+    top: var(--header-height, 3.5rem);
     z-index: 50;
     background: var(--background, black);
     border-bottom: 1px solid #1e3a52;

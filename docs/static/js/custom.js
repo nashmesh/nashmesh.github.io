@@ -294,12 +294,8 @@ document.addEventListener("DOMContentLoaded", function () {
             var collapsed = toc.classList.toggle('collapsed');
             header.querySelector('.mobile-toc-arrow').classList.toggle('open', !collapsed);
         });
-
-        // Stick below the sticky nav
-        var nav = document.querySelector('header:first-of-type');
-        if (nav) {
-            toc.style.top = nav.offsetHeight + 'px';
-        }
+        // It sticks below the nav via CSS `top: var(--header-height)`, which is
+        // kept in sync with the live header height on resize (see below).
     })();
 
     // Expose the sticky header height so the desktop sidebar TOC can lock
