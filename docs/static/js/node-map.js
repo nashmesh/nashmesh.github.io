@@ -39,10 +39,11 @@
         })
     };
 
-    // Restore the visitor's last-used base layer (default to Standard).
+    // Restore the visitor's last-used base layer (default to Dark to match
+    // the site's dark UI now that tiles are no longer CSS-inverted).
     var savedLayer = null;
     try { savedLayer = localStorage.getItem('nashmesh-map-layer'); } catch (e) {}
-    (baseLayers[savedLayer] || baseLayers.Standard).addTo(map);
+    (baseLayers[savedLayer] || baseLayers.Dark).addTo(map);
 
     // ── Node glyphs: colour encodes protocol, shape encodes role ──────
     function nodeRoleShape(role) {
