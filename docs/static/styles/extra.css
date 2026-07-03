@@ -2529,6 +2529,22 @@ header:first-of-type {
   background: var(--background, black);
 }
 
+/* ── Sticky desktop TOC ─────────────────────────────────── */
+
+/* Lock the sidebar TOC in place while the content scrolls. align-self keeps
+   the flex column from stretching to full row height (which would defeat
+   sticky); the TOC scrolls internally if it is taller than the viewport. */
+@media only screen and (min-width: 768px) {
+  #component-sidebar {
+    position: sticky;
+    top: calc(var(--header-height, 5rem) + 1rem);
+    align-self: flex-start;
+    max-height: calc(100vh - var(--header-height, 5rem) - 2rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
 /* ── Mobile site name size ──────────────────────────────── */
 
 @media only screen and (max-width: 780px) {

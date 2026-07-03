@@ -302,6 +302,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })();
 
+    // Expose the sticky header height so the desktop sidebar TOC can lock
+    // just beneath it (kept in sync on resize).
+    (function () {
+        var nav = document.querySelector('header:first-of-type');
+        if (!nav) return;
+        function setHeaderHeight() {
+            document.documentElement.style.setProperty('--header-height', nav.offsetHeight + 'px');
+        }
+        setHeaderHeight();
+        window.addEventListener('resize', setHeaderHeight);
+    })();
+
     // Wrap h2 sections in alternating background containers
     document.querySelectorAll('.tabbed-block').forEach(function (block) {
         var children = Array.from(block.children);
