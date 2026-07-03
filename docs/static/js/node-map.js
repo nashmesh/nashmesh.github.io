@@ -22,10 +22,27 @@
         zoomControl: false
     });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 18
-    }).addTo(map);
+    var osmAttr = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+    var cartoAttr = osmAttr + ' &copy; <a href="https://carto.com/attributions">CARTO</a>';
+    var baseLayers = {
+        'Standard': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19, attribution: osmAttr
+        }),
+        'Dark': L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 20, subdomains: 'abcd', attribution: cartoAttr
+        }),
+        'Light': L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 20, subdomains: 'abcd', attribution: cartoAttr
+        }),
+        'Satellite': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19, attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>, Maxar, Earthstar Geographics'
+        })
+    };
+
+    // Restore the visitor's last-used base layer (default to Standard).
+    var savedLayer = null;
+    try { savedLayer = localStorage.getItem('nashmesh-map-layer'); } catch (e) {}
+    (baseLayers[savedLayer] || baseLayers.Standard).addTo(map);
 
     // ── Node glyphs: colour encodes protocol, shape encodes role ──────
     function nodeRoleShape(role) {
@@ -71,6 +88,12 @@
 
     // zoom added after legend so it renders above it in the bottom-right stack
     L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+    // Base-layer switcher (remembers the choice)
+    L.control.layers(baseLayers, null, { position: 'bottomright' }).addTo(map);
+    map.on('baselayerchange', function (e) {
+        try { localStorage.setItem('nashmesh-map-layer', e.name); } catch (err) {}
+    });
 
     var clusterGroup = L.markerClusterGroup({
         maxClusterRadius: 50,

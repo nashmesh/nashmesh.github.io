@@ -2804,6 +2804,31 @@ body[data-theme="light"] .homepage-map-legend {
 .leaflet-control-layers {
   background: #0e2030 !important;
   color: #c8dff0 !important;
+  border: 1px solid #1e3a52 !important;
+  border-radius: 6px !important;
+}
+
+.leaflet-control-layers-expanded {
+  padding: 0.45rem 0.7rem !important;
+}
+
+.leaflet-control-layers label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.15rem 0;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.leaflet-control-layers-selector {
+  margin: 0 0.2rem 0 0;
+}
+
+body[data-theme="light"] .leaflet-control-layers {
+  background: #fff !important;
+  color: #1a3a5c !important;
+  border-color: #c0d4e8 !important;
 }
 
 .leaflet-control-attribution {
