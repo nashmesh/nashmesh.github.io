@@ -1778,6 +1778,12 @@ body[data-theme="retro"] .content-section--b {
   opacity: 0.75;
 }
 
+.sidebar .nav-item[data-bs-level="4"] .nav-link {
+  padding-left: 3.25rem;
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
 /* ── Accessibility: readable base font size ─────────────── */
 
 /* Theme sets html at 80% (~15.4px effective body text).
@@ -2467,6 +2473,12 @@ body[data-theme="light"] .sidebar .nav-link:hover {
     padding-left: 2.5rem;
     font-size: 0.8rem;
     opacity: 0.75;
+  }
+
+  .mobile-toc-body .nav-item[data-bs-level="4"] .nav-link {
+    padding-left: 3.5rem;
+    font-size: 0.78rem;
+    opacity: 0.7;
   }
 
   /* Light theme */
