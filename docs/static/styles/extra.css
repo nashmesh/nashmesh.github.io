@@ -2478,6 +2478,11 @@ body[data-theme="light"] .sidebar .nav-link:hover {
   #mobile-toc:not(.collapsed) .mobile-toc-body {
     max-height: 50vh;
     overflow-y: auto;
+    /* Isolate the TOC's scroll from the page so a touch-drag scrolls the
+       list immediately instead of chaining to (continuing) the page scroll. */
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
     padding-bottom: 1.25rem;
   }
 
