@@ -308,6 +308,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         setHeaderHeight();
         window.addEventListener('resize', setHeaderHeight);
+        // Re-measure once the logo image and web fonts have loaded — otherwise
+        // a refresh while scrolled down pins the TOC to a too-short header and
+        // it hides beneath the finished (taller) nav.
+        window.addEventListener('load', setHeaderHeight);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(setHeaderHeight);
+        }
     })();
 
     // Wrap h2 sections in alternating background containers
