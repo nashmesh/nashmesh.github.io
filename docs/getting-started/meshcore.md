@@ -57,7 +57,9 @@
 
 <p style="font-size:0.85em;color:#76869a;margin:0 0 1rem">Want the full reference in print? <a href="#field-cards">Download the Field Cards PDF ↓</a></p>
 
-### Radio Settings
+### Radio & Channel
+
+#### Radio Settings
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -135,7 +137,7 @@
 
 ---
 
-### Frequency
+#### Frequency
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -183,7 +185,7 @@
 
 ---
 
-### Bandwidth
+#### Bandwidth
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -257,7 +259,7 @@
 
 ---
 
-### Spreading Factor
+#### Spreading Factor
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -354,7 +356,7 @@
 
 ---
 
-### Coding Rate
+#### Coding Rate
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -433,7 +435,7 @@
 
 ---
 
-### Airtime
+#### Airtime
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -480,7 +482,7 @@
 
 ---
 
-### Duty Cycle
+#### Duty Cycle
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -497,7 +499,9 @@
 
 ---
 
-### Advert Intervals
+### Adverts & Routing
+
+#### Advert Intervals
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -550,7 +554,7 @@
 
 ---
 
-### Discovery & Adverts
+#### Discovery & Adverts
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -589,7 +593,7 @@
 
 ---
 
-### Path Hash Mode
+#### Path Hash Mode
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -669,7 +673,7 @@
 
 ---
 
-### Loop Detection
+#### Loop Detection
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -724,7 +728,7 @@
 
 ---
 
-### Multi-Acks
+#### Multi-Acks
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -742,7 +746,9 @@
 
 ---
 
-### RX Delay
+### Timing & Signal Tuning
+
+#### RX Delay
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -761,7 +767,7 @@
 
 ---
 
-### TX Delay
+#### TX Delay
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -812,7 +818,7 @@
 
 ---
 
-### AGC Reset Interval
+#### AGC Reset Interval
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -831,7 +837,7 @@
 
 ---
 
-### Reading Your Signal
+#### Reading Your Signal
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -888,7 +894,9 @@
 
 ---
 
-### Access & Admin
+### Access & Messaging
+
+#### Access & Admin
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -906,7 +914,7 @@
 
 ---
 
-### Owner Info
+#### Owner Info
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -925,7 +933,7 @@
 
 ---
 
-### Direct Messages
+#### Direct Messages
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -941,7 +949,7 @@
 
 ---
 
-### Channels
+#### Channels
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -969,7 +977,9 @@
 
 ---
 
-### Weather Bot
+### Bots
+
+#### Weather Bot
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1008,7 +1018,7 @@
 
 ---
 
-### Test Bot
+#### Test Bot
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1039,7 +1049,9 @@
 
 ---
 
-### Flashing Over the Air (OTA)
+### Maintenance & Reference
+
+#### Flashing Over the Air (OTA)
 
 <div class="content-section content-section--b">
   <p>OTA flashing lets you update a repeater wirelessly without a USB cable. The device creates a temporary Wi-Fi access point and serves a browser-based update page.</p>
@@ -1082,7 +1094,7 @@
 
 ---
 
-### Troubleshooting
+#### Troubleshooting
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1121,7 +1133,7 @@
 
 ---
 
-### Field Cards
+#### Field Cards
 
 <div class="content-section content-section--b">
   <p>The NashMesh Field Cards are a 25-card reference deck covering every setting on this page: what it does, why NashMesh uses the value it does, and the exact commands to set it. Thanks to KA4RLW for putting them together.</p>

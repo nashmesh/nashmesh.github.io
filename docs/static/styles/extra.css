@@ -1670,7 +1670,26 @@ body[data-theme="retro"] .post h2 {
 
 /* ── Section contrast (h3 dividers) ─────────────────────── */
 
+/* Group headings (### under the Guide) — prominent divider style */
 .post h3 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  border-bottom: 2px solid rgba(126, 200, 255, 0.35);
+}
+
+body[data-theme="light"] .post h3 {
+  border-bottom-color: rgba(20, 150, 130, 0.35);
+}
+
+body[data-theme="retro"] .post h3 {
+  border-bottom-color: #00aaaa;
+}
+
+/* Section headings (#### under each group) — card style */
+.post h4[id] {
   margin-top: 1.75rem;
   padding: 0.35rem 0.8rem;
   background: rgba(126, 200, 255, 0.05);
@@ -1678,12 +1697,12 @@ body[data-theme="retro"] .post h2 {
   border-radius: 0 4px 4px 0;
 }
 
-body[data-theme="light"] .post h3 {
+body[data-theme="light"] .post h4[id] {
   background: rgba(20, 150, 130, 0.06);
   border-left-color: #149682;
 }
 
-body[data-theme="retro"] .post h3 {
+body[data-theme="retro"] .post h4[id] {
   background: rgba(0, 170, 170, 0.08);
   border-left: 2px solid #00aaaa;
   border-radius: 0;
