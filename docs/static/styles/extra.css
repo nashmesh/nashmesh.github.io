@@ -2724,6 +2724,35 @@ body[data-theme="light"] .page-title-ai-badge {
   gap: 0.4rem;
 }
 
+.hml-heading {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  margin-top: 0.15rem;
+}
+
+.hml-heading:first-child {
+  margin-top: 0;
+}
+
+.homepage-map-legend .hml-item svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+/* Individual node markers: role-shaped glyph, no default div-icon chrome */
+.node-glyph-icon {
+  background: transparent;
+  border: none;
+}
+
+.node-glyph-icon svg {
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55));
+}
+
 .hml-dot {
   width: 10px;
   height: 10px;

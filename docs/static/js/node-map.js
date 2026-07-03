@@ -27,12 +27,44 @@
         maxZoom: 18
     }).addTo(map);
 
+    // ── Node glyphs: colour encodes protocol, shape encodes role ──────
+    function nodeRoleShape(role) {
+        var r = (role || '').toUpperCase();
+        if (r.indexOf('ROUTER') !== -1 || r.indexOf('REPEATER') !== -1) return 'router';
+        if (r.indexOf('SERVER') !== -1 || r.indexOf('BASE') !== -1) return 'server';
+        return 'client';
+    }
+
+    function nodeGlyphSvg(shape, fill) {
+        var g;
+        if (shape === 'router') g = '<polygon points="10,3.5 16.5,16.5 3.5,16.5"';
+        else if (shape === 'server') g = '<polygon points="10,2.5 17.5,10 10,17.5 2.5,10"';
+        else g = '<circle cx="10" cy="10" r="5.6"';
+        return '<svg viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg">' +
+            g + ' fill="' + fill + '" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+    }
+
+    function buildNodeIcon(isMeshcore, role) {
+        return L.divIcon({
+            className: 'node-glyph-icon',
+            html: nodeGlyphSvg(nodeRoleShape(role), isMeshcore ? '#4da6ff' : '#67ea94'),
+            iconSize: [20, 20],
+            iconAnchor: [10, 10],
+            popupAnchor: [0, -11]
+        });
+    }
+
     var legend = L.control({ position: 'bottomright' });
     legend.onAdd = function () {
         var div = L.DomUtil.create('div', 'homepage-map-legend');
         div.innerHTML =
+            '<span class="hml-heading">Protocol</span>' +
             '<span class="hml-item"><span class="hml-dot hml-meshtastic"></span>Meshtastic</span>' +
-            '<span class="hml-item"><span class="hml-dot hml-meshcore"></span>MeshCore</span>';
+            '<span class="hml-item"><span class="hml-dot hml-meshcore"></span>MeshCore</span>' +
+            '<span class="hml-heading">Role</span>' +
+            '<span class="hml-item">' + nodeGlyphSvg('router', '#c8dff0') + 'Router / Repeater</span>' +
+            '<span class="hml-item">' + nodeGlyphSvg('client', '#c8dff0') + 'Client</span>' +
+            '<span class="hml-item">' + nodeGlyphSvg('server', '#c8dff0') + 'Server / Base</span>';
         return div;
     };
     legend.addTo(map);
@@ -296,15 +328,9 @@
                     if (node.last_seen_iso && (Date.now() - new Date(node.last_seen_iso).getTime()) > fourDaysMs) return;
 
                     var isMeshcore = node.protocol && node.protocol.toLowerCase().includes('meshcore');
-                    var color = isMeshcore ? '#4da6ff' : '#67ea94';
-                    var fillColor = isMeshcore ? '#4da6ff88' : '#67ea9488';
 
-                    var marker = L.circleMarker([node.latitude, node.longitude], {
-                        radius: 7,
-                        color: color,
-                        fillColor: fillColor,
-                        fillOpacity: 0.9,
-                        weight: 2
+                    var marker = L.marker([node.latitude, node.longitude], {
+                        icon: buildNodeIcon(isMeshcore, node.role)
                     });
 
                     var popupLogo = isMeshcore ? '../static/images/meshcore-logo.png' : '../static/images/meshtastic-logo.svg';
