@@ -135,6 +135,7 @@
     var markers = [];
     var allNodes = [];
     var activeFilter = 'all';
+    var activeRole = 'all';
     var activeSort = 'lastseen';
     var clusteringEnabled = true;
 
@@ -162,9 +163,10 @@
             var protocolMatch = activeFilter === 'all' ||
                 (activeFilter === 'meshcore' && item.isMeshcore) ||
                 (activeFilter === 'meshtastic' && !item.isMeshcore);
+            var roleMatch = activeRole === 'all' || item.roleShape === activeRole;
             var name = (item.node.long_name || item.node.short_name || item.node.node_id || '').toLowerCase();
             var searchMatch = !q || name.indexOf(q) !== -1;
-            var visible = protocolMatch && searchMatch;
+            var visible = protocolMatch && roleMatch && searchMatch;
 
             if (visible) {
                 if (clusteringEnabled) {
@@ -223,11 +225,20 @@
         searchInput.addEventListener('input', function () { applyFilter(); });
     }
 
-    document.querySelectorAll('.map-filter-btn').forEach(function (btn) {
+    document.querySelectorAll('.map-filter-btn[data-filter]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-            document.querySelectorAll('.map-filter-btn').forEach(function (b) { b.classList.remove('active'); });
+            document.querySelectorAll('.map-filter-btn[data-filter]').forEach(function (b) { b.classList.remove('active'); });
             btn.classList.add('active');
             activeFilter = btn.getAttribute('data-filter');
+            applyFilter();
+        });
+    });
+
+    document.querySelectorAll('.map-role-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.map-role-btn').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            activeRole = btn.getAttribute('data-role');
             applyFilter();
         });
     });
@@ -356,7 +367,7 @@
                     );
                     clusterGroup.addLayer(marker);
                     markers.push(marker);
-                    allNodes.push({ node: node, marker: marker, isMeshcore: isMeshcore });
+                    allNodes.push({ node: node, marker: marker, isMeshcore: isMeshcore, roleShape: nodeRoleShape(node.role) });
                     plotted++;
                 });
 

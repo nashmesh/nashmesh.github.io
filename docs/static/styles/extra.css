@@ -3149,6 +3149,31 @@ body[data-theme="light"] .map-control-label {
   color: #d0eaff;
 }
 
+/* Role filter buttons: glyph matches the map markers, neutral active accent
+   (colour still means protocol, so role selection stays colour-agnostic). */
+.map-role-glyph {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.map-role-btn:not([data-role="all"]) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.map-role-btn.active {
+  background: rgba(160, 190, 220, 0.16);
+  border-color: #8fb8d8;
+  color: #eaf4ff;
+}
+
+body[data-theme="light"] .map-role-btn.active {
+  background: rgba(60, 110, 160, 0.12);
+  border-color: #3a6a9a;
+  color: #0a2040;
+}
+
 /* Center + Refresh button group */
 .map-action-group {
   display: flex;
@@ -3677,7 +3702,7 @@ body[data-theme="light"] .node-list-item:hover {
   }
 
   #map-top-bar {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 0.35rem;
     padding: 0.35rem 0.5rem;
   }
