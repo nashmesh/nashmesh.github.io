@@ -2963,23 +2963,48 @@ body[data-theme="light"] .leaflet-control-attribution a {
   border-radius: 6px;
   overflow: hidden;
   user-select: none;
-  min-width: 140px;
+  min-width: 158px;
 }
 
+/* Slim drag grip in place of a title bar */
 #map-utility-handle {
-  padding: 0.3rem 0.65rem;
+  height: 15px;
   background: rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid #1e3a52;
   cursor: grab;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #4a7a9a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#map-utility-handle::before {
+  content: "";
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background: #35597a;
 }
 
 #map-utility-handle:active {
   cursor: grabbing;
+}
+
+.map-utility-select {
+  background: #0e2030;
+  color: #c8dff0;
+  border: 1px solid #2a4a6a;
+  border-radius: 4px;
+  padding: 0.15rem 0.35rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  max-width: 6.5rem;
+  transition: border-color 0.15s;
+}
+
+.map-utility-select:hover,
+.map-utility-select:focus {
+  border-color: #4da6ff;
+  outline: none;
 }
 
 .map-utility-controls {
@@ -3734,6 +3759,11 @@ body[data-theme="light"] .node-list-item:hover {
 
   .map-top-stats {
     display: none;
+  }
+
+  /* Clear the wrapped (two-row) top bar */
+  #map-utility-panel {
+    top: 6rem;
   }
 
   /* logo-only filter buttons: tighter padding so logos aren't clipped */

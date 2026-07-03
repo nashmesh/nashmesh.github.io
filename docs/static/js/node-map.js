@@ -43,7 +43,23 @@
     // the site's dark UI now that tiles are no longer CSS-inverted).
     var savedLayer = null;
     try { savedLayer = localStorage.getItem('nashmesh-map-layer'); } catch (e) {}
-    (baseLayers[savedLayer] || baseLayers.Dark).addTo(map);
+    var currentBaseName = baseLayers[savedLayer] ? savedLayer : 'Dark';
+    var currentBase = baseLayers[currentBaseName];
+    currentBase.addTo(map);
+
+    // Base-map selector lives in the Map Controls panel.
+    var layerSelect = document.getElementById('map-layer-select');
+    if (layerSelect) {
+        layerSelect.value = currentBaseName;
+        layerSelect.addEventListener('change', function () {
+            var next = baseLayers[layerSelect.value];
+            if (!next || next === currentBase) return;
+            map.removeLayer(currentBase);
+            currentBase = next;
+            currentBase.addTo(map);
+            try { localStorage.setItem('nashmesh-map-layer', layerSelect.value); } catch (e) {}
+        });
+    }
 
     // ── Node glyphs: colour encodes protocol, shape encodes role ──────
     function nodeRoleShape(role) {
@@ -89,12 +105,6 @@
 
     // zoom added after legend so it renders above it in the bottom-right stack
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-
-    // Base-layer switcher (remembers the choice)
-    L.control.layers(baseLayers, null, { position: 'bottomright' }).addTo(map);
-    map.on('baselayerchange', function (e) {
-        try { localStorage.setItem('nashmesh-map-layer', e.name); } catch (err) {}
-    });
 
     var clusterGroup = L.markerClusterGroup({
         maxClusterRadius: 50,

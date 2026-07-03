@@ -57,13 +57,22 @@ template: map_fullscreen.html
 </div>
 
 <div id="map-utility-panel">
-  <div id="map-utility-handle" title="Drag to move">Map Controls</div>
+  <div id="map-utility-handle" title="Drag to move" aria-label="Drag to move"></div>
   <div class="map-utility-controls">
     <label class="map-utility-row" id="map-cluster-btn">
       <span class="map-utility-label">Cluster</span>
       <span class="map-utility-switch active">
         <span class="map-utility-thumb"></span>
       </span>
+    </label>
+    <label class="map-utility-row" for="map-layer-select">
+      <span class="map-utility-label">Base map</span>
+      <select class="map-utility-select" id="map-layer-select">
+        <option value="Dark">Dark</option>
+        <option value="Light">Light</option>
+        <option value="Standard">Standard</option>
+        <option value="Satellite">Satellite</option>
+      </select>
     </label>
   </div>
 </div>
