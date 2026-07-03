@@ -59,7 +59,7 @@
 
 ### Radio & Channel
 
-#### Radio Settings
+##### Radio Settings
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -435,7 +435,7 @@
 
 ---
 
-#### Airtime
+##### Airtime
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -482,7 +482,7 @@
 
 ---
 
-#### Duty Cycle
+##### Duty Cycle
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -501,7 +501,7 @@
 
 ### Adverts & Routing
 
-#### Advert Intervals
+##### Advert Intervals
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -673,7 +673,7 @@
 
 ---
 
-#### Loop Detection
+##### Loop Detection
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -728,7 +728,7 @@
 
 ---
 
-#### Multi-Acks
+##### Multi-Acks
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -748,7 +748,7 @@
 
 ### Timing & Signal Tuning
 
-#### RX Delay
+##### RX Delay
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -767,7 +767,7 @@
 
 ---
 
-#### TX Delay
+##### TX Delay
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -818,7 +818,7 @@
 
 ---
 
-#### AGC Reset Interval
+##### AGC Reset Interval
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -896,7 +896,7 @@
 
 ### Access & Messaging
 
-#### Access & Admin
+##### Access & Admin
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -914,7 +914,7 @@
 
 ---
 
-#### Owner Info
+##### Owner Info
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -979,7 +979,7 @@
 
 ### Bots
 
-#### Weather Bot
+##### Weather Bot
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1018,7 +1018,7 @@
 
 ---
 
-#### Test Bot
+##### Test Bot
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1051,7 +1051,7 @@
 
 ### Maintenance & Reference
 
-#### Flashing Over the Air (OTA)
+##### Flashing Over the Air (OTA)
 
 <div class="content-section content-section--b">
   <p>OTA flashing lets you update a repeater wirelessly without a USB cable. The device creates a temporary Wi-Fi access point and serves a browser-based update page.</p>

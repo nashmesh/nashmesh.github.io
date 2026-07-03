@@ -1688,21 +1688,26 @@ body[data-theme="retro"] .post h3 {
   border-bottom-color: #00aaaa;
 }
 
-/* Section headings (#### under each group) — card style */
-.post h4[id] {
+/* Section headings — card style. Sections live at #### (shown in TOC) or
+   ##### (hidden from TOC via navigation_depth); both render identically. */
+.post h4[id],
+.post h5[id] {
   margin-top: 1.75rem;
   padding: 0.35rem 0.8rem;
+  font-size: 1.3rem;
   background: rgba(126, 200, 255, 0.05);
   border-left: 2px solid #7ec8ff;
   border-radius: 0 4px 4px 0;
 }
 
-body[data-theme="light"] .post h4[id] {
+body[data-theme="light"] .post h4[id],
+body[data-theme="light"] .post h5[id] {
   background: rgba(20, 150, 130, 0.06);
   border-left-color: #149682;
 }
 
-body[data-theme="retro"] .post h4[id] {
+body[data-theme="retro"] .post h4[id],
+body[data-theme="retro"] .post h5[id] {
   background: rgba(0, 170, 170, 0.08);
   border-left: 2px solid #00aaaa;
   border-radius: 0;
