@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Heading anchor links (skip home page, guard against double-injection)
     var isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
-    if (!isHomePage) document.querySelectorAll('article h1[id], article h2[id], article h3[id], article h4[id]').forEach(function (heading) {
+    if (!isHomePage) document.querySelectorAll('article h1[id], article h2[id], article h3[id], article h4[id], article h5[id]').forEach(function (heading) {
         if (heading.querySelector('.heading-anchor')) return;
         var anchor = document.createElement('a');
         anchor.className = 'heading-anchor';
@@ -294,11 +294,26 @@ document.addEventListener("DOMContentLoaded", function () {
             var collapsed = toc.classList.toggle('collapsed');
             header.querySelector('.mobile-toc-arrow').classList.toggle('open', !collapsed);
         });
+        // It sticks below the nav via CSS `top: var(--header-height)`, which is
+        // kept in sync with the live header height on resize (see below).
+    })();
 
-        // Stick below the sticky nav
+    // Expose the sticky header height so the desktop sidebar TOC can lock
+    // just beneath it (kept in sync on resize).
+    (function () {
         var nav = document.querySelector('header:first-of-type');
-        if (nav) {
-            toc.style.top = nav.offsetHeight + 'px';
+        if (!nav) return;
+        function setHeaderHeight() {
+            document.documentElement.style.setProperty('--header-height', nav.offsetHeight + 'px');
+        }
+        setHeaderHeight();
+        window.addEventListener('resize', setHeaderHeight);
+        // Re-measure once the logo image and web fonts have loaded — otherwise
+        // a refresh while scrolled down pins the TOC to a too-short header and
+        // it hides beneath the finished (taller) nav.
+        window.addEventListener('load', setHeaderHeight);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(setHeaderHeight);
         }
     })();
 
@@ -389,17 +404,24 @@ document.addEventListener("DOMContentLoaded", function () {
         var switcher = document.createElement('div');
         switcher.id = 'theme-switcher';
         switcher.innerHTML = `
-            <div class="theme-switcher-options" id="theme-switcher-options">
-                <button class="color-button theme-option" data-theme="light" title="Light"></button>
-                <button class="color-button theme-option" data-theme="dark" title="Dark"></button>
-                <button class="color-button theme-option" data-theme="retro" title="Retro"></button>
-            </div>
-            <button class="theme-switcher-toggle" id="theme-switcher-toggle" title="Change theme">
+            <button class="back-to-top" id="back-to-top" title="Back to top" aria-label="Back to top">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/>
+                    <path d="M8 13V3.5M8 3.5 3.5 8M8 3.5 12.5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
+            <div class="theme-switcher-widget">
+                <div class="theme-switcher-options" id="theme-switcher-options">
+                    <button class="color-button theme-option" data-theme="light" title="Light"></button>
+                    <button class="color-button theme-option" data-theme="dark" title="Dark"></button>
+                    <button class="color-button theme-option" data-theme="retro" title="Retro"></button>
+                </div>
+                <button class="theme-switcher-toggle" id="theme-switcher-toggle" title="Change theme">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
         `;
         document.body.appendChild(switcher);
 
@@ -407,11 +429,37 @@ document.addEventListener("DOMContentLoaded", function () {
         var options = document.getElementById('theme-switcher-options');
         toggle.addEventListener('click', function (e) {
             e.stopPropagation();
-            options.classList.toggle('open');
+            var open = options.classList.toggle('open');
+            // Hide the back-to-top button while the theme options are expanded
+            // so the popout doesn't collide with it.
+            switcher.classList.toggle('options-open', open);
         });
         document.addEventListener('click', function () {
             options.classList.remove('open');
+            switcher.classList.remove('options-open');
         });
+
+        // Back-to-top button: reveal once the page has been scrolled down far
+        // enough (about three-quarters of a viewport) to warrant it.
+        var backToTop = document.getElementById('back-to-top');
+        backToTop.addEventListener('click', function (e) {
+            e.stopPropagation();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        var backToTopTicking = false;
+        function updateBackToTop() {
+            backToTopTicking = false;
+            switcher.classList.toggle('show-back-to-top',
+                window.scrollY > window.innerHeight * 0.75);
+        }
+        window.addEventListener('scroll', function () {
+            if (!backToTopTicking) {
+                backToTopTicking = true;
+                window.requestAnimationFrame(updateBackToTop);
+            }
+        }, { passive: true });
+        updateBackToTop();
     }
 
     [...document.querySelectorAll(".color-button")].forEach((e) => {

@@ -31,7 +31,7 @@ theme:
   favicon: static/images/favicon.ico
   custom_dir: overrides
   sidebar: true
-  navigation_depth: 3
+  navigation_depth: 4
   theme_style: dark
   highlightjs: true
   components:

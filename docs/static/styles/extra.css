@@ -980,6 +980,82 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.theme-switcher-widget {
+  position: relative;
+}
+
+/* ── Back-to-top button ──────────────────────────────────── */
+
+.back-to-top {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 6px;
+  border: 1px solid rgba(77, 166, 255, 0.45);
+  background: rgba(77, 166, 255, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #7cc0ff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.2s ease, transform 0.2s ease,
+    background 0.15s, border-color 0.15s, color 0.15s;
+  /* Hidden until the TOC scrolls out of view */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+
+#theme-switcher.show-back-to-top .back-to-top {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Avoid overlap with the theme options popout when it is expanded */
+#theme-switcher.options-open .back-to-top {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+
+.back-to-top:hover {
+  background: rgba(77, 166, 255, 0.28);
+  border-color: rgba(77, 166, 255, 0.7);
+  color: #d6ebff;
+}
+
+body[data-theme="light"] .back-to-top {
+  border-color: rgba(46, 109, 164, 0.45);
+  background: rgba(46, 109, 164, 0.14);
+  color: #2e6da4;
+}
+
+body[data-theme="light"] .back-to-top:hover {
+  background: rgba(46, 109, 164, 0.24);
+  border-color: rgba(46, 109, 164, 0.7);
+  color: #0a2040;
+}
+
+body[data-theme="retro"] .back-to-top {
+  border-radius: 0;
+  border-color: #00aa00;
+  background: #002200;
+  color: #00ff00;
+}
+
+body[data-theme="retro"] .back-to-top:hover {
+  background: #003300;
+  border-color: #00ff00;
+  color: #aaffaa;
 }
 
 .theme-switcher-toggle {
@@ -1594,20 +1670,44 @@ body[data-theme="retro"] .post h2 {
 
 /* ── Section contrast (h3 dividers) ─────────────────────── */
 
+/* Group headings (### under the Guide) — prominent divider style */
 .post h3 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  border-bottom: 2px solid rgba(126, 200, 255, 0.35);
+}
+
+body[data-theme="light"] .post h3 {
+  border-bottom-color: rgba(20, 150, 130, 0.35);
+}
+
+body[data-theme="retro"] .post h3 {
+  border-bottom-color: #00aaaa;
+}
+
+/* Section headings — card style. Sections live at #### (shown in TOC) or
+   ##### (hidden from TOC via navigation_depth); both render identically. */
+.post h4[id],
+.post h5[id] {
   margin-top: 1.75rem;
   padding: 0.35rem 0.8rem;
+  font-size: 1.3rem;
   background: rgba(126, 200, 255, 0.05);
   border-left: 2px solid #7ec8ff;
   border-radius: 0 4px 4px 0;
 }
 
-body[data-theme="light"] .post h3 {
+body[data-theme="light"] .post h4[id],
+body[data-theme="light"] .post h5[id] {
   background: rgba(20, 150, 130, 0.06);
   border-left-color: #149682;
 }
 
-body[data-theme="retro"] .post h3 {
+body[data-theme="retro"] .post h4[id],
+body[data-theme="retro"] .post h5[id] {
   background: rgba(0, 170, 170, 0.08);
   border-left: 2px solid #00aaaa;
   border-radius: 0;
@@ -1676,6 +1776,26 @@ body[data-theme="retro"] .content-section--b {
   padding-left: 2.25rem;
   font-size: 0.85em;
   opacity: 0.75;
+}
+
+.sidebar .nav-item[data-bs-level="4"] .nav-link {
+  padding-left: 3.25rem;
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+/* Tighten the indent steps on the narrow md sidebar so deeper titles keep
+   enough room and rarely have to break mid-word. */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .sidebar .nav-item[data-bs-level="2"] .nav-link {
+    padding-left: 0.75rem;
+  }
+  .sidebar .nav-item[data-bs-level="3"] .nav-link {
+    padding-left: 1.5rem;
+  }
+  .sidebar .nav-item[data-bs-level="4"] .nav-link {
+    padding-left: 2.25rem;
+  }
 }
 
 /* ── Accessibility: readable base font size ─────────────── */
@@ -2233,6 +2353,17 @@ body[data-theme="light"] .fc-callout-ic {
   line-height: 1.6;
   color: #ffffff !important;
   opacity: 1 !important;
+  /* Let long titles wrap/break instead of spilling past the card border
+     when the sidebar is narrow. */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* The TOC nests flex containers (.nav > .nav-item > .nav); min-width:0
+   lets them shrink below their longest word so nothing overflows. */
+.sidebar .nav,
+.sidebar .nav-item {
+  min-width: 0;
 }
 
 .sidebar .nav-link:hover {
@@ -2290,6 +2421,10 @@ body[data-theme="light"] .sidebar .nav-link:hover {
   #mobile-toc {
     display: block;
     position: sticky;
+    /* Lock just below the sticky header. --header-height tracks the live
+       header size (JS keeps it current on resize), so the bar never slips
+       under the taller mobile header. */
+    top: var(--header-height, 3.5rem);
     z-index: 50;
     background: var(--background, black);
     border-bottom: 1px solid #1e3a52;
@@ -2369,6 +2504,12 @@ body[data-theme="light"] .sidebar .nav-link:hover {
     opacity: 0.75;
   }
 
+  .mobile-toc-body .nav-item[data-bs-level="4"] .nav-link {
+    padding-left: 3.5rem;
+    font-size: 0.78rem;
+    opacity: 0.7;
+  }
+
   /* Light theme */
   body[data-theme="light"] #mobile-toc {
     border-bottom-color: #c0d4e8;
@@ -2415,6 +2556,22 @@ header:first-of-type {
   top: 0;
   z-index: 100;
   background: var(--background, black);
+}
+
+/* ── Sticky desktop TOC ─────────────────────────────────── */
+
+/* Lock the sidebar TOC in place while the content scrolls. align-self keeps
+   the flex column from stretching to full row height (which would defeat
+   sticky); the TOC scrolls internally if it is taller than the viewport. */
+@media only screen and (min-width: 768px) {
+  #component-sidebar {
+    position: sticky;
+    top: calc(var(--header-height, 5rem) + 1rem);
+    align-self: flex-start;
+    max-height: calc(100vh - var(--header-height, 5rem) - 2rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
 /* ── Mobile site name size ──────────────────────────────── */
