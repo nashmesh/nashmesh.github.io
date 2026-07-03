@@ -389,17 +389,24 @@ document.addEventListener("DOMContentLoaded", function () {
         var switcher = document.createElement('div');
         switcher.id = 'theme-switcher';
         switcher.innerHTML = `
-            <div class="theme-switcher-options" id="theme-switcher-options">
-                <button class="color-button theme-option" data-theme="light" title="Light"></button>
-                <button class="color-button theme-option" data-theme="dark" title="Dark"></button>
-                <button class="color-button theme-option" data-theme="retro" title="Retro"></button>
-            </div>
-            <button class="theme-switcher-toggle" id="theme-switcher-toggle" title="Change theme">
+            <button class="back-to-top" id="back-to-top" title="Back to top" aria-label="Back to top">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/>
+                    <path d="M8 13V3.5M8 3.5 3.5 8M8 3.5 12.5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
+            <div class="theme-switcher-widget">
+                <div class="theme-switcher-options" id="theme-switcher-options">
+                    <button class="color-button theme-option" data-theme="light" title="Light"></button>
+                    <button class="color-button theme-option" data-theme="dark" title="Dark"></button>
+                    <button class="color-button theme-option" data-theme="retro" title="Retro"></button>
+                </div>
+                <button class="theme-switcher-toggle" id="theme-switcher-toggle" title="Change theme">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
         `;
         document.body.appendChild(switcher);
 
@@ -407,11 +414,37 @@ document.addEventListener("DOMContentLoaded", function () {
         var options = document.getElementById('theme-switcher-options');
         toggle.addEventListener('click', function (e) {
             e.stopPropagation();
-            options.classList.toggle('open');
+            var open = options.classList.toggle('open');
+            // Hide the back-to-top button while the theme options are expanded
+            // so the popout doesn't collide with it.
+            switcher.classList.toggle('options-open', open);
         });
         document.addEventListener('click', function () {
             options.classList.remove('open');
+            switcher.classList.remove('options-open');
         });
+
+        // Back-to-top button: reveal once the table of contents has scrolled
+        // out of view, hide it again when the TOC (or top of page) is visible.
+        var backToTop = document.getElementById('back-to-top');
+        backToTop.addEventListener('click', function (e) {
+            e.stopPropagation();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        var toc = document.querySelector('#component-sidebar .sidebar') ||
+            document.querySelector('.sidebar');
+        if (toc && 'IntersectionObserver' in window) {
+            var tocObserver = new IntersectionObserver(function (entries) {
+                var entry = entries[0];
+                // A display:none TOC (mobile) reports zero height — never show then.
+                var tocRendered = entry.boundingClientRect.height > 0;
+                var scrolledPast = !entry.isIntersecting &&
+                    entry.boundingClientRect.bottom < 0;
+                switcher.classList.toggle('show-back-to-top', tocRendered && scrolledPast);
+            });
+            tocObserver.observe(toc);
+        }
     }
 
     [...document.querySelectorAll(".color-button")].forEach((e) => {

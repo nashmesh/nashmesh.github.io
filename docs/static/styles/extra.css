@@ -980,6 +980,82 @@ body[data-theme="retro"] .fundraiser-donate-btn:hover {
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.theme-switcher-widget {
+  position: relative;
+}
+
+/* ── Back-to-top button ──────────────────────────────────── */
+
+.back-to-top {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 6px;
+  border: 1px solid rgba(77, 166, 255, 0.45);
+  background: rgba(77, 166, 255, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #7cc0ff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.2s ease, transform 0.2s ease,
+    background 0.15s, border-color 0.15s, color 0.15s;
+  /* Hidden until the TOC scrolls out of view */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+
+#theme-switcher.show-back-to-top .back-to-top {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Avoid overlap with the theme options popout when it is expanded */
+#theme-switcher.options-open .back-to-top {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+
+.back-to-top:hover {
+  background: rgba(77, 166, 255, 0.28);
+  border-color: rgba(77, 166, 255, 0.7);
+  color: #d6ebff;
+}
+
+body[data-theme="light"] .back-to-top {
+  border-color: rgba(46, 109, 164, 0.45);
+  background: rgba(46, 109, 164, 0.14);
+  color: #2e6da4;
+}
+
+body[data-theme="light"] .back-to-top:hover {
+  background: rgba(46, 109, 164, 0.24);
+  border-color: rgba(46, 109, 164, 0.7);
+  color: #0a2040;
+}
+
+body[data-theme="retro"] .back-to-top {
+  border-radius: 0;
+  border-color: #00aa00;
+  background: #002200;
+  color: #00ff00;
+}
+
+body[data-theme="retro"] .back-to-top:hover {
+  background: #003300;
+  border-color: #00ff00;
+  color: #aaffaa;
 }
 
 .theme-switcher-toggle {
