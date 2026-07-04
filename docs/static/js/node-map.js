@@ -591,6 +591,7 @@
                 if (!node.latitude || !node.longitude) return;
                 if (node.last_seen_iso && (Date.now() - new Date(node.last_seen_iso).getTime()) > fourDaysMs) return;
                 var isMeshcore = node.protocol && node.protocol.toLowerCase().includes('meshcore');
+                if (!isMeshcore) return;
                 var popupLogo = isMeshcore ? '/static/images/meshcore-logo.png' : '/static/images/meshtastic-logo.svg';
                 var marker = L.marker([node.latitude, node.longitude], {
                     icon: buildNodeIcon(isMeshcore, node.role)
