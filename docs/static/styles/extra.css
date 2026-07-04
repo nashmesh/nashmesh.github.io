@@ -2589,6 +2589,7 @@ header:first-of-type {
     max-height: calc(100vh - var(--header-height, 5rem) - 1rem);
     overflow-y: auto;
     overflow-x: hidden;
+    overscroll-behavior: contain;
   }
 
   .sidebar {
