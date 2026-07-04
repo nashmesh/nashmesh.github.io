@@ -1527,7 +1527,7 @@ body > .container > main {
   border-top: 1px solid #2a4a6a;
   padding: 2.5rem 1rem 1.5rem;
   margin-top: 3rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   flex-shrink: 0;
 }
 
@@ -1564,7 +1564,7 @@ body > .container > main {
 .nashme-footer-tagline {
   color: #7aa8cc;
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 1rem;
 }
 
 .nashme-footer-links {
@@ -1577,7 +1577,7 @@ body > .container > main {
 .nashme-footer-links a {
   color: #4da6ff;
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 1rem;
   padding: 0.2rem 0.5rem;
   border: 1px solid #2a4a6a;
   border-radius: 0.25rem;
@@ -1592,7 +1592,7 @@ body > .container > main {
 .nashme-footer-copy {
   color: #4a6a8a;
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
 }
 
 /* Light theme footer */
@@ -2663,7 +2663,7 @@ header:first-of-type {
 
 .leaflet-popup-content {
   margin: 0.5rem 0.75rem !important;
-  font-size: 0.78rem !important;
+  font-size: 1rem !important;
   line-height: 1.4 !important;
 }
 
@@ -2991,20 +2991,20 @@ body[data-theme="light"] .leaflet-control-attribution a {
 }
 
 .nht-role {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   color: #4a7a9a;
   text-transform: capitalize;
   display: block;
 }
 
 .nht-time {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   color: #4a7a9a;
   display: block;
 }
 
 .nht-more {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   color: #4a7a9a;
   font-style: italic;
   display: block;
@@ -3025,7 +3025,7 @@ body[data-theme="light"] .leaflet-control-attribution a {
   background-color: rgba(77, 166, 255, 0.75) !important;
   color: #ffffff !important;
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 1rem;
 }
 
 .leaflet-cluster-spider-leg {
@@ -3126,9 +3126,9 @@ body[data-theme="light"] .leaflet-control-attribution a {
   border: 1px solid #2a4a6a;
   border-radius: 4px;
   padding: 0.15rem 0.35rem;
-  font-size: 0.75rem;
+  font-size: 1rem;
   cursor: pointer;
-  max-width: 6.5rem;
+  max-width: 7.5rem;
   transition: border-color 0.15s;
 }
 
@@ -3155,7 +3155,7 @@ body[data-theme="light"] .leaflet-control-attribution a {
 }
 
 .map-utility-label {
-  font-size: 0.78rem;
+  font-size: 1rem;
   color: #a0c8f0;
 }
 
@@ -3307,7 +3307,7 @@ body[data-theme="light"] .map-control-label {
   border: 1px solid #1e3a52;
   background: transparent;
   color: #c8dff0;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
@@ -3375,7 +3375,7 @@ body[data-theme="light"] .map-role-btn.active {
   font-weight: 500;
   background: transparent;
   color: #c8dff0;
-  font-size: 0.8rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
@@ -3490,7 +3490,7 @@ html:has(body.map-fullscreen-page) {
   bottom: 0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   opacity: 0.5;
   z-index: 10;
   pointer-events: none;
@@ -3633,7 +3633,7 @@ body[data-theme="light"] #map-top-bar {
 }
 
 .map-panel-title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #c8dff0;
   letter-spacing: 0.03em;
@@ -3661,7 +3661,7 @@ body[data-theme="light"] #map-top-bar {
   padding: 0.5rem 1rem;
   border-top: 1px solid #1e3a52;
   flex-shrink: 0;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   opacity: 0.5;
 }
 
@@ -3683,7 +3683,7 @@ body[data-theme="light"] #map-top-bar {
 
 .node-sort-btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 500;
   border: 1px solid #1e3a52;
   border-radius: 4px;
@@ -3725,7 +3725,7 @@ body[data-theme="light"] .node-sort-btn.active {
   border: 1px solid #2a4a6a;
   border-radius: 4px;
   color: #a0c8f0;
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
   outline: none;
@@ -3784,7 +3784,7 @@ body[data-theme="light"] .node-sort-btn.active {
 }
 
 .node-list-name {
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 500;
   color: #c8dff0;
   display: -webkit-box;
@@ -3795,7 +3795,7 @@ body[data-theme="light"] .node-sort-btn.active {
 }
 
 .node-list-role {
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   color: #4a7a9a;
   text-transform: capitalize;
   white-space: nowrap;
@@ -3808,7 +3808,7 @@ body[data-theme="light"] .node-sort-btn.active {
 }
 
 .node-list-lastseen {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   color: #4a7a9a;
   white-space: nowrap;
 }
