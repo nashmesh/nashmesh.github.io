@@ -1817,6 +1817,7 @@ body[data-theme="retro"] .content-section--b {
    Bumping to 90% brings body text to ~17px — readable without being large. */
 html {
   font-size: 102% !important;
+  scrollbar-gutter: stable;
 }
 
 @media only screen and (max-width: 767px) {
@@ -3384,7 +3385,6 @@ body[data-theme="light"] .map-filter-dot-all {
 /* ── Fullscreen map page ─────────────────────────────────── */
 
 html:has(body.map-fullscreen-page) {
-  overflow: hidden;
   height: 100dvh;
 }
 
@@ -3399,6 +3399,7 @@ html:has(body.map-fullscreen-page) {
 
 .map-fullscreen-page .map-header-bar {
   flex-shrink: 0;
+  padding-top: 0 !important;
   padding-left: 2rem;
   padding-right: 2rem;
 }
