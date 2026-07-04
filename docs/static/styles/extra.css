@@ -4092,18 +4092,22 @@ body[data-theme="light"] .node-list-item:hover {
 
 .hp-powered-by {
   margin-top: 0.5rem;
-  margin-bottom: 0.25rem;
-  font-size: 0.875rem;
-  color: #4a6a8a;
+  font-size: 1rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
 }
 
 .hp-powered-link {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  color: #7aa8cc !important;
+  color: #ffffff !important;
   text-decoration: none !important;
   font-weight: 600;
+  font-size: 1rem;
   transition: color 0.15s;
 }
 
@@ -4112,11 +4116,10 @@ body[data-theme="light"] .node-list-item:hover {
 }
 
 .hp-powered-logo {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   object-fit: contain;
   border-radius: 3px;
-  vertical-align: middle;
 }
 
 /* Getting started cards */
@@ -4304,15 +4307,15 @@ body[data-theme="light"] .hp-post-item:hover .hp-post-title {
 }
 
 body[data-theme="light"] .hp-powered-by {
-  color: #4a6a8a;
+  color: #0f2540;
 }
 
 body[data-theme="light"] .hp-powered-link {
-  color: #2e6da4 !important;
+  color: #0f2540 !important;
 }
 
 body[data-theme="light"] .hp-powered-link:hover {
-  color: #1a5280 !important;
+  color: #2e6da4 !important;
 }
 
 /* Mobile */
