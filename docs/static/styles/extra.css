@@ -2440,6 +2440,7 @@ body[data-theme="light"] .sidebar .nav-link:hover {
        under the taller mobile header. */
     top: var(--header-height, 3.5rem);
     z-index: 50;
+    transition: opacity 0.25s ease;
     background: var(--background, black);
     border-bottom: 1px solid #1e3a52;
     margin-bottom: 1.5rem;
