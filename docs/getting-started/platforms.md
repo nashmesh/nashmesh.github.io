@@ -1,3 +1,6 @@
+---
+template: base_no_sidebar.html
+---
 <h1 class="page-title-with-logo"><img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">What is MeshCore?</h1>
 
 MeshCore is NashMesh's platform. It is a decentralized and encrypted mesh network using LoRa technology, built around two types of nodes: Companions and Repeaters.
