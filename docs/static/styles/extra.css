@@ -2584,11 +2584,15 @@ header:first-of-type {
 @media only screen and (min-width: 768px) {
   #component-sidebar {
     position: sticky;
-    top: calc(var(--header-height, 5rem) + 1rem);
+    top: calc(var(--header-height, 5rem) + 0.35rem);
     align-self: flex-start;
-    max-height: calc(100vh - var(--header-height, 5rem) - 2rem);
+    max-height: calc(100vh - var(--header-height, 5rem) - 1rem);
     overflow-y: auto;
     overflow-x: hidden;
+  }
+
+  .sidebar {
+    margin-top: 1.25rem !important;
   }
 }
 
