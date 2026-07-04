@@ -358,6 +358,9 @@
                         '</div>',
                         { sticky: true, offset: [10, 0], className: 'node-hover-tooltip' }
                     );
+                    marker.on('tooltipopen', function () {
+                        if (marker.isPopupOpen()) marker.closeTooltip();
+                    });
                     clusterGroup.addLayer(marker);
                     markers.push(marker);
                     allNodes.push({ node: node, marker: marker, isMeshcore: isMeshcore, roleShape: nodeRoleShape(node.role) });
