@@ -315,13 +315,6 @@ async function fetchPotatoNodes() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Homepage map — fed from Potato (last 4 days only)
-    if (document.getElementById('homepage-map-canvas')) {
-        fetchPotatoNodes().then((nodes) => {
-            buildMap(nodes);
-        }).catch((err) => console.error('potato:', err));
-    }
-
     // Nodes page — fed from Malla
     if (document.getElementById('node-map-canvas') || document.getElementById('nodes-table-body')) {
         fetchNodePageInformation().then((nodes) => {
