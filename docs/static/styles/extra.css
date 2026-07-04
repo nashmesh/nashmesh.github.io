@@ -4042,7 +4042,7 @@ body[data-theme="light"] .node-list-item:hover {
 
 .hp-tagline {
   font-size: 1rem;
-  color: #7aa8cc;
+  color: #ffffff;
   max-width: 600px;
   margin: 0 auto 1.5rem;
   line-height: 1.7;
@@ -4190,7 +4190,7 @@ body[data-theme="light"] .node-list-item:hover {
 }
 
 .hp-section-sub {
-  color: #7aa8cc;
+  color: #ffffff;
   margin: 0;
   font-size: 0.875rem;
 }
@@ -4260,7 +4260,7 @@ body[data-theme="light"] .node-list-item:hover {
 
 /* Light theme overrides */
 body[data-theme="light"] .hp-tagline {
-  color: #3a6a9a;
+  color: #0f2540;
 }
 
 body[data-theme="light"] .hp-cta-secondary {
@@ -4284,7 +4284,7 @@ body[data-theme="light"] .hp-community-title {
 }
 
 body[data-theme="light"] .hp-section-sub {
-  color: #3a6a9a;
+  color: #0f2540;
 }
 
 body[data-theme="light"] .hp-post-item {
