@@ -294,6 +294,17 @@ document.addEventListener("DOMContentLoaded", function () {
             var collapsed = toc.classList.toggle('collapsed');
             header.querySelector('.mobile-toc-arrow').classList.toggle('open', !collapsed);
         });
+
+        // Close the mobile TOC when the main navbar is opened.
+        var navMenu = document.getElementById('navbarsMenu');
+        if (navMenu) {
+            navMenu.addEventListener('show.bs.collapse', function () {
+                toc.classList.add('collapsed');
+                var arrow = toc.querySelector('.mobile-toc-arrow');
+                if (arrow) arrow.classList.remove('open');
+            });
+        }
+
         // It sticks below the nav via CSS `top: var(--header-height)`, which is
         // kept in sync with the live header height on resize (see below).
     })();
