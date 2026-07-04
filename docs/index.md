@@ -1,26 +1,42 @@
-![Image title](./static/images/main.jpg)
+---
+template: base_no_sidebar.html
+---
 
 <div id="banner-container"></div>
 
-## Mission
-Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.
+<img src="static/images/main.jpg" class="hp-hero-img" alt="NashMesh network">
 
-## What Is a Mesh Network?
-A mesh network is a decentralized, off-grid communications network built on low-powered devices. Each node relays messages for others, extending range and resilience without relying on traditional infrastructure. It's used as a messaging platform that provides a backup for everyday communication, popular during disasters, power outages, or simply as a hobby.
+<div class="hp-powered-by">
+  Powered by <a href="https://meshcore.io" target="_blank" rel="noopener" class="hp-powered-link"><img src="static/images/meshcore-logo.png" class="hp-powered-logo" alt="MeshCore"> MeshCore</a>
+</div>
 
-NashMesh runs on <img src="../../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore">[**MeshCore**](https://meshcore.io), an open-source, decentralized mesh network using LoRa radios designed for long-range communication without relying on traditional infrastructure. Want to learn more? Check out our <a href="/getting-started/platforms/">What is MeshCore?</a> page.
+<div class="hp-hero">
+  <p class="hp-tagline">Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.</p>
+  <div class="hp-ctas">
+    <a href="/getting-started/meshcore/" class="hp-cta hp-cta-primary">Get Started</a>
+    <a href="https://discord.gg/sSS8gEpuh8" class="hp-cta hp-cta-secondary" target="_blank" rel="noopener">Join Discord</a>
+  </div>
+</div>
 
-### How Do I Get Started?
-Got the itch to give the mesh a try? Check out our <a href="/getting-started/meshcore">MeshCore setup guide</a> to get on the network.
 
-Community members who run <img src="../../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic">[Meshtastic](https://meshtastic.org) nodes are also welcome. See the <a href="/getting-started/meshtastic/">Meshtastic setup guide</a> for more info.
+<div class="hp-map-section">
+  <div class="hp-map-header">
+    <div class="hp-section-title">Network Coverage</div>
+    <div class="hp-section-sub">Active nodes reported in the last 4 days. Zoom in to explore.</div>
+  </div>
+  <div id="homepage-map-canvas" style="width: 100%; height: 55vh; z-index: 1; border-radius: 6px"></div>
+</div>
 
-### How Do I Get Involved?
-Feel free to jump into our [Discord](https://discord.gg/sSS8gEpuh8)! We have plenty of folks with experience and knowledge that can help you get started.
-
-### Who's Around Me?
-Active nodes reported in the last 4 days are shown below. Zoom in to explore coverage in your area.
-<div id="homepage-map-canvas" style="width: 100%; height: 50vh; z-index: 1; border-radius: 6px"></div>
+<div class="hp-community">
+  <div class="hp-community-col">
+    <div class="hp-community-title">Recent Posts</div>
+    <div id="hp-posts"></div>
+    <a href="/posts/" class="hp-community-more">All posts →</a>
+  </div>
+  <div class="hp-community-col">
+    <div class="hp-community-title">Meetups</div>
+    <div id="hp-meetups"></div>
+  </div>
+</div>
 
 <script>window.NASHME_POSTS = {{ recent_posts_json() }}; window.NASHME_MEETUPS = {{ recent_meetups_json() }};</script>
-
