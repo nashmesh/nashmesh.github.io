@@ -1484,6 +1484,19 @@ body[data-theme="light"] .not-found-home:hover {
   border-color: #2e6da4;
 }
 
+/* ── Sticky main navigation ──────────────────────────────── */
+
+body > .container {
+  padding-top: 0 !important;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--background);
+}
+
 /* ── Push footer to bottom on short pages ───────────────── */
 
 html,
