@@ -1527,7 +1527,7 @@ body > .container > main {
   border-top: 1px solid #2a4a6a;
   padding: 2.5rem 1rem 1.5rem;
   margin-top: 3rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   flex-shrink: 0;
 }
 
@@ -1564,7 +1564,7 @@ body > .container > main {
 .nashme-footer-tagline {
   color: #7aa8cc;
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 1rem;
 }
 
 .nashme-footer-links {
@@ -1577,7 +1577,7 @@ body > .container > main {
 .nashme-footer-links a {
   color: #4da6ff;
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 1rem;
   padding: 0.2rem 0.5rem;
   border: 1px solid #2a4a6a;
   border-radius: 0.25rem;
@@ -1592,7 +1592,7 @@ body > .container > main {
 .nashme-footer-copy {
   color: #4a6a8a;
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
 }
 
 /* Light theme footer */
