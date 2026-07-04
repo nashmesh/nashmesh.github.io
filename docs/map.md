@@ -80,15 +80,7 @@ template: map_fullscreen.html
           <option value="Satellite">Satellite</option>
         </select>
       </label>
-      <div class="map-utility-key">
-        <span class="map-utility-key-title">Platform</span>
-        <span class="map-utility-key-row"><span class="hml-dot hml-meshtastic"></span>Meshtastic</span>
-        <span class="map-utility-key-row"><span class="hml-dot hml-meshcore"></span>MeshCore</span>
-        <span class="map-utility-key-title">Role</span>
-        <span class="map-utility-key-row"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,3.5 16.5,16.5 3.5,16.5" fill="currentColor"/></svg>Router / Repeater</span>
-        <span class="map-utility-key-row"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="currentColor"/></svg>Client</span>
-        <span class="map-utility-key-row"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,2.5 17.5,10 10,17.5 2.5,10" fill="currentColor"/></svg>Server / Base</span>
-      </div>
+
     </div>
   </div>
 </div>

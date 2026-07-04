@@ -92,6 +92,26 @@
     // zoom added after legend so it renders above it in the bottom-right stack
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
+    var mapLegend = L.control({ position: 'bottomleft' });
+    mapLegend.onAdd = function () {
+        var div = L.DomUtil.create('div', 'map-corner-legend');
+        div.innerHTML =
+            '<div class="mcl-section">' +
+                '<div class="mcl-title">Platform</div>' +
+                '<div class="mcl-row"><span class="hml-dot hml-meshtastic"></span>Meshtastic</div>' +
+                '<div class="mcl-row"><span class="hml-dot hml-meshcore"></span>MeshCore</div>' +
+            '</div>' +
+            '<div class="mcl-section">' +
+                '<div class="mcl-title">Role</div>' +
+                '<div class="mcl-row"><svg class="mcl-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,3.5 16.5,16.5 3.5,16.5" fill="currentColor"/></svg>Router / Repeater</div>' +
+                '<div class="mcl-row"><svg class="mcl-glyph" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="5.6" fill="currentColor"/></svg>Client</div>' +
+                '<div class="mcl-row"><svg class="mcl-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,2.5 17.5,10 10,17.5 2.5,10" fill="currentColor"/></svg>Server / Base</div>' +
+            '</div>';
+        L.DomEvent.disableClickPropagation(div);
+        return div;
+    };
+    mapLegend.addTo(map);
+
     var clusterGroup = L.markerClusterGroup({
         maxClusterRadius: 50,
         disableClusteringAtZoom: 13,
@@ -482,5 +502,118 @@
         window.addEventListener('resize', function () { map.invalidateSize(); });
 
         map.whenReady(onFirstReady);
+    }
+})();
+
+// ── Homepage mini-map ──────────────────────────────────────────────────────
+(function () {
+    if (typeof L === 'undefined') return;
+    var canvas = document.getElementById('homepage-map-canvas');
+    if (!canvas || canvas._leaflet_id) return;
+
+    function timeAgo(isoString) {
+        if (!isoString) return 'Unknown';
+        var diff = Math.floor((Date.now() - new Date(isoString).getTime()) / 1000);
+        if (diff < 60) return diff + 's ago';
+        if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+        if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+        return Math.floor(diff / 86400) + 'd ago';
+    }
+
+    function nodeRoleShape(role) {
+        var r = (role || '').toUpperCase();
+        if (r.indexOf('ROUTER') !== -1 || r.indexOf('REPEATER') !== -1) return 'router';
+        if (r.indexOf('SERVER') !== -1 || r.indexOf('BASE') !== -1) return 'server';
+        return 'client';
+    }
+
+    function nodeGlyphSvg(shape, fill) {
+        var g;
+        if (shape === 'router') g = '<polygon points="10,3.5 16.5,16.5 3.5,16.5"';
+        else if (shape === 'server') g = '<polygon points="10,2.5 17.5,10 10,17.5 2.5,10"';
+        else g = '<circle cx="10" cy="10" r="5.6"';
+        return '<svg viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg">' +
+            g + ' fill="' + fill + '" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+    }
+
+    function buildNodeIcon(isMeshcore, role) {
+        return L.divIcon({
+            className: 'node-glyph-icon',
+            html: nodeGlyphSvg(nodeRoleShape(role), isMeshcore ? '#4da6ff' : '#67ea94'),
+            iconSize: [20, 20],
+            iconAnchor: [10, 10],
+            popupAnchor: [0, -11]
+        });
+    }
+
+    var osmAttr = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+    var cartoAttr = osmAttr + ' &copy; <a href="https://carto.com/attributions">CARTO</a>';
+    var baseLayers = {
+        'Dark': L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 20, subdomains: 'abcd', attribution: cartoAttr
+        }),
+        'Light': L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 20, subdomains: 'abcd', attribution: cartoAttr
+        })
+    };
+
+    function layerNameForTheme(theme) {
+        return (theme === 'light' || theme === 'retro') ? 'Light' : 'Dark';
+    }
+
+    var defaultCenter = [36.167567, -86.785401];
+    var defaultZoom = 9;
+
+    var map = L.map('homepage-map-canvas', {
+        center: defaultCenter,
+        zoom: defaultZoom,
+        maxZoom: 16
+    });
+
+    var currentBaseName = layerNameForTheme(document.body.getAttribute('data-theme') || 'dark');
+    var currentBase = baseLayers[currentBaseName];
+    currentBase.addTo(map);
+
+    new MutationObserver(function () {
+        var newName = layerNameForTheme(document.body.getAttribute('data-theme'));
+        if (newName === currentBaseName) return;
+        map.removeLayer(currentBase);
+        currentBaseName = newName;
+        currentBase = baseLayers[currentBaseName];
+        currentBase.addTo(map);
+    }).observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
+
+    var fourDaysMs = 4 * 24 * 60 * 60 * 1000;
+    fetch('https://potato.nashme.sh/api/nodes?limit=10000')
+        .then(function (r) { return r.json(); })
+        .then(function (nodes) {
+            nodes.forEach(function (node) {
+                if (!node.latitude || !node.longitude) return;
+                if (node.last_seen_iso && (Date.now() - new Date(node.last_seen_iso).getTime()) > fourDaysMs) return;
+                var isMeshcore = node.protocol && node.protocol.toLowerCase().includes('meshcore');
+                var popupLogo = isMeshcore ? '/static/images/meshcore-logo.png' : '/static/images/meshtastic-logo.svg';
+                var marker = L.marker([node.latitude, node.longitude], {
+                    icon: buildNodeIcon(isMeshcore, node.role)
+                });
+                marker.bindPopup(
+                    '<div class="node-popup">' +
+                    '<span class="nht-header"><img src="' + popupLogo + '" class="nht-logo" alt=""><span class="nht-name">' +
+                    (node.long_name || node.short_name || node.node_id) + '</span></span>' +
+                    (node.role ? '<span class="nht-role">' + node.role.replace(/_/g, ' ') + '</span>' : '') +
+                    (node.last_seen_iso ? '<span class="nht-time">Last seen ' + timeAgo(node.last_seen_iso) + '</span>' : '') +
+                    '</div>'
+                );
+                marker.addTo(map);
+            });
+        })
+        .catch(function (err) { console.error('homepage-map:', err); });
+
+    if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(function (entries) {
+            var rect = entries[0].contentRect;
+            if (rect.width > 0 && rect.height > 0) map.invalidateSize({ animate: false });
+        }).observe(canvas);
+    } else {
+        window.addEventListener('resize', function () { map.invalidateSize(); });
     }
 })();
