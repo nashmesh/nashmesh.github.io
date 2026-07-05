@@ -6,10 +6,6 @@ template: base_no_sidebar.html
 
 <img src="static/images/main.jpg" class="hp-hero-img" alt="NashMesh network">
 
-<div class="hp-powered-by">
-  Powered by <a href="https://meshcore.io" target="_blank" rel="noopener" class="hp-powered-link"><img src="static/images/meshcore-logo.png" class="hp-powered-logo" alt="MeshCore"> MeshCore</a>
-</div>
-
 <div class="hp-hero">
   <p class="hp-tagline">Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.</p>
   <div class="hp-ctas">
@@ -19,7 +15,7 @@ template: base_no_sidebar.html
 </div>
 
 <div class="hp-about">
-  <p>MeshCore is an open-source, decentralized mesh network built on LoRa radios, designed for long-range communication without relying on traditional infrastructure. Each node relays messages for others, extending range and resilience with no internet required. <a href="/getting-started/platforms/">Learn more</a></p>
+  <p>NashMesh uses <a href="https://meshcore.io" target="_blank" rel="noopener"><img src="static/images/meshcore-logo.png" class="hp-inline-logo" alt="MeshCore"> MeshCore</a> as its official protocol. MeshCore is an open-source, decentralized mesh network built on LoRa radios, designed for long-range communication without relying on traditional infrastructure. Each node relays messages for others, extending range and resilience with no internet required. <a href="/getting-started/platforms/">Learn more</a></p>
 </div>
 
 <div class="hp-map-section">

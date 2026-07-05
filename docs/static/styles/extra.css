@@ -4176,6 +4176,16 @@ body[data-theme="light"] .node-list-item:hover {
   line-height: 1.5;
 }
 
+/* Inline logo in body text */
+.hp-inline-logo {
+  width: 1.1rem;
+  height: 1.1rem;
+  object-fit: contain;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-bottom: 0.1rem;
+}
+
 /* About blurb */
 .hp-about {
   margin-bottom: 2rem;
