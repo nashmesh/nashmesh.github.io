@@ -606,7 +606,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (hpMeetups && window.NASHME_MEETUPS && window.NASHME_MEETUPS.length) {
             hpMeetups.innerHTML = window.NASHME_MEETUPS.slice(0, 5).map(function (m) {
                 return '<a href="' + m.url + '" class="hp-post-item">' +
-                    '<span class="hp-post-date">' + formatDate(m.date) + '</span>' +
+                    '<span class="hp-post-date">' + formatDate(m.event_date || m.date) + '</span>' +
                     '<span class="hp-post-title">' + m.title + '</span>' +
                     '</a>';
             }).join('');

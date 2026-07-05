@@ -11,7 +11,7 @@ def define_env(env):
         posts = []
         if not os.path.isdir(posts_dir):
             return json.dumps(posts)
-        for fname in sorted(os.listdir(posts_dir), reverse=True):
+        for fname in os.listdir(posts_dir):
             if not fname.endswith(".md"):
                 continue
             fpath = os.path.join(posts_dir, fname)
@@ -33,6 +33,7 @@ def define_env(env):
                     })
             except Exception:
                 pass
+        posts.sort(key=lambda p: p["date"], reverse=True)
         return json.dumps(posts)
 
     @env.macro
@@ -42,7 +43,7 @@ def define_env(env):
         meetups = []
         if not os.path.isdir(meetups_dir):
             return json.dumps(meetups)
-        for fname in sorted(os.listdir(meetups_dir), reverse=True):
+        for fname in os.listdir(meetups_dir):
             if not fname.endswith(".md"):
                 continue
             fpath = os.path.join(meetups_dir, fname)
@@ -57,11 +58,14 @@ def define_env(env):
                 meta = yaml.safe_load(parts[1])
                 if meta and "date" in meta and "title" in meta:
                     slug = fname[:-3]
+                    event_date = str(meta["event_date"])[:10] if "event_date" in meta else str(meta["date"])[:10]
                     meetups.append({
                         "title": str(meta["title"]),
                         "date": str(meta["date"])[:10],
+                        "event_date": event_date,
                         "url": "/meetups/" + slug + "/",
                     })
             except Exception:
                 pass
+        meetups.sort(key=lambda m: m["event_date"], reverse=True)
         return json.dumps(meetups)
