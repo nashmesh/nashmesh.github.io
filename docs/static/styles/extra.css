@@ -4176,6 +4176,22 @@ body[data-theme="light"] .node-list-item:hover {
   line-height: 1.5;
 }
 
+/* About blurb */
+.hp-about {
+  margin-bottom: 2rem;
+}
+
+.hp-about p {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 1.7;
+}
+
+body[data-theme="light"] .hp-about p {
+  color: #0f2540;
+}
+
 /* Map section */
 .hp-map-section {
   margin-bottom: 2.5rem;
