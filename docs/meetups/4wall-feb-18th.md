@@ -2,6 +2,7 @@
 title: Meetup at 4Wall Entertainment, Feburary 18th at 7pm
 description: Join us for our next in-person meetup.
 date: 2026-02-11 19:00:00
+event_date: 2026-02-18
 
 tags:
   - meetups

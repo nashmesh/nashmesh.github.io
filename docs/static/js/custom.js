@@ -585,6 +585,34 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Homepage posts + meetups lists
+    (function () {
+        function formatDate(dateStr) {
+            var d = new Date(dateStr + 'T00:00:00');
+            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        var hpPosts = document.getElementById('hp-posts');
+        if (hpPosts && window.NASHME_POSTS && window.NASHME_POSTS.length) {
+            hpPosts.innerHTML = window.NASHME_POSTS.slice(0, 5).map(function (p) {
+                return '<a href="' + p.url + '" class="hp-post-item">' +
+                    '<span class="hp-post-date">' + formatDate(p.date) + '</span>' +
+                    '<span class="hp-post-title">' + p.title + '</span>' +
+                    '</a>';
+            }).join('');
+        }
+
+        var hpMeetups = document.getElementById('hp-meetups');
+        if (hpMeetups && window.NASHME_MEETUPS && window.NASHME_MEETUPS.length) {
+            hpMeetups.innerHTML = window.NASHME_MEETUPS.slice(0, 5).map(function (m) {
+                return '<a href="' + m.url + '" class="hp-post-item">' +
+                    '<span class="hp-post-date">' + formatDate(m.event_date || m.date) + '</span>' +
+                    '<span class="hp-post-title">' + m.title + '</span>' +
+                    '</a>';
+            }).join('');
+        }
+    })();
+
     // Image lightbox
     if (!document.querySelector('.img-lightbox-overlay')) {
         var overlay = document.createElement('div');

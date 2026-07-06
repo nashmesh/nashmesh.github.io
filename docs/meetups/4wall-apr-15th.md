@@ -2,6 +2,7 @@
 title: Meetup at 4Wall Entertainment, April 15th at 7pm
 description: March came and went without a meetup, so trying to get the gang back together!
 date: 2026-04-03 22:23:00
+event_date: 2026-04-15
 
 tags:
   - meetups

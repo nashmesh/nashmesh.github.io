@@ -2,6 +2,7 @@
 title: Meetup at 4Wall Entertainment, June 22nd at 7pm
 description: Finally another meetup on the books! MeshCore, bits and bobs, show and tell, and maybe some surprises.
 date: 2026-06-10 00:00:00
+event_date: 2026-06-22
 
 tags:
   - meetups
