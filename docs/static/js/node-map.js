@@ -583,6 +583,34 @@
         currentBase.addTo(map);
     }).observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
 
+    var recenterBtn = L.control({ position: 'topleft' });
+    recenterBtn.onAdd = function () {
+        var btn = L.DomUtil.create('button', 'leaflet-bar leaflet-control hp-recenter-btn');
+        btn.title = 'Re-center map';
+        btn.innerHTML = '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="3"/><line x1="10" y1="2" x2="10" y2="5"/><line x1="10" y1="15" x2="10" y2="18"/><line x1="2" y1="10" x2="5" y2="10"/><line x1="15" y1="10" x2="18" y2="10"/></svg>';
+        L.DomEvent.on(btn, 'click', function (e) {
+            L.DomEvent.stopPropagation(e);
+            map.setView(defaultCenter, defaultZoom);
+        });
+        return btn;
+    };
+    recenterBtn.addTo(map);
+
+    var hpLegend = L.control({ position: 'bottomleft' });
+    hpLegend.onAdd = function () {
+        var div = L.DomUtil.create('div', 'map-corner-legend');
+        div.innerHTML =
+            '<div class="mcl-section">' +
+                '<div class="mcl-title">Role</div>' +
+                '<div class="mcl-row"><svg class="mcl-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,3.5 16.5,16.5 3.5,16.5" fill="currentColor"/></svg>Router / Repeater</div>' +
+                '<div class="mcl-row"><svg class="mcl-glyph" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="5.6" fill="currentColor"/></svg>Client</div>' +
+                '<div class="mcl-row"><svg class="mcl-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,2.5 17.5,10 10,17.5 2.5,10" fill="currentColor"/></svg>Server / Base</div>' +
+            '</div>';
+        L.DomEvent.disableClickPropagation(div);
+        return div;
+    };
+    hpLegend.addTo(map);
+
     var fourDaysMs = 4 * 24 * 60 * 60 * 1000;
     fetch('https://potato.nashme.sh/api/nodes?limit=10000')
         .then(function (r) { return r.json(); })
