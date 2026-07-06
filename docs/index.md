@@ -21,7 +21,7 @@ template: base_no_sidebar.html
 <div class="hp-map-section">
   <div class="hp-map-header">
     <div class="hp-section-title">Network Coverage</div>
-    <div class="hp-section-sub">Active nodes reported in the last 4 days. Zoom in to explore.</div>
+    <div class="hp-section-sub">Active nodes reported in the last 4 days. Zoom in to explore. <a href="/map/">View the full network map</a></div>
   </div>
   <div id="homepage-map-canvas" style="width: 100%; height: 55vh; z-index: 1; border-radius: 6px"></div>
 </div>
