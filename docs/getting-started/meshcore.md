@@ -44,9 +44,9 @@
 </table>
 <div class="copyable-code" style="margin:0.3rem 0 0.2rem"><pre><code>set txdelay &lt;value&gt;</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set direct.txdelay &lt;value&gt;</code></pre></div>
-<div class="fc-step"><span class="fc-step-num">5</span><span>Advert intervals (zero-hop 60 min, flood 3 h):</span></div>
-<div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>set advert.interval 3600</code></pre></div>
-<div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set flood.advert.interval 10800</code></pre></div>
+<div class="fc-step"><span class="fc-step-num">5</span><span>Advert intervals (zero-hop 60 min, flood 3 hr (180 min)):</span></div>
+<div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>set advert.interval 60</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set flood.advert.interval 3</code></pre></div>
 <div class="fc-step"><span class="fc-step-num">6</span><span>Set your contact info so other operators can reach you:</span></div>
 <div class="copyable-code" style="margin:0.2rem 0 0"><pre><code>set owner.info N0CALL | contact | site name</code></pre></div>
 </div>
@@ -548,8 +548,8 @@
     <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Flood <span style="color:#4a586a">set flood.advert.interval</span></span><span class="fc-setting-value" style="color:#37e08a">3h</span></div>
   </div>
   <p style="font-size:0.85em;color:#76869a;margin-top:0.5rem">3 hours is the firmware minimum, chosen while the mesh is still growing so new nodes discover routes fast. As density increases, raise the flood interval to reclaim airtime.</p>
-  <div class="copyable-code" style="margin-top:0.5rem"><pre><code>set advert.interval 3600</code></pre></div>
-  <div class="copyable-code"><pre><code>set flood.advert.interval 10800</code></pre></div>
+  <div class="copyable-code" style="margin-top:0.5rem"><pre><code>set advert.interval 60</code></pre></div>
+  <div class="copyable-code"><pre><code>set flood.advert.interval 3</code></pre></div>
 </div>
 
 ---
