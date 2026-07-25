@@ -12,6 +12,7 @@ nav:
     - Meshtastic Setup: getting-started/meshtastic.md
     - Setting up MQTT: mqtt.md
   - Network Map: map.md
+  - Infrastructure: infrastructure.md
   - Posts: posts.md
   - Resources:
     - Potato Map: https://potato.nashme.sh
@@ -93,6 +94,7 @@ extra_css:
   - static/styles/extra.css
   - static/styles/link-embeds.css
   - static/styles/discord.css
+  - static/styles/infrastructure.css
 
 extra_javascript:
   - static/js/jquery.js
@@ -103,6 +105,7 @@ extra_javascript:
   - static/js/leaflet-heatmap.js
   - static/js/leaflet.markercluster.js
   - static/js/node-map.js
+  - static/js/infrastructure.js
 
 extra:
   social:
