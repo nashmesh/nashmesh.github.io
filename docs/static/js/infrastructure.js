@@ -22,8 +22,11 @@
         map = L.map('infra-map', {
             center: [36.167567, -86.785401],
             zoom: 9,
-            scrollWheelZoom: false
+            scrollWheelZoom: false,
+            zoomControl: false
         });
+
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             maxZoom: 16,
@@ -43,6 +46,8 @@
 
     function renderMap(nodes) {
         if (!map) return;
+
+        map.invalidateSize();
 
         mapMarkers.forEach(function (m) { map.removeLayer(m); });
         mapMarkers = [];

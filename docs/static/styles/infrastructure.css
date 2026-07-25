@@ -48,7 +48,7 @@
 }
 
 #infra-map {
-  height: 420px;
+  height: 280px;
   width: 100%;
   background: #0f1f2e;
 }
@@ -121,15 +121,20 @@
   animation: infra-blip-pulse 2s ease-out infinite;
 }
 
-.infra-map-blip--stale .infra-map-blip-dot { background: #f5c542; box-shadow: 0 0 6px rgba(245, 197, 66, 0.9); }
+.infra-map-blip--stale .infra-map-blip-dot { background: #f5c542; box-shadow: 0 0 6px rgba(245, 197, 66, 0.9); animation: infra-flash 1.6s ease-in-out infinite; }
 .infra-map-blip--stale .infra-map-blip-ring { border-color: #f5c542; }
 
-.infra-map-blip--offline .infra-map-blip-dot { background: #ff5c5c; box-shadow: 0 0 6px rgba(255, 92, 92, 0.9); }
+.infra-map-blip--offline .infra-map-blip-dot { background: #ff5c5c; box-shadow: 0 0 6px rgba(255, 92, 92, 0.9); animation: infra-flash 0.8s ease-in-out infinite; }
 .infra-map-blip--offline .infra-map-blip-ring { border-color: #ff5c5c; animation-duration: 3s; }
 
 @keyframes infra-blip-pulse {
   0% { transform: scale(1); opacity: 0.85; }
   100% { transform: scale(3.4); opacity: 0; }
+}
+
+@keyframes infra-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
 }
 
 .infra-map-popup {
@@ -216,11 +221,13 @@
 .infra-status-dot--stale {
   background: #f5c542;
   box-shadow: 0 0 6px rgba(245, 197, 66, 0.6);
+  animation: infra-flash 1.6s ease-in-out infinite;
 }
 
 .infra-status-dot--offline {
   background: #ff5c5c;
   box-shadow: 0 0 6px rgba(255, 92, 92, 0.6);
+  animation: infra-flash 0.8s ease-in-out infinite;
 }
 
 .infra-card-name {
