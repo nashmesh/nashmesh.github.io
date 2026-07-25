@@ -7,7 +7,7 @@ event_date: 2026-06-22
 tags:
   - meetups
 ---
-#### NashMesh Meetup at 4Wall Entertainment, June 22nd at 7pm
+## NashMesh Meetup at 4Wall Entertainment, June 22nd at 7pm
 
 **Finally another meetup on the books! Would love to chat about how well MeshCore has been working, and maybe finalize some plans on "officially" switching the remaining infrastructure, and formally adopting MeshCore as the official mesh of NashMe.sh!**
 

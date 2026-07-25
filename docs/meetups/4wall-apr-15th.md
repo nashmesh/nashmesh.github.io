@@ -7,7 +7,7 @@ event_date: 2026-04-15
 tags:
   - meetups
 ---
-#### NashMesh Meetup at 4Wall Entertainment, April 15th at 7pm
+## NashMesh Meetup at 4Wall Entertainment, April 15th at 7pm
 
 **March came and went without a meetup, so trying to get the gang back together! Come check out the community funded tower nodes we've been working on. Feel free to bring your projects or bits and bobs for the thrift store table.**
 
