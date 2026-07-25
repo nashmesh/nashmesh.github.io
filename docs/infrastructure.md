@@ -26,6 +26,12 @@ Live health and performance data for NashMesh's core infrastructure repeaters, p
   </div>
 </div>
 
+<div class="infra-map-wrap">
+  <div class="infra-map-scanlines"></div>
+  <div class="infra-map-label">// NETWORK TRACKING //</div>
+  <div id="infra-map"></div>
+</div>
+
 <p class="infra-status-msg" id="infra-status-msg">Loading infrastructure health data…</p>
 
 <div class="infra-grid" id="infra-grid"></div>

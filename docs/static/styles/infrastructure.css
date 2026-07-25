@@ -38,6 +38,119 @@
   margin: 0 0 1rem;
 }
 
+.infra-map-wrap {
+  position: relative;
+  border: 1px solid #2a4a6a;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 0 0 1.5rem;
+  box-shadow: 0 4px 16px rgba(77, 166, 255, 0.12);
+}
+
+#infra-map {
+  height: 420px;
+  width: 100%;
+  background: #0f1f2e;
+}
+
+#infra-map .leaflet-tile-pane {
+  filter: grayscale(0.6) brightness(0.85) contrast(1.05);
+}
+
+.infra-map-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 500;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.06) 0px,
+    rgba(0, 0, 0, 0.06) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+.infra-map-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 500;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4);
+}
+
+.infra-map-label {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.75rem;
+  z-index: 600;
+  color: #9fc4e8;
+  background: rgba(15, 31, 46, 0.7);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+.infra-map-blip {
+  position: relative;
+}
+
+.infra-map-blip-dot,
+.infra-map-blip-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+}
+
+.infra-map-blip-dot {
+  background: #3ddc84;
+  box-shadow: 0 0 6px rgba(61, 220, 132, 0.9);
+}
+
+.infra-map-blip-ring {
+  border: 2px solid #3ddc84;
+  animation: infra-blip-pulse 2s ease-out infinite;
+}
+
+.infra-map-blip--stale .infra-map-blip-dot { background: #f5c542; box-shadow: 0 0 6px rgba(245, 197, 66, 0.9); }
+.infra-map-blip--stale .infra-map-blip-ring { border-color: #f5c542; }
+
+.infra-map-blip--offline .infra-map-blip-dot { background: #ff5c5c; box-shadow: 0 0 6px rgba(255, 92, 92, 0.9); }
+.infra-map-blip--offline .infra-map-blip-ring { border-color: #ff5c5c; animation-duration: 3s; }
+
+@keyframes infra-blip-pulse {
+  0% { transform: scale(1); opacity: 0.85; }
+  100% { transform: scale(3.4); opacity: 0; }
+}
+
+.infra-map-popup {
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.infra-map-wrap .leaflet-popup-content-wrapper {
+  background: #0f1f2e;
+  color: #e0eeff;
+  border: 1px solid #2a4a6a;
+}
+
+.infra-map-wrap .leaflet-popup-tip {
+  background: #0f1f2e;
+}
+
+.infra-map-wrap .infra-map-popup a {
+  color: #4da6ff;
+}
+
 .infra-footnote {
   color: #6a9abf;
   font-size: 0.8rem;

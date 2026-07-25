@@ -12,6 +12,62 @@
     var GRADE_RANK = { A: 0, B: 1, C: 2, D: 3, F: 4 };
     var API_URL = 'https://analyzer.nashme.sh/api/nodes/infrastructure';
 
+    var map = null;
+    var mapMarkers = [];
+
+    function initMap() {
+        var mapEl = document.getElementById('infra-map');
+        if (!mapEl || typeof L === 'undefined' || mapEl._leaflet_id) return;
+
+        map = L.map('infra-map', {
+            center: [36.167567, -86.785401],
+            zoom: 9,
+            scrollWheelZoom: false
+        });
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 16,
+            subdomains: 'abcd',
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        }).addTo(map);
+    }
+
+    function blipIcon(status) {
+        return L.divIcon({
+            className: 'infra-map-blip infra-map-blip--' + status.key,
+            html: '<span class="infra-map-blip-ring"></span><span class="infra-map-blip-dot"></span>',
+            iconSize: [16, 16],
+            iconAnchor: [8, 8]
+        });
+    }
+
+    function renderMap(nodes) {
+        if (!map) return;
+
+        mapMarkers.forEach(function (m) { map.removeLayer(m); });
+        mapMarkers = [];
+
+        var bounds = [];
+        nodes.forEach(function (node) {
+            if (typeof node.lat !== 'number' || typeof node.lon !== 'number') return;
+            var status = statusFor(node);
+            var marker = L.marker([node.lat, node.lon], { icon: blipIcon(status) });
+            marker.bindPopup(
+                '<div class="infra-map-popup">' +
+                    '<strong>' + node.name + '</strong><br>' +
+                    status.label + ' &middot; Grade ' + (node.usefulness_grade || '—') +
+                    '<br><a href="https://analyzer.nashme.sh/#/nodes/' + encodeURIComponent(node.public_key) +
+                    '" target="_blank" rel="noopener">View in Analyzer ↗</a>' +
+                '</div>'
+            );
+            marker.addTo(map);
+            mapMarkers.push(marker);
+            bounds.push([node.lat, node.lon]);
+        });
+
+        if (bounds.length) map.fitBounds(bounds, { padding: [30, 30], maxZoom: 11 });
+    }
+
     function timeAgo(isoString) {
         if (!isoString) return 'Never';
         var diff = Math.floor((Date.now() - new Date(isoString).getTime()) / 1000);
@@ -72,6 +128,7 @@
 
     function render(nodes) {
         grid.innerHTML = '';
+        renderMap(nodes);
 
         nodes.sort(function (a, b) {
             var sa = statusFor(a).key === 'online' ? 0 : 1;
@@ -117,6 +174,7 @@
             });
     }
 
+    initMap();
     loadNodes();
     setInterval(loadNodes, 120000);
 })();
