@@ -261,11 +261,13 @@
 
 .infra-card-sub {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   gap: 0.5rem;
   font-size: 0.75rem;
+}
+
+.infra-card-heard {
   color: #6a9abf;
-  text-transform: capitalize;
 }
 
 .infra-card-metrics {

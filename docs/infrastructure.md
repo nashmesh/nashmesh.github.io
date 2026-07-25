@@ -32,4 +32,4 @@ Live health and performance data for NashMesh's core infrastructure repeaters, p
 
 <div class="infra-grid" id="infra-grid"></div>
 
-<p class="infra-footnote">Data from the <a href="https://analyzer.nashme.sh" target="_blank">MeshCore Analyzer</a>, refreshed automatically every 2 minutes.</p>
+<p class="infra-footnote">Refreshed automatically every 2 minutes.</p>

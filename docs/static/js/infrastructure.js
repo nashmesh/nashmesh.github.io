@@ -125,7 +125,6 @@
                 '<span class="infra-grade infra-grade--' + grade.toLowerCase() + '">' + grade + '</span>' +
             '</div>' +
             '<div class="infra-card-sub">' +
-                '<span class="infra-card-role">' + (node.role || 'node') + '</span>' +
                 '<span class="infra-card-heard">Last relayed ' + timeAgo(node.last_relayed) + '</span>' +
             '</div>' +
             '<div class="infra-card-metrics">' + metrics + '</div>';
