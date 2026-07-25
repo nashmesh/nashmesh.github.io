@@ -270,7 +270,7 @@
 
 .infra-card-metrics {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0.4rem 0.75rem;
   border-top: 1px solid #1a3348;
   padding-top: 0.6rem;

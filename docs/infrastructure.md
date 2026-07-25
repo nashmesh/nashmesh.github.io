@@ -17,10 +17,6 @@ Live health and performance data for NashMesh's core infrastructure repeaters, p
     <span class="infra-summary-label">Online</span>
   </div>
   <div class="infra-summary-card">
-    <span class="infra-summary-value" id="infra-stat-score">—</span>
-    <span class="infra-summary-label">Avg. Usefulness</span>
-  </div>
-  <div class="infra-summary-card">
     <span class="infra-summary-value" id="infra-stat-relays">—</span>
     <span class="infra-summary-label">Relays (24h)</span>
   </div>

@@ -6,7 +6,6 @@
     var statusMsg = document.getElementById('infra-status-msg');
     var elTotal = document.getElementById('infra-stat-total');
     var elOnline = document.getElementById('infra-stat-online');
-    var elScore = document.getElementById('infra-stat-score');
     var elRelays = document.getElementById('infra-stat-relays');
 
     var GRADE_RANK = { A: 0, B: 1, C: 2, D: 3, F: 4 };
@@ -115,7 +114,6 @@
         card.rel = 'noopener';
 
         var metrics =
-            metricRow('Usefulness', pct(node.usefulness_score)) +
             metricRow('Coverage', pct(node.coverage_score)) +
             metricRow('Relays (1h)', (node.relay_count_1h || 0).toLocaleString()) +
             metricRow('Relays (24h)', (node.relay_count_24h || 0).toLocaleString());
@@ -155,13 +153,9 @@
 
         var online = nodes.filter(function (n) { return statusFor(n).key === 'online'; }).length;
         var totalRelays24h = nodes.reduce(function (sum, n) { return sum + (n.relay_count_24h || 0); }, 0);
-        var avgScore = nodes.length
-            ? nodes.reduce(function (sum, n) { return sum + (n.usefulness_score || 0); }, 0) / nodes.length
-            : 0;
 
         if (elTotal) elTotal.textContent = nodes.length;
         if (elOnline) elOnline.textContent = online + ' / ' + nodes.length;
-        if (elScore) elScore.textContent = pct(avgScore);
         if (elRelays) elRelays.textContent = totalRelays24h.toLocaleString();
 
         if (statusMsg) {
