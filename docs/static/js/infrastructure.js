@@ -29,8 +29,8 @@
 
     function statusFor(node) {
         if (!node.relay_active) return { key: 'offline', label: 'Offline' };
-        var minsSinceHeard = (Date.now() - new Date(node.last_heard).getTime()) / 60000;
-        if (minsSinceHeard > 60) return { key: 'stale', label: 'Stale' };
+        var minsSinceRelayed = (Date.now() - new Date(node.last_relayed).getTime()) / 60000;
+        if (minsSinceRelayed > 60) return { key: 'stale', label: 'Stale' };
         return { key: 'online', label: 'Online' };
     }
 
@@ -43,8 +43,11 @@
         var status = statusFor(node);
         var grade = node.usefulness_grade || '—';
 
-        var card = document.createElement('div');
+        var card = document.createElement('a');
         card.className = 'infra-card infra-card--' + status.key;
+        card.href = 'https://analyzer.nashme.sh/#/nodes/' + encodeURIComponent(node.public_key);
+        card.target = '_blank';
+        card.rel = 'noopener';
 
         var metrics =
             metricRow('Usefulness', pct(node.usefulness_score)) +
@@ -60,7 +63,7 @@
             '</div>' +
             '<div class="infra-card-sub">' +
                 '<span class="infra-card-role">' + (node.role || 'node') + '</span>' +
-                '<span class="infra-card-heard">Last heard ' + timeAgo(node.last_heard) + '</span>' +
+                '<span class="infra-card-heard">Last relayed ' + timeAgo(node.last_relayed) + '</span>' +
             '</div>' +
             '<div class="infra-card-metrics">' + metrics + '</div>';
 

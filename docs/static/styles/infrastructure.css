@@ -60,6 +60,9 @@
   padding: 0.9rem 1rem;
   border-left: 3px solid #4a6a8a;
   transition: transform 0.15s, box-shadow 0.2s;
+  text-decoration: none !important;
+  color: inherit;
+  cursor: pointer;
 }
 
 .infra-card:hover {
