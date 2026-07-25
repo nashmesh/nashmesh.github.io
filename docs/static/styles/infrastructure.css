@@ -40,6 +40,7 @@
 
 .infra-map-wrap {
   position: relative;
+  isolation: isolate;
   border: 1px solid #2a4a6a;
   border-radius: 0.5rem;
   overflow: hidden;
