@@ -20,8 +20,8 @@
         if (!mapEl || typeof L === 'undefined' || mapEl._leaflet_id) return;
 
         map = L.map('infra-map', {
-            center: [36.167567, -86.785401],
-            zoom: 9,
+            center: [35.95, -86.785401],
+            zoom: 8,
             scrollWheelZoom: false,
             zoomControl: false
         });
@@ -70,7 +70,11 @@
             bounds.push([node.lat, node.lon]);
         });
 
-        if (bounds.length) map.fitBounds(bounds, { padding: [30, 30], maxZoom: 11 });
+        if (bounds.length) {
+            var llBounds = L.latLngBounds(bounds);
+            var zoom = map.getBoundsZoom(llBounds, false, L.point(30, 30)) - 1;
+            map.setView(llBounds.getCenter(), zoom);
+        }
     }
 
     function timeAgo(isoString) {
