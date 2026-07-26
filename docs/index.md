@@ -2,9 +2,9 @@
 template: base_no_sidebar.html
 ---
 
-<div id="banner-container"></div>
-
 <img src="static/images/main.jpg" class="hp-hero-img" alt="NashMesh network">
+
+<div id="banner-container"></div>
 
 <div class="hp-hero">
   <p class="hp-tagline">Our mission is to provide a reliable mesh network along with resources, guidance, and support for anyone who would like to use the network.</p>

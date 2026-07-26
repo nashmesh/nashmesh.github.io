@@ -7,7 +7,7 @@ event_date: 2026-02-18
 tags:
   - meetups
 ---
-#### NashMesh Meetup at 4Wall Entertainment, Feburary 18th at 7pm
+## NashMesh Meetup at 4Wall Entertainment, Feburary 18th at 7pm
 
 **This event is a BYOB event so please bring what you would like to drink. Feel free also to bring nodes/laptops/tools as this meeting will have a classroom/lab vibe to it as well!**
 
