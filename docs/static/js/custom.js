@@ -34,41 +34,34 @@ function scrollToEl(el, smooth) {
 document.addEventListener("DOMContentLoaded", function () {
     var bannerContainer = document.getElementById("banner-container");
 
-    // New meetup notification
+    // Upcoming meetup callout (persistent - not dismissible, stays until the event passes)
     if (window.NASHME_MEETUPS && window.NASHME_MEETUPS.length) {
         var now = new Date();
-        var recentMeetup = null;
-        for (var i = 0; i < window.NASHME_MEETUPS.length; i++) {
-            var m = window.NASHME_MEETUPS[i];
-            if (new Date(m.date + "T00:00:00") >= now) { recentMeetup = m; break; }
-        }
-        if (recentMeetup) {
-            var meetupDismissKey = "new-meetup-dismissed:" + recentMeetup.url;
-            if (!localStorage.getItem(meetupDismissKey) && !document.querySelector(".new-meetup-banner")) {
-                var meetupBanner = document.createElement("div");
-                meetupBanner.className = "meetup-banner new-meetup-banner";
-                var meetupText = document.createElement("div");
-                meetupText.className = "meetup-banner-text";
-                var meetupStrong = document.createElement("strong");
-                meetupStrong.textContent = "Upcoming Meetup";
-                meetupText.appendChild(meetupStrong);
-                meetupText.appendChild(document.createElement("br"));
-                meetupText.appendChild(document.createTextNode(recentMeetup.title));
-                var meetupBtn = document.createElement("a");
-                meetupBtn.className = "meetup-banner-btn";
-                meetupBtn.href = recentMeetup.url;
-                meetupBtn.textContent = "Learn More →";
-                var meetupDismiss = document.createElement("button");
-                meetupDismiss.className = "new-post-dismiss-btn";
-                meetupDismiss.textContent = "✕";
-                meetupDismiss.addEventListener("click", (function (key, el) {
-                    return function () { localStorage.setItem(key, "1"); el.remove(); };
-                })(meetupDismissKey, meetupBanner));
-                meetupBanner.appendChild(meetupText);
-                meetupBanner.appendChild(meetupBtn);
-                meetupBanner.appendChild(meetupDismiss);
-                if (bannerContainer) bannerContainer.appendChild(meetupBanner);
-            }
+        var upcomingMeetups = window.NASHME_MEETUPS.filter(function (m) {
+            return new Date((m.event_date || m.date) + "T23:59:59") >= now;
+        });
+        upcomingMeetups.sort(function (a, b) {
+            return new Date(a.event_date || a.date) - new Date(b.event_date || b.date);
+        });
+        var nextMeetup = upcomingMeetups[0];
+
+        if (nextMeetup && bannerContainer && !document.querySelector(".new-meetup-banner")) {
+            var meetupBanner = document.createElement("div");
+            meetupBanner.className = "meetup-banner new-meetup-banner";
+            var meetupText = document.createElement("div");
+            meetupText.className = "meetup-banner-text";
+            var meetupStrong = document.createElement("strong");
+            meetupStrong.textContent = "Upcoming Meetup";
+            meetupText.appendChild(meetupStrong);
+            meetupText.appendChild(document.createElement("br"));
+            meetupText.appendChild(document.createTextNode(nextMeetup.title));
+            var meetupBtn = document.createElement("a");
+            meetupBtn.className = "meetup-banner-btn";
+            meetupBtn.href = nextMeetup.url;
+            meetupBtn.textContent = "Learn More →";
+            meetupBanner.appendChild(meetupText);
+            meetupBanner.appendChild(meetupBtn);
+            bannerContainer.appendChild(meetupBanner);
         }
     }
 
