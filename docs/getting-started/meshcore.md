@@ -1034,25 +1034,24 @@
         <line x1="77" y1="104" x2="193" y2="124" stroke="#9d7bff" stroke-width="2" marker-end="url(#cr-arrow-p)"/>
         <text x="270" y="58" fill="#7fd9ab" font-size="13" font-weight="700">✓ reads</text>
         <text x="270" y="123" fill="#8895a8" font-size="12.5">✕ static</text>
-        <text x="210" y="160" text-anchor="middle" fill="#5e6b7d" font-size="10.5">both have #nashmesh key? only B does</text>
         <line x1="410" y1="10" x2="410" y2="180" stroke="#1f2a37"/>
         <text x="440" y="20" fill="#43c4f0" font-weight="700">REGION controls distance</text>
-        <circle cx="490" cy="95" r="19" fill="#0c1118" stroke="#43c4f0" stroke-width="2"/><text x="490" y="100" text-anchor="middle" fill="#9fe2fb" font-size="11.5">YOU</text>
-        <circle cx="620" cy="95" r="19" fill="#0c1118" stroke="#37e08a" stroke-width="2"/><text x="620" y="100" text-anchor="middle" fill="#9bf0c4" font-size="11.5">RPT</text>
-        <circle cx="750" cy="95" r="19" fill="#0c1118" stroke="#5a6573" stroke-width="2"/><text x="750" y="100" text-anchor="middle" fill="#9aa7b6" font-size="11">EDGE</text>
-        <line x1="509" y1="95" x2="601" y2="95" stroke="#37e08a" stroke-width="2.2" marker-end="url(#cr-arrow-g)"/>
-        <line x1="639" y1="95" x2="731" y2="95" stroke="#ff4d63" stroke-width="2" stroke-dasharray="3,6"/>
-        <text x="685" y="90" text-anchor="middle" fill="#ff6678" font-size="15" font-weight="700">✕</text>
-        <text x="620" y="132" text-anchor="middle" fill="#7fd9ab" font-size="11">us-tn-bna: forwards</text>
-        <text x="750" y="132" text-anchor="middle" fill="#8895a8" font-size="10.5">us-southeast only: drops</text>
+        <circle cx="480" cy="95" r="19" fill="#0c1118" stroke="#43c4f0" stroke-width="2"/><text x="480" y="100" text-anchor="middle" fill="#9fe2fb" font-size="11.5">YOU</text>
+        <circle cx="610" cy="95" r="19" fill="#0c1118" stroke="#37e08a" stroke-width="2"/><text x="610" y="100" text-anchor="middle" fill="#9bf0c4" font-size="11.5">RPT</text>
+        <circle cx="755" cy="95" r="19" fill="#0c1118" stroke="#5a6573" stroke-width="2"/><text x="755" y="100" text-anchor="middle" fill="#9aa7b6" font-size="10.5">EDGE</text>
+        <line x1="499" y1="95" x2="591" y2="95" stroke="#37e08a" stroke-width="2.2" marker-end="url(#cr-arrow-g)"/>
+        <line x1="629" y1="95" x2="736" y2="95" stroke="#ff4d63" stroke-width="2" stroke-dasharray="3,6"/>
+        <text x="683" y="88" text-anchor="middle" fill="#ff6678" font-size="15" font-weight="700">✕</text>
+        <text x="610" y="132" text-anchor="middle" fill="#7fd9ab" font-size="11">forwards ✓</text>
+        <text x="755" y="132" text-anchor="middle" fill="#8895a8" font-size="11">drops ✕</text>
       </g>
       <g class="nm-fx nm-anim-layer">
         <circle class="nm-fx nm-pkt" r="3" fill="#9d7bff" opacity="0.95"><animateMotion dur="2.3s" begin="-0.4s" repeatCount="indefinite" calcMode="linear" path="M77 86 L193 66"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.3s" begin="-0.4s" repeatCount="indefinite"/></circle>
         <circle class="nm-fx nm-pkt" r="3" fill="#9d7bff" opacity="0.95"><animateMotion dur="2.3s" begin="-0.4s" repeatCount="indefinite" calcMode="linear" path="M77 104 L193 124"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.3s" begin="-0.4s" repeatCount="indefinite"/></circle>
-        <circle class="nm-fx nm-pkt" r="3.2" fill="#37e08a" opacity="0.95"><animateMotion dur="2.1s" begin="-0.0s" repeatCount="indefinite" calcMode="linear" path="M509 95 L601 95"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.1s" begin="-0.0s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#37e08a" opacity="0.95"><animateMotion dur="2.1s" begin="-0.0s" repeatCount="indefinite" calcMode="linear" path="M499 95 L591 95"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.1s" begin="-0.0s" repeatCount="indefinite"/></circle>
       </g>
     </svg>
-    <p class="fc-caption">Channel decides who can actually decrypt a packet. Region decides whether it's close enough on the RF layer to receive one at all.</p>
+    <p class="fc-caption">Channel decides who can actually decrypt a packet (B has the key, C doesn't). Region decides whether it's close enough on the RF layer to receive one at all.</p>
   </div>
   <div class="fc-callout" style="margin-top:0.75rem">
     <div class="fc-callout-ic">!</div>
@@ -1087,14 +1086,13 @@
     </div>
   </div>
   <div class="fc-diagram" style="margin-top:0.5rem">
-    <svg viewBox="0 0 820 190" role="img" style="width:100%;display:block">
+    <svg viewBox="0 0 820 155" role="img" style="width:100%;display:block">
       <defs>
         <marker id="hz-arrow-g" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#37e08a"/></marker>
         <marker id="hz-arrow-r" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ff4d63"/></marker>
       </defs>
       <g font-family="'Fira Mono',monospace" font-size="11.5">
         <text x="14" y="16" fill="#7fd9ab" font-weight="700" font-size="13">top-down cascades ✓</text>
-        <text x="14" y="98" fill="#ff8593" font-weight="700" font-size="13">bottom-up blocked ✕</text>
         <g fill="#0c1118" stroke="#43c4f0" stroke-width="2">
           <circle cx="55" cy="55" r="15"/><circle cx="205" cy="55" r="15"/><circle cx="355" cy="55" r="15"/><circle cx="505" cy="55" r="15"/><circle cx="655" cy="55" r="15"/>
         </g>
@@ -1102,17 +1100,16 @@
         <line x1="220" y1="55" x2="340" y2="55" stroke="#37e08a" stroke-width="2.2" marker-end="url(#hz-arrow-g)"/>
         <line x1="370" y1="55" x2="490" y2="55" stroke="#37e08a" stroke-width="2.2" marker-end="url(#hz-arrow-g)"/>
         <line x1="520" y1="55" x2="640" y2="55" stroke="#37e08a" stroke-width="2.2" marker-end="url(#hz-arrow-g)"/>
-        <line x1="640" y1="85" x2="70" y2="85" stroke="#ff4d63" stroke-width="1.8" stroke-dasharray="3,6" marker-end="url(#hz-arrow-r)"/>
-        <text x="55" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us</text>
-        <text x="205" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-southeast</text>
-        <text x="355" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn</text>
-        <text x="505" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn-mid</text>
-        <text x="655" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn-bna</text>
+        <line x1="640" y1="88" x2="70" y2="88" stroke="#ff4d63" stroke-width="1.8" stroke-dasharray="3,6" marker-end="url(#hz-arrow-r)"/>
+        <text x="645" y="83" fill="#ff8593" font-weight="700" font-size="12">bottom-up blocked ✕</text>
+        <text x="55" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us</text>
+        <text x="205" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-southeast</text>
+        <text x="355" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn</text>
+        <text x="505" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn-mid</text>
+        <text x="655" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn-bna</text>
         <circle cx="760" cy="55" r="15" fill="#0c1118" stroke="#9d7bff" stroke-width="2" stroke-dasharray="2,3"/>
-        <text x="760" y="118" text-anchor="middle" fill="#cdb3ff" font-weight="700">nashmesh</text>
-        <text x="760" y="134" text-anchor="middle" fill="#7d6ba0" font-size="10">standalone</text>
-        <text x="355" y="160" text-anchor="middle" fill="#5e6b7d" font-size="11">a statewide alert on us-tn reaches every child down to us-tn-bna</text>
-        <text x="355" y="176" text-anchor="middle" fill="#5e6b7d" font-size="11">local chatter on us-tn-bna never reaches the us-southeast backbone</text>
+        <text x="760" y="122" text-anchor="middle" fill="#cdb3ff" font-weight="700">nashmesh</text>
+        <text x="760" y="138" text-anchor="middle" fill="#7d6ba0" font-size="10">standalone</text>
       </g>
       <g class="nm-fx nm-anim-layer">
         <circle class="nm-fx nm-pkt" r="3" fill="#37e08a" opacity="0.95"><animateMotion dur="1.3s" begin="-0.0s" repeatCount="indefinite" calcMode="linear" path="M70 55 L190 55"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="1.3s" begin="-0.0s" repeatCount="indefinite"/></circle>
@@ -1140,27 +1137,27 @@
 <div class="content-section content-section--b">
   <p>Proposed region scope for repeaters serving Middle Tennessee, from top-down flood scope to local tactical use.</p>
   <div class="fc-diagram">
-    <svg viewBox="0 0 820 230" role="img" style="width:100%;display:block">
+    <svg viewBox="0 0 820 250" role="img" style="width:100%;display:block">
       <g font-family="'Fira Mono',monospace" font-size="12">
         <text x="14" y="20" fill="#76869a" font-weight="700">SCOPE NARROWS → COST DROPS</text>
-        <circle cx="260" cy="130" r="95" fill="none" stroke="#ff4d63" stroke-width="2"/>
-        <circle cx="260" cy="130" r="80" fill="none" stroke="#ff9f43" stroke-width="2"/>
-        <circle cx="260" cy="130" r="65" fill="none" stroke="#ffb627" stroke-width="2"/>
-        <circle cx="260" cy="130" r="50" fill="none" stroke="#a3e635" stroke-width="2"/>
-        <circle cx="260" cy="130" r="35" fill="none" stroke="#37e08a" stroke-width="2"/>
-        <circle cx="260" cy="130" r="18" fill="rgba(34,211,238,.18)" stroke="#22d3ee" stroke-width="2.2"/>
-        <text x="260" y="134" text-anchor="middle" fill="#9af0fb" font-size="10.5" font-weight="700">bna</text>
-        <line x1="320.8" y1="56.8" x2="420" y2="35" stroke="#ff4d63" stroke-width="1.2"/><text x="430" y="39" fill="#ff9aa6" font-size="12">* &mdash; flood</text>
-        <line x1="311.2" y1="68.4" x2="420" y2="63" stroke="#ff9f43" stroke-width="1.2"/><text x="430" y="67" fill="#ffc38f" font-size="12">us &mdash; country</text>
-        <line x1="301.6" y1="79.9" x2="420" y2="91" stroke="#ffb627" stroke-width="1.2"/><text x="430" y="95" fill="#ffd98f" font-size="12">us-southeast &mdash; region</text>
-        <line x1="292" y1="91.5" x2="420" y2="119" stroke="#a3e635" stroke-width="1.2"/><text x="430" y="123" fill="#c6e96b" font-size="12">us-tn &mdash; state</text>
-        <line x1="282.4" y1="103" x2="420" y2="147" stroke="#37e08a" stroke-width="1.2"/><text x="430" y="151" fill="#9bf0c4" font-size="12">us-tn-mid &mdash; division</text>
-        <line x1="271.5" y1="116.1" x2="420" y2="175" stroke="#22d3ee" stroke-width="1.2"/><text x="430" y="179" fill="#9af0fb" font-size="12">us-tn-bna &mdash; metro</text>
-        <circle cx="650" cy="205" r="14" fill="#0c1118" stroke="#9d7bff" stroke-width="2" stroke-dasharray="2,3"/>
-        <text x="672" y="209" fill="#cdb3ff" font-size="12">nashmesh &mdash; standalone, local/tactical</text>
+        <circle cx="230" cy="130" r="95" fill="none" stroke="#ff4d63" stroke-width="2"/>
+        <circle cx="230" cy="130" r="80" fill="none" stroke="#ff9f43" stroke-width="2"/>
+        <circle cx="230" cy="130" r="65" fill="none" stroke="#ffb627" stroke-width="2"/>
+        <circle cx="230" cy="130" r="50" fill="none" stroke="#a3e635" stroke-width="2"/>
+        <circle cx="230" cy="130" r="35" fill="none" stroke="#37e08a" stroke-width="2"/>
+        <circle cx="230" cy="130" r="18" fill="rgba(34,211,238,.18)" stroke="#22d3ee" stroke-width="2.2"/>
+        <text x="230" y="134" text-anchor="middle" fill="#9af0fb" font-size="10.5" font-weight="700">bna</text>
+        <line x1="290.8" y1="56.8" x2="390" y2="35" stroke="#ff4d63" stroke-width="1.2"/><text x="400" y="39" fill="#ff9aa6" font-size="12">* &mdash; flood</text>
+        <line x1="281.2" y1="68.4" x2="390" y2="63" stroke="#ff9f43" stroke-width="1.2"/><text x="400" y="67" fill="#ffc38f" font-size="12">us &mdash; country</text>
+        <line x1="271.6" y1="79.9" x2="390" y2="91" stroke="#ffb627" stroke-width="1.2"/><text x="400" y="95" fill="#ffd98f" font-size="12">us-southeast &mdash; region</text>
+        <line x1="262" y1="91.5" x2="390" y2="119" stroke="#a3e635" stroke-width="1.2"/><text x="400" y="123" fill="#c6e96b" font-size="12">us-tn &mdash; state</text>
+        <line x1="252.4" y1="103" x2="390" y2="147" stroke="#37e08a" stroke-width="1.2"/><text x="400" y="151" fill="#9bf0c4" font-size="12">us-tn-mid &mdash; division</text>
+        <line x1="241.5" y1="116.1" x2="390" y2="175" stroke="#22d3ee" stroke-width="1.2"/><text x="400" y="179" fill="#9af0fb" font-size="12">us-tn-bna &mdash; metro</text>
+        <circle cx="80" cy="225" r="12" fill="#0c1118" stroke="#9d7bff" stroke-width="2" stroke-dasharray="2,3"/>
+        <text x="100" y="229" fill="#cdb3ff" font-size="12">nashmesh: standalone, local/tactical</text>
       </g>
     </svg>
-    <p class="fc-caption">Each ring nests inside the next; pick the narrowest scope that still reaches everyone who needs to hear it.</p>
+    <p class="fc-caption">Each ring nests inside the next; pick the narrowest scope that still reaches everyone who needs to hear it. <code>nashmesh</code> is a separate standalone scope, not nested under any ring.</p>
   </div>
   <table class="fc-table">
     <thead><tr><th>Scope</th><th>Region</th><th>Channels</th><th>Notes</th></tr></thead>
