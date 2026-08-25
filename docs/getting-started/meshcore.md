@@ -1137,7 +1137,7 @@
 <div class="content-section content-section--b">
   <p>Proposed region scope for repeaters serving Middle Tennessee, from top-down flood scope to local tactical use.</p>
   <div class="fc-diagram">
-    <svg viewBox="0 0 820 250" role="img" style="width:100%;display:block">
+    <svg viewBox="0 0 820 265" role="img" style="width:100%;display:block">
       <g font-family="'Fira Mono',monospace" font-size="12">
         <text x="14" y="20" fill="#76869a" font-weight="700">SCOPE NARROWS → COST DROPS</text>
         <circle cx="230" cy="130" r="95" fill="none" stroke="#ff4d63" stroke-width="2"/>
@@ -1153,8 +1153,8 @@
         <line x1="262" y1="91.5" x2="390" y2="119" stroke="#a3e635" stroke-width="1.2"/><text x="400" y="123" fill="#c6e96b" font-size="12">us-tn &mdash; state</text>
         <line x1="252.4" y1="103" x2="390" y2="147" stroke="#37e08a" stroke-width="1.2"/><text x="400" y="151" fill="#9bf0c4" font-size="12">us-tn-mid &mdash; division</text>
         <line x1="241.5" y1="116.1" x2="390" y2="175" stroke="#22d3ee" stroke-width="1.2"/><text x="400" y="179" fill="#9af0fb" font-size="12">us-tn-bna &mdash; metro</text>
-        <circle cx="80" cy="225" r="12" fill="#0c1118" stroke="#9d7bff" stroke-width="2" stroke-dasharray="2,3"/>
-        <text x="100" y="229" fill="#cdb3ff" font-size="12">nashmesh: standalone, local/tactical</text>
+        <circle cx="65" cy="240" r="10" fill="#0c1118" stroke="#9d7bff" stroke-width="2" stroke-dasharray="2,3"/>
+        <text x="100" y="244" fill="#cdb3ff" font-size="12">nashmesh: standalone, local/tactical</text>
       </g>
     </svg>
     <p class="fc-caption">Each ring nests inside the next; pick the narrowest scope that still reaches everyone who needs to hear it. <code>nashmesh</code> is a separate standalone scope, not nested under any ring.</p>
