@@ -977,6 +977,312 @@
 
 ---
 
+### Regions & Scope
+
+##### Channels vs Regions
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge">CHANNELS <strong>1-byte hash</strong></span>
+    <span class="fc-badge">REGIONS <strong>2-byte hash</strong></span>
+    <span class="fc-badge fc-badge--green">RULE <strong>access ≠ propagation</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>It's easy to assume a channel name scopes where a message travels. It doesn't. MeshCore has two separate mechanisms, and mixing them up is the single biggest cause of flood traffic on a growing mesh.</p>
+  <div class="fc-steps-grid">
+    <div class="fc-steps-col">
+      <h4>Channels</h4>
+      <p style="margin:0 0 0.4rem;color:#76869a;font-size:0.9em">"Who gets to read the message"</p>
+      <ul style="margin:0;padding-left:1.1em;color:#c9d6e3">
+        <li>Controls encryption &amp; access group membership: Public vs <code>#nashmesh</code>.</li>
+        <li>Changing the channel name isolates chat visibility, not radio propagation.</li>
+      </ul>
+    </div>
+    <div class="fc-steps-col">
+      <h4>Regions</h4>
+      <p style="margin:0 0 0.4rem;color:#76869a;font-size:0.9em">"Where the message gets forwarded"</p>
+      <ul style="margin:0;padding-left:1.1em;color:#c9d6e3">
+        <li>Controls repeater retransmission rules on the RF layer.</li>
+        <li>Region names compile into a fixed 2-byte transport hash over the air.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 190" role="img" style="width:100%;display:block">
+      <defs>
+        <marker id="cr-arrow-g" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#37e08a"/></marker>
+        <marker id="cr-arrow-p" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9d7bff"/></marker>
+      </defs>
+      <g font-family="'Fira Mono',monospace" font-size="13.5">
+        <text x="14" y="20" fill="#43c4f0" font-weight="700">REGION controls distance</text>
+        <circle cx="60" cy="95" r="19" fill="#0c1118" stroke="#43c4f0" stroke-width="2"/><text x="60" y="100" text-anchor="middle" fill="#9fe2fb" font-size="11.5">YOU</text>
+        <circle cx="190" cy="95" r="19" fill="#0c1118" stroke="#37e08a" stroke-width="2"/><text x="190" y="100" text-anchor="middle" fill="#9bf0c4" font-size="11.5">RPT</text>
+        <circle cx="320" cy="95" r="19" fill="#0c1118" stroke="#5a6573" stroke-width="2"/><text x="320" y="100" text-anchor="middle" fill="#9aa7b6" font-size="11">EDGE</text>
+        <line x1="79" y1="95" x2="171" y2="95" stroke="#37e08a" stroke-width="2.2" marker-end="url(#cr-arrow-g)"/>
+        <line x1="209" y1="95" x2="301" y2="95" stroke="#ff4d63" stroke-width="2" stroke-dasharray="3,6"/>
+        <text x="255" y="90" text-anchor="middle" fill="#ff6678" font-size="15" font-weight="700">✕</text>
+        <text x="190" y="132" text-anchor="middle" fill="#7fd9ab" font-size="11">us-tn-bna: forwards</text>
+        <text x="320" y="132" text-anchor="middle" fill="#8895a8" font-size="10.5">us-southeast only: drops</text>
+        <line x1="410" y1="10" x2="410" y2="180" stroke="#1f2a37"/>
+        <text x="440" y="20" fill="#bfa8ff" font-weight="700">CHANNEL controls readership</text>
+        <circle cx="490" cy="95" r="19" fill="#0c1118" stroke="#9d7bff" stroke-width="2"/><text x="490" y="100" text-anchor="middle" fill="#d9ccff" font-size="11.5">YOU</text>
+        <circle cx="640" cy="62" r="17" fill="#0c1118" stroke="#37e08a" stroke-width="2"/><text x="640" y="67" text-anchor="middle" fill="#9bf0c4" font-size="11.5">B</text>
+        <circle cx="640" cy="128" r="17" fill="#0c1118" stroke="#5a6573" stroke-width="2"/><text x="640" y="133" text-anchor="middle" fill="#9aa7b6" font-size="11.5">C</text>
+        <line x1="507" y1="86" x2="623" y2="66" stroke="#9d7bff" stroke-width="2" marker-end="url(#cr-arrow-p)"/>
+        <line x1="507" y1="104" x2="623" y2="124" stroke="#9d7bff" stroke-width="2" marker-end="url(#cr-arrow-p)"/>
+        <text x="700" y="58" fill="#7fd9ab" font-size="13" font-weight="700">✓ reads</text>
+        <text x="700" y="123" fill="#8895a8" font-size="12.5">✕ static</text>
+        <text x="640" y="160" text-anchor="middle" fill="#5e6b7d" font-size="10.5">both have #nashmesh key? only B does</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#37e08a" opacity="0.95"><animateMotion dur="2.1s" begin="-0.0s" repeatCount="indefinite" calcMode="linear" path="M79 95 L171 95"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.1s" begin="-0.0s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3" fill="#9d7bff" opacity="0.95"><animateMotion dur="2.3s" begin="-0.4s" repeatCount="indefinite" calcMode="linear" path="M507 86 L623 66"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.3s" begin="-0.4s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3" fill="#9d7bff" opacity="0.95"><animateMotion dur="2.3s" begin="-0.4s" repeatCount="indefinite" calcMode="linear" path="M507 104 L623 124"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.3s" begin="-0.4s" repeatCount="indefinite"/></circle>
+      </g>
+    </svg>
+    <p class="fc-caption">Region decides who's close enough on the RF layer to receive a packet at all. Channel decides who can actually decrypt it once received.</p>
+  </div>
+  <div class="fc-callout" style="margin-top:0.75rem">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>A channel does not limit RF propagation</strong>
+      <p>A message on a local channel still floods every distant repeater in range if its region isn't scoped. Long region names like <code>us-tn-bna</code> cost <strong>zero</strong> extra airtime bytes, so there's no tradeoff to scoping aggressively.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+##### The Problem: Flood Traffic & Airtime Saturation
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge">RISK <strong>duty cycle collapse</strong></span>
+    <span class="fc-badge">RISK <strong>hidden node collisions</strong></span>
+    <span class="fc-badge">RISK <strong>non-linear scale failure</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>As NashMesh grows past a handful of nodes, unscoped flood traffic becomes the limiting factor, not radio range.</p>
+  <div class="fc-settings-list">
+    <div class="fc-setting"><span class="fc-setting-label">Duty cycle collapse</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">unscoped messages repeat across every node in RF reach, exhausting airtime</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">Hidden node collisions</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">high-elevation relays hear competing nodes that can't hear each other</span></div>
+    <div class="fc-setting"><span class="fc-setting-label">The "bot &amp; telemetry" tax</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">automated pings flood wide-area backbones, blocking human emergency chat</span></div>
+    <div class="fc-setting fc-setting--last"><span class="fc-setting-label">Non-linear scale failure</span><span class="fc-setting-value" style="font-weight:400;color:#76869a">unbounded flooding gets worse faster than node density grows</span></div>
+  </div>
+  <div class="fc-diagram" style="margin-top:0.75rem">
+    <svg viewBox="0 0 820 210" role="img" style="width:100%;display:block">
+      <g font-family="'Fira Mono',monospace" font-size="12.5">
+        <text x="14" y="20" fill="#ff7a8a" font-weight="700">UNSCOPED (*): floods everywhere</text>
+        <circle cx="140" cy="120" r="18" fill="rgba(255,77,99,.18)" stroke="#ff4d63" stroke-width="2"/><text x="140" y="125" text-anchor="middle" fill="#ffb3bd" font-size="11">BNA</text>
+        <g fill="#3a2229" stroke="#ff4d63" stroke-width="1.3" opacity="0.85">
+          <circle cx="60" cy="60" r="10"/><circle cx="220" cy="55" r="10"/><circle cx="255" cy="130" r="10"/>
+          <circle cx="205" cy="180" r="10"/><circle cx="70" cy="175" r="10"/><circle cx="35" cy="120" r="9"/><circle cx="270" cy="90" r="9"/>
+        </g>
+        <g fill="#ff9aa6" font-size="10.5" text-anchor="middle">
+          <text x="60" y="45">TN</text><text x="220" y="40">KY</text><text x="255" y="150">NC</text>
+          <text x="205" y="200">SC</text><text x="70" y="196">AL</text><text x="35" y="105">VA</text><text x="270" y="75">GA</text>
+        </g>
+        <text x="140" y="205" text-anchor="middle" fill="#c98a92" font-size="11">leaks into every neighboring state</text>
+        <line x1="390" y1="8" x2="390" y2="200" stroke="#1f2a37"/>
+        <text x="420" y="20" fill="#7fd9ab" font-weight="700">SCOPED (us-tn-bna): contained</text>
+        <circle cx="560" cy="120" r="75" fill="none" stroke="#3a4757" stroke-width="1.4" stroke-dasharray="3,5"/>
+        <circle cx="560" cy="120" r="18" fill="rgba(55,224,138,.18)" stroke="#37e08a" stroke-width="2"/><text x="560" y="125" text-anchor="middle" fill="#9bf0c4" font-size="11">BNA</text>
+        <g fill="#232b26" stroke="#4a5a52" stroke-width="1.3" opacity="0.7">
+          <circle cx="480" cy="60" r="9"/><circle cx="640" cy="55" r="9"/><circle cx="675" cy="130" r="9"/>
+          <circle cx="625" cy="180" r="9"/><circle cx="490" cy="175" r="9"/>
+        </g>
+        <g fill="#5e6b7d" font-size="10" text-anchor="middle" opacity="0.8">
+          <text x="480" y="45">KY</text><text x="640" y="40">GA</text><text x="675" y="150">NC</text><text x="625" y="200">SC</text><text x="490" y="196">AL</text>
+        </g>
+        <text x="635" y="76" fill="#ff6678" font-size="15" font-weight="700">✕</text>
+        <text x="560" y="204" text-anchor="middle" fill="#7fa896" font-size="11">blocked at regional backbone</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-ping" cx="140" cy="120" r="18" fill="none" stroke="#ff4d63" stroke-width="1.8"><animate attributeName="r" values="18;140" dur="3s" begin="-0.0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/><animate attributeName="opacity" values="0.6;0" dur="3s" begin="-0.0s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-ping" cx="560" cy="120" r="18" fill="none" stroke="#37e08a" stroke-width="1.8"><animate attributeName="r" values="18;75" dur="2.4s" begin="-0.0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.4 1"/><animate attributeName="opacity" values="0.6;0" dur="2.4s" begin="-0.0s" repeatCount="indefinite"/></circle>
+      </g>
+    </svg>
+    <p class="fc-caption">One unscoped message keeps repeating outward until every repeater in range has passed it on. Scoping to a region gives it a hard edge.</p>
+  </div>
+</div>
+
+---
+
+##### Region Hierarchy & Propagation
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">TOP-DOWN <strong>cascades to children</strong></span>
+    <span class="fc-badge">BOTTOM-UP <strong>blocked at parent</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Regions nest into a hierarchy, and traffic only cascades one direction.</p>
+  <div class="fc-steps-grid">
+    <div class="fc-steps-col">
+      <h4>Top-down (allowed)</h4>
+      <p>Messages sent on a parent region (e.g. <code>us-tn</code>) automatically deliver down to child repeaters (<code>us-tn-mid</code>, <code>us-tn-bna</code>). Great for statewide alerts.</p>
+    </div>
+    <div class="fc-steps-col">
+      <h4>Bottom-up (blocked)</h4>
+      <p>Local chatter sent on a child region (<code>us-tn-bna</code>) is ignored by parent-only backbones (<code>us-southeast</code>). Protects wide-area airtime.</p>
+    </div>
+  </div>
+  <div class="fc-diagram" style="margin-top:0.5rem">
+    <svg viewBox="0 0 820 190" role="img" style="width:100%;display:block">
+      <defs>
+        <marker id="hz-arrow-g" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#37e08a"/></marker>
+        <marker id="hz-arrow-r" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ff4d63"/></marker>
+      </defs>
+      <g font-family="'Fira Mono',monospace" font-size="11.5">
+        <text x="14" y="16" fill="#7fd9ab" font-weight="700" font-size="13">top-down cascades ✓</text>
+        <text x="14" y="98" fill="#ff8593" font-weight="700" font-size="13">bottom-up blocked ✕</text>
+        <g fill="#0c1118" stroke="#43c4f0" stroke-width="2">
+          <circle cx="55" cy="55" r="15"/><circle cx="205" cy="55" r="15"/><circle cx="355" cy="55" r="15"/><circle cx="505" cy="55" r="15"/><circle cx="655" cy="55" r="15"/>
+        </g>
+        <line x1="70" y1="55" x2="190" y2="55" stroke="#37e08a" stroke-width="2.2" marker-end="url(#hz-arrow-g)"/>
+        <line x1="220" y1="55" x2="340" y2="55" stroke="#37e08a" stroke-width="2.2" marker-end="url(#hz-arrow-g)"/>
+        <line x1="370" y1="55" x2="490" y2="55" stroke="#37e08a" stroke-width="2.2" marker-end="url(#hz-arrow-g)"/>
+        <line x1="520" y1="55" x2="640" y2="55" stroke="#37e08a" stroke-width="2.2" marker-end="url(#hz-arrow-g)"/>
+        <line x1="640" y1="85" x2="70" y2="85" stroke="#ff4d63" stroke-width="1.8" stroke-dasharray="3,6" marker-end="url(#hz-arrow-r)"/>
+        <text x="55" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us</text>
+        <text x="205" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-southeast</text>
+        <text x="355" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn</text>
+        <text x="505" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn-mid</text>
+        <text x="655" y="118" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn-bna</text>
+        <circle cx="760" cy="55" r="15" fill="#0c1118" stroke="#9d7bff" stroke-width="2" stroke-dasharray="2,3"/>
+        <text x="760" y="118" text-anchor="middle" fill="#cdb3ff" font-weight="700">nashmesh</text>
+        <text x="760" y="134" text-anchor="middle" fill="#7d6ba0" font-size="10">standalone</text>
+        <text x="355" y="160" text-anchor="middle" fill="#5e6b7d" font-size="11">a statewide alert on us-tn reaches every child down to us-tn-bna</text>
+        <text x="355" y="176" text-anchor="middle" fill="#5e6b7d" font-size="11">local chatter on us-tn-bna never reaches the us-southeast backbone</text>
+      </g>
+      <g class="nm-fx nm-anim-layer">
+        <circle class="nm-fx nm-pkt" r="3" fill="#37e08a" opacity="0.95"><animateMotion dur="1.3s" begin="-0.0s" repeatCount="indefinite" calcMode="linear" path="M70 55 L190 55"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="1.3s" begin="-0.0s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3" fill="#37e08a" opacity="0.95"><animateMotion dur="1.3s" begin="-0.33s" repeatCount="indefinite" calcMode="linear" path="M220 55 L340 55"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="1.3s" begin="-0.33s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3" fill="#37e08a" opacity="0.95"><animateMotion dur="1.3s" begin="-0.66s" repeatCount="indefinite" calcMode="linear" path="M370 55 L490 55"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="1.3s" begin="-0.66s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3" fill="#37e08a" opacity="0.95"><animateMotion dur="1.3s" begin="-1.0s" repeatCount="indefinite" calcMode="linear" path="M520 55 L640 55"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="1.3s" begin="-1.0s" repeatCount="indefinite"/></circle>
+      </g>
+    </svg>
+    <p class="fc-caption">Traffic cascades top-down through the hierarchy, but a parent-only backbone ignores traffic sent on a child region. <code>nashmesh</code> sits outside the chain entirely.</p>
+  </div>
+  <p style="font-size:0.85em;color:#76869a;margin-top:0.5rem">High-profile repeaters can carry multiple regions at once to bridge interstate corridors cleanly.</p>
+</div>
+
+---
+
+##### Middle TN / NashMesh Region Scope
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge">STATUS <strong>proposed</strong></span>
+    <span class="fc-badge">FROM <strong>Aug 19, 2026 meetup</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Proposed region scope for repeaters serving Middle Tennessee, from top-down flood scope to local tactical use.</p>
+  <div class="fc-diagram">
+    <svg viewBox="0 0 820 230" role="img" style="width:100%;display:block">
+      <g font-family="'Fira Mono',monospace" font-size="12">
+        <text x="14" y="20" fill="#76869a" font-weight="700">SCOPE NARROWS → COST DROPS</text>
+        <circle cx="260" cy="130" r="95" fill="none" stroke="#ff4d63" stroke-width="2"/>
+        <circle cx="260" cy="130" r="80" fill="none" stroke="#ff9f43" stroke-width="2"/>
+        <circle cx="260" cy="130" r="65" fill="none" stroke="#ffb627" stroke-width="2"/>
+        <circle cx="260" cy="130" r="50" fill="none" stroke="#a3e635" stroke-width="2"/>
+        <circle cx="260" cy="130" r="35" fill="none" stroke="#37e08a" stroke-width="2"/>
+        <circle cx="260" cy="130" r="18" fill="rgba(34,211,238,.18)" stroke="#22d3ee" stroke-width="2.2"/>
+        <text x="260" y="134" text-anchor="middle" fill="#9af0fb" font-size="10.5" font-weight="700">bna</text>
+        <line x1="320.8" y1="56.8" x2="420" y2="35" stroke="#ff4d63" stroke-width="1.2"/><text x="430" y="39" fill="#ff9aa6" font-size="12">* &mdash; flood</text>
+        <line x1="311.2" y1="68.4" x2="420" y2="63" stroke="#ff9f43" stroke-width="1.2"/><text x="430" y="67" fill="#ffc38f" font-size="12">us &mdash; country</text>
+        <line x1="301.6" y1="79.9" x2="420" y2="91" stroke="#ffb627" stroke-width="1.2"/><text x="430" y="95" fill="#ffd98f" font-size="12">us-southeast &mdash; region</text>
+        <line x1="292" y1="91.5" x2="420" y2="119" stroke="#a3e635" stroke-width="1.2"/><text x="430" y="123" fill="#c6e96b" font-size="12">us-tn &mdash; state</text>
+        <line x1="282.4" y1="103" x2="420" y2="147" stroke="#37e08a" stroke-width="1.2"/><text x="430" y="151" fill="#9bf0c4" font-size="12">us-tn-mid &mdash; division</text>
+        <line x1="271.5" y1="116.1" x2="420" y2="175" stroke="#22d3ee" stroke-width="1.2"/><text x="430" y="179" fill="#9af0fb" font-size="12">us-tn-bna &mdash; metro</text>
+        <circle cx="650" cy="205" r="14" fill="#0c1118" stroke="#9d7bff" stroke-width="2" stroke-dasharray="2,3"/>
+        <text x="672" y="209" fill="#cdb3ff" font-size="12">nashmesh &mdash; standalone, local/tactical</text>
+      </g>
+    </svg>
+    <p class="fc-caption">Each ring nests inside the next; pick the narrowest scope that still reaches everyone who needs to hear it.</p>
+  </div>
+  <table class="fc-table">
+    <thead><tr><th>Scope</th><th>Region</th><th>Channels</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flood</td><td><code>*</code></td><td>Any / default</td><td>Unscoped flood across all repeaters unless denied</td></tr>
+      <tr><td>Country</td><td><code>us</code></td><td>Public, #bot, #test</td><td>Nationwide layer; wide-area &amp; cross-country</td></tr>
+      <tr><td>Country region</td><td><code>us-southeast</code></td><td>Public, #bot, #test</td><td>Multi-state corridor: TN, GA, NC, AL, KY, VA</td></tr>
+      <tr><td>State</td><td><code>us-tn</code></td><td>#tn, #tenntalk</td><td>Statewide coordination across all Grand Divisions</td></tr>
+      <tr><td>State division</td><td><code>us-tn-mid</code></td><td>#tn-middle</td><td>Middle TN umbrella; flanked by us-tn-east &amp; us-tn-west</td></tr>
+      <tr><td>IATA metro</td><td><code>us-tn-bna</code></td><td>#bna-bot, #bna-wx, #bna-test, #wardriving</td><td>Nashville metro, aligned with global MeshMapper</td></tr>
+      <tr><td>Local / tactical</td><td><code>nashmesh</code></td><td>#nashmesh</td><td>Dedicated local infrastructure or tactical ops</td></tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+##### Repeater CLI Reference
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">COMMAND <strong>region put</strong></span>
+    <span class="fc-badge">SAVE <strong>region save</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>Builds the top-down parent-child hierarchy from the table above on a repeater, then saves it to flash.</p>
+  <div class="fc-step"><span class="fc-step-num">1</span><span>Reset the existing region table (optional):</span></div>
+  <div class="copyable-code" style="margin:0.2rem 0 0.5rem"><pre><code>region clear</code></pre></div>
+  <div class="fc-step"><span class="fc-step-num">2</span><span>Build the hierarchy top-down:</span></div>
+  <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put us</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-southeast us</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn us-southeast</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn-mid us-tn</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>region put us-tn-bna us-tn-mid</code></pre></div>
+  <div class="fc-step"><span class="fc-step-num">3</span><span>Add the standalone local/tactical scope and save to flash:</span></div>
+  <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put nashmesh</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0"><pre><code>region save</code></pre></div>
+</div>
+
+---
+
+##### Best Practices vs Anti-Patterns
+
+<div class="content-section content-section--b">
+  <div class="fc-steps-grid">
+    <div class="fc-steps-col">
+      <h4 style="color:#5fd6a0">Best practices</h4>
+      <ul style="margin:0;padding-left:1.1em;color:#c9d6e3">
+        <li>Standardize client defaults: set your app's default scope to <code>us-tn-bna</code> for routine chat.</li>
+        <li>Stack high-profile repeaters: add multiple regions (<code>us-southeast</code>, <code>us-tn</code>, <code>us-tn-mid</code>) on mountain relays.</li>
+        <li>Phase in a wildcard filter: gradually apply <code>region denyf *</code> as scope adoption matures.</li>
+      </ul>
+    </div>
+    <div class="fc-steps-col">
+      <h4 style="color:#ff7a8a">Anti-patterns</h4>
+      <ul style="margin:0;padding-left:1.1em;color:#c9d6e3">
+        <li>Flat unscoped traffic: leaving repeaters on the default open <code>*</code> wildcard floods all regional nodes.</li>
+        <li>Overly deep names: hyper-long regions like <code>us-tn-davidson-east</code> increase typo risk.</li>
+        <li>Channel-only isolation: expecting a <code>#local-chat</code> channel name to restrict RF flood distance.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="fc-callout" style="margin-top:0.75rem">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>This is a rollout, not a flag day</strong>
+      <p>Denying the wildcard region is a "maybe/eventually" step for once scope adoption matures, not something to switch on immediately. Coordinate with other operators before restricting a shared repeater.</p>
+    </div>
+  </div>
+</div>
+
+---
+
 ### Bots
 
 ##### Weather Bot
