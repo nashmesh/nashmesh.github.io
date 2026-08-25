@@ -989,7 +989,7 @@
 
 ### Regions & Scope
 
-##### Channels vs Regions
+#### Channels vs Regions
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1065,7 +1065,7 @@
 
 ---
 
-##### The Problem: Flood Traffic & Airtime Saturation
+#### The Problem: Flood Traffic & Airtime Saturation
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1122,7 +1122,7 @@
 
 ---
 
-##### Region Hierarchy & Propagation
+#### Region Hierarchy & Propagation
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1185,7 +1185,7 @@
 
 ---
 
-##### Middle TN / NashMesh Region Scope
+#### Middle TN / NashMesh Region Scope
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1235,7 +1235,7 @@
 
 ---
 
-##### Repeater CLI Reference
+#### Repeater CLI Reference
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1261,7 +1261,7 @@
 
 ---
 
-##### Best Practices vs Anti-Patterns
+#### Best Practices vs Anti-Patterns
 
 <div class="content-section content-section--b">
   <div class="fc-steps-grid">
