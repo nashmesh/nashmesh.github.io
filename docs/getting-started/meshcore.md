@@ -1026,33 +1026,33 @@
         <marker id="cr-arrow-p" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9d7bff"/></marker>
       </defs>
       <g font-family="'Fira Mono',monospace" font-size="13.5">
-        <text x="14" y="20" fill="#43c4f0" font-weight="700">REGION controls distance</text>
-        <circle cx="60" cy="95" r="19" fill="#0c1118" stroke="#43c4f0" stroke-width="2"/><text x="60" y="100" text-anchor="middle" fill="#9fe2fb" font-size="11.5">YOU</text>
-        <circle cx="190" cy="95" r="19" fill="#0c1118" stroke="#37e08a" stroke-width="2"/><text x="190" y="100" text-anchor="middle" fill="#9bf0c4" font-size="11.5">RPT</text>
-        <circle cx="320" cy="95" r="19" fill="#0c1118" stroke="#5a6573" stroke-width="2"/><text x="320" y="100" text-anchor="middle" fill="#9aa7b6" font-size="11">EDGE</text>
-        <line x1="79" y1="95" x2="171" y2="95" stroke="#37e08a" stroke-width="2.2" marker-end="url(#cr-arrow-g)"/>
-        <line x1="209" y1="95" x2="301" y2="95" stroke="#ff4d63" stroke-width="2" stroke-dasharray="3,6"/>
-        <text x="255" y="90" text-anchor="middle" fill="#ff6678" font-size="15" font-weight="700">✕</text>
-        <text x="190" y="132" text-anchor="middle" fill="#7fd9ab" font-size="11">us-tn-bna: forwards</text>
-        <text x="320" y="132" text-anchor="middle" fill="#8895a8" font-size="10.5">us-southeast only: drops</text>
+        <text x="14" y="20" fill="#bfa8ff" font-weight="700">CHANNEL controls readership</text>
+        <circle cx="60" cy="95" r="19" fill="#0c1118" stroke="#9d7bff" stroke-width="2"/><text x="60" y="100" text-anchor="middle" fill="#d9ccff" font-size="11.5">YOU</text>
+        <circle cx="210" cy="62" r="17" fill="#0c1118" stroke="#37e08a" stroke-width="2"/><text x="210" y="67" text-anchor="middle" fill="#9bf0c4" font-size="11.5">B</text>
+        <circle cx="210" cy="128" r="17" fill="#0c1118" stroke="#5a6573" stroke-width="2"/><text x="210" y="133" text-anchor="middle" fill="#9aa7b6" font-size="11.5">C</text>
+        <line x1="77" y1="86" x2="193" y2="66" stroke="#9d7bff" stroke-width="2" marker-end="url(#cr-arrow-p)"/>
+        <line x1="77" y1="104" x2="193" y2="124" stroke="#9d7bff" stroke-width="2" marker-end="url(#cr-arrow-p)"/>
+        <text x="270" y="58" fill="#7fd9ab" font-size="13" font-weight="700">✓ reads</text>
+        <text x="270" y="123" fill="#8895a8" font-size="12.5">✕ static</text>
+        <text x="210" y="160" text-anchor="middle" fill="#5e6b7d" font-size="10.5">both have #nashmesh key? only B does</text>
         <line x1="410" y1="10" x2="410" y2="180" stroke="#1f2a37"/>
-        <text x="440" y="20" fill="#bfa8ff" font-weight="700">CHANNEL controls readership</text>
-        <circle cx="490" cy="95" r="19" fill="#0c1118" stroke="#9d7bff" stroke-width="2"/><text x="490" y="100" text-anchor="middle" fill="#d9ccff" font-size="11.5">YOU</text>
-        <circle cx="640" cy="62" r="17" fill="#0c1118" stroke="#37e08a" stroke-width="2"/><text x="640" y="67" text-anchor="middle" fill="#9bf0c4" font-size="11.5">B</text>
-        <circle cx="640" cy="128" r="17" fill="#0c1118" stroke="#5a6573" stroke-width="2"/><text x="640" y="133" text-anchor="middle" fill="#9aa7b6" font-size="11.5">C</text>
-        <line x1="507" y1="86" x2="623" y2="66" stroke="#9d7bff" stroke-width="2" marker-end="url(#cr-arrow-p)"/>
-        <line x1="507" y1="104" x2="623" y2="124" stroke="#9d7bff" stroke-width="2" marker-end="url(#cr-arrow-p)"/>
-        <text x="700" y="58" fill="#7fd9ab" font-size="13" font-weight="700">✓ reads</text>
-        <text x="700" y="123" fill="#8895a8" font-size="12.5">✕ static</text>
-        <text x="640" y="160" text-anchor="middle" fill="#5e6b7d" font-size="10.5">both have #nashmesh key? only B does</text>
+        <text x="440" y="20" fill="#43c4f0" font-weight="700">REGION controls distance</text>
+        <circle cx="490" cy="95" r="19" fill="#0c1118" stroke="#43c4f0" stroke-width="2"/><text x="490" y="100" text-anchor="middle" fill="#9fe2fb" font-size="11.5">YOU</text>
+        <circle cx="620" cy="95" r="19" fill="#0c1118" stroke="#37e08a" stroke-width="2"/><text x="620" y="100" text-anchor="middle" fill="#9bf0c4" font-size="11.5">RPT</text>
+        <circle cx="750" cy="95" r="19" fill="#0c1118" stroke="#5a6573" stroke-width="2"/><text x="750" y="100" text-anchor="middle" fill="#9aa7b6" font-size="11">EDGE</text>
+        <line x1="509" y1="95" x2="601" y2="95" stroke="#37e08a" stroke-width="2.2" marker-end="url(#cr-arrow-g)"/>
+        <line x1="639" y1="95" x2="731" y2="95" stroke="#ff4d63" stroke-width="2" stroke-dasharray="3,6"/>
+        <text x="685" y="90" text-anchor="middle" fill="#ff6678" font-size="15" font-weight="700">✕</text>
+        <text x="620" y="132" text-anchor="middle" fill="#7fd9ab" font-size="11">us-tn-bna: forwards</text>
+        <text x="750" y="132" text-anchor="middle" fill="#8895a8" font-size="10.5">us-southeast only: drops</text>
       </g>
       <g class="nm-fx nm-anim-layer">
-        <circle class="nm-fx nm-pkt" r="3.2" fill="#37e08a" opacity="0.95"><animateMotion dur="2.1s" begin="-0.0s" repeatCount="indefinite" calcMode="linear" path="M79 95 L171 95"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.1s" begin="-0.0s" repeatCount="indefinite"/></circle>
-        <circle class="nm-fx nm-pkt" r="3" fill="#9d7bff" opacity="0.95"><animateMotion dur="2.3s" begin="-0.4s" repeatCount="indefinite" calcMode="linear" path="M507 86 L623 66"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.3s" begin="-0.4s" repeatCount="indefinite"/></circle>
-        <circle class="nm-fx nm-pkt" r="3" fill="#9d7bff" opacity="0.95"><animateMotion dur="2.3s" begin="-0.4s" repeatCount="indefinite" calcMode="linear" path="M507 104 L623 124"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.3s" begin="-0.4s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3" fill="#9d7bff" opacity="0.95"><animateMotion dur="2.3s" begin="-0.4s" repeatCount="indefinite" calcMode="linear" path="M77 86 L193 66"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.3s" begin="-0.4s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3" fill="#9d7bff" opacity="0.95"><animateMotion dur="2.3s" begin="-0.4s" repeatCount="indefinite" calcMode="linear" path="M77 104 L193 124"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.3s" begin="-0.4s" repeatCount="indefinite"/></circle>
+        <circle class="nm-fx nm-pkt" r="3.2" fill="#37e08a" opacity="0.95"><animateMotion dur="2.1s" begin="-0.0s" repeatCount="indefinite" calcMode="linear" path="M509 95 L601 95"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="2.1s" begin="-0.0s" repeatCount="indefinite"/></circle>
       </g>
     </svg>
-    <p class="fc-caption">Region decides who's close enough on the RF layer to receive a packet at all. Channel decides who can actually decrypt it once received.</p>
+    <p class="fc-caption">Channel decides who can actually decrypt a packet. Region decides whether it's close enough on the RF layer to receive one at all.</p>
   </div>
   <div class="fc-callout" style="margin-top:0.75rem">
     <div class="fc-callout-ic">!</div>
