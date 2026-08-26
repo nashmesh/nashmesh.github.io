@@ -30,6 +30,7 @@ def define_env(env):
                         "title": str(meta["title"]),
                         "date": str(meta["date"])[:10],
                         "url": "/posts/" + slug + "/",
+                        "hideNewPostBanner": bool(meta.get("hide_new_post_banner")),
                     })
             except Exception:
                 pass

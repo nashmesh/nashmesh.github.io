@@ -93,7 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
         var recentPost = null;
         for (var i = 0; i < window.NASHME_POSTS.length; i++) {
             var p = window.NASHME_POSTS[i];
-            if (new Date(p.date + "T00:00:00") >= cutoff) { recentPost = p; break; }
+            if (new Date(p.date + "T00:00:00") < cutoff) break;
+            if (p.hideNewPostBanner) continue;
+            recentPost = p;
+            break;
         }
         if (recentPost) {
             var dismissKey = "new-post-dismissed:" + recentPost.url;
