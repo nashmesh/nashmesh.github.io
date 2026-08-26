@@ -17,7 +17,7 @@
 
 <div class="fc-step"><span class="fc-step-num">3</span><span>Settings → Experimental → Default Path Hash Size → <strong>2-Byte</strong>.</span></div>
 <div class="fc-step"><span class="fc-step-num">4</span><span>Send an advert to announce yourself to the mesh.</span></div>
-<div class="fc-step"><span class="fc-step-num">5</span><span><em>Optional, proposed:</em> set your default region scope to <code>us-tn-bna</code> for routine chat. See <a href="#regions-scope">Regions & Scope</a>.</span></div>
+<div class="fc-step"><span class="fc-step-num">5</span><span><em>Optional, proposed:</em> set your default region scope to <code>us-tn-bna</code> for routine chat. See <a href="#regions">Regions</a>.</span></div>
 </div>
 
 <div class="content-section content-section--a" style="margin-top:0.5rem">
@@ -50,7 +50,7 @@
 <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>set flood.advert.interval 3</code></pre></div>
 <div class="fc-step"><span class="fc-step-num">6</span><span>Set your contact info so other operators can reach you:</span></div>
 <div class="copyable-code" style="margin:0.2rem 0 0.5rem"><pre><code>set owner.info N0CALL | contact | site name</code></pre></div>
-<div class="fc-step"><span class="fc-step-num">7</span><span><em>Optional, proposed:</em> join the Middle TN region hierarchy. See <a href="#regions-scope">Regions & Scope</a>.</span></div>
+<div class="fc-step"><span class="fc-step-num">7</span><span><em>Optional, proposed:</em> join the Middle TN region hierarchy. See <a href="#regions">Regions</a>.</span></div>
 <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region clear</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-southeast us</code></pre></div>
@@ -987,7 +987,7 @@
 
 ---
 
-### Regions & Scope
+### Regions
 
 #### Channels vs Regions
 
