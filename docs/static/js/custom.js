@@ -28,9 +28,10 @@ function scrollToEl(el, smooth) {
     if (mobileToc && mobileToc.offsetHeight) offset += mobileToc.offsetHeight;
     offset += 6;
     var top = el.getBoundingClientRect().top + window.scrollY - offset;
-    // Native `behavior: 'smooth'` scales its duration with distance, which makes
-    // jumping to a TOC section on a long page feel sluggish. Jump instantly instead.
-    window.scrollTo({ top: top, behavior: 'auto' });
+    // `behavior: 'auto'` still defers to the page's CSS `scroll-behavior` (which is
+    // 'smooth' here), so it would animate anyway. 'instant' bypasses that and jumps
+    // with no animation at all.
+    window.scrollTo({ top: top, behavior: 'instant' });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
