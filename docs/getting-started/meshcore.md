@@ -1125,7 +1125,7 @@
 
 ---
 
-#### Proposed Middle TN Region Scope
+#### Proposed Regions
 
 <div class="fc-card-header">
   <div class="fc-badges">
@@ -1175,7 +1175,7 @@
 
 ---
 
-#### Repeater CLI Reference
+#### Repeater Setup
 
 <div class="fc-card-header">
   <div class="fc-badges">
