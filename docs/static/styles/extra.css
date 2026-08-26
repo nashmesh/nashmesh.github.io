@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+/* Bootstrap sets `scroll-behavior: smooth` on the root, which makes the browser
+   animate the native jump-to-anchor when a page is loaded directly with a URL
+   fragment (e.g. /page/#subsection). Override it so that lands instantly; our own
+   TOC/anchor click handling already forces `behavior: 'instant'` regardless. */
+html {
+  scroll-behavior: auto;
+}
+
 body.retro-theme .navbar-toggler {
   background-color: #4040aa;
   border: 2px solid #aaaaff;
