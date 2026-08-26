@@ -128,6 +128,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Featured guide banner (manually curated, dismissible - not tied to a blog post's date)
+    (function () {
+        var guide = {
+            key: "regions-guide",
+            title: "New Guide: Regions",
+            text: "See how MeshCore regions scope traffic across Middle TN.",
+            url: "/getting-started/meshcore/#regions",
+        };
+        var dismissKey = "guide-dismissed:" + guide.key;
+        if (!bannerContainer || localStorage.getItem(dismissKey) || document.querySelector(".new-guide-banner")) return;
+
+        var banner = document.createElement("div");
+        banner.className = "meetup-banner new-post-banner new-guide-banner";
+        var text = document.createElement("div");
+        text.className = "meetup-banner-text";
+        var strong = document.createElement("strong");
+        strong.textContent = guide.title;
+        text.appendChild(strong);
+        text.appendChild(document.createElement("br"));
+        text.appendChild(document.createTextNode(guide.text));
+        var btn = document.createElement("a");
+        btn.className = "meetup-banner-btn";
+        btn.href = guide.url;
+        btn.textContent = "Read More →";
+        var dismiss = document.createElement("button");
+        dismiss.className = "new-post-dismiss-btn";
+        dismiss.textContent = "✕";
+        dismiss.addEventListener("click", function () {
+            localStorage.setItem(dismissKey, "1");
+            banner.remove();
+        });
+        banner.appendChild(text);
+        banner.appendChild(btn);
+        banner.appendChild(dismiss);
+        bannerContainer.appendChild(banner);
+    })();
+
     // Tab URL hash tracking
     function slugify(text) {
         return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
