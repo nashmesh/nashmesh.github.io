@@ -39,7 +39,7 @@ function scrollToEl(el, smooth) {
     // a short, fixed duration instead so every jump feels equally snappy.
     var startY = window.scrollY;
     var distance = top - startY;
-    var duration = 180;
+    var duration = 60;
     var startTime = null;
 
     function easeOutQuad(t) { return t * (2 - t); }
