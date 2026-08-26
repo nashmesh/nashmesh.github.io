@@ -1064,7 +1064,7 @@
 
 ---
 
-#### Region Hierarchy & Propagation
+#### Hierarchy & Propagation
 
 <div class="fc-card-header">
   <div class="fc-badges">
