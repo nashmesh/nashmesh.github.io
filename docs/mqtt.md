@@ -42,17 +42,9 @@ MQTT is a message-broker application that mesh nodes can connect to. By connecti
 
     Custom firmwares provided by [Adam](https://gessaman.com) include observer functionality built directly into the firmware, no companion device or separate install needed. Both repeater and room server variants are available.
 
-    Supported devices:
+    Flash them from the web-based observer flasher, which stays up to date with the latest mainline and dev-branch builds automatically and lists all supported devices:
 
-    - Heltec T190 / v3 / v4
-    - LilyGo T3S3 SX1262
-    - RAK 3112
-    - Station G2
-    - T-Beam S3 Supreme
-    - T-Beam SX1262 / SX1276
-    - Xiao S3 WIO
-
-    [Download experimental firmwares](https://files.gessaman.com/meshcore-observer/){ .doc-btn }
+    [Open the Observer Flasher](https://observer.gessaman.com/){ .doc-btn }
 
     For full documentation on all available settings and commands, see the [MQTT Bridge Implementation docs](https://github.com/agessaman/MeshCore/blob/mqtt-bridge-implementation-flex/MQTT_IMPLEMENTATION.md).
 
