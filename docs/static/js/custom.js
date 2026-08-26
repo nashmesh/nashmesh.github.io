@@ -28,7 +28,29 @@ function scrollToEl(el, smooth) {
     if (mobileToc && mobileToc.offsetHeight) offset += mobileToc.offsetHeight;
     offset += 6;
     var top = el.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top: top, behavior: smooth ? 'smooth' : 'auto' });
+
+    if (!smooth) {
+        window.scrollTo({ top: top, behavior: 'auto' });
+        return;
+    }
+
+    // Native `behavior: 'smooth'` scales its duration with distance, which makes
+    // jumping to a TOC section on a long page feel sluggish. Animate manually with
+    // a short, fixed duration instead so every jump feels equally snappy.
+    var startY = window.scrollY;
+    var distance = top - startY;
+    var duration = 180;
+    var startTime = null;
+
+    function easeOutQuad(t) { return t * (2 - t); }
+
+    function step(timestamp) {
+        if (startTime === null) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        window.scrollTo(0, startY + distance * easeOutQuad(progress));
+        if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
