@@ -3,6 +3,7 @@ title: "MeshCore Scaling Strategy: Region Scope & Channel Use for Middle TN"
 description: Slides from the Aug 19 NashMesh meetup on using MeshCore regions to stop flood traffic and scope Middle Tennessee's mesh.
 date: 2026-08-19 00:00:00
 template: base_no_sidebar.html
+hide_new_post_banner: true
 
 tags:
   - community

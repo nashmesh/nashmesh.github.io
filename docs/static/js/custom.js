@@ -28,29 +28,10 @@ function scrollToEl(el, smooth) {
     if (mobileToc && mobileToc.offsetHeight) offset += mobileToc.offsetHeight;
     offset += 6;
     var top = el.getBoundingClientRect().top + window.scrollY - offset;
-
-    if (!smooth) {
-        window.scrollTo({ top: top, behavior: 'auto' });
-        return;
-    }
-
-    // Native `behavior: 'smooth'` scales its duration with distance, which makes
-    // jumping to a TOC section on a long page feel sluggish. Animate manually with
-    // a short, fixed duration instead so every jump feels equally snappy.
-    var startY = window.scrollY;
-    var distance = top - startY;
-    var duration = 180;
-    var startTime = null;
-
-    function easeOutQuad(t) { return t * (2 - t); }
-
-    function step(timestamp) {
-        if (startTime === null) startTime = timestamp;
-        var progress = Math.min((timestamp - startTime) / duration, 1);
-        window.scrollTo(0, startY + distance * easeOutQuad(progress));
-        if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
+    // `behavior: 'auto'` still defers to the page's CSS `scroll-behavior` (which is
+    // 'smooth' here), so it would animate anyway. 'instant' bypasses that and jumps
+    // with no animation at all.
+    window.scrollTo({ top: top, behavior: 'instant' });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -93,7 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
         var recentPost = null;
         for (var i = 0; i < window.NASHME_POSTS.length; i++) {
             var p = window.NASHME_POSTS[i];
-            if (new Date(p.date + "T00:00:00") >= cutoff) { recentPost = p; break; }
+            if (new Date(p.date + "T00:00:00") < cutoff) break;
+            if (p.hideNewPostBanner) continue;
+            recentPost = p;
+            break;
         }
         if (recentPost) {
             var dismissKey = "new-post-dismissed:" + recentPost.url;
@@ -124,6 +108,43 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
+    // Featured guide banner (manually curated, dismissible - not tied to a blog post's date)
+    (function () {
+        var guide = {
+            key: "regions-guide",
+            title: "New Guide: Regions",
+            text: "See how MeshCore regions scope traffic across Middle TN.",
+            url: "/getting-started/meshcore/#regions",
+        };
+        var dismissKey = "guide-dismissed:" + guide.key;
+        if (!bannerContainer || localStorage.getItem(dismissKey) || document.querySelector(".new-guide-banner")) return;
+
+        var banner = document.createElement("div");
+        banner.className = "meetup-banner new-post-banner new-guide-banner";
+        var text = document.createElement("div");
+        text.className = "meetup-banner-text";
+        var strong = document.createElement("strong");
+        strong.textContent = guide.title;
+        text.appendChild(strong);
+        text.appendChild(document.createElement("br"));
+        text.appendChild(document.createTextNode(guide.text));
+        var btn = document.createElement("a");
+        btn.className = "meetup-banner-btn";
+        btn.href = guide.url;
+        btn.textContent = "Read More →";
+        var dismiss = document.createElement("button");
+        dismiss.className = "new-post-dismiss-btn";
+        dismiss.textContent = "✕";
+        dismiss.addEventListener("click", function () {
+            localStorage.setItem(dismissKey, "1");
+            banner.remove();
+        });
+        banner.appendChild(text);
+        banner.appendChild(btn);
+        banner.appendChild(dismiss);
+        bannerContainer.appendChild(banner);
+    })();
 
     // Tab URL hash tracking
     function slugify(text) {
