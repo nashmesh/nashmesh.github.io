@@ -55,8 +55,8 @@
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-southeast us</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn us-southeast</code></pre></div>
-<div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn-mid us-tn</code></pre></div>
-<div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn-bna us-tn-mid</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn-middle us-tn</code></pre></div>
+<div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn-bna us-tn-middle</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put nashmesh</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0"><pre><code>region save</code></pre></div>
 </div>
@@ -1078,7 +1078,7 @@
   <div class="fc-steps-grid">
     <div class="fc-steps-col">
       <h4>Top-down (allowed)</h4>
-      <p>Messages sent on a parent region (e.g. <code>us-tn</code>) automatically deliver down to child repeaters (<code>us-tn-mid</code>, <code>us-tn-bna</code>). Great for statewide alerts.</p>
+      <p>Messages sent on a parent region (e.g. <code>us-tn</code>) automatically deliver down to child repeaters (<code>us-tn-middle</code>, <code>us-tn-bna</code>). Great for statewide alerts.</p>
     </div>
     <div class="fc-steps-col">
       <h4>Bottom-up (blocked)</h4>
@@ -1105,7 +1105,7 @@
         <text x="55" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us</text>
         <text x="205" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-southeast</text>
         <text x="355" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn</text>
-        <text x="505" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn-mid</text>
+        <text x="505" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn-middle</text>
         <text x="655" y="122" text-anchor="middle" fill="#9fe2fb" font-weight="700">us-tn-bna</text>
         <circle cx="760" cy="55" r="15" fill="#0c1118" stroke="#9d7bff" stroke-width="2" stroke-dasharray="2,3"/>
         <text x="760" y="122" text-anchor="middle" fill="#cdb3ff" font-weight="700">nashmesh</text>
@@ -1151,7 +1151,7 @@
         <line x1="281.2" y1="68.4" x2="390" y2="63" stroke="#ff9f43" stroke-width="1.2"/><text x="400" y="67" fill="#ffc38f" font-size="12">us &mdash; country</text>
         <line x1="271.6" y1="79.9" x2="390" y2="91" stroke="#ffb627" stroke-width="1.2"/><text x="400" y="95" fill="#ffd98f" font-size="12">us-southeast &mdash; region</text>
         <line x1="262" y1="91.5" x2="390" y2="119" stroke="#a3e635" stroke-width="1.2"/><text x="400" y="123" fill="#c6e96b" font-size="12">us-tn &mdash; state</text>
-        <line x1="252.4" y1="103" x2="390" y2="147" stroke="#37e08a" stroke-width="1.2"/><text x="400" y="151" fill="#9bf0c4" font-size="12">us-tn-mid &mdash; division</text>
+        <line x1="252.4" y1="103" x2="390" y2="147" stroke="#37e08a" stroke-width="1.2"/><text x="400" y="151" fill="#9bf0c4" font-size="12">us-tn-middle &mdash; division</text>
         <line x1="241.5" y1="116.1" x2="390" y2="175" stroke="#22d3ee" stroke-width="1.2"/><text x="400" y="179" fill="#9af0fb" font-size="12">us-tn-bna &mdash; metro</text>
         <circle cx="65" cy="240" r="10" fill="#0c1118" stroke="#9d7bff" stroke-width="2" stroke-dasharray="2,3"/>
         <text x="100" y="244" fill="#cdb3ff" font-size="12">nashmesh: standalone, local/tactical</text>
@@ -1166,7 +1166,7 @@
       <tr><td>Country</td><td><code>us</code></td><td>Public, #bot, #test</td><td>Nationwide layer; wide-area &amp; cross-country</td></tr>
       <tr><td>Country region</td><td><code>us-southeast</code></td><td>Public, #bot, #test</td><td>Multi-state corridor: TN, GA, NC, AL, KY, VA</td></tr>
       <tr><td>State</td><td><code>us-tn</code></td><td>#tn, #tenntalk</td><td>Statewide coordination across all Grand Divisions</td></tr>
-      <tr><td>State division</td><td><code>us-tn-mid</code></td><td>#tn-middle</td><td>Middle TN umbrella; flanked by us-tn-east &amp; us-tn-west</td></tr>
+      <tr><td>State division</td><td><code>us-tn-middle</code></td><td>#tn-middle</td><td>Middle TN umbrella; flanked by us-tn-east &amp; us-tn-west</td></tr>
       <tr><td>IATA metro</td><td><code>us-tn-bna</code></td><td>#bna-bot, #bna-wx, #bna-test, #wardriving</td><td>Nashville metro, aligned with global MeshMapper</td></tr>
       <tr><td>Local / tactical</td><td><code>nashmesh</code></td><td>#nashmesh</td><td>Dedicated local infrastructure or tactical ops</td></tr>
     </tbody>
@@ -1192,11 +1192,42 @@
   <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put us</code></pre></div>
   <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-southeast us</code></pre></div>
   <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn us-southeast</code></pre></div>
-  <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn-mid us-tn</code></pre></div>
-  <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>region put us-tn-bna us-tn-mid</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn-middle us-tn</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>region put us-tn-bna us-tn-middle</code></pre></div>
   <div class="fc-step"><span class="fc-step-num">3</span><span>Add the standalone local/tactical scope and save to flash:</span></div>
   <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put nashmesh</code></pre></div>
   <div class="copyable-code" style="margin:0 0 0"><pre><code>region save</code></pre></div>
+</div>
+
+---
+
+#### Editing Regions
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge fc-badge--green">COMMAND <strong>region remove</strong></span>
+    <span class="fc-badge">SAVE <strong>region save</strong></span>
+  </div>
+</div>
+
+<div class="fc-callout">
+  <div class="fc-callout-ic">!</div>
+  <div>
+    <strong>Removing a region with children fails until the children are gone</strong>
+    <p>A region can't be removed while another region still lists it as a parent. Remove the children first (deepest first), then remove the region itself, then rebuild anything that pointed at it. Example: renaming <code>us-tn-mid</code> to <code>us-tn-middle</code>:</p>
+  </div>
+</div>
+
+<div class="content-section content-section--b" style="margin-top:0.5rem">
+  <div class="fc-step"><span class="fc-step-num">1</span><span>Remove the child, then the region being replaced:</span></div>
+  <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region remove us-tn-bna</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>region remove us-tn-mid</code></pre></div>
+  <div class="fc-step"><span class="fc-step-num">2</span><span>Add the renamed region and its child back:</span></div>
+  <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put us-tn-middle us-tn</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>region put us-tn-bna us-tn-middle</code></pre></div>
+  <div class="fc-step"><span class="fc-step-num">3</span><span>Save to flash and confirm the table:</span></div>
+  <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region save</code></pre></div>
+  <div class="copyable-code" style="margin:0 0 0"><pre><code>region list allowed</code></pre></div>
 </div>
 
 ---
