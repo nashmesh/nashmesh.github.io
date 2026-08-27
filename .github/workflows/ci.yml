@@ -27,4 +27,9 @@ jobs:
             mkdocs-material-
       - run: pip install mkdocs-material
       - run: pip install -r requirements.txt
+      - name: Inject CartoDB API key
+        env:
+          CARTO_API_KEY: ${{ secrets.CARTO_API_KEY }}
+        run: |
+          find docs/static/js -type f -name '*.js' -exec sed -i "s/__CARTO_API_KEY__/$CARTO_API_KEY/g" {} +
       - run: mkdocs gh-deploy --force
