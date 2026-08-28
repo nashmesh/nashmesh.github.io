@@ -3228,14 +3228,6 @@ body[data-theme="light"] .leaflet-control-attribution a {
   color: #c8dff0;
 }
 
-.map-stat-meshtastic {
-  color: #67ea94;
-}
-
-.map-stat-meshcore {
-  color: #4da6ff;
-}
-
 .map-stat-label {
   font-size: 0.72rem;
   opacity: 0.55;
@@ -3252,14 +3244,6 @@ body[data-theme="light"] .map-stat-card {
 
 body[data-theme="light"] .map-stat-value {
   color: #1a3a5c;
-}
-
-body[data-theme="light"] .map-stat-meshtastic {
-  color: #1a8a4a;
-}
-
-body[data-theme="light"] .map-stat-meshcore {
-  color: #1a5ca0;
 }
 
 body[data-theme="light"] .map-stat-label {
@@ -3326,20 +3310,7 @@ body[data-theme="light"] .map-control-label {
   border-color: #2a5a7a;
 }
 
-.map-filter-btn.active {
-  background: rgba(103, 234, 148, 0.12);
-  border-color: #67ea94;
-  color: #d0fadf;
-}
-
-.map-filter-meshcore.active {
-  background: rgba(77, 166, 255, 0.12);
-  border-color: #4da6ff;
-  color: #d0eaff;
-}
-
-/* Role filter buttons: glyph matches the map markers, neutral active accent
-   (colour still means protocol, so role selection stays colour-agnostic). */
+/* Role filter buttons: glyph matches the map markers. */
 .map-role-glyph {
   width: 14px;
   height: 14px;
@@ -3403,30 +3374,6 @@ body[data-theme="light"] .map-refresh-btn {
   color: #1a3a5c;
 }
 
-/* Logo inside button */
-.map-filter-logo {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-/* Colored dot (shown when no logo, i.e. All button) */
-.map-filter-dot {
-  display: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 2px solid;
-  flex-shrink: 0;
-}
-
-.map-filter-dot-all {
-  display: inline-block;
-  background: rgba(200, 200, 200, 0.4);
-  border-color: #a0a0a0;
-}
-
 /* Light theme */
 body[data-theme="light"] .map-filter-btn {
   border-color: #c0d4e8;
@@ -3436,23 +3383,6 @@ body[data-theme="light"] .map-filter-btn {
 body[data-theme="light"] .map-filter-btn:hover {
   background: rgba(46, 109, 164, 0.06);
   border-color: #8ab0d0;
-}
-
-body[data-theme="light"] .map-filter-btn.active {
-  background: rgba(30, 160, 80, 0.1);
-  border-color: #1ea050;
-  color: #0a3a1a;
-}
-
-body[data-theme="light"] .map-filter-meshcore.active {
-  background: rgba(46, 109, 164, 0.12);
-  border-color: #2e6da4;
-  color: #0a2a4a;
-}
-
-body[data-theme="light"] .map-filter-dot-all {
-  border-color: #808080;
-  background: rgba(128, 128, 128, 0.3);
 }
 
 /* ── Fullscreen map page ─────────────────────────────────── */
@@ -3913,14 +3843,6 @@ body[data-theme="light"] .node-list-item:hover {
   /* Clear the wrapped two-row top bar with a comfortable gap */
   #map-controls {
     top: 8rem;
-  }
-
-  /* logo-only filter buttons: tighter padding so logos aren't clipped */
-  .map-filter-btn.map-filter-meshtastic,
-  .map-filter-btn.map-filter-meshcore {
-    padding-left: 0.45rem;
-    padding-right: 0.45rem;
-    min-width: 2rem;
   }
 
   /* action buttons: tighter padding on mobile */
