@@ -2,11 +2,6 @@
 template: map_fullscreen.html
 ---
 <div id="map-top-bar">
-  <div class="map-control-group">
-    <button class="map-filter-btn active" data-filter="all"><span class="map-filter-dot map-filter-dot-all"></span>All</button>
-    <button class="map-filter-btn map-filter-meshtastic" data-filter="meshtastic"><img src="../static/images/meshtastic-logo.svg" class="map-filter-logo" alt="Meshtastic"><span class="map-filter-dot map-filter-dot-meshtastic"></span></button>
-    <button class="map-filter-btn map-filter-meshcore" data-filter="meshcore"><img src="../static/images/meshcore-logo.png" class="map-filter-logo" alt="MeshCore"><span class="map-filter-dot map-filter-dot-meshcore"></span></button>
-  </div>
   <div class="map-control-group map-role-group">
     <button class="map-filter-btn map-role-btn active" data-role="all">All Roles</button>
     <button class="map-filter-btn map-role-btn" data-role="router" title="Routers & Repeaters" aria-label="Routers & Repeaters"><svg class="map-role-glyph" viewBox="0 0 20 20" aria-hidden="true"><polygon points="10,3.5 16.5,16.5 3.5,16.5" fill="currentColor"/></svg></button>
@@ -17,14 +12,6 @@ template: map_fullscreen.html
     <div class="map-stat-card">
       <span class="map-stat-value" id="stat-total">—</span>
       <span class="map-stat-label">Total</span>
-    </div>
-    <div class="map-stat-card">
-      <span class="map-stat-value map-stat-meshtastic" id="stat-meshtastic">—</span>
-      <span class="map-stat-label">Meshtastic</span>
-    </div>
-    <div class="map-stat-card">
-      <span class="map-stat-value map-stat-meshcore" id="stat-meshcore">—</span>
-      <span class="map-stat-label">MeshCore</span>
     </div>
   </div>
   <div class="map-action-group">
@@ -51,7 +38,7 @@ template: map_fullscreen.html
     <ul id="node-list"></ul>
 
     <div class="map-panel-footer">
-      <small>Data from <a href="https://potato.nashme.sh">Potato</a></small>
+      <small>Data from <a href="https://analyzer.nashme.sh">MeshCore Analyzer</a></small>
     </div>
   </div>
 </div>
