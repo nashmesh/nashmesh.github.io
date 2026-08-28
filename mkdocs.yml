@@ -14,8 +14,7 @@ nav:
   - Network Map: map.md
   - Infrastructure: infrastructure.md
   - Posts: posts.md
-  - Resources:
-    - MeshCore Analyzer: https://analyzer.nashme.sh
+  - MeshCore Analyzer: https://analyzer.nashme.sh
   - Fundraising: fundraising.md
   - Discord:
     - Information: discord.md
