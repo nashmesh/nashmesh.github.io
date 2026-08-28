@@ -13,8 +13,8 @@ nav:
     - Setting up MQTT: mqtt.md
   - Network Map: map.md
   - Infrastructure: infrastructure.md
+  - Analyzer: https://analyzer.nashme.sh
   - Posts: posts.md
-  - MeshCore Analyzer: https://analyzer.nashme.sh
   - Fundraising: fundraising.md
   - Discord:
     - Information: discord.md
