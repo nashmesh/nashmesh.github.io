@@ -51,8 +51,7 @@
 <div class="fc-step"><span class="fc-step-num">6</span><span>Set your contact info so other operators can reach you:</span></div>
 <div class="copyable-code" style="margin:0.2rem 0 0.5rem"><pre><code>set owner.info N0CALL | contact | site name</code></pre></div>
 <div class="fc-step"><span class="fc-step-num">7</span><span><em>Optional, proposed:</em> join the Middle TN region hierarchy. See <a href="#regions">Regions</a>.</span></div>
-<div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region clear</code></pre></div>
-<div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us</code></pre></div>
+<div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put us</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-southeast us</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn us-southeast</code></pre></div>
 <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-tn-middle us-tn</code></pre></div>
@@ -1186,8 +1185,7 @@
 
 <div class="content-section content-section--b">
   <p>Builds the top-down parent-child hierarchy from the table above on a repeater, then saves it to flash.</p>
-  <div class="fc-step"><span class="fc-step-num">1</span><span>Reset the existing region table (optional):</span></div>
-  <div class="copyable-code" style="margin:0.2rem 0 0.5rem"><pre><code>region clear</code></pre></div>
+  <div class="fc-step"><span class="fc-step-num">1</span><span><em>If regions are already defined on this repeater</em>, clear them first with <code>region remove &lt;name&gt;</code> for each one (deepest child first), or use the regions management UI. See <a href="#editing-regions">Editing Regions</a>.</span></div>
   <div class="fc-step"><span class="fc-step-num">2</span><span>Build the hierarchy top-down:</span></div>
   <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put us</code></pre></div>
   <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-southeast us</code></pre></div>
