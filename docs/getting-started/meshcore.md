@@ -1067,8 +1067,8 @@
 
 <div class="fc-card-header">
   <div class="fc-badges">
-    <span class="fc-badge fc-badge--green">TOP-DOWN <strong>cascades to children</strong></span>
-    <span class="fc-badge">BOTTOM-UP <strong>blocked at parent</strong></span>
+    <span class="fc-badge fc-badge--green">TOP-DOWN <strong>cascades to child-regions</strong></span>
+    <span class="fc-badge">BOTTOM-UP <strong>blocked at parent-region</strong></span>
   </div>
 </div>
 
@@ -1077,11 +1077,11 @@
   <div class="fc-steps-grid">
     <div class="fc-steps-col">
       <h4>Top-down (allowed)</h4>
-      <p>Messages sent on a parent region (e.g. <code>us-tn</code>) automatically deliver down to child repeaters (<code>us-tn-middle</code>, <code>us-tn-bna</code>). Great for statewide alerts.</p>
+      <p>Messages sent on a parent-region (e.g. <code>us-tn</code>) automatically deliver down to child-region repeaters (<code>us-tn-middle</code>, <code>us-tn-bna</code>). Great for statewide alerts.</p>
     </div>
     <div class="fc-steps-col">
       <h4>Bottom-up (blocked)</h4>
-      <p>Local chatter sent on a child region (<code>us-tn-bna</code>) is ignored by parent-only backbones (<code>us-southeast</code>). Protects wide-area airtime.</p>
+      <p>Local chatter sent on a child-region (<code>us-tn-bna</code>) is ignored by parent-region-only backbones (<code>us-southeast</code>). Protects wide-area airtime.</p>
     </div>
   </div>
   <div class="fc-diagram" style="margin-top:0.5rem">
@@ -1117,7 +1117,7 @@
         <circle class="nm-fx nm-pkt" r="3" fill="#37e08a" opacity="0.95"><animateMotion dur="1.3s" begin="-1.0s" repeatCount="indefinite" calcMode="linear" path="M520 55 L640 55"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.14;0.86;1" dur="1.3s" begin="-1.0s" repeatCount="indefinite"/></circle>
       </g>
     </svg>
-    <p class="fc-caption">Traffic cascades top-down through the hierarchy, but a parent-only backbone ignores traffic sent on a child region. <code>nashmesh</code> sits outside the chain entirely.</p>
+    <p class="fc-caption">Traffic cascades top-down through the hierarchy, but a parent-region-only backbone ignores traffic sent on a child-region. <code>nashmesh</code> sits outside the chain entirely.</p>
   </div>
   <p style="font-size:0.85em;color:#76869a;margin-top:0.5rem">High-profile repeaters can carry multiple regions at once to bridge interstate corridors cleanly.</p>
 </div>
@@ -1184,8 +1184,8 @@
 </div>
 
 <div class="content-section content-section--b">
-  <p>Builds the top-down parent-child hierarchy from the table above on a repeater, then saves it to flash.</p>
-  <div class="fc-step"><span class="fc-step-num">1</span><span><em>If regions are already defined on this repeater</em>, clear them first with <code>region remove &lt;name&gt;</code> for each one (deepest child first), or use the Manage Region UI. See <a href="#editing-regions">Editing Regions</a>.</span></div>
+  <p>Builds the top-down hierarchy of parent-regions and child-regions from the table above on a repeater, then saves it to flash.</p>
+  <div class="fc-step"><span class="fc-step-num">1</span><span><em>If regions are already defined on your repeater</em>, clear them first with <code>region remove &lt;name&gt;</code> for each one (child-regions before parent-regions), or use the Manage Region UI. See <a href="#editing-regions">Editing Regions</a>.</span></div>
   <div class="fc-step"><span class="fc-step-num">2</span><span>Build the hierarchy top-down:</span></div>
   <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put us</code></pre></div>
   <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-southeast us</code></pre></div>
@@ -1211,16 +1211,17 @@
 <div class="fc-callout">
   <div class="fc-callout-ic">!</div>
   <div>
-    <strong>Removing a region with children fails until the children are gone</strong>
-    <p>A region can't be removed while another region still lists it as a parent. Remove the children first (deepest first), then remove the region itself, then rebuild anything that pointed at it. Example: renaming <code>us-tn-mid</code> to <code>us-tn-middle</code>:</p>
+    <strong>Removing a region with child-regions fails until the child-regions are gone</strong>
+    <p>A region can't be removed while another region still lists it as a parent-region. Remove the child-regions first (deepest first), then remove the region itself, then rebuild anything that pointed at it. Example: renaming <code>us-tn-mid</code> to <code>us-tn-middle</code>:</p>
   </div>
 </div>
 
 <div class="content-section content-section--b" style="margin-top:0.5rem">
-  <div class="fc-step"><span class="fc-step-num">1</span><span>Remove the child, then the region being replaced:</span></div>
+  <p><code>region remove &lt;name&gt;</code> &mdash; <code>name</code> is the exact region to delete. Fails if any other region still lists it as a parent-region.</p>
+  <div class="fc-step"><span class="fc-step-num">1</span><span>Remove the child-region, then the parent-region being replaced:</span></div>
   <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region remove us-tn-bna</code></pre></div>
   <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>region remove us-tn-mid</code></pre></div>
-  <div class="fc-step"><span class="fc-step-num">2</span><span>Add the renamed region and its child back:</span></div>
+  <div class="fc-step"><span class="fc-step-num">2</span><span>Add the renamed parent-region and its child-region back:</span></div>
   <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put us-tn-middle us-tn</code></pre></div>
   <div class="copyable-code" style="margin:0 0 0.5rem"><pre><code>region put us-tn-bna us-tn-middle</code></pre></div>
   <div class="fc-step"><span class="fc-step-num">3</span><span>Save to flash and confirm the table:</span></div>
