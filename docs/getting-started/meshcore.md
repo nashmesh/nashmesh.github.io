@@ -1185,7 +1185,7 @@
 
 <div class="content-section content-section--b">
   <p>Builds the top-down parent-child hierarchy from the table above on a repeater, then saves it to flash.</p>
-  <div class="fc-step"><span class="fc-step-num">1</span><span><em>If regions are already defined on this repeater</em>, clear them first with <code>region remove &lt;name&gt;</code> for each one (deepest child first), or use the regions management UI. See <a href="#editing-regions">Editing Regions</a>.</span></div>
+  <div class="fc-step"><span class="fc-step-num">1</span><span><em>If regions are already defined on this repeater</em>, clear them first with <code>region remove &lt;name&gt;</code> for each one (deepest child first), or use the Manage Region UI. See <a href="#editing-regions">Editing Regions</a>.</span></div>
   <div class="fc-step"><span class="fc-step-num">2</span><span>Build the hierarchy top-down:</span></div>
   <div class="copyable-code" style="margin:0.2rem 0 0.2rem"><pre><code>region put us</code></pre></div>
   <div class="copyable-code" style="margin:0 0 0.2rem"><pre><code>region put us-southeast us</code></pre></div>
