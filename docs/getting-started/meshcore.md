@@ -1231,6 +1231,33 @@
 
 ---
 
+#### Tips
+
+<div class="fc-card-header">
+  <div class="fc-badges">
+    <span class="fc-badge">DISCOVER <strong>Tools → Discover Regions</strong></span>
+    <span class="fc-badge">TAG <strong>Show Channel Message Region Scopes</strong></span>
+    <span class="fc-badge fc-badge--green">SCOPE <strong>Set Region Scope</strong></span>
+  </div>
+</div>
+
+<div class="content-section content-section--b">
+  <p>These live in the MeshCore app while connected to your <strong>Companion</strong> node &mdash; Repeaters are configured with the <code>region</code> CLI commands above, not through the app. Once repeaters in your area have Regions configured:</p>
+  <ul style="margin:0;padding-left:1.1em;color:#c9d6e3">
+    <li style="margin-bottom:0.6rem"><strong>Find nearby Regions:</strong> <code>Tools → Discover Regions</code><br><span style="color:#76869a;font-size:0.9em">See Regions being advertised by repeaters in range and add them to your Companion.</span></li>
+    <li style="margin-bottom:0.6rem"><strong>Show Region tags on messages:</strong> <code>Settings → Message Settings → Show Channel Message Region Scopes</code><br><span style="color:#76869a;font-size:0.9em">This lets you see which Region each scoped message is using.</span></li>
+    <li><strong>Choose where your messages go:</strong> <code>Channel Message Settings → Set Region Scope</code><br><span style="color:#76869a;font-size:0.9em">Select the Region you want that channel's messages to flood through from your Companion.</span></li>
+  </ul>
+  <div class="fc-callout" style="margin-top:0.75rem">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>Think of the Region Scope as choosing how far that channel's messages should travel through the mesh</strong>
+    </div>
+  </div>
+</div>
+
+---
+
 ### Bots
 
 ##### Weather Bot
