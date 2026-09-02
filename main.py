@@ -1,6 +1,14 @@
 import os
 import json
+import shutil
 import yaml
+
+
+def on_post_build(env):
+    site_dir = env.conf["site_dir"]
+    built_404 = os.path.join(site_dir, "404", "index.html")
+    if os.path.exists(built_404):
+        shutil.copyfile(built_404, os.path.join(site_dir, "404.html"))
 
 
 def define_env(env):
