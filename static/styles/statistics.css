@@ -1,0 +1,48 @@
+.stats-container {
+  display: flex;
+  gap: 20px;
+  /* flex-wrap: wrap; */
+  flex-wrap: nowrap;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.stat-card {
+  background: --primary;
+  border-radius: 0.375rem;
+  border: 1px solid #dee2e6;
+  padding: 1.25rem;
+  /* min-width: 220px;
+  flex: 1; */
+  flex: 1 1 50%;
+  min-width: 0;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  transition: transform 0.2s ease-in-out;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-label {
+  color: --text;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: --text;
+  display: block;
+}
+
+.stat-diff {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.text-success { color: #198754; }
+.text-danger { color: #dc3545; }

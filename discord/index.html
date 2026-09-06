@@ -1,0 +1,761 @@
+<!doctype html>
+<html data-bs-theme="dark">
+    <head>
+                <title>Information - NashMesh</title>
+
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="keywords" content="NashMesh, Nashville, BNA, MeshCore, Meshtastic, LoRa, Radio, Communication">
+            <!-- OpenGraph -->
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="Nash Mesh" />
+            <meta property="og:description" content="Connecting the Greater Nashville area over Mesh!" />
+            <meta property="og:url" content="https://nashme.sh/" />
+            <meta property="og:image" content="https://nashme.sh/static/images/logo.png" />
+            <meta property="og:site_name" content="Nash Mesh" />
+            <meta property="og:locale" content="en_US" />
+            <!-- Twitter -->
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="Nash Mesh" />
+            <meta name="twitter:description" content="Connecting the Greater Nashville area over Mesh!" />
+            <meta name="twitter:image" content="https://nashme.sh/static/images/logo.png" />
+
+            <link rel="apple-touch-icon" href="https://nashme.sh/static/images/logo.png" />
+
+            
+            <link rel="canonical" href="https://nashme.sh/discord/">
+            
+
+            
+                <link  rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+                <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/base16/grayscale-dark.min.css">
+                <script>hljs.highlightAll();</script>
+
+        <script>var base_url = '..';</script>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="../assets/css/root.min.css">
+            <link rel="stylesheet" href="../assets/css/main.min.css">
+            <link rel="stylesheet" href="../assets/css/media.min.css">
+            <link rel="stylesheet" href="../assets/css/mkdocstrings.min.css">
+                <link href="../static/styles/statistics.css" rel="stylesheet">
+                <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+                <link href="../static/styles/leaflet.css" rel="stylesheet">
+                <link href="../static/styles/leaflet.markercluster.css" rel="stylesheet">
+                <link href="../static/styles/leaflet.markercluster.default.css" rel="stylesheet">
+                <link href="../static/styles/extra.css" rel="stylesheet">
+                <link href="../static/styles/link-embeds.css" rel="stylesheet">
+                <link href="../static/styles/discord.css" rel="stylesheet">
+                <link href="../static/styles/infrastructure.css" rel="stylesheet">
+                <script src="../static/js/jquery.js"></script>
+                <script src="../static/js/malla.js"></script>
+                <script src="../static/js/custom.js"></script>
+                <script src="../static/js/leaflet.js"></script>
+                <script src="../static/js/heatmap.js"></script>
+                <script src="../static/js/leaflet-heatmap.js"></script>
+                <script src="../static/js/leaflet.markercluster.js"></script>
+                <script src="../static/js/node-map.js"></script>
+                <script src="../static/js/infrastructure.js"></script>
+                <script src="../search/main.js"></script>
+
+            
+                
+                    <style>
+                        :root {
+                            --text: white;
+                            --title: white;
+                            --primary: white;
+                            --background: black;
+                        }
+                    </style>
+                
+            
+          
+    </head>
+
+    <body>
+        <div class="container py-3">
+            <header>
+                    <!-- block header -->
+<nav class="navbar navbar-expand-xl border-bottom">
+    <div class="container-fluid">
+        
+            <img class="logo" src="../static/images/logo.png">
+        
+
+        
+            <span class=" fs-4 title-color site-name" id="component-site-name" style="text-transform: uppercase;">NashMesh</span>
+        
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu"
+            aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+            <ul class="navbar-nav">
+
+                <!-- block menu -->
+                <li class="nav-item">
+                    <!-- block menu -->
+    
+        <li class="nav-item" id="component-menu">
+            <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="..">[Home]</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="
+                            nav-link dropdown-toggle text-decoration-none" href="#" data-bs-toggle="dropdown">[Getting Started]</a>
+                            <ul class="dropdown-menu">
+                                    <!-- block dropdown-menu -->
+    <li>
+        <a href="../getting-started/platforms/" class="dropdown-item text-decoration-none ">What is MeshCore?</a>
+    </li>
+<!-- endblock -->
+                                    <!-- block dropdown-menu -->
+    <li>
+        <a href="../getting-started/meshcore/" class="dropdown-item text-decoration-none ">MeshCore Setup</a>
+    </li>
+<!-- endblock -->
+                                    <!-- block dropdown-menu -->
+    <li>
+        <a href="../getting-started/meshtastic/" class="dropdown-item text-decoration-none ">Meshtastic Setup</a>
+    </li>
+<!-- endblock -->
+                                    <!-- block dropdown-menu -->
+    <li>
+        <a href="../mqtt/" class="dropdown-item text-decoration-none ">Setting up MQTT</a>
+    </li>
+<!-- endblock -->
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="../map/">[Network Map]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="../infrastructure/">[Infrastructure]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="https://analyzer.nashme.sh">[Analyzer]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="../posts/">[Posts]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="
+                            nav-link text-gray text-decoration-none" href="../fundraising/">[Fundraising]</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class=" active 
+                            nav-link dropdown-toggle text-decoration-none" href="#" data-bs-toggle="dropdown">[Discord]</a>
+                            <ul class="dropdown-menu">
+                                    <!-- block dropdown-menu -->
+    <li>
+        <a href="./" class="dropdown-item text-decoration-none  active ">Information</a>
+    </li>
+<!-- endblock -->
+                                    <!-- block dropdown-menu -->
+    <li>
+        <a href="https://discord.gg/sSS8gEpuh8" class="dropdown-item text-decoration-none ">Join Server</a>
+    </li>
+<!-- endblock -->
+                            </ul>
+                        </li>
+            </ul>
+        </li>
+<!-- endblock -->
+                </li>
+                <!-- endblock -->
+
+                <!-- block search -->
+                <li class="nav-item">
+                    <a class="collapsed" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div class="md-search-icon">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </li>
+                <!--  endblock -->
+
+                <!-- block source -->
+                <li class="nav-item">
+                    
+                </li>
+                <!--  endblock -->
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--  endblock -->
+            </header>
+
+            <main><!-- block search -->
+<div class="collapse" id="collapseExample">
+    <div role="search" class="search-box">
+        <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+            <input type="text" name="q" class="search-query"
+            placeholder="Search docs" title="Type search term here" />
+        </form>
+    </div>
+</div>
+<!-- endblock -->
+
+                
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 d-none d-md-block" id="component-sidebar">
+                                    <!-- block sidebar -->
+<div class="navbar-expand-md" role="complementary">
+    
+    <div class="sidebar navbar-collapse collapse card">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#mqtt-logging-channels" class="nav-link">MQTT Logging Channels</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#discord-bot" class="nav-link">Discord Bot</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#slash-commands" class="nav-link">Slash Commands</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="3"><a href="#linknode" class="nav-link">/linknode</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#unlinknode" class="nav-link">/unlinknode</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#nodes" class="nav-link">/nodes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#flags" class="nav-link">/flags</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#message-commands" class="nav-link">Message Commands</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="3"><a href="#mqtt" class="nav-link">!mqtt</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#linktype" class="nav-link">!&lt;linktype&gt;</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- endblock -->
+                            </div>
+                            <div class="col-md-8 col-12" id="component-content">
+                                    <!-- block content -->
+<section class="container post" id="component-content">
+    <article>
+        <header>
+            
+            
+        </header>
+        <p><h1 class="page-title-with-logo"><img src="../static/images/discord.png" class="page-title-logo" alt="Discord">Discord</h1>
+
+<p>Check out our <a href="https://discord.gg/sSS8gEpuh8">Discord server</a> if you ever need help, want to meet new folks, or just want to talk anything radio. We also announce upcoming meetings and share information about upcoming deployments.</p>
+<h1 id="mqtt-logging-channels">MQTT Logging Channels</h1>
+<p>MQTT messages are logged to Discord based on firmware and channel. If the sending node is linked to a Discord account, the message will show the owning user.</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Channel</th>
+<th>Discord Channel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic"> Meshtastic</td>
+<td><code>MediumFast</code></td>
+<td><code>#logger</code></td>
+</tr>
+<tr>
+<td><img src="../static/images/meshtastic-logo.svg" class="page-title-logo" alt="Meshtastic"> Meshtastic</td>
+<td>All others</td>
+<td><code>#logger-other</code></td>
+</tr>
+<tr>
+<td><img src="../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore"> MeshCore</td>
+<td>Public</td>
+<td><code>#meshcore-logger</code></td>
+</tr>
+<tr>
+<td><img src="../static/images/meshcore-logo.png" class="page-title-logo" alt="MeshCore"> MeshCore</td>
+<td>All others</td>
+<td><code>#meshcore-logger-other</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="discord-bot">Discord Bot</h1>
+<p>The NashMesh Discord bot lets you link your nodes, look up node info, manage flags, and share community resources.</p>
+<h2 id="slash-commands">Slash Commands</h2>
+<p>Slash commands are available from the bot and they allow for control of different features the bot offers.</p>
+<h3 id="linknode"><code>/linknode</code></h3>
+<p>Link a Meshtastic or MeshCore node to your Discord account. If you don't provide a node ID, a modal will appear. With autocomplete enabled, you can also start typing a node name or hex ID.</p>
+<div class="dc-preview">
+  <!-- User runs /linknode (no nodeid → modal) -->
+  <div class="dc-message">
+    <div class="dc-avatar dc-avatar--user">MH</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username">M3shHe4d</span>
+        <span class="dc-ts">Today at 2:30 PM</span>
+      </div>
+      <div class="dc-body"><span class="dc-cmd">/linknode</span></div>
+      <div class="dc-modal-wrap">
+        <div class="dc-modal-header">Link Your Node</div>
+        <div class="dc-input-label">Node ID <span style="color:#ed4245">*</span></div>
+        <div class="dc-input">8-char hex (Meshtastic) or 64-char key (Meshcore)</div>
+        <div class="dc-modal-footer">
+          <span class="dc-btn dc-btn--secondary">Cancel</span>
+          <span class="dc-btn dc-btn--primary">Submit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+<h3 id="unlinknode"><code>/unlinknode</code></h3>
+<p>Remove the link between a node and your Discord account. Running the command with no node ID shows a dropdown of your linked nodes. Unlinking also clears any flags you've set for that node.</p>
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:32 PM</span>
+      </div>
+      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/unlinknode</span></div>
+      <div class="dc-text">Select a node to unlink:</div>
+      <div class="dc-select-wrap">
+        <div class="dc-select">
+          <span>Select a node to unlink</span>
+          <span>▾</span>
+        </div>
+      </div>
+      <div class="dc-ephemeral">🔒 Only you can see this</div>
+    </div>
+  </div>
+</div>
+
+<hr />
+<h3 id="nodes"><code>/nodes</code></h3>
+<p>List all nodes linked to you (or another user). Results are paginated if you have many nodes. Each node links to its page on Malla (Meshtastic) or the Analyzer (MeshCore).</p>
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:33 PM</span>
+      </div>
+      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/nodes</span></div>
+      <div class="dc-embed">
+        <div class="dc-embed-pill"></div>
+        <div class="dc-embed-body">
+          <div class="dc-embed-author">
+            <div class="dc-embed-author-icon">MH</div>
+            <div class="dc-embed-author-name">M3shHe4d</div>
+          </div>
+          <div class="dc-embed-title">Linked Nodes</div>
+          <div class="dc-embed-fields">
+            <div class="dc-field">
+              <div class="dc-field-name">[<span class="dc-code">!677d3afe</span>] Nashville Node</div>
+              <div class="dc-field-value"><a href="#">View on Malla</a></div>
+            </div>
+            <div class="dc-field">
+              <div class="dc-field-name">[<span class="dc-code">!3166fb16</span>] MC-Relay</div>
+              <div class="dc-field-value"><a href="#">View on Analyzer</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dc-ephemeral">🔒 Only you can see this</div>
+    </div>
+  </div>
+</div>
+
+<hr />
+<h3 id="flags"><code>/flags</code></h3>
+<p>Manage per-node flags that control bot behavior. Running <code>/flags</code> with no arguments shows a dropdown if you have multiple nodes, or opens the flags panel directly if you only have one.</p>
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:35 PM</span>
+      </div>
+      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/flags</span></div>
+      <div class="dc-embed">
+        <div class="dc-embed-pill" style="background:#fefdf5;"></div>
+        <div class="dc-embed-body">
+          <div class="dc-embed-title">Flags — Nashville Node</div>
+          <div class="dc-embed-fields">
+            <div class="dc-field--1">
+              <div class="dc-field-name">showPosition</div>
+              <div class="dc-field-value">false</div>
+            </div>
+          </div>
+          <div class="dc-embed-footer"><span class="dc-code" style="color:#949ba4;">!677d3afe</span></div>
+        </div>
+      </div>
+      <div class="dc-actions">
+        <span class="dc-btn dc-btn--secondary">showPosition: OFF</span>
+      </div>
+      <div class="dc-ephemeral">🔒 Only you can see this</div>
+    </div>
+  </div>
+</div>
+
+<p>Clicking a button toggles the flag on or off. When enabled, the button turns green:</p>
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:35 PM</span>
+      </div>
+      <div class="dc-embed">
+        <div class="dc-embed-pill" style="background:#fefdf5;"></div>
+        <div class="dc-embed-body">
+          <div class="dc-embed-title">Flags — Nashville Node</div>
+          <div class="dc-embed-fields">
+            <div class="dc-field--1">
+              <div class="dc-field-name">showPosition</div>
+              <div class="dc-field-value">true</div>
+            </div>
+          </div>
+          <div class="dc-embed-footer"><span class="dc-code" style="color:#949ba4;">!677d3afe</span></div>
+        </div>
+      </div>
+      <div class="dc-actions">
+        <span class="dc-btn dc-btn--success">showPosition: ON</span>
+      </div>
+      <div class="dc-ephemeral">🔒 Only you can see this</div>
+    </div>
+  </div>
+</div>
+
+<p><strong>Available flags:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>showPosition</code></td>
+<td><code>false</code></td>
+<td>Allow your node's GPS position to be shared publicly</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<!--
+### `/links list`
+
+Browse all link categories saved for this server. Select a type from the dropdown to post its links to the channel.
+
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:36 PM</span>
+      </div>
+      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/links list</span></div>
+      <div class="dc-embed">
+        <div class="dc-embed-pill"></div>
+        <div class="dc-embed-body">
+          <div class="dc-embed-title">Available Link Types</div>
+          <div class="dc-embed-desc">
+<span class="dc-code">!antenna</span>
+<span class="dc-code">!cable</span>
+<span class="dc-code">!case</span>
+<span class="dc-code">!power</span>
+<span class="dc-code">!solar</span>
+          </div>
+          <div class="dc-embed-footer">5 types</div>
+        </div>
+      </div>
+      <div class="dc-select-wrap">
+        <div class="dc-select">
+          <span>Select a type to view its links</span>
+          <span>▾</span>
+        </div>
+      </div>
+      <div class="dc-ephemeral">🔒 Only you can see this</div>
+    </div>
+  </div>
+</div>
+
+---
+
+### `/links show`
+
+Show all links for a specific type. If you omit the type, a dropdown appears. Links are posted publicly to the channel.
+
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:37 PM</span>
+      </div>
+      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/links show</span></div>
+      <div class="dc-embed">
+        <div class="dc-embed-pill"></div>
+        <div class="dc-embed-body">
+          <div class="dc-embed-title">!antenna</div>
+          <div class="dc-embed-desc">
+https://www.amazon.com/dp/B0EXAMPLE1
+https://www.amazon.com/dp/B0EXAMPLE2
+https://rokland.com/products/example-antenna</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+### `/links add`
+
+Add one or more URLs to one or more link types. A modal collects the URLs (one per line) and the type(s).
+
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar dc-avatar--user">MH</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username">M3shHe4d</span>
+        <span class="dc-ts">Today at 2:38 PM</span>
+      </div>
+      <div class="dc-body"><span class="dc-cmd">/links add</span></div>
+      <div class="dc-modal-wrap">
+        <div class="dc-modal-header">Add Link</div>
+        <div class="dc-input-label">URL(s) — one per line <span style="color:#ed4245">*</span></div>
+        <div class="dc-input dc-input--paragraph">https://www.amazon.com/dp/B0EXAMPLE3</div>
+        <div class="dc-input-label">Type(s) (comma-separated, e.g. antenna,cable) <span style="color:#ed4245">*</span></div>
+        <div class="dc-input">antenna</div>
+        <div class="dc-modal-footer">
+          <span class="dc-btn dc-btn--secondary">Cancel</span>
+          <span class="dc-btn dc-btn--primary">Submit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+After submitting, the bot confirms what was added:
+
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:38 PM</span>
+      </div>
+      <div class="dc-text">
+        Added to <span class="dc-code">!antenna</span>:<br>
+        - <span class="dc-code">https://www.amazon.com/dp/B0EXAMPLE3</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+### `/links remove`
+
+Remove links from one or more types. Select the type(s), then pick the URL(s) to remove from a second dropdown.
+
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:39 PM</span>
+      </div>
+      <div class="dc-interaction"><span class="dc-user">M3shHe4d</span> used <span class="dc-cmd">/links remove</span></div>
+      <div class="dc-text">Select link type(s) to remove from:</div>
+      <div class="dc-select-wrap">
+        <div class="dc-select">
+          <span>Select type(s) to remove links from</span>
+          <span>▾</span>
+        </div>
+      </div>
+      <div class="dc-ephemeral">🔒 Only you can see this</div>
+    </div>
+  </div>
+</div>
+
+After picking a type, you choose the specific URLs to remove:
+
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:39 PM</span>
+      </div>
+      <div class="dc-text">Select URL(s) to remove from <span class="dc-code">!antenna</span>:</div>
+      <div class="dc-select-wrap">
+        <div class="dc-select">
+          <span>Select URL(s) to remove</span>
+          <span>▾</span>
+        </div>
+      </div>
+      <div class="dc-ephemeral">🔒 Only you can see this</div>
+    </div>
+  </div>
+</div>
+
+-->
+
+<hr />
+<h2 id="message-commands">Message Commands</h2>
+<p>These are triggered by typing <code>!commandname</code> in a text channel.</p>
+<h3 id="mqtt"><code>!mqtt</code></h3>
+<p>Posts the MQTT connection settings for both MeshCore and Meshtastic.</p>
+<hr />
+<h3 id="linktype"><code>!&lt;linktype&gt;</code></h3>
+<p>Type any link category name prefixed with <code>!</code> to post its links directly to the channel. <!-- Link types are managed via <code>/links add</code>. --></p>
+<div class="dc-preview">
+  <div class="dc-message">
+    <div class="dc-avatar dc-avatar--user">MH</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username">M3shHe4d</span>
+        <span class="dc-ts">Today at 2:42 PM</span>
+      </div>
+      <div class="dc-body"><span class="dc-cmd">!antenna</span></div>
+    </div>
+  </div>
+  <div class="dc-message" style="margin-top:4px;">
+    <div class="dc-avatar">NM</div>
+    <div class="dc-content">
+      <div class="dc-header">
+        <span class="dc-username dc-username--bot">NashMesh Bot</span>
+        <span class="dc-tag">APP</span>
+        <span class="dc-ts">Today at 2:42 PM</span>
+      </div>
+      <div class="dc-text">
+        - &lt;https://www.amazon.com/dp/B0EXAMPLE1&gt;<br>
+        - &lt;https://www.amazon.com/dp/B0EXAMPLE2&gt;<br>
+        - &lt;https://rokland.com/products/example-antenna&gt;
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>If there's only a single link, it's posted without the list prefix so Discord auto-embeds it.</p></p>
+    </article>
+</section>
+<!-- endblock -->
+                            </div>
+                        </div>
+                    </div>
+                
+
+            </main>
+
+            
+                    <!-- block preview -->
+    <div class="preview row row-cols-md-3 text-center pt-md-3" id="component-preview">
+        <div class="col themed-grid-col">
+            <a rel="prev" href="../fundraising/" class="nav-link">
+                <i class="fa fa-arrow-left"></i> Previous
+            </a>
+        </div>
+        <div class="col themed-grid-col"></div>
+        <div class="col themed-grid-col">
+            <a rel="next" class="nav-link disabled">
+                Next <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+<!-- endblock -->
+            
+
+            
+                    <footer class="nashme-footer" id="component-footer">
+  <div class="nashme-footer-inner">
+    <div class="nashme-footer-brand">
+      <img src="../static/images/logo.png" alt="NashMesh" class="nashme-footer-logo">
+      <span class="nashme-footer-name">nashme.sh</span>
+    </div>
+    <p class="nashme-footer-tagline">Connecting the Greater Nashville area over Mesh.</p>
+    <div class="nashme-footer-links">
+      <a href="https://discord.gg/sSS8gEpuh8" target="_blank">Discord</a>
+      <a href="https://analyzer.nashme.sh" target="_blank">MeshCore Analyzer</a>
+      <a href="https://www.paypal.com/pool/9lX5JfAFdw?sr=wccr" target="_blank">Donate</a>
+    </div>
+    <small class="nashme-footer-copy">Made with <a href="https://github.com/FernandoCelmer/mkdocs-simple-blog" target="_blank" rel="noopener">Simple Blog for MkDocs</a></small>
+  </div>
+</footer>
+            
+        </div>
+
+            <script src="../assets/js/jquery-3.3.1.slim.min.js""></script>
+            <script src="../assets/js/bootstrap.bundle.min.js""></script>
+            <script src="../assets/js/main.min.js""></script>
+                <script src="../static/js/jquery.js" defer></script>
+                <script src="../static/js/malla.js" defer></script>
+                <script src="../static/js/custom.js" defer></script>
+                <script src="../static/js/leaflet.js" defer></script>
+                <script src="../static/js/heatmap.js" defer></script>
+                <script src="../static/js/leaflet-heatmap.js" defer></script>
+                <script src="../static/js/leaflet.markercluster.js" defer></script>
+                <script src="../static/js/node-map.js" defer></script>
+                <script src="../static/js/infrastructure.js" defer></script>
+                <script src="../search/main.js" defer></script>
+
+    </body>
+
+</html>
