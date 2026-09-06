@@ -988,6 +988,13 @@
 
 ### Regions
 
+<div class="content-section content-section--b">
+  <p>See the current region layout across Tennessee on the live map.</p>
+  <a href="https://regions.nashme.sh" class="fc-link-btn" target="_blank" rel="noopener">View Region Map ↗</a>
+</div>
+
+---
+
 #### Channels vs Regions
 
 <div class="fc-card-header">
@@ -1268,11 +1275,19 @@
     <span class="fc-badge">US wx</span>
     <span class="fc-badge">WORLD gwx</span>
     <span class="fc-badge">ON <strong>#bna-wx</strong></span>
+    <span class="fc-badge">SCOPE <strong>us-tn-bna</strong></span>
   </div>
 </div>
 
 <div class="content-section content-section--b">
   <p>Message any of these on <strong>#bna-wx</strong>. <code>wx</code> uses NOAA (US only); <code>gwx</code> uses Open-Meteo (worldwide). Leave off a place and it defaults to Nashville.</p>
+  <div class="fc-callout" style="margin-top:0.5rem">
+    <div class="fc-callout-ic">!</div>
+    <div>
+      <strong>BNA-WX-BOT only replies on <code>#bna-wx</code> scoped to <code>us-tn-bna</code></strong>
+      <p>Responses no longer flood out to other regions &mdash; if your repeater isn't in the <code>us-tn-bna</code> region, you won't see the bot's replies.</p>
+    </div>
+  </div>
   <div class="fc-settings-list" style="margin-top:0.5rem">
     <div class="fc-setting"><span class="fc-setting-label fc-cat-label">US weather (wx)</span><span class="fc-setting-value"></span></div>
     <div class="fc-setting"><span class="fc-setting-label"><code>wx</code></span><span class="fc-setting-value" style="font-weight:400;color:#76869a">Nashville forecast (bot's home)</span></div>
