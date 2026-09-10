@@ -4256,19 +4256,19 @@ body[data-theme="light"] .hp-about p {
   color: #7ab8f5;
 }
 
-/* Neighboring mesh communities */
-.hp-neighbors {
+/* Other mesh communities */
+.hp-communities {
   margin: 0 0 2.5rem;
 }
 
-.hp-neighbors .hp-section-sub {
+.hp-communities .hp-section-sub {
   font-size: 0.9375rem;
 }
 
 /* Two across, so the four communities fill a 2x2 grid with no orphan. Four
    columns would leave each card too narrow for its description at the content
    container's max width. */
-.hp-neighbors .hp-cards {
+.hp-communities .hp-cards {
   margin: 1rem 0 0;
   grid-template-columns: repeat(2, 1fr);
 }
@@ -4287,7 +4287,7 @@ body[data-theme="light"] .hp-card-logo-on-light {
   display: block;
 }
 
-.hp-neighbors .hp-card-logo {
+.hp-communities .hp-card-logo {
   width: 2.75rem;
   height: 2.75rem;
   margin-top: 0;
@@ -4442,7 +4442,7 @@ body[data-theme="light"] .hp-powered-link:hover {
    so they read as a single group instead of separate stacked cards. Three items
    never fill a two-column grid evenly, so the grid is dropped here entirely. */
 @media only screen and (max-width: 767px) {
-  .hp-neighbors .hp-cards {
+  .hp-communities .hp-cards {
     grid-template-columns: 1fr;
     gap: 0;
     border: 1px solid #1e3a52;
@@ -4451,7 +4451,7 @@ body[data-theme="light"] .hp-powered-link:hover {
     background: rgba(77, 166, 255, 0.03);
   }
 
-  .hp-neighbors .hp-card {
+  .hp-communities .hp-card {
     border: none;
     border-bottom: 1px solid #1e3a52;
     border-radius: 0;
@@ -4459,21 +4459,21 @@ body[data-theme="light"] .hp-powered-link:hover {
     padding: 0.9rem 1rem;
   }
 
-  .hp-neighbors .hp-card:last-child {
+  .hp-communities .hp-card:last-child {
     border-bottom: none;
   }
 
-  .hp-neighbors .hp-card:hover {
+  .hp-communities .hp-card:hover {
     transform: none;
     border-color: #1e3a52;
     background: rgba(77, 166, 255, 0.07);
   }
 
-  .hp-neighbors .hp-card-link-site::after {
+  .hp-communities .hp-card-link-site::after {
     border-radius: 0;
   }
 
-  .hp-neighbors .hp-card-links {
+  .hp-communities .hp-card-links {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -4482,17 +4482,17 @@ body[data-theme="light"] .hp-powered-link:hover {
     padding-top: 0.5rem;
   }
 
-  body[data-theme="light"] .hp-neighbors .hp-cards {
+  body[data-theme="light"] .hp-communities .hp-cards {
     border-color: #c0d0e0;
     background: rgba(46, 109, 164, 0.03);
   }
 
-  body[data-theme="light"] .hp-neighbors .hp-card {
+  body[data-theme="light"] .hp-communities .hp-card {
     border-bottom-color: #c0d0e0;
     background: none;
   }
 
-  body[data-theme="light"] .hp-neighbors .hp-card:hover {
+  body[data-theme="light"] .hp-communities .hp-card:hover {
     border-color: #c0d0e0;
     border-bottom-color: #c0d0e0;
     background: rgba(46, 109, 164, 0.07);

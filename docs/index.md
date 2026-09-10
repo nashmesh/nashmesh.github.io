@@ -38,7 +38,7 @@ template: base_no_sidebar.html
   </div>
 </div>
 
-<div class="hp-neighbors">
+<div class="hp-communities">
   <div class="hp-section-title">Other Mesh Communities</div>
   <div class="hp-section-sub">We&rsquo;re not the only community out here doing great things. Check out these other cool mesh communities that might be in your area!</div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
