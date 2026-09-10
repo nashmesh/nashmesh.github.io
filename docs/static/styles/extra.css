@@ -4065,8 +4065,9 @@ body[data-theme="light"] .node-list-item:hover {
 }
 
 .hp-card {
+  position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 0.75rem;
   padding: 1rem 1.25rem;
   border: 1px solid #1e3a52;
@@ -4089,12 +4090,16 @@ body[data-theme="light"] .node-list-item:hover {
   height: 2rem;
   object-fit: contain;
   flex-shrink: 0;
+  align-self: flex-start;
   border-radius: 4px;
   margin-top: 0.1rem;
 }
 
 .hp-card-body {
   min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .hp-card-title {
@@ -4251,6 +4256,94 @@ body[data-theme="light"] .hp-about p {
   color: #7ab8f5;
 }
 
+/* Other mesh communities */
+.hp-communities {
+  margin: 0 0 2.5rem;
+}
+
+.hp-communities .hp-section-sub {
+  font-size: 0.9375rem;
+}
+
+/* Two across, so the four communities fill a 2x2 grid with no orphan. Four
+   columns would leave each card too narrow for its description at the content
+   container's max width. */
+.hp-communities .hp-cards {
+  margin: 1rem 0 0;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* TennMesh ships a bare monogram rather than a self-contained badge, so it needs
+   the colour variant that suits the current theme. */
+.hp-card-logo-on-light {
+  display: none;
+}
+
+body[data-theme="light"] .hp-card-logo-on-dark {
+  display: none;
+}
+
+body[data-theme="light"] .hp-card-logo-on-light {
+  display: block;
+}
+
+.hp-communities .hp-card-logo {
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-top: 0;
+}
+
+/* Side-by-side cards are too narrow to fit both links on one line, and a wrapped
+   row would push the website link up a line on some cards but not others. So the
+   links stack, with room reserved for two -- that keeps the website line at the
+   same height even on a card that has no Discord link. */
+.hp-card-links {
+  display: grid;
+  grid-template-rows: repeat(2, 1.5em);
+  row-gap: 0.35rem;
+  justify-items: start;
+  align-content: start;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.hp-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #4da6ff;
+  text-decoration: none !important;
+}
+
+.hp-card-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* The website link covers the whole card... */
+.hp-card-link-site::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+}
+
+/* ...so the Discord link has to sit above it to stay clickable. */
+.hp-card-link-discord {
+  position: relative;
+  z-index: 1;
+}
+
+.hp-card-link:hover {
+  color: #7ab8f5;
+}
+
 /* Light theme overrides */
 body[data-theme="light"] .hp-tagline {
   color: #0f2540;
@@ -4296,6 +4389,32 @@ body[data-theme="light"] .hp-post-item:hover .hp-post-title {
   color: #2e6da4;
 }
 
+body[data-theme="light"] .hp-card {
+  border-color: #c0d0e0;
+  background: rgba(46, 109, 164, 0.03);
+}
+
+body[data-theme="light"] .hp-card:hover {
+  border-color: #2e6da4;
+  background: rgba(46, 109, 164, 0.07);
+}
+
+body[data-theme="light"] .hp-card-title {
+  color: #0f2540;
+}
+
+body[data-theme="light"] .hp-card-desc {
+  color: #4a6a8a;
+}
+
+body[data-theme="light"] .hp-card-link {
+  color: #2e6da4;
+}
+
+body[data-theme="light"] .hp-card-link:hover {
+  color: #1a4a7a;
+}
+
 body[data-theme="light"] .hp-powered-by {
   color: #0f2540;
 }
@@ -4317,4 +4436,65 @@ body[data-theme="light"] .hp-powered-link:hover {
 
 @media only screen and (min-width: 568px) and (max-width: 767px) {
   .hp-cards { grid-template-columns: 1fr 1fr; }
+}
+
+/* On phones the three community cards merge into one panel with divider rows,
+   so they read as a single group instead of separate stacked cards. Three items
+   never fill a two-column grid evenly, so the grid is dropped here entirely. */
+@media only screen and (max-width: 767px) {
+  .hp-communities .hp-cards {
+    grid-template-columns: 1fr;
+    gap: 0;
+    border: 1px solid #1e3a52;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(77, 166, 255, 0.03);
+  }
+
+  .hp-communities .hp-card {
+    border: none;
+    border-bottom: 1px solid #1e3a52;
+    border-radius: 0;
+    background: none;
+    padding: 0.9rem 1rem;
+  }
+
+  .hp-communities .hp-card:last-child {
+    border-bottom: none;
+  }
+
+  .hp-communities .hp-card:hover {
+    transform: none;
+    border-color: #1e3a52;
+    background: rgba(77, 166, 255, 0.07);
+  }
+
+  .hp-communities .hp-card-link-site::after {
+    border-radius: 0;
+  }
+
+  .hp-communities .hp-card-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    padding-top: 0.5rem;
+  }
+
+  body[data-theme="light"] .hp-communities .hp-cards {
+    border-color: #c0d0e0;
+    background: rgba(46, 109, 164, 0.03);
+  }
+
+  body[data-theme="light"] .hp-communities .hp-card {
+    border-bottom-color: #c0d0e0;
+    background: none;
+  }
+
+  body[data-theme="light"] .hp-communities .hp-card:hover {
+    border-color: #c0d0e0;
+    border-bottom-color: #c0d0e0;
+    background: rgba(46, 109, 164, 0.07);
+  }
 }
