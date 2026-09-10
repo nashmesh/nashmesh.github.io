@@ -47,6 +47,18 @@ template: base_no_sidebar.html
   </svg>
   <div class="hp-cards">
     <div class="hp-card">
+      <img src="static/images/communities/tennmesh-on-dark.svg" class="hp-card-logo hp-card-logo-on-dark" alt="">
+      <img src="static/images/communities/tennmesh-on-light.svg" class="hp-card-logo hp-card-logo-on-light" alt="">
+      <div class="hp-card-body">
+        <div class="hp-card-title">TennMesh</div>
+        <div class="hp-card-desc">Statewide across Tennessee, on MeshCore.</div>
+        <div class="hp-card-links">
+        <a href="https://tennmesh.com" class="hp-card-link hp-card-link-site" target="_blank" rel="noopener"><svg class="hp-card-icon" aria-hidden="true"><use href="#hp-icon-globe"></use></svg>tennmesh.com</a>
+        <a href="https://discord.gg/XGhftQw9Mt" class="hp-card-link hp-card-link-discord" target="_blank" rel="noopener"><svg class="hp-card-icon" aria-hidden="true"><use href="#hp-icon-discord"></use></svg>Discord</a>
+        </div>
+      </div>
+    </div>
+    <div class="hp-card">
       <img src="static/images/communities/ucmesh.svg" class="hp-card-logo" alt="">
       <div class="hp-card-body">
         <div class="hp-card-title">UCMesh</div>

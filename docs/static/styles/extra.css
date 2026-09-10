@@ -4265,8 +4265,26 @@ body[data-theme="light"] .hp-about p {
   font-size: 0.9375rem;
 }
 
+/* Two across, so the four communities fill a 2x2 grid with no orphan. Four
+   columns would leave each card too narrow for its description at the content
+   container's max width. */
 .hp-neighbors .hp-cards {
   margin: 1rem 0 0;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* TennMesh ships a bare monogram rather than a self-contained badge, so it needs
+   the colour variant that suits the current theme. */
+.hp-card-logo-on-light {
+  display: none;
+}
+
+body[data-theme="light"] .hp-card-logo-on-dark {
+  display: none;
+}
+
+body[data-theme="light"] .hp-card-logo-on-light {
+  display: block;
 }
 
 .hp-neighbors .hp-card-logo {
