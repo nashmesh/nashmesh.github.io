@@ -6,19 +6,17 @@ site_description: Connecting the Greater Nashville area over Mesh!
 nav:
   - Home: index.md
   - Getting Started:
-    # - Choosing a Device: getting-started/devices.md
+    - Getting Started: getting-started/index.md
     - What is MeshCore?: getting-started/platforms.md
     - MeshCore Setup: getting-started/meshcore.md
     - Meshtastic Setup: getting-started/meshtastic.md
     - Setting up MQTT: mqtt.md
   - Network Map: map.md
   - Infrastructure: infrastructure.md
-  - Analyzer: https://analyzer.nashme.sh
   - Posts: posts.md
   - Fundraising: fundraising.md
-  - Discord:
-    - Information: discord.md
-    - Join Server: https://discord.gg/sSS8gEpuh8
+  - Discord: discord.md
+  - MeshCore Analyzer: https://analyzer.nashme.sh
 
 # Theming
 theme:

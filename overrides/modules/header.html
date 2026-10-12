@@ -1,0 +1,98 @@
+<!-- NashMesh verified custom responsive header -->
+<nav class="navbar border-bottom nashmesh-navbar" data-nashmesh-preview="verified-two-row">
+  <div class="container-fluid nashmesh-navbar-inner">
+
+    <a class="nashmesh-brand" href="{{ nav.homepage.url|url }}#" aria-label="NashMesh home">
+      {% if config.theme.logo %}
+        <img class="logo" src="{{ config.theme.logo|url }}" alt="NashMesh">
+      {% endif %}
+      <span class="nashmesh-wordmark title-color" aria-hidden="true">{{ config.site_name }}</span>
+    </a>
+
+    <button class="navbar-toggler nashmesh-nav-toggle"
+            type="button"
+            aria-controls="navbarsMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="nashmesh-nav-panel" id="navbarsMenu">
+      <div class="nashmesh-nav-list" id="component-menu">
+        {%- set row_split = (nav|length + 1) // 2 %}
+        <ul class="navbar-nav nashmesh-nav-row">
+          {%- for nav_item in nav %}
+            {%- if loop.index <= row_split %}
+              {# A same-name first child is the section's landing page. #}
+              {%- set target = nav_item %}
+              {%- if nav_item.children and nav_item.children[0].title == nav_item.title %}
+                {%- set target = nav_item.children[0] %}
+              {%- endif %}
+              {%- if target.children %}
+                <li class="nav-item dropdown">
+                  <a class="{% if nav_item.active %}active {% endif %}nav-link dropdown-toggle text-decoration-none"
+                     href="#"
+                     data-bs-toggle="dropdown"
+                     aria-expanded="false">[{{ nav_item.title }}]</a>
+                  <ul class="dropdown-menu">
+                    {%- for nav_item in nav_item.children %}
+                      {% include "modules/dropdown-menu.html" %}
+                    {%- endfor %}
+                  </ul>
+                </li>
+              {%- else %}
+                <li class="nav-item">
+                  <a class="{% if nav_item.active %}active {% endif %}nav-link text-gray text-decoration-none{% if nav_item.url == 'https://analyzer.nashme.sh' %} nashmesh-analyzer-link{% endif %}"
+                     href="{{ target.url|url }}">[{{ nav_item.title }}]</a>
+                </li>
+              {%- endif %}
+            {%- endif %}
+          {%- endfor %}
+        </ul>
+
+        <ul class="navbar-nav nashmesh-nav-row">
+          {%- for nav_item in nav %}
+            {%- if loop.index > row_split %}
+              {%- set target = nav_item %}
+              {%- if nav_item.children and nav_item.children[0].title == nav_item.title %}
+                {%- set target = nav_item.children[0] %}
+              {%- endif %}
+              {%- if target.children %}
+                <li class="nav-item dropdown">
+                  <a class="{% if nav_item.active %}active {% endif %}nav-link dropdown-toggle text-decoration-none"
+                     href="#"
+                     data-bs-toggle="dropdown"
+                     aria-expanded="false">[{{ nav_item.title }}]</a>
+                  <ul class="dropdown-menu">
+                    {%- for nav_item in nav_item.children %}
+                      {% include "modules/dropdown-menu.html" %}
+                    {%- endfor %}
+                  </ul>
+                </li>
+              {%- else %}
+                <li class="nav-item">
+                  <a class="{% if nav_item.active %}active {% endif %}nav-link text-gray text-decoration-none{% if nav_item.url == 'https://analyzer.nashme.sh' %} nashmesh-analyzer-link{% endif %}"
+                     href="{{ target.url|url }}">[{{ nav_item.title }}]</a>
+                </li>
+              {%- endif %}
+            {%- endif %}
+          {%- endfor %}
+        </ul>
+      </div>
+
+      <div class="nashmesh-search">
+        <a class="collapsed"
+           data-bs-toggle="collapse"
+           href="#collapseExample"
+           role="button"
+           aria-expanded="false"
+           aria-controls="collapseExample"
+           aria-label="Search">
+          <div class="md-search-icon">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
