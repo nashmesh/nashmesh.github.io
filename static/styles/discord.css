@@ -1,0 +1,400 @@
+/* ============================================================
+   Discord Mockup Components
+   ============================================================ */
+
+.dc-preview {
+  background: #313338;
+  border-radius: 8px;
+  padding: 16px 16px 14px;
+  margin: 1.25rem 0;
+  font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+  font-size: 16px;
+  color: #dcddde;
+  line-height: 1.375;
+}
+
+.dc-message {
+  display: flex;
+  gap: 16px;
+  position: relative;
+}
+
+.dc-message + .dc-message {
+  margin-top: 20px;
+}
+
+/* ── Avatar ─────────────────────────────────────────────── */
+
+.dc-avatar {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffffff;
+  background: #5865f2;
+  margin-top: 2px;
+  user-select: none;
+}
+
+.dc-avatar--user  { background: #3ba55c; }
+.dc-avatar--admin { background: #ed4245; }
+
+/* ── Message Content ─────────────────────────────────────── */
+
+.dc-content { flex: 1; min-width: 0; }
+
+.dc-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+}
+
+.dc-username {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.dc-username--bot { color: #5865f2; }
+
+.dc-tag {
+  background: #5865f2;
+  color: #ffffff;
+  font-size: 0.625rem;
+  font-weight: 600;
+  padding: 1px 4px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
+.dc-ts { font-size: 0.75rem; color: #949ba4; }
+
+/* "username used /command" interaction line */
+.dc-interaction {
+  font-size: 0.875rem;
+  color: #949ba4;
+  margin-bottom: 4px;
+}
+
+.dc-interaction .dc-user { color: #ffffff; font-weight: 500; }
+.dc-interaction .dc-cmd  { color: #00aaff; font-weight: 500; }
+
+/* plain user message body */
+.dc-body {
+  font-size: 1rem;
+  color: #dcddde;
+  margin-bottom: 4px;
+}
+
+.dc-body .dc-cmd  { color: #00aaff; font-weight: 500; }
+.dc-body .dc-code {
+  background: #1e1f22;
+  border-radius: 3px;
+  padding: 0 4px;
+  font-family: 'Consolas', 'Andale Mono WT', monospace;
+  font-size: 0.875em;
+  color: #dcddde;
+}
+
+/* ── Embed ────────────────────────────────────────────────── */
+
+.dc-embed {
+  display: flex;
+  background: #2b2d31;
+  border-radius: 4px;
+  max-width: 520px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.dc-embed-pill {
+  width: 4px;
+  min-width: 4px;
+  border-radius: 4px 0 0 4px;
+  background: #1e1f22;
+}
+
+.dc-embed-body {
+  padding: 8px 16px 12px 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.dc-embed-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dc-embed-author-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #3ba55c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.dc-embed-author-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f2f3f5;
+}
+
+.dc-embed-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f2f3f5;
+  margin-bottom: 8px;
+}
+
+.dc-embed-title a {
+  color: #00b0f4 !important;
+  text-decoration: none;
+}
+
+.dc-embed-title a:hover { text-decoration: underline; }
+
+.dc-embed-desc {
+  font-size: 0.875rem;
+  color: #dcddde;
+  line-height: 1.375rem;
+  margin-bottom: 8px;
+  white-space: pre-line;
+}
+
+.dc-embed-desc a { color: #00b0f4 !important; }
+
+/* Field grid — 3 equal columns */
+.dc-embed-fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 16px;
+  margin-top: 8px;
+}
+
+/* full-width field */
+.dc-field { grid-column: 1 / -1; }
+/* inline variants */
+.dc-field--1 { grid-column: span 1; }
+.dc-field--2 { grid-column: span 2; }
+
+.dc-field-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #f2f3f5;
+  margin-bottom: 2px;
+}
+
+.dc-field-value {
+  font-size: 0.875rem;
+  color: #dcddde;
+}
+
+.dc-field-value a  { color: #00b0f4 !important; }
+
+.dc-field-value .dc-code {
+  background: #1e1f22;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: 'Consolas', 'Andale Mono WT', monospace;
+  font-size: 0.8125rem;
+  color: #dcddde;
+}
+
+.dc-mention {
+  background: rgba(88, 101, 242, 0.3);
+  color: #c9cdfb;
+  border-radius: 3px;
+  padding: 0 3px;
+  font-weight: 500;
+}
+
+.dc-embed-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: #949ba4;
+}
+
+.dc-embed-footer-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #5865f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.dc-embed-footer .dc-sep { margin: 0 2px; }
+
+/* Stack of embeds */
+.dc-embeds { display: flex; flex-direction: column; gap: 4px; }
+
+/* ── Buttons ──────────────────────────────────────────────── */
+
+.dc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dc-btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 4px 16px;
+  border-radius: 3px;
+  min-height: 32px;
+  cursor: default;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.dc-btn--primary   { background: #5865f2; color: #ffffff; }
+.dc-btn--success   { background: #248046; color: #ffffff; }
+.dc-btn--secondary { background: #4e5058; color: #ffffff; }
+.dc-btn--danger    { background: #da373c; color: #ffffff; }
+
+/* ── Select Menu ─────────────────────────────────────────── */
+
+.dc-select-wrap { margin-top: 8px; max-width: 440px; }
+
+.dc-select {
+  width: 100%;
+  background: #1e1f22;
+  border: 1px solid #111214;
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: #949ba4;
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: default;
+  user-select: none;
+}
+
+/* ── Modal ────────────────────────────────────────────────── */
+
+.dc-modal-wrap {
+  background: #2b2d31;
+  border-radius: 4px;
+  padding: 16px 20px 20px;
+  max-width: 440px;
+  margin-top: 8px;
+  border: 1px solid #1e1f22;
+}
+
+.dc-modal-header {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f2f3f5;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #3f4147;
+}
+
+.dc-input-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #b5bac1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.dc-input {
+  width: 100%;
+  background: #1e1f22;
+  border: 1px solid #111214;
+  border-radius: 3px;
+  padding: 10px;
+  color: #949ba4;
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  min-height: 40px;
+  line-height: 1.4;
+}
+
+.dc-input--paragraph { min-height: 100px; align-items: flex-start; display: flex; }
+
+.dc-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* ── Ephemeral notice ─────────────────────────────────────── */
+
+.dc-ephemeral {
+  font-size: 0.75rem;
+  color: #949ba4;
+  margin-top: 4px;
+}
+
+/* ── Plain-text response ─────────────────────────────────── */
+
+.dc-text {
+  font-size: 1rem;
+  color: #dcddde;
+  line-height: 1.5;
+  margin-bottom: 2px;
+}
+
+.dc-text a { color: #00b0f4 !important; }
+
+/* ── Admin badge ──────────────────────────────────────────── */
+
+.dc-admin-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(237, 66, 69, 0.15);
+  border: 1px solid rgba(237, 66, 69, 0.5);
+  border-radius: 4px;
+  color: #f28b8e;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  margin-bottom: 10px;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .dc-embed-fields { grid-template-columns: repeat(2, 1fr); }
+  .dc-field--1     { grid-column: span 1; }
+  .dc-field--2     { grid-column: span 2; }
+  .dc-field        { grid-column: 1 / -1; }
+}
