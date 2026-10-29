@@ -675,3 +675,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+/* NASHMESH_CUSTOM_HEADER_START */
+document.addEventListener("DOMContentLoaded", function () {
+  var nav = document.querySelector(".nashmesh-navbar");
+  var toggle = nav ? nav.querySelector(".nashmesh-nav-toggle") : null;
+  var panel = nav ? nav.querySelector(".nashmesh-nav-panel") : null;
+  if (!nav || !toggle || nav.dataset.nashmeshNavReady === "true") return;
+  nav.dataset.nashmeshNavReady = "true";
+
+  function emitCollapseEvent(name) {
+    if (panel) panel.dispatchEvent(new Event(name, { bubbles: true }));
+  }
+
+  function usesCompactNavigation() {
+    return window.getComputedStyle(toggle).display !== "none";
+  }
+
+  function syncNavigation() {
+    if (!usesCompactNavigation() && nav.classList.contains("nav-open")) {
+      nav.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+      emitCollapseEvent("hide.bs.collapse");
+    }
+  }
+
+  toggle.addEventListener("click", function () {
+    var open = nav.classList.toggle("nav-open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    emitCollapseEvent(open ? "show.bs.collapse" : "hide.bs.collapse");
+  });
+
+  window.addEventListener("resize", syncNavigation, { passive: true });
+  new MutationObserver(syncNavigation).observe(document.body, {
+    attributes: true,
+    attributeFilter: ["data-theme"]
+  });
+});
+/* NASHMESH_CUSTOM_HEADER_END */

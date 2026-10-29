@@ -4498,3 +4498,443 @@ body[data-theme="light"] .hp-powered-link:hover {
     background: rgba(46, 109, 164, 0.07);
   }
 }
+
+/* NASHMESH_CUSTOM_HEADER_START */
+/* ==========================================================================
+   NashMesh VERIFIED custom header
+   Dark/Light >= 960px : centered two-row nav
+   Retro >= 1366px      : centered two-row nav
+   Smaller widths       : hamburger
+   ========================================================================== */
+
+:root {
+  --nashmesh-logo-green: #7bb01f;
+  --nashmesh-logo-green-hover: #8bc62a;
+  --nashmesh-logo-green-border: #a6d84c;
+}
+
+.nashmesh-navbar-inner {
+  width: 100%;
+  align-items: center;
+}
+
+.nashmesh-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+}
+
+.nashmesh-brand:focus-visible {
+  outline: 2px solid var(--nashmesh-logo-green);
+  outline-offset: 4px;
+}
+
+.nashmesh-brand .logo {
+  width: 80px;
+  height: auto;
+  margin: 8px 10px 8px 4px;
+  flex: 0 0 auto;
+}
+
+.nashmesh-wordmark {
+  display: none;
+}
+
+body[data-theme="retro"] .nashmesh-brand .logo {
+  display: none;
+}
+
+body[data-theme="retro"] .nashmesh-brand {
+  min-height: 96px;
+}
+
+body[data-theme="retro"] .nashmesh-wordmark {
+  display: block;
+  font-size: 1.65rem;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: .5rem .25rem;
+}
+
+.nashmesh-nav-list .nav-link {
+  white-space: nowrap;
+}
+
+.nashmesh-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nashmesh-search .md-search-icon {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* Keep every menu control reachable on short landscape screens. */
+.nashmesh-navbar.nav-open .nashmesh-nav-panel {
+  max-height: calc(100vh - 112px);
+  max-height: calc(100dvh - 112px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.nashmesh-analyzer-link {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: var(--nashmesh-logo-green);
+  border: 1px solid var(--nashmesh-logo-green-border);
+  border-radius: .3rem;
+  color: #071000 !important;
+  font-weight: 700;
+  text-decoration: none !important;
+  white-space: nowrap;
+  padding: .46rem .82rem !important;
+}
+
+.nashmesh-analyzer-link:hover {
+  background: var(--nashmesh-logo-green-hover);
+  color: #050b00 !important;
+}
+
+body[data-theme="retro"] .nashmesh-analyzer-link {
+  border-radius: 0;
+  border-width: 2px;
+  color: #000033 !important;
+}
+
+/* DESKTOP — one intentional two-row navigation block */
+@media (min-width: 960px) {
+  .nashmesh-navbar-inner {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(.75rem, 2vw, 2.25rem);
+  }
+
+  .nashmesh-nav-toggle {
+    display: none !important;
+  }
+
+  .nashmesh-nav-panel {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(.65rem, 1.6vw, 1.5rem);
+    min-width: 0;
+  }
+
+  .nashmesh-nav-list {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(.1rem, .45vw, .45rem);
+    width: 100%;
+    min-width: 0;
+  }
+
+  .nashmesh-nav-row {
+    display: flex !important;
+    /* Bootstrap's .navbar-nav is column-oriented by default. */
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(.45rem, 1.35vw, 1.65rem);
+    width: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nashmesh-nav-row > .nav-item {
+    float: none !important;
+    margin: 0 !important;
+  }
+
+  .nashmesh-nav-list .nav-link {
+    padding: .22rem clamp(.2rem, .42vw, .62rem) !important;
+  }
+}
+
+/* NARROW */
+@media (max-width: 959.98px) {
+  .nashmesh-navbar-inner {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: .6rem;
+  }
+
+  .nashmesh-brand .logo {
+    width: 64px;
+    margin: 6px 8px 6px 4px;
+  }
+
+  body[data-theme="retro"] .nashmesh-brand {
+    min-height: 76px;
+  }
+
+  .nashmesh-nav-toggle {
+    display: block !important;
+    grid-column: 3;
+  }
+
+  .nashmesh-nav-panel {
+    display: none !important;
+    grid-column: 1 / -1;
+    width: 100%;
+    padding-top: .55rem;
+  }
+
+  .nashmesh-navbar.nav-open .nashmesh-nav-panel {
+    display: block !important;
+  }
+
+  .nashmesh-nav-list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100%;
+  }
+
+  .nashmesh-nav-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nashmesh-nav-list .nav-link {
+    padding-left: .45rem !important;
+    padding-right: .45rem !important;
+  }
+
+  .nashmesh-search {
+    justify-content: flex-start;
+    margin: .35rem 0 .2rem .45rem;
+  }
+
+  .nashmesh-analyzer-link {
+    margin-top: .3rem;
+  }
+}
+
+/* Retro's wider pixel font needs the compact header slightly earlier. */
+@media (min-width: 960px) and (max-width: 1365.98px) {
+  body[data-theme="retro"] .nashmesh-navbar-inner {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: .6rem;
+  }
+
+  body[data-theme="retro"] .nashmesh-brand {
+    min-height: 76px;
+  }
+
+  body[data-theme="retro"] .nashmesh-nav-toggle {
+    display: block !important;
+    grid-column: 3;
+  }
+
+  body[data-theme="retro"] .nashmesh-nav-panel {
+    display: none !important;
+    grid-column: 1 / -1;
+    width: 100%;
+    padding-top: .55rem;
+  }
+
+  body[data-theme="retro"] .nashmesh-navbar.nav-open .nashmesh-nav-panel {
+    display: block !important;
+  }
+
+  body[data-theme="retro"] .nashmesh-nav-list,
+  body[data-theme="retro"] .nashmesh-nav-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body[data-theme="retro"] .nashmesh-nav-list .nav-link {
+    padding-left: .45rem !important;
+    padding-right: .45rem !important;
+  }
+
+  body[data-theme="retro"] .nashmesh-search {
+    justify-content: flex-start;
+    margin: .35rem 0 .2rem .45rem;
+  }
+
+  body[data-theme="retro"] .nashmesh-analyzer-link {
+    margin-top: .3rem;
+  }
+}
+
+/* The guide banner shares the analyzer CTA green for a single brand cue. */
+.new-guide-banner {
+  background: #102008;
+  border-color: #4d7015;
+  border-left-color: var(--nashmesh-logo-green);
+}
+
+.new-guide-banner .meetup-banner-text {
+  color: #dcecc5;
+}
+
+.new-guide-banner .meetup-banner-text strong {
+  color: #f0ffd9;
+}
+
+.new-guide-banner .meetup-banner-btn {
+  background: var(--nashmesh-logo-green) !important;
+  border: 1px solid var(--nashmesh-logo-green-border);
+  color: #071000 !important;
+}
+
+.new-guide-banner .meetup-banner-btn:hover {
+  background: var(--nashmesh-logo-green-hover) !important;
+}
+
+body[data-theme="light"] .new-guide-banner {
+  background: #edf6df;
+  border-color: #b7cf8a;
+  border-left-color: var(--nashmesh-logo-green);
+}
+
+body[data-theme="light"] .new-guide-banner .meetup-banner-text {
+  color: #29400f;
+}
+
+body[data-theme="light"] .new-guide-banner .meetup-banner-text strong {
+  color: #172605;
+}
+
+body[data-theme="retro"] .new-guide-banner {
+  background: #071200;
+  border-color: var(--nashmesh-logo-green);
+  border-left-color: var(--nashmesh-logo-green-hover);
+}
+
+body[data-theme="retro"] .new-guide-banner .meetup-banner-text {
+  color: #c5e99a;
+}
+
+body[data-theme="retro"] .new-guide-banner .meetup-banner-text strong {
+  color: var(--nashmesh-logo-green-hover);
+}
+
+body[data-theme="retro"] .new-guide-banner .meetup-banner-btn {
+  border-radius: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .65rem;
+}
+
+/* Getting Started landing page */
+main .container:has(.getting-started-links) #component-sidebar,
+main .container:has(.getting-started-links) #mobile-toc {
+  display: none !important;
+}
+
+main .container:has(.getting-started-links) .row {
+  margin-inline: 0;
+}
+
+main .container:has(.getting-started-links) #component-content {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.getting-started-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(.75rem, 2vw, 1.25rem);
+  margin: 1.5rem 0 2rem;
+}
+
+.getting-started-link {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  min-height: 7rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid #2a4a6a;
+  border-radius: 6px;
+  background: #10233a;
+  color: #e7f2ff !important;
+  text-decoration: none !important;
+  transition: transform .15s, border-color .15s, background .15s;
+}
+
+.getting-started-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--nashmesh-logo-green);
+  background: #17324d;
+}
+
+.getting-started-link strong {
+  color: var(--nashmesh-logo-green-hover);
+  font-size: 1.05rem;
+}
+
+.getting-started-link span {
+  color: #bdd0e2;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+body[data-theme="light"] .getting-started-link {
+  border-color: #b0ccee;
+  background: #f4f8fc;
+  color: #17324d !important;
+}
+
+body[data-theme="light"] .getting-started-link:hover {
+  background: #edf6df;
+}
+
+body[data-theme="light"] .getting-started-link strong {
+  color: #527c13;
+}
+
+body[data-theme="light"] .getting-started-link span {
+  color: #46617b;
+}
+
+body[data-theme="retro"] .getting-started-links {
+  grid-template-columns: 1fr;
+}
+
+body[data-theme="retro"] .getting-started-link {
+  border-radius: 0;
+  border-color: var(--nashmesh-logo-green);
+  background: #071200;
+  color: #d8f5b3 !important;
+}
+
+body[data-theme="retro"] .getting-started-link strong {
+  color: var(--nashmesh-logo-green-hover);
+}
+
+body[data-theme="retro"] .getting-started-link span {
+  color: #b8d993;
+}
+
+@media (max-width: 600px) {
+  body[data-theme="retro"] .nashmesh-nav-list .nav-link {
+    /* The theme's mobile typography uses !important on every text element. */
+    font-size: .75rem !important;
+    letter-spacing: 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .getting-started-links {
+    grid-template-columns: 1fr;
+  }
+}
+/* NASHMESH_CUSTOM_HEADER_END */
